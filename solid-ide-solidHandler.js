@@ -5,7 +5,6 @@ var SolidHandler = function(){
 
 var self = this
 self.log = function(msg){console.log(msg) }
-self.solsideUrl = "https://jeff-zucker.github.io/solid-ide/"
 
 this.isSolsideHome = function(url){
     if( url==="https://solside.solid.community/public/index.html"
@@ -31,13 +30,12 @@ this.get = async function(thing){
     if(typeof(thing)==='string') thing = { url:thing }
     if(! thing.type) thing.type = fc.guessFileType(thing.url)
     var body = await fc.fetch(thing.url)
-    if(!body) return false
+    if(!body){ self.err=fc.err; return false }
     self.log("got a "+thing.type)
     if( thing.type==="folder" ) {
         var graph = fc.text2graph(body.value,thing.url,"text/turtle")
         if(!graph) {
-            if(typeof(fc.err) != 'undefined') self.err = fc.err
-            else self.err = "Not authorized!"
+            self.err = fc.err
             return false
         }
         else {
@@ -58,7 +56,7 @@ this.get = async function(thing){
         if(body && body.value && body.value.match('alert-danger')
            && !thing.url.match('solid-auth-simple')
         ) {
-            self.err = fc.err || "Not authorized!"
+            self.err = fc.err
             return false
         }
         else return('file',{key:"file",value:{

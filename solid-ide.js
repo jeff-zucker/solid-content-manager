@@ -196,8 +196,7 @@ var app = new Vue({
                 val.content=""
             }
             fileDisplay.setContent(val.content) 
-            if(!sol.isSolsideHome(app.currentThing.url))
-                fileDisplay.file.srcUrl = app.currentThing.url
+            fileDisplay.file.srcUrl = app.currentThing.url
             sol.checkStatus(val.url).then( status => {
                 var url = location.href.replace(/^[^\?]*\?/,'')
                 var url2 = location.href.replace(url,'').replace(/\?$/,'')  
