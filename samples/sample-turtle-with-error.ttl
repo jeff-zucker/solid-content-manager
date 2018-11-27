@@ -1,0 +1,11 @@
+#
+# This will show an error in the data browser
+# because I left off a period at line 11.
+# Solside can act like your own personal fiddle,
+# 
+@prefix : <http://schema.org/>.
+
+<> 
+  a :Person;
+  :name "Taisha"
+ 

@@ -1,0 +1,184 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width"><title>
+    Solside - a simple IDE and file manager for Solid Data Stores
+</title>
+<!--
+  libraries from remote CDN
+      rdflib,solid-auth-client,solid-file-client,vue,ace 
+  local files 
+      soliside, zeditor, solid-file-client
+-->
+<script src=
+   "https://solid.github.io/releases/rdflib.js/rdflib-0.12.2.min.js"
+></script>
+<script src=
+   "https://solid.github.io/solid-auth-client/dist/solid-auth-client.bundle.js"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
+<script src="./solid-ide-solidHandler.js"></script>
+<script src="https://jeff-zucker.github.io/solid-file-client/solid-file-client.js"></script>
+<script src="./solid-ide-editor.js"></script>
+<link rel="stylesheet" href="./assets/main.css">
+</head>
+<body>
+
+<div id="app">
+
+<div id="opt" class="topRow table" v-bind:class="fontSize"><span class="tr">
+    <span class="td left">
+        <input type="text" v-model="currentThing.url" v-on:change="view.refresh(currentThing.url)">
+        <button v-on:click="view.refresh(currentThing.url)">go</button>
+</span>
+    <span class="td right">
+    <button id="saveEdits" v-on:click="fileDisplay.saveEdits()">
+        save edits
+    </button>
+    <button id="editDisabled">save edits</button>
+    <button v-on:click="fileDisplay.togglePanes()">
+        view
+    </button>
+    <button id="optionsButton" v-on:click="view.show('optionsManager')">
+        options
+    </button>
+    </span>
+</span></div><!-- opt -->
+
+<div id="folderMenu" v-bind:class="fontSize">
+       <button v-on:click="manageResource(folder)" class="docIcon" v-bind:class="canControl()">
+        <img src="./assets/folder.png">
+        </button>
+    <button class="fileName" v-on:click="get(folder)">
+        <span id="currentFolder">{{folder.name}}</span>
+    </button>
+    <hr>
+    <ul>
+        <li v-for="subFolder in folder.folders">
+            <button class="docIcon">
+                <img src="./assets/folder.png" />
+            </button>
+            <button class="fileName" v-on:click="get(subFolder)">
+                {{subFolder.name}}
+            </button>
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <li v-for="f in folder.files">
+            <button v-on:click="rm(f)" class="docIcon" v-bind:class="canControl()">
+                <img src="./assets/document.png">
+            </button>
+            <button class="fileName" v-on:click.right="download(f)" v-on:click="get(f)" v-bind:title="f.label+' '+f.type">
+                {{f.label}}
+            </button>
+        </li>
+    </ul>
+</div><!-- folderMenu -->
+
+<div id="fileManager" class="formArea">
+    <div class="cancel-icon">
+        <button v-on:click="view.hide('fileManager')" 
+           class="xIcon" title="Cancel"> X 
+        </button>
+    </div>
+    <div>File : <em>{{file.url}}</em></div>
+    <hr>
+    <button v-on:click="rm(file)">Delete file</button>
+    <hr>
+    <div>
+        <label>new folder :</label>
+        <input v-model="newThing.parentFolder"
+               placeholder=" (optional) path relative to original file"
+        />
+    </div>
+    <div>
+        <label>new name :</label>
+        <input v-model="newThing.name"
+               placeholder=" name without path or extension"
+        />
+    </div>
+    <p class="right-justify">
+        <button v-on:click="cpFile()">Copy file</button>
+    </p>
+    <hr>
+</div><!-- fileManager -->
+
+<div id="folderManager" class="formArea">
+    <div class="cancel-icon">
+        <button v-on:click="view.hide('folderManager')" 
+         class="xIcon" title="Cancel"> X </button>
+    </div>
+    <div>Folder : <em>{{folder.url}}</em></div>
+    <hr>
+<button v-on:click="rm(folder)">delete this folder</button>
+    <hr>
+<div>
+<label>new name</label>
+   <input v-model="newThing.name" placeholder=" (without path)">
+</div>
+<p class="right-justify"><button v-on:click="addThing('file')">create new file in this folder</button></p>
+<p class="right-justify"><button v-on:click="addThing('folder')">create new folder in this folder</button></p>
+    <hr>
+</div><!-- folderManager -->
+
+<div id="optionsManager" class="formArea">
+    <div class="cancel-icon">
+        <button v-on:click="view.hide('optionsManager')" 
+           class="xIcon" title="Cancel"> X 
+        </button>
+    </div>
+
+<div class="table">
+    <div class="tr">
+        <span class="td">logged in as</span>
+        <span class="td left">
+            {{webId}}
+            <button v-on:click="setLogState()">{{logState}}</button>
+            <button id="profileButton" v-on:click="getProfile()">edit profile</button>
+        </span>
+    </div>
+    <div class="tr">
+        <span class="td">home URL</span>
+        <span class="td"><input v-model="homeUrl">
+        <button v-on:click="get(homeUrl)">go home</button>
+        </span>
+    </div>
+</div><!-- table -->
+<div class="table"><div class="tr center">
+<span class="td">
+    <div>Key Bindings</div>
+    <select v-model="editKeys" v-on:change="setEditKeys()" size="2">
+        <option>emacs</option>
+        <option>vim</option>
+    </select>
+</span>
+<span class="td">
+    <div>Syntax Highlighting</div>
+    <select v-model="editTheme" v-on:change="setEditTheme()" size="2">
+        <option>light theme</option>
+        <option>dark theme</option>
+    </select>
+</span>
+
+</div></div>
+<hr>
+     <button v-on:click="storePrefs()">save preferences</button>
+     <a type="button" target="_blank" href="mailto:dubzed@gmail.com">send feedback</a>
+
+</div><!-- optionsManager -->
+
+</div><!-- app -->
+
+<!--
+   FILE DISPLAY & EDITOR & DATA-BROWSER
+-->
+<div id="fileDisplay" class="rightCol flex-item" v-bind:class="displayState">
+    <iframe id="dataBrowser" v-bind:src="file.srcUrl">
+    </iframe>
+    <div id="editor" style="font-family: Monaco, monospace !important">
+    </div>
+</div><!-- fileDisplay -->
+
+<script src="./solid-ide.js"></script>
+
+</body>
+</html>

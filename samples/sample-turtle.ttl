@@ -1,0 +1,26 @@
+#
+# THIS IS WHAT IT'S ALL ABOUT!
+# THE TURTLE CODE IN THIS FILE IS PRESENTED BY THE DATA BROWSER
+# IN A STRUCTURED WAY.  CREATING A SEMANTIC WEB PAGE IS EASY!
+#
+@prefix : <#>.
+@prefix sk: <http://www.w3.org/2004/02/skos/core#>.
+
+<> a sk:ConceptScheme; sk:prefLabel "Open Culture Catalog"; sk:hasTopConcept
+    :music,:movies,:audiobooks
+.
+:music a sk:Concept; sk:prefLabel "Music"; sk:narrower
+    [a sk:Concept; sk:prefLabel "Ambient"],
+    [a sk:Concept; sk:prefLabel "Classical"],
+    [a sk:Concept; sk:prefLabel "Jazz"]
+.
+:movies a sk:Concept; sk:prefLabel "Movies"; sk:narrower
+    [a sk:Concept; sk:prefLabel "Film Noir"],
+    [a sk:Concept; sk:prefLabel "SciFi"]
+.
+:audiobooks a sk:Concept; sk:prefLabel "Audio Books"; sk:narrower
+    [a sk:Concept; sk:prefLabel "Fiction"],
+    [a sk:Concept; sk:prefLabel "Poetry"]
+.
+
+

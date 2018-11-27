@@ -1,0 +1,204 @@
+/* WIDTH */
+body                            { margin:1vw; padding:0; }
+#folderMenu                     { width:19vw; }
+#dataBrowser, #editor, iframe   { left:20vw; width:80vw;}
+.formArea                       { left:20vw; max-width:80vw;}
+/* HEIGHT */
+body                { margin-top:2vh; margin-bottom:2vh; overflow:hidden; }
+.topRow             { height:6vh; }
+#folderMenu,.rightCol  { height:90vh; }
+.formArea           { top: 8vh; max-height:89vh; }
+
+.edOnly #editor     { top: 8vh; height:89vh; }
+.both   #editor     { top: 53vh; height:44vh; }
+.dataOnly #dataBrowser { top: 8vh; height:89vh; }
+.both   #dataBrowser   { top: 8vh; height:43vh; }
+
+#manageDisabled, #editDisabled {
+    color:#888;
+    cursor:text;
+}
+#saveEdits, #manageResource { display:none; }
+#folderMenu *, #opt *, .formArea * {
+     font-family:sans-serif;
+     font-size:100%
+}
+#folderMenu.large *, #opt.large *, .formArea.large * {
+     font-size:1.1em;
+}
+#folderMenu.small *, #opt.small *, .formArea.small * {
+     font-size:0.8em;
+}
+select {
+padding:0.25em;
+}
+#optionsManager select, #filterManager select {
+    overflow:hidden;
+}
+#optionsManager td {
+    padding-left:2em;
+    vertical-align:top;
+}
+label {
+  display:inline-block;
+  text-align:right;
+  width:8em;
+}
+em {
+    font-weight:bold;
+}
+.cancel-icon {
+    text-align:right;
+    margin-right:-1em;
+    margin-top:-1em;
+}
+.right-justify {
+    text-align:right;
+}
+span.right-justify {
+    display:inline-block;
+}
+.formArea { 
+    text-align:right;
+    display:none;
+    line-height:2em;
+    margin-top:1em;
+    margin-left:1em;
+    border-radius:5px;
+    padding:1em;
+    background-color:rgba(125,180,200,2);
+    border:1px solid rgba(50,75,90,10);
+    height:auto;
+}
+.formButtons {
+    margin-top:1em;
+    text-align:center;
+}
+.formButtons button {
+    margin-right:1em;
+}
+.flex-item { flex: 0 1 auto; }
+.flex-container { display:flex; height:100%;}
+#editor, #dataBrowser, iframe,.formArea { position: absolute; }
+iframe {  border:none; }
+
+/* VIEW STATES */
+.both #editor, .both #dataBrowser {  display:block; }
+.edOnly #dataBrowser, .dataOnly #editor { display:none; }
+.edOnly #editor, .dataOnly #dataBrowser { display:block; }
+/* END VIEWSTATES */
+
+#folderMenu {
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+#folderMenu li {
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.currentThing {
+    display:inline-block;
+    margin-right:2em;
+}
+#opt {
+    color:#888;
+    text-align:right;
+}
+
+/* INPUT
+*/
+input {
+    padding:0.25em;
+    border:1px solid turquoise;
+    border-radius:5px;
+    width:30em;
+}
+input.short{
+    width:15em;
+}
+
+/* BUTTON 
+*/
+button {
+    border-radius:5px;
+}
+button:hover {
+    cursor:pointer;
+}
+#folderMenu button {
+    overflow:hidden;
+    padding:0.25em;
+    margin-left:0;
+    padding-left:0;
+    margin-right:0;
+    border:none;
+    background-color:transparent;
+}
+/* END OF BUTTON */
+
+.fileName {
+    padding-left:0.5em !important;
+}
+.docIcon {
+    width:1em;
+    cursor:text !important;
+    background:transparent;
+}
+.docIcon.canControl {
+    cursor:pointer !important;
+    background-color:#99dddd !important;
+    padding:0 !important;
+}
+img {
+    height:1em !important;
+    width:1em !impoortant;
+    margin-right:0.1em;
+}
+
+a img.icon {
+    height:1em !important;
+    width:1em !important;
+    text-decoration:none;
+}
+.xIcon {
+    font-weight:900;
+    color:red;
+    border:none;
+    margin-left:0;
+}
+#folderMenu .xIcon {
+    color:green;
+}
+.table {
+ display:table; 
+ border-collapse: separate;
+ border-spacing: 0.75em;
+}
+.tr { display:table-row;  text-align:right;  }
+.td { display:table-cell; text-align:right;  }
+.td.left { text-align:left; }
+.td.center { text-align:left;  }
+
+.topRow.table {
+    border-spacing:0;
+    width:100%;
+}
+
+
+ul {display:table; width:100%;}
+li { display:table-row; width:100%;}
+li button { display:table-cell; width:18vw; text-align:left; }
+li button.xIcon { width:2vw;}
+ul {
+  margin-top:0.5em;
+  margin-bottom:0.5em;
+}
+ul,li {
+padding-left:0;
+list-style:none;
+}
+#currentFolder {
+    font-weight:bold;
+}
+
