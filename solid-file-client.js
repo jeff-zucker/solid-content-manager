@@ -153,10 +153,8 @@ this.checkSession = async function() {
     return { webId : sess.webId }
 }
 this.popupLogin = async function() {
-    let session = await solid.auth.currentSession();
     let popupUri = 'https://solid.community/common/popup.html';
-    if (!session)
-        session = await solid.auth.popupLogin({ popupUri });
+    let session = await solid.auth.popupLogin({ popupUri });
     return(session.webId);
 }
 this.login = async function(idp) {
