@@ -112,8 +112,10 @@ var app = new Vue({
                else { 
                    this.logState = "logout"
                    sol.homeUrl = this.homeUrl
-                   fc.popupLogin().then(function(){
-                       view.refresh()
+                   fc.logout().then( ()=> {
+                       fc.popupLogin().then(function(){
+                           view.refresh()
+                       })
                    })
                }
             },
