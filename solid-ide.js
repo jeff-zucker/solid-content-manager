@@ -112,7 +112,7 @@ var app = new Vue({
                else { 
                    this.logState = "logout"
                    sol.homeUrl = this.homeUrl
-                   fc.popupLogin().then(function(){
+                   fc.login("https://solid.community").then(function(){
                        view.refresh()
                    })
                }
