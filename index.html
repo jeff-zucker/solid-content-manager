@@ -117,7 +117,9 @@
 </div>
 <p class="right-justify"><button v-on:click="addThing('file')">create new file in this folder</button></p>
 <p class="right-justify"><button v-on:click="addThing('folder')">create new folder in this folder</button></p>
-    <hr>
+    <hr><hr>
+<label>upload file(s) in this folder</label>
+	<input type="file" id="upFile" name="upFile" multiple size="100" v-on:change="upload(folder)">
 </div><!-- folderManager -->
 
 <div id="optionsManager" class="formArea">

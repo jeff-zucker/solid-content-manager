@@ -46,6 +46,20 @@ var app = new Vue({
                })
             }
         },
+        upload : async function(f){
+            view.hide('folderManager')
+        	var inputFile = document.getElementById("upFile")
+			for (var i = 0; i < inputFile.files.length; i++) {
+				var content = inputFile.files[i] 
+        		var url  = this.folder.url+content.name;
+        		success = await sol.replace(url,content )
+        		if(success){
+        			alert("Resource created: " + content.name)
+        		}
+        		else alert("Couldn't create "+url+" "+sol.err)
+			}
+            view.refresh(this.folder.url)
+        },        	
         addThing : function(type){
             if(!this.newThing.name){
                alert("You didn't supply a name!")
