@@ -1,5 +1,5 @@
-/* VERSION 0.1.2
-**     2018-11-27
+/* VERSION 0.2.0
+**     2019-02-27
 */
 const fc  = new SolidFileClient()   // from solid-file-client.js
 const sol = new SolidHandler()      // from solid-ide-solidHandler.js
@@ -66,15 +66,45 @@ var app = new Vue({
                return;
             }
             view.hide('folderManager')
+            view.hide('fileManager')
             var name = this.newThing.name
             var url  = this.folder.url
-            sol.add(url,name,type ).then( success => {
+			sol.add(url,name,type ).then( success => {
                 if(success){
                     alert("Resource created: " + name)
                     view.refresh(this.folder.url)
                 }
                 else alert("Couldn't create "+url+" "+sol.err)
             })
+    	},
+        copy : async function(type){
+    	   if(!this.newThing.name){
+           alert("You didn't supply a name!")
+           return;
+            view.hide('folderManager')
+            view.hide('fileManager')
+            }
+        	var name = this.newThing.name
+        	var url = this.folder.url
+        	if (type === 'folder'){
+        		var folder = await fc.readFolder(this.newThing.name);
+        		if(!folder) {alert("The destination folder must exist : \n"+this.newThing.name); return}
+        	}
+        	if (type !== 'folder'){
+        		url = this.file.url;
+        		if (!this.newThing.parentFolder) this.newThing.parentFolder = "";
+        		var name = this.newThing.parentFolder+name;
+	        	var testUrl = this.newThing.parentFolder.split('/');
+	        	if (testUrl[0] !== 'https:') name = this.folder.url+name;
+        	}
+        	if( confirm("COPY RESSOURCE \n"+url+"\n          TO  \n"+name) ){
+        		sol.cp(url,name,type).then(success => {
+        			if(success){
+        				alert("Ressource copied to " + name)
+        			}
+        			else alert(success+"Couldn't copy to "+ name+" "+sol.err)
+        		})
+        	}
         },
         manageResource : function(thing){
             if(!this.perms.Control) return
@@ -362,4 +392,3 @@ var app = new Vue({
     }
 
     init()
-
