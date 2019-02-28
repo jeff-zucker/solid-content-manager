@@ -1,4 +1,4 @@
-/* VERSION 0.1.0
+/* VERSION 0.2.0
 **     
 */
 var SolidFileClient = function(){
@@ -47,6 +47,53 @@ this.getFileType = function( graph, url ){
 }
 /* SOLID READ/WRITE FUNCTIONS
 */
+this.copyFile = async function(src,dest) {
+	await this.readFile(src).then(content => {
+		this.updateFile(dest,content).then( res => {
+//			return(res)
+	        }, err => {throw new Error("copy upload error  "+err)
+		})
+    }, err => {throw new Error("copy download error  "+err)});
+	return(true)
+}
+this.copyFolder = async function(src, dest, options, indent = ''){
+  options = options || {}
+  console.log('deepCopying ' + src + '\n'+indent+'-> ' + dest)
+  if( !src.match(/\/$/))  src += "/";
+  if( !dest.match(/\/$/)) dest += "/";
+  return new Promise(function(resolve, reject){
+    function mapURI(src, dest, x){
+        if (!x.startsWith(src)){
+            throw new Error(`source {${x}} is not in tree {${src}}`)
+        }
+        return dest + x.slice(src.length)
+    }
+    self.readFolder(src).then( folder => {
+        var promises = []
+        var all = folder.folders.concat(folder.files)
+        for(var i=0; i<all.length; i++){
+            let here = all[i] // here is a solid-file-client file object
+            let there = mapURI(src, dest, here.url)
+//            alert(Object.keys(here)+"\n"+Object.values(here));
+            if (here.type==="folder") {
+               self.createFolder(there).then( ()=> {
+                   promises.push(
+                       self.copyFolder(here.url,there,options, indent+'  ')
+                   )
+               })
+            } 
+            else { // copy a leaf
+                console.log('copying ' + there)
+                promises.push(self.copyFile(here.url, there))
+            }
+        }
+        Promise.all(promises).then(resolve(true)).catch(function (e) {
+            console.log("Overall promise rejected: " + e)
+            reject(e)
+         })
+    }, e => { reject("Could not read folder : "+e) } )
+  })
+}
 this.createFile = async function(url,type,content){
     var newThing = url.replace(/\/$/,'').replace(/.*\//,'')
     var parentFolder = url.replace(newThing,'').replace(/\/\/$/,'/')
@@ -73,7 +120,19 @@ this.updateFile = async function(url,content,contentType) {
     return(add)
 }
 this.deleteFile = this.deleteFolder
-this.readFile   = function(url){return this.fetch(url) }
+this.readFile = async function(url,request){
+    var res = await solid.auth.fetch(url,request).catch(err => {
+       self.err = err; return false 
+    })
+    if(!res.ok) { 
+        self.err = res.status + " ("+res.statusText+")"
+        return false 
+    }
+    var txt = await res.blob().catch(err => {
+       self.err = err; return false 
+    })
+    return(txt)
+}
 this.readFolder = async function(url){
     var body = await self.fetch(url)
     if(!body) return false
