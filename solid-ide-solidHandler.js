@@ -1,5 +1,5 @@
-/* VERSION 0.1.2
-**     2018-11-27
+/* VERSION 0.2.0
+**     2019-02-27
 */
 var SolidHandler = function(){
 
@@ -23,6 +23,11 @@ this.add = async function(parentFolder,newThing,type,content) {
     if(type==='folder') return fc.createFolder(parentFolder+newThing)
     else return fc.createFile(parentFolder+newThing,type,content)
 
+}
+this.cp = function(url,newThing,type) {
+    var filetype;
+    if(type==='folder') return fc.copyFolder(url,newThing)
+    else return fc.copyFile(url,newThing)
 }
 this.get = async function(thing){
     self.qname="";
