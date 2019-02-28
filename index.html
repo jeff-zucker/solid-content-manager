@@ -64,7 +64,7 @@
     <hr>
     <ul>
         <li v-for="f in folder.files">
-            <button v-on:click="rm(f)" class="docIcon" v-bind:class="canControl()">
+            <button v-on:click="manageResource(f)" class="docIcon" v-bind:class="canControl()">
                 <img src="./assets/document.png">
             </button>
             <button class="fileName" v-on:click.right="download(f)" v-on:click="get(f)" v-bind:title="f.label+' '+f.type">
@@ -87,17 +87,17 @@
     <div>
         <label>new folder :</label>
         <input v-model="newThing.parentFolder"
-               placeholder=" (optional) path relative to original file"
+               placeholder=" (optional) full folder URI"
         />
     </div>
     <div>
         <label>new name :</label>
         <input v-model="newThing.name"
-               placeholder=" name without path or extension"
+               placeholder=" name with extension (to same URI folder by default)"
         />
     </div>
     <p class="right-justify">
-        <button v-on:click="cpFile()">Copy file</button>
+        <button v-on:click="copy('file')">Copy file</button>
     </p>
     <hr>
 </div><!-- fileManager -->
@@ -112,11 +112,12 @@
 <button v-on:click="rm(folder)">delete this folder</button>
     <hr>
 <div>
-<label>new name</label>
-   <input v-model="newThing.name" placeholder=" (without path)">
+<label>new name/dest.</label>
+   <input v-model="newThing.name" placeholder=" (without path) except for copy Folder (url)">
 </div>
 <p class="right-justify"><button v-on:click="addThing('file')">create new file in this folder</button></p>
 <p class="right-justify"><button v-on:click="addThing('folder')">create new folder in this folder</button></p>
+<p class="right-justify"><button v-on:click="copy('folder')">recursive copy of this folder</button></p>
     <hr><hr>
 <label>upload file(s) in this folder</label>
 	<input type="file" id="upFile" name="upFile" multiple size="100" v-on:change="upload(folder)">
