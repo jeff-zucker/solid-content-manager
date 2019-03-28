@@ -224,7 +224,7 @@ this.processFolder = function(graph,url,content,callback){
         var stats = self.getStats(graph,url)
         var fullname = url.replace( /\/$/,'')
         var name = fullname.replace( /.*\//,'')
-        var parent = fullname.replace(name,'')
+        var parent = fullname.substr(0, fullname.lastIndexOf("/"))+"/";
         return({
              type : "folder",
              name : name,
