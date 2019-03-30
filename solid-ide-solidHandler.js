@@ -1,5 +1,5 @@
-/* VERSION 0.1.2
-**     2018-11-27
+/* VERSION 0.1.3
+**     2019-03-30
 */
 var SolidHandler = function(){
 
@@ -14,10 +14,10 @@ this.isSolsideHome = function(url){
 }
 this.replace = async function(url,content){
     var del = await fc.deleteFile( url )
-    var add = await fc.createFile(url,undefined,content)
+    var add = await fc.createFile(url,content)
     return(add)
 }
-this.rm = fc.deleteFile
+this.rm = async function(url) {return fc.deleteFile(url)}
 this.add = async function(parentFolder,newThing,type,content) {
     var filetype;
     if(type==='folder') return fc.createFolder(parentFolder+newThing)
@@ -33,13 +33,13 @@ this.get = async function(thing){
     if(!body){ self.err=fc.err; return false }
     self.log("got a "+thing.type)
     if( thing.type==="folder" ) {
-        var graph = fc.text2graph(body.value,thing.url,"text/turtle")
+        var graph = await fc.text2graph(body,thing.url,"text/turtle")
         if(!graph) {
             self.err = fc.err
             return false
         }
         else {
-            let folder = fc.processFolder( graph,thing.url,body.value) 
+            let folder = fc.processFolder( graph,thing.url,body)
             self.checkForIndex( folder );
             let parentOK=folder.parent.replace('https://','').replace(/^[^/]*/,'')
             if( parentOK ){
@@ -53,7 +53,7 @@ this.get = async function(thing){
         }
     }
     else {
-        if(body && body.value && body.value.match('alert-danger')
+        if(body && body.match('alert-danger')
            && !thing.url.match('solid-auth-simple')
         ) {
             self.err = fc.err
@@ -61,7 +61,7 @@ this.get = async function(thing){
         }
         else return('file',{key:"file",value:{
             type:thing.type,
-            content:body.value,
+            content:body,
             url:thing.url
         }})
     }
