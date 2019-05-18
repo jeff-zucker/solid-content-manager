@@ -1,8 +1,8 @@
-/* VERSION 0.1.2
-**     2018-11-27
+/* VERSION 0.1.3
+**     2019-03-30
 */
-const fc  = new SolidFileClient()   // from solid-file-client.js
 const sol = new SolidHandler()      // from solid-ide-solidHandler.js
+const fc = SolidFileClient;         // from solid-file-client.bundle.js
 
 var init = function(){
     app.getStoredPrefs()
@@ -222,8 +222,8 @@ var app = new Vue({
                 history.pushState({s:2,b:1},"solside",url2)
                 app.getLogState(status)
                 view.modUI(status,val.type)
-            })
-        },  /* process results */
+            }, err => { console.log(err)})
+        }, /* process results */
 
     }, /* methods */
     data: { 
@@ -238,7 +238,7 @@ var app = new Vue({
         idp          : "",
         homeUrl      : "",
         webId        : "",
-        logState     : "",
+        logState     : "login",
     }, /* data */
 }) /* app */
 
