@@ -29,10 +29,10 @@ this.get = async function(thing){
     thing = thing || self.urlFromQueryString()
     if(typeof(thing)==='string') thing = { url:thing }
     if(! thing.type) thing.type = fc.guessFileType(thing.url)
-    var body = await fc.fetch(thing.url)
-    if(!body){ self.err=fc.err; return false }
     self.log("got a "+thing.type)
     if( thing.type==="folder" ) {
+	    var body = await fc.fetch(thing.url, { headers: { "Accept": "text/turtle" }})
+	    if(!body){ self.err=fc.err; return false }
         var graph = await fc.text2graph(body,thing.url,"text/turtle")
         if(!graph) {
             self.err = fc.err
@@ -53,6 +53,8 @@ this.get = async function(thing){
         }
     }
     else {
+		var body = await fc.fetch(thing.url)
+		if(!body){ self.err=fc.err; return false }
         if(body && body.match('alert-danger')
            && !thing.url.match('solid-auth-simple')
         ) {
@@ -81,7 +83,7 @@ this.checkPerms = async function(url,agent,session){
         var path = agent.replace(/^https:\/\/[^/]*\//,'')
         self.storage = agent.replace(path,'')
     }
-    if( self.storage && url.match(self.storage) )
+    if( self.storage && url.match(self.storage) )   // if
         return { Read:true, Write:true, Control:true  }
     else
         return { Read:true, Write:false, Control:false  }
