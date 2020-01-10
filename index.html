@@ -3,15 +3,18 @@
 </title>
 <!--
   libraries from remote CDN
-      rdflib,solid-auth-client,solid-file-client,vue,ace 
+      solid-auth-client,solid-file-client,mimer,vue,ace
   local files 
-      solside, zeditor
+      solidHandler, solidSession, editor, solid-file-client
 -->
-<script src="https://cdn.jsdelivr.net/npm/solid-file-client@0.5.1/dist/browser/solid-file-client.bundle.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/solid-file-client@1.0.2/dist/window/solid-file-client.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/solid-auth-client@2.3.0/dist-lib/solid-auth-client.bundle.js"></script>
+<!-- <script src="./dist/window/solid-file-client.bundle.js"></script></script> -->
+<script src="https://cdn.jsdelivr.net/npm/mimer@1.0.0/dist/mimer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
 <script src="./solid-ide-solidHandler.js"></script>
+<script src="./solid-ide-solidSession.js"></script>
 <script src="./solid-ide-editor.js"></script>
 <link rel="stylesheet" href="./assets/main.css">
 </head>
@@ -39,11 +42,17 @@
 </span></div><!-- opt -->
 
 <div id="folderMenu" v-bind:class="fontSize">
-       <button v-on:click="manageResource(folder)" class="docIcon" v-bind:class="canControl()">
-        <img src="./assets/folder.png">
-        </button>
+    <button v-on:click="manageResource(folder)" class="docIcon" v-bind:class="canControl()">
+    <img src="./assets/folder.png">
+    </button>
+    <button v-on:click="get(getLink(folder, 'acl'))" class="docIcon" v-bind:class="canControlLink(folder, 'acl')"> <!--- --->
+        <img src="./assets/padlock-timbl.svg">
+    </button>
+    <button v-on:click="get(getLink(folder, 'meta'))" class="docIcon" v-bind:class="canControlLink(folder, 'meta')"> <!--- --->
+        <img src="./assets/document.png">
+    </button>
     <button class="fileName" v-on:click="get(folder)">
-        <span id="currentFolder">{{folder.name}}</span>
+        <span id="currentFolder">{{decodeURIComponent(folder.name)}}</span>
     </button>
     <hr>
     <ul>
@@ -52,18 +61,22 @@
                 <img src="./assets/folder.png" />
             </button>
             <button class="fileName" v-on:click="get(subFolder)">
-                {{subFolder.name}}
+                {{decodeURIComponent(subFolder.name)}}
             </button>
         </li>
     </ul>
     <hr>
     <ul>
         <li v-for="f in folder.files">
-            <button v-on:click="rm(f)" class="docIcon" v-bind:class="canControl()">
+            <button v-on:click="manageResource(f)" class="docIcon" v-bind:class="canControl()">
+<!--            <button v-on:click="rm(f)" class="docIcon" v-bind:class="canControl()">-->
                 <img src="./assets/document.png">
             </button>
-            <button class="fileName" v-on:click.right="download(f)" v-on:click="get(f)" v-bind:title="f.label+' '+f.type">
-                {{f.label}}
+	        <button v-on:click="get(getLink(f, 'acl'))" class="docIcon" v-bind:class="canControlLink(f, 'acl')"> <!--- --->
+	            <img src="./assets/padlock-timbl.svg">
+	        </button>
+            <button class="fileName" v-on:click.right="download(f)" v-on:click="get(f)" v-bind:title="decodeURIComponent(f.name)+' '+f.type">
+                {{decodeURIComponent(f.name)}}
             </button>
         </li>
     </ul>
@@ -75,25 +88,35 @@
            class="xIcon" title="Cancel"> X 
         </button>
     </div>
-    <div>File : <em>{{file.url}}</em></div>
+    <div>File : <em>{{decodeURI(file.url)}}</em></div>
     <hr>
     <button v-on:click="rm(file)">Delete file</button>
     <hr>
     <div>
         <label>new folder :</label>
         <input v-model="newThing.parentFolder"
-               placeholder=" (optional) path relative to original file"
+               placeholder=" (optional) full path"
         />
     </div>
     <div>
         <label>new name :</label>
         <input v-model="newThing.name"
-               placeholder=" name without path or extension"
+               placeholder=" name with extension, without path"
         />
     </div>
     <p class="right-justify">
-        <button v-on:click="cpFile()">Copy file</button>
+        <button v-on:click="cp(file, 'copy')">Copy file</button>
+        <button v-on:click="cp(file, 'move')">Move</button>
     </p>
+<div class="table"><div class="tr center">
+<span class="td">
+    <div>withAcl</div>
+    <select v-model="withAcl" v-on:change="setWithAcl()" size="2">
+        <option>true</option>
+        <option>false</option>
+    </select>
+</span>
+</div></div>
     <hr>
 </div><!-- fileManager -->
 
@@ -102,7 +125,7 @@
         <button v-on:click="view.hide('folderManager')" 
          class="xIcon" title="Cancel"> X </button>
     </div>
-    <div>Folder : <em>{{folder.url}}</em></div>
+    <div>Folder : <em>{{decodeURI(folder.url)}}</em></div>
     <hr>
 <button v-on:click="rm(folder)">delete this folder</button>
     <hr>
@@ -110,16 +133,52 @@
 <label>new name</label>
    <input v-model="newThing.name" placeholder=" (without path)">
 </div>
-<p class="right-justify"><button v-on:click="addThing('file')">create new file in this folder</button></p>
-<p class="right-justify"><button v-on:click="addThing('folder')">create new folder in this folder</button></p>
-    <hr><hr>
+<p class="right-justify">
+    <label>in this folder </label>
+    <button v-on:click="addThing('file')">create new file</button>
+    <button v-on:click="addThing('folder')">create new folder</button></p>
+    <hr>
+<div>
+<label>new folder</label>
+   <input v-model="newThing.folder" placeholder=" (with full path)">
+</div>
+<p class="right-justify">
+	<button v-on:click="cp('folder', 'copy')">copy folder</button>
+    <button v-on:click="cp('folder', 'move')">Move folder</button>
+</p>
+<div class="table"><div class="tr center">
+<span class="td">
+    <div>withAcl</div>
+    <select v-model="withAcl" v-on:change="setWithAcl()" size="2">
+        <option>true</option>
+        <option>false</option>
+    </select>
+</span>
+<span class="td">
+    <div>Agent mode</div>
+    <select v-model="agentMode" v-on:change="setAgentMode()" size="3">
+        <option>no_modify</option>
+        <option>to_source</option>
+        <option>to_target</option>
+    </select>
+</span>
+<span class="td">
+    <div>Merge mode</div>
+    <select v-model="mergeMode" v-on:change="setMergeMode()" size="3">
+        <option>replace</option>
+        <option>keep_source</option>
+        <option>keep_target</option>
+    </select>
+</span>
+</div></div>
+<hr>
 <label>upload file(s) in this folder</label>
 	<input type="file" id="upFile" name="upFile" multiple size="100" v-on:change="upload(folder)">
 </div><!-- folderManager -->
 
 <div id="optionsManager" class="formArea">
     <div class="cancel-icon">
-        <button v-on:click="view.hide('optionsManager')" 
+        <button v-on:click="view.hide('optionsManager')"
            class="xIcon" title="Cancel"> X 
         </button>
     </div>
@@ -155,6 +214,13 @@
         <option>dark theme</option>
     </select>
 </span>
+<!-- <span class="td">
+    <div>Display Links</div>
+    <select v-model="displayLinks" v-on:change="setDisplayLinks()" size="2">
+        <option>exclude</option>
+        <option>include</option>
+    </select>
+</span> --->
 
 </div></div>
 <hr>
