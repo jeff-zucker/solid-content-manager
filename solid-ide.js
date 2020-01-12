@@ -173,12 +173,22 @@ var app = new Vue({
         download : function(f){
             var a = document.createElement("a");
             a.href = f.url
-            a.setAttribute("download", decodeURIComponent(f.name));
-            var b = document.createEvent("MouseEvent");  // MouseEvents
-            b.initEvent("click", false, true);
-            a.dispatchEvent(b);
+            a.download = decodeURIComponent(f.name) // setAttribute("download", decodeURIComponent(f.name));
+//            var b = document.createEvent("MouseEvents");  // MouseEvents
+//            b.initEvent("click", false, true);
+            a.dispatchEvent(new MouseEvent("click"));
             return false;
-         },
+        },
+        async downloadItem (file) {
+            const data = await fc.readFile(file.url) // res.blob()
+            const blob = new Blob([data]) //, { type: 'text/plain' })
+            const link = document.createElement('a')
+            link.href = URL.createObjectURL(blob)
+            link.setAttribute("oncontextmenu","return false;");
+            link.download = decodeURIComponent(file.name)
+            link.click()
+            URL.revokeObjectURL(link.href)
+        },
 //
 // EDITOR & FILE MANAGER SETTINGS
 //

@@ -75,7 +75,7 @@
 	        <button v-on:click="get(getLink(f, 'acl'))" class="docIcon" v-bind:class="canControlLink(f, 'acl')"> <!--- --->
 	            <img src="./assets/padlock-timbl.svg">
 	        </button>
-            <button class="fileName" v-on:click.right="download(f)" v-on:click="get(f)" v-bind:title="decodeURIComponent(f.name)+' '+f.type">
+            <button class="fileName" oncontextmenu="return false;" v-on:click.right.prevent="downloadItem(f)" v-on:click="get(f)" v-bind:title="decodeURIComponent(f.name)+' '+f.type">
                 {{decodeURIComponent(f.name)}}
             </button>
         </li>
@@ -118,6 +118,9 @@
 </span>
 </div></div>
     <hr>
+<label>download file :</label>
+	<a v-bind:href="file.url" v-on:click.prevent="downloadItem(file)"><em>{{decodeURI(file.name)}}</em></a>
+<!--	<a v-bind:href="file.url" v-text="decodeURIComponent(file.name)" v-on:click.prevent="downloadItem(file)" oncontextmenu="return false;" >{{decodeURI(file.name)}}</a> -->
 </div><!-- fileManager -->
 
 <div id="folderManager" class="formArea">
