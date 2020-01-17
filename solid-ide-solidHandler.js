@@ -1,5 +1,5 @@
-/* VERSION 0.1.3
-**     2019-03-30
+/* VERSION 1.0.0
+**     2020-01-10
 */
 var SolidHandler = function(){
 
@@ -12,59 +12,91 @@ this.isSolsideHome = function(url){
      || url==="https://solside.solid.community/public"
      ){ return true }
 }
-this.replace = async function(url,content){
-    var del = await fc.deleteFile( url )
-    var add = await fc.createFile(url,content)
-    return(add)
+this.cp = async function(from, to, mode, acl, agentMode, mergeMode){
+    let options = acl==="true" ? { withAcl: true, agent: agentMode, merge: mergeMode } : { withAcl: false,  merge: mergeMode }
+    if (mode === 'copy') return await fc.copy(from, to, options)
+    if (mode === 'move') return await fc.move(from, to, options)
 }
-this.rm = async function(url) {return fc.deleteFile(url)}
+this.deleteResource = async function(url, options = { withLinks: true }){
+    // do not allow deletion of pod profile/card (since you cannot recreate it)
+	if (url.match('profile/card')) {
+      self.err = '\ndelete of profile/card is not allowed'
+      return false
+	}
+    if (url.endsWith('.acl') || url.endsWith('.meta')) {
+      self.err = "\nacl or meta can't be modified/created by solid-ide, use the databrowser"
+      return false
+    }
+	if (options.withLinks) return await fc.deleteFile(url)
+	return await fc.delete(url)
+}
+// if no extension or unknown will default to .ttl (to be updated) - beware with .acl and .meta
+this.createResource = async function(url,content){
+    self.err = ''
+	let contentType = window.Mimer(url) //mime.getType(url) // fc.guessFileType(url)
+	if(!content)  content = contentType === 'application/json' ? content = "{}" : "file"
+	// if no extension 'application/octet-stream' is default and not 'text/turtle' anymore
+	if (url.match('profile/card')) {
+      self.err = '\nmodify of profile/card is not allowed in solid-ide'
+      return false
+	}
+    if (url.endsWith('.acl') || url.endsWith('.meta')) {
+        self.err = "\nacl or meta can't be modified/created by solid-ide, use the databrowser"
+    	return false
+    }
+    return await fc.createFile(url,content,contentType)
+}
+this.rm = async function(url) {
+	if (url.endsWith('/')) { return await fc.deleteFolder(url) }
+	return self.deleteResource(url)
+}
 this.add = async function(parentFolder,newThing,type,content) {
     var filetype;
     if(type==='folder') return fc.createFolder(parentFolder+newThing)
-    else return fc.createFile(parentFolder+newThing,type,content)
-
+    else return self.createResource(parentFolder+newThing,content)
 }
-this.get = async function(thing){
+this.get = async function(thing, links = "excludeLinks"){
+    self.err = ''
+    let options = {}
     self.qname="";
-    thing = thing || self.urlFromQueryString()
+    thing = thing || self.urlFromQueryString()  // TBD self.... may be undefined
     if(typeof(thing)==='string') thing = { url:thing }
-    if(! thing.type) thing.type = fc.guessFileType(thing.url)
+    if(! thing.type) {
+      thing.type = thing.url.endsWith('/') ? "folder" : window.Mimer(thing.url)
+      if (thing.url.endsWith('.acl') || thing.url.endsWith('.meta')) { thing.type = 'text/turtle' }
+    }
     self.log("got a "+thing.type)
     if( thing.type==="folder" ) {
-	    var body = await fc.fetch(thing.url, { headers: { "Accept": "text/turtle" }})
-	    if(!body){ self.err=fc.err; return false }
-        var graph = await fc.text2graph(body,thing.url,"text/turtle")
-        if(!graph) {
-            self.err = fc.err
-            return false
-        }
-        else {
-            let folder = fc.processFolder( graph,thing.url,body)
-            self.checkForIndex( folder );
-            let parentOK=folder.parent.replace('https://','').replace(/^[^/]*/,'')
-            if( parentOK ){
-                folder.folders.unshift({
-                 type : "folder",
-                  url : folder.parent,
-                 name : ".."
-                })
-            }
-            return {"key":"folder", "value":folder }
-        }
+        options.links = links
+        let folder = await fc.readFolder(thing.url, options)
+		  .catch(e => { self.err = JSON.stringify(e) })
+        if (self.err) { return false}
+        var response = await fc.fetch(thing.url, { headers: { "Accept": "text/turtle" }})   // await fc.fetch
+	    if(!response.ok){ self.err=fc.err; return false }
+	    // find folder.content
+	    var body = await response.text()
+        folder.content = body
+		self.checkForIndex( folder );
+        let parentOK=folder.parent.replace('https://','').replace(/^[^/]*/,'')
+        if( parentOK ){
+            folder.folders.unshift({
+              type : "folder",
+              url : folder.parent,
+              name : ".."
+            })
+         }
+		return {"key":"folder", "value":folder }
     }
+
     else {
-		var body = await fc.fetch(thing.url)
-		if(!body){ self.err=fc.err; return false }
-        if(body && body.match('alert-danger')
-           && !thing.url.match('solid-auth-simple')
-        ) {
-            self.err = fc.err
-            return false
-        }
-        else return('file',{key:"file",value:{
+        self.err = ''
+	    let body = await fc.readFile(thing.url)
+	        .catch(e => {self.err = JSON.stringify(e) })
+        if (self.err) { return false }
+	    return('file',{key:"file",value:{
             type:thing.type,
             content:body,
-            url:thing.url
+            url:decodeURI(thing.url)
         }})
     }
 }
@@ -83,20 +115,19 @@ this.checkPerms = async function(url,agent,session){
         var path = agent.replace(/^https:\/\/[^/]*\//,'')
         self.storage = agent.replace(path,'')
     }
-    if( self.storage && url.match(self.storage) )   // if
+    if( self.storage && url.match(self.storage) && !url.match('profile/card') )   // if
         return { Read:true, Write:true, Control:true  }
     else
         return { Read:true, Write:false, Control:false  }
 }
 this.checkStatus = async function(url){
-   var sess = await fc.checkSession()
-   var webId    = (sess) ? sess.webId : ""
-   var storage  = (sess) ? sess.storage : ""
+   var sess = await ss.checkSession()
+   var webId    = (sess) ? sess : ""
    var loggedIn = (sess) ? true : false
    var perms = await self.checkPerms(url,webId)
    return { 
                 webId:webId,
-                storage:storage,
+//                storage:storage,
                 loggedIn:loggedIn,
                 permissions:perms 
           }
@@ -114,7 +145,7 @@ this.checkForIndex = function( folder ){
 }
 this.urlFromQueryString = function(){
     var thing = self.parseQstring();
-    if(thing.url){
+    if(thing.url !== undefined && thing.url !== 'undefined'){  // TBD one or 2 control
         self.qname = thing
         var name   = thing.url.substring(thing.url.lastIndexOf('/')+1);
         var folder = thing.url.replace(name,'')
@@ -122,10 +153,11 @@ this.urlFromQueryString = function(){
              url : folder,
             type : "folder"
         }
+        self.qname = thing
     }
     else {
         thing = {
-             url : "https://solside.solid.community/public/samples/",
+             url : sol.homeUrl ? sol.homeUrl : "https://solside.solid.community/public/samples/",
             type : "folder"
         }
     }
@@ -140,6 +172,33 @@ this.parseQstring = function() {
     });
     return result;
 }
+this.getRoot = url => {
+  const base = url.split('/')
+  let rootUrl = base[0]
+  let j = 0
+  for (let i = 1; i < base.length - 1; i++) {
+    j = i
+    if (base[i] === '') { rootUrl += '/' }
+    break
+  }
+  rootUrl = rootUrl + '/' + base[j + 1] + ('/')
+  return rootUrl
+}
+this.getParentUrl = url => {
+  url = this.removeSlashesAtEnd(url)
+  return url.substring(0, url.lastIndexOf('/') + 1)
+}
+this.getItemName = url => {
+  url = self.removeSlashesAtEnd(url)
+  return url.substr(url.lastIndexOf('/') + 1)
+}
+this.removeSlashesAtEnd = url => {
+  while (url.endsWith('/')) {
+    url = url.slice(0, -1)
+  }
+  return url
+}
+
 return this
 }
 if (typeof(module)!="undefined" )  module.exports = solidAuthSimple()

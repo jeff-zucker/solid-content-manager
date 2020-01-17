@@ -150,6 +150,17 @@ button:hover {
     background-color:#99dddd !important;
     padding:0 !important;
 }
+.docIcon.link {
+    cursor:pointer !important;
+    background-color:#99dddd !important;
+    padding:0 !important;
+}
+.docIcon.hide {
+    width:1em;
+    cursor:text !important;
+    background:transparent;
+    visibility: hidden;
+}
 img {
     height:1em !important;
     width:1em !impoortant;
