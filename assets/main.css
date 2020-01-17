@@ -29,6 +29,16 @@ body                { margin-top:2vh; margin-bottom:2vh; overflow:hidden; }
 #folderMenu.small *, #opt.small *, .formArea.small * {
      font-size:0.8em;
 }
+#help {
+    display:none;
+}
+#help ul,li {
+  text-align:left;
+}
+#help span {
+  font-weight:bold;
+  color:white;
+}
 select {
 padding:0.25em;
 }
