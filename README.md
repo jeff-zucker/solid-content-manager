@@ -9,3 +9,7 @@ vim, and vanilla system editing keys.
 You can use the app online (at https://jeff-zucker.github.io/solid-ide/), or, you can download and use a local version if you have a local HTTPD server running.
 
 More help is available in the app itself.
+
+Solid-IDE was originally authored by Jeff Zucker.  This version has many additions from Alain Bourgois.
+
+&copy; 2020, Jeff Zucker, may be freely used with an MIT license.
