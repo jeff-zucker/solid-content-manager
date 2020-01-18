@@ -222,6 +222,10 @@ var app = new Vue({
         	if (f.links === undefined || f.links[linkType] === undefined || f.links[linkType] === '') { return "hide" }
         	if( this.perms.Control ) return 'link'
         },
+        displayControls : function() {
+            if (this.displayLinks === 'exclude') return "noDisplay"
+            return "table"
+        },
         setLogState : function(){
               if( this.loggedIn ){
                    this.logState = "login"

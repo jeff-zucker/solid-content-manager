@@ -115,8 +115,8 @@ value="{{decodeURI(file.name)}}"
         />
 
     <p class="right-justify">
-<!--
-<div class="table"><div class="tr center">
+
+<div v-bind:class="displayControls()"><div class="tr center">
 <span class="td">
     <div>withAcl</div>
     <select v-model="withAcl" v-on:change="setWithAcl()" size="2">
@@ -125,7 +125,7 @@ value="{{decodeURI(file.name)}}"
     </select>
 </span>
 </div></div>
--->
+
         <button v-on:click="cp(file, 'copy')">copy file</button>
         <button v-on:click="cp(file, 'move')">move file</button>
     </p>
@@ -158,8 +158,7 @@ value="{{decodeURI(file.name)}}"
 	<button v-on:click="cp('folder', 'copy')">copy folder</button>
     <button v-on:click="cp('folder', 'move')">move folder</button>
 </p>
-<!--
-<div class="table"><div class="tr center">
+<div v-bind:class="displayControls()"><div class="tr center">
 <span class="td">
     <div>withAcl</div>
     <select v-model="withAcl" v-on:change="setWithAcl()" size="2">
@@ -184,7 +183,7 @@ value="{{decodeURI(file.name)}}"
     </select>
 </span>
 </div></div>
--->
+
 <hr>
 <label>upload file(s) in this folder</label>
 	<input type="file" id="upFile" name="upFile" multiple size="100"> <button v-on:click="upload(folder)">upload</button>
