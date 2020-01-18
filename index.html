@@ -46,14 +46,14 @@
     <button v-on:click="manageResource(folder)" class="docIcon" v-bind:class="canControl()">
     <img src="./assets/folder.png">
     </button>
-<!--
+<!-- --->
     <button v-on:click="get(getLink(folder, 'acl'))" class="docIcon" v-bind:class="canControlLink(folder, 'acl')">
         <img src="./assets/padlock-timbl.svg">
     </button>
     <button v-on:click="get(getLink(folder, 'meta'))" class="docIcon" v-bind:class="canControlLink(folder, 'meta')">
         <img src="./assets/document.png">
     </button>
--->
+<!-- --->
     <button class="fileName" v-on:click="get(folder)">
         <span id="currentFolder">{{decodeURIComponent(folder.name)}}</span>
     </button>
@@ -74,10 +74,10 @@
             <button v-on:click="manageResource(f)" class="docIcon" v-bind:class="canControl()"><img src="./assets/document.png"></button>
 <!--            <button v-on:click="rm(f)" class="docIcon" v-bind:class="canControl()"
                 <img src="./assets/document.png">
-            </button>
-	        <button v-on:click="get(getLink(f, 'acl'))" class="docIcon" v-bind:class="canControlLink(f, 'acl')"> <!--- -	            <img src="./assets/padlock-timbl.svg">
+            </button> --->
+	        <button v-on:click="get(getLink(f, 'acl'))" class="docIcon" v-bind:class="canControlLink(f, 'acl')">	            <img src="./assets/padlock-timbl.svg">
 	        </button>
-            <button class="fileName" oncontextmenu="return false;" v-on:click.right.prevent="downloadItem(f)" v-on:click="get(f)" v-bind:title="decodeURIComponent(f.name)+' '+f.type">
+<!--             <button class="fileName" oncontextmenu="return false;" v-on:click.right.prevent="downloadItem(f)" v-on:click="get(f)" v-bind:title="decodeURIComponent(f.name)+' '+f.type">
                 {{decodeURIComponent(f.name)}}
             </button>
 -->

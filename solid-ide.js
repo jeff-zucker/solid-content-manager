@@ -8,7 +8,7 @@ const fc = new SolidFileClient(auth);         // from solid-file-client.bundle.j
 
 var init = function(){
     app.getStoredPrefs()
-    sol.get('' , app.displayLinks).then( results => {    // sol.homeUrl ''
+    sol.get('').then( results => {    // sol.homeUrl '' //  , app.displayLinks
         app.processResults(results)
     })
 }
@@ -23,7 +23,7 @@ var app = new Vue({
             var oldThing = this.currentThing
             this.currentThing = thing
             view.hide();
-            sol.get(thing, app.displayLinks).then( results => {
+            sol.get(thing).then( results => {  // , app.displayLinks
                 let fcErr = '' 
                 if (sol.err !== '') {
                     fcErr = JSON.parse(sol.err)
@@ -170,7 +170,7 @@ var app = new Vue({
             var url =  this.webId.replace('#me','')
             view.refresh( url )
         },
-        download : function(f){
+/*        download : function(f){
             var a = document.createElement("a");
             a.href = f.url
             a.download = decodeURIComponent(f.name) // setAttribute("download", decodeURIComponent(f.name));
@@ -179,6 +179,7 @@ var app = new Vue({
             a.dispatchEvent(new MouseEvent("click"));
             return false;
         },
+*/
         async downloadItem (file) {
             const data = await fc.readFile(file.url) // res.blob()
             const blob = new Blob([data]) //, { type: 'text/plain' })
@@ -217,6 +218,7 @@ var app = new Vue({
             if( this.perms.Control ) return "canControl"
         },
         canControlLink : function(f, linkType) {
+            if (this.displayLinks === 'exclude') return "noDisplay"
         	if (f.links === undefined || f.links[linkType] === undefined || f.links[linkType] === '') { return "hide" }
         	if( this.perms.Control ) return 'link'
         },
@@ -259,7 +261,7 @@ var app = new Vue({
         storePrefs : function(){
             localStorage.setItem("solState", JSON.stringify({
                   home : this.homeUrl,
-                   idp : sol.idp,
+                   idp : sol.idp,      // TBD allways https://solid.community
                   keys : this.editKeys,
                  theme : this.editTheme,
                  links : this.displayLinks,
@@ -272,6 +274,7 @@ var app = new Vue({
                 sol.homeUrl = this.homeUrl =
                     "https://solside.solid.community/public/samples/"
                 sol.idp = this.idp =  "https://solid.community"
+                this.storePrefs()
                 return;
             }
             state = JSON.parse(state)
@@ -301,7 +304,7 @@ var app = new Vue({
                 if(sol.qname) { 
                     app.currentThing = sol.qname
                     if (sol.qname.url !== val.url) {   // added ???
-	                    sol.get(sol.qname, app.displayLinks).then( results => { 
+	                    sol.get(sol.qname).then( results => {
 	                        if(!results) alert(sol.err)
 	                        app.processResults(results)
 	                    })
@@ -312,7 +315,7 @@ var app = new Vue({
                        url : val.url, // + "index.html",  // new mashlib
                       type : "text/html"
                     }
-                    sol.get(app.currentThing, app.displayLinks).then( results => { 
+                    sol.get(app.currentThing).then( results => {
                         if( !results ) alert(sol.err)
                         app.processResults(results)
                     })
@@ -394,7 +397,7 @@ var fileDisplay = new Vue({
             this.file = app.currentThing;
             this.file.content = content;
             if(!this.file.type && this.file.url) 
-                this.file.type = sol.guessFileType(this.file.url)
+                this.file.type = window.Mimer(this.file.url)
             this.zed.setModeFromType(this.file.type)
             this.zed.setContents(content)
             this.zed.ed.clearSelection() // remove blue overlay
