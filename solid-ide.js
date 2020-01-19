@@ -218,13 +218,13 @@ var app = new Vue({
             if( this.perms.Control ) return "canControl"
         },
         canControlLink : function(f, linkType) {
-            if (this.displayLinks === 'exclude') return "noDisplay"
+            if (this.admin === 'false') return "noDisplay"
         	if (f.links === undefined || f.links[linkType] === undefined || f.links[linkType] === '') { return "hide" }
         	if( this.perms.Control ) return 'link'
         },
-        displayControls : function() {
-            if (this.displayLinks === 'exclude') return "noDisplay"
-            return "table"
+        displayControls : function(cssClass) {
+            if (this.admin === 'false') return "noDisplay"
+            return cssClass
         },
         setLogState : function(){
               if( this.loggedIn ){
@@ -269,6 +269,7 @@ var app = new Vue({
                   keys : this.editKeys,
                  theme : this.editTheme,
                  links : this.displayLinks,
+                 admin : this.admin,
             }))
             init()
         },
@@ -287,6 +288,7 @@ var app = new Vue({
             this.editKeys  = state.keys
             this.editTheme = state.theme
             this.displayLinks = state.links
+            this.admin = state.admin
             fileDisplay.initEditor();
             fileDisplay.setEditTheme(this.editTheme);
             fileDisplay.setEditKeys(this.editKeys);
@@ -353,6 +355,7 @@ var app = new Vue({
         withAcl      : "true",
         agentMode    : "no_modify",
         mergeMode    : "replace",
+        admin        : "false",
         perms        : {},
         currentThing : {},
         newThing     : {},

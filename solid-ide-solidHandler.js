@@ -160,16 +160,18 @@ this.checkForIndex = function( folder ){
 }
 this.urlFromQueryString = function(){
     var thing = self.parseQstring();
-    // links param
-    const links = ['include','exclude','include_possible'].find(element => element === thing.links)
-    if (links) {
+    // admin param
+    const param = 'admin'
+    const res = ['true', 'false'].find(element => element === thing[param])
+    if (res) {
         let state = app.getStoredPrefs()
         if (state) {
-            app.displayLinks = state.links = thing.links
+            app[param] = state[param] = thing[param] // === 'true' ? true : false
+            if (thing[param] === 'false') { app.displayLinks = state.links = 'exclude' }
             localStorage.setItem("solState", JSON.stringify(state))
         }
     }
-    else if (thing.links !== undefined) alert('Links param should be = exclude, include or include_possible')
+    else if (thing[param] !== undefined) alert('admin param should be = true/false')
     // url param
     if(thing.url !== undefined && thing.url !== 'undefined') {
         self.qname = thing

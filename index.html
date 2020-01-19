@@ -116,7 +116,7 @@ value="{{decodeURI(file.name)}}"
 
     <p class="right-justify">
 
-<div v-bind:class="displayControls()"><div class="tr center">
+<div v-bind:class="displayControls('table')"><div class="tr center">
 <span class="td">
     <div>withAcl</div>
     <select v-model="withAcl" v-on:change="setWithAcl()" size="2">
@@ -158,7 +158,7 @@ value="{{decodeURI(file.name)}}"
 	<button v-on:click="cp('folder', 'copy')">copy folder</button>
     <button v-on:click="cp('folder', 'move')">move folder</button>
 </p>
-<div v-bind:class="displayControls()"><div class="tr center">
+<div v-bind:class="displayControls('table')"><div class="tr center">
 <span class="td">
     <div>withAcl</div>
     <select v-model="withAcl" v-on:change="setWithAcl()" size="2">
@@ -168,7 +168,7 @@ value="{{decodeURI(file.name)}}"
 </span>
 <span class="td">
     <div>Agent mode</div>
-    <select v-model="agentMode" v-on:change="setAgentMode()" size="3">
+    <select v-model="agentMode" v-on:change="setAgentMode()" size="2">
         <option>no_modify</option>
         <option>to_source</option>
         <option>to_target</option>
@@ -176,7 +176,7 @@ value="{{decodeURI(file.name)}}"
 </span>
 <span class="td">
     <div>Merge mode</div>
-    <select v-model="mergeMode" v-on:change="setMergeMode()" size="3">
+    <select v-model="mergeMode" v-on:change="setMergeMode()" size="2">
         <option>replace</option>
         <option>keep_source</option>
         <option>keep_target</option>
@@ -227,13 +227,14 @@ value="{{decodeURI(file.name)}}"
         <option>dark theme</option>
     </select>
 </span>
-<!-- <span class="td">
+<span v-bind:class="displayControls('td')">
     <div>Display Links</div>
-    <select v-model="displayLinks" v-on:change="setDisplayLinks()" size="2">
+    <select v-model="displayLinks" v-on:change="setDisplayLinks()" size="3">
         <option>exclude</option>
         <option>include</option>
+        <option>include_possible</option>
     </select>
-</span> --->
+</span>
 
 </div></div>
 <hr>
