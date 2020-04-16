@@ -7,15 +7,18 @@
   local files 
       solidHandler, solidSession, editor, solid-file-client
 -->
-<script src="https://cdn.jsdelivr.net/npm/solid-file-client@1.0.2/dist/window/solid-file-client.bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/solid-auth-client@2.3.0/dist-lib/solid-auth-client.bundle.js"></script>
-<!-- <script src="./dist/window/solid-file-client.bundle.js"></script></script> -->
+<script src="https://cdn.jsdelivr.net/npm/solid-file-client@1.0.2/dist/window/solid-file-client.bundle.js"></script>
+<!-- <script src="./dist/window/solid-file-client.bundle.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/mimer@1.0.0/dist/mimer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.2.2/dist/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
 <script src="./solid-ide-solidHandler.js"></script>
 <script src="./solid-ide-solidSession.js"></script>
 <script src="./solid-ide-editor.js"></script>
+<script src="./solid-ide-zipHandler.js"></script>
+<script src="./solid-ide-apiCache.js"></script>
 <link rel="stylesheet" href="./assets/main.css">
 </head>
 <body>
@@ -95,6 +98,8 @@
         </button>
     </div>
     <div>File : <em>{{decodeURI(file.url)}}</em></div>
+    <button v-on:click="zip(file)">zip file</button>
+    <button v-on:click="unzip(file)">unzip file</button>
     <button v-on:click="rm(file)">delete file</button>
 	<button v-bind:href="file.url" v-on:click.prevent="downloadItem(file)">download file</button>
 <!--
@@ -139,7 +144,8 @@ value="{{decodeURI(file.name)}}"
     </div>
     <div>Folder : <em>{{decodeURI(folder.url)}}</em></div>
 
-<button v-on:click="rm(folder)">delete folder</button>
+		<button v-on:click="zip(folder)">zip folder</button>
+		<button v-on:click="rm(folder)">delete folder</button>
     <hr>
 <div>
 <label>new name</label>

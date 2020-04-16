@@ -1,10 +1,13 @@
 /* VERSION 1.0.0
-**     2020-01-10
+**     2020-04-08
 */
 const sol = new SolidHandler()      // from solid-ide-solidHandler.js
+const zf = new SolidZip()
+const cache = new Cache()
 var auth = solid.auth;
 const ss = new SolidSession(auth)
-const fc = new SolidFileClient(auth);         // from solid-file-client.bundle.js
+const fc = new SolidFileClient(auth)         // from solid-file-client.bundle.js
+const zip = new JSZip()
 
 var init = function(){
     app.getStoredPrefs()
@@ -23,7 +26,13 @@ var app = new Vue({
             var oldThing = this.currentThing
             this.currentThing = thing
             view.hide();
-            sol.get(thing).then( results => {  // , app.displayLinks
+            let url = thing.url
+/*            if (sol.getRoot(thing.url)+'index.html' === thing.url) {
+                url = sol.getParentUrl(thing.url)
+                alert('thing ' + thing.url+' '+url)
+            }
+*/
+            sol.get(url).then( results => {  // , app.displayLinks
                 let fcErr = '' 
                 if (sol.err !== '') {
                     fcErr = JSON.parse(sol.err)
@@ -82,6 +91,7 @@ var app = new Vue({
         cp : function(f, mode){
             var from, to, parentFolder
             if ( f === 'folder') {
+                if (!this.newThing.folder) return alert('"New folder" is missing !!!')
                 from = this.folder.url
                 to = this.newThing.folder.endsWith('/') ? this.newThing.folder : this.newThing.folder + '/'
                 parentFolder = to
@@ -105,8 +115,8 @@ var app = new Vue({
                         view.refresh(parentFolder)
                     }
                     else {
-                        console.log("Couldn't create "+ to +  sol.err)
-                        alert("Couldn't create "+ to +  sol.err)
+                        console.log(mode + " failed :\n"+ to + " partially created\n" +  sol.err)
+                        alert(mode + " failed :\n"+ to + " partially created\n" +  sol.err)
                     }
                 })
                 .catch(err => {
@@ -116,10 +126,10 @@ var app = new Vue({
             }
         },
         upload : async function(f){
-            view.hide('folderManager')
+          view.hide('folderManager')
         	var inputFile = document.getElementById("upFile")
-			for (var i = 0; i < inputFile.files.length; i++) {
-				var content = inputFile.files[i] 
+			    for (var i = 0; i < inputFile.files.length; i++) {
+				    var content = inputFile.files[i]
         		var url  = this.folder.url+content.name;
         		await sol.createResource(url, content).then(success => {
         		  if(success){
@@ -129,12 +139,50 @@ var app = new Vue({
         		})
         		.catch(err => {
         		  console.log("Couldn't create\n" + url + "\n" + JSON.stringify(err))
-                  alert("Couldn't create\n" + url + "\n" + err.message)
-                })
+              alert("Couldn't create\n" + url + "\n" + err.message)
+            })
 
-			}
-            view.refresh(this.folder.url)
+			    }
+          view.refresh(this.folder.url)
         },        	
+        zip : async function(folder) {
+					let typeAcl = app.withAcl==="true" ? 'with acl' : 'without acl'
+          if ( confirm('"zip' +' ' + typeAcl + '"\n' +'\n\nand please wait ...')) {
+	          view.hide('folderManager')
+						let itemList = [folder.url]
+//					console.log('zipRoot ' + itemList)
+						const archiveFile = folder.name + '.zip'
+	
+	    			zf.createZipArchive(folder, archiveFile, itemList, app.withAcl) // , options)
+						  .then(success => {
+                if(success){
+                alert("Resource created: " + archiveFile)
+	        			view.refresh(folder.parent)
+	        		  }
+	        		  else alert("Couldn't create "+archiveFile+" "+JSON.parse(sol.err).message)
+	        		})
+	        		.catch(err => {
+	        		  console.log("Couldn't create\n" + archiveFile + "\n" + JSON.stringify(err))
+	              alert("Couldn't create\n" + archiveFile + "\n" + err.message)
+	            })
+          }
+        },
+        unzip : function(thing) {
+        	if (!thing.url.endsWith('.zip')) { return alert('Cannot UNZIP ' + thing.url) } 
+
+          view.hide('fileManager')
+    			// dispatch(displayLoading());
+
+    			zf.extractZipArchive(thing)
+        	.then(success => {
+        		let unzipMsg = 'UNZIP to ' + thing.url.split('.zip')[0]
+        		if (zf.acl.length) unzipMsg = '!!!! PARTIAL ' + unzipMsg + '\n\nSome ACL resource have not been loaded, see : \n' + zf.acl.join('\n') 
+        		alert(unzipMsg)
+        		view.refresh(thing.url)
+        	})
+        	.catch(e => alert('Cannot UNZIP ' + thing.url + ' ' + e))
+        	// .finally(() => dispatch(stopLoading()));
+        },
         addThing : function(type){
             if(!this.newThing.name){
                alert("You didn't supply a name!")
@@ -156,7 +204,7 @@ var app = new Vue({
             })
         },
         manageResource : function(thing){
-            if(!this.perms.Control) return
+            if(!this.perms.Control) return  // TBD should be write (control depend on withAcl and tested in rm,cp,add,upload)
             if(thing.type==="folder"){
                 this.folder = thing;
                 view.show('folderManager');
@@ -170,7 +218,7 @@ var app = new Vue({
             var url =  this.webId.replace('#me','')
             view.refresh( url )
         },
-/*        download : function(f){
+        download : function(f){
             var a = document.createElement("a");
             a.href = f.url
             a.download = decodeURIComponent(f.name) // setAttribute("download", decodeURIComponent(f.name));
@@ -179,7 +227,6 @@ var app = new Vue({
             a.dispatchEvent(new MouseEvent("click"));
             return false;
         },
-*/
         async downloadItem (file) {
             const data = await fc.readFile(file.url) // res.blob()
             const blob = new Blob([data]) //, { type: 'text/plain' })
@@ -215,7 +262,7 @@ var app = new Vue({
 // LOGIN STATES
 //
         canControl : function(){
-            if( this.perms.Control ) return "canControl"
+            if( this.perms.Control ) return "canControl"  // TBD control or write or control/write
         },
         canControlLink : function(f, linkType) {
             if (this.admin === 'false') return "noDisplay"
@@ -265,7 +312,7 @@ var app = new Vue({
         storePrefs : function(){
             localStorage.setItem("solState", JSON.stringify({
                   home : this.homeUrl,
-                   idp : sol.idp,      // TBD allways https://solid.community
+                   idp : sol.idp,      // TBD why allways https://solid.community
                   keys : this.editKeys,
                  theme : this.editTheme,
                  links : this.displayLinks,

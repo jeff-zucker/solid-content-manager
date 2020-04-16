@@ -73,10 +73,14 @@ this.get = async function(thing) {
         if (self.err) { return false}
         var response = await fc.fetch(thing.url, { headers: { "Accept": "text/turtle" }})   // await fc.fetch
 	    if(!response.ok){ self.err=fc.err; return false }
+	    // alain
+//	    console.log('folder '+JSON.stringify(folder))
+//	    alert('folder '+JSON.stringify(folder))
+	    // end alain
 	    // find folder.content
 	    var body = await response.text()
-        folder.content = body
-		self.checkForIndex( folder );
+      folder.content = body
+		  self.checkForIndex( folder );
         let parentOK=folder.parent.replace('https://','').replace(/^[^/]*/,'')
         if( parentOK ){
             folder.folders.unshift({
@@ -84,7 +88,7 @@ this.get = async function(thing) {
               url : folder.parent,
               name : ".."
             })
-         }
+        }
 		return {"key":"folder", "value":folder }
     }
 
@@ -100,12 +104,18 @@ this.get = async function(thing) {
         }})
     }
 }
+
 /* SESSION MANAGEMENT
 */
 this.checkPerms = async function(url,agent,session){
     let perms = { Read: false, Write: false, Append:false, Control:false }
+let strHead = await fc.readHead(url)
+// alert(strHead)
     let head = await fc.head(url)
     // this is a hack for NSS issue ???? (podRoot/index.html)
+// head.headers.get('wac-allow')
+// alert(user+public)
+// return perms
     let acl = head.headers.get('wac-allow')
     if (typeof acl !== 'string') {
         head = await fc.head(self.getParentUrl(url))
@@ -113,18 +123,20 @@ this.checkPerms = async function(url,agent,session){
     }
     let mode = ["Read","Write","Append","Control"]
     mode.forEach(element => {
-        if (acl.includes(element.toLowerCase())) perms[element] = true
+        if (acl.split(',')[0].includes(element.toLowerCase())) perms[element] = true
     })
-    return perms
-}
-/* I have a version of this that does a recursive ACL check
+// alert(url+acl+JSON.stringify(perms))
+    if(perms.Control === true) return perms
+
+
+    /* I have a version of this that does a recursive ACL check
     ** but it's not ready for prime time yet, so we do this kludge instead
     */
-/*    if(!agent || !url)
+    if(!agent || !url)
         /* No harm in this, the interface will show a message if the
         ** user doesn't actually have read perms
         */ 
-/*        return { Read:true, Write:false, Control:false  }
+        return { Read:true, Write:false, Control:false  }
     if(!self.storage){
         var path = agent.replace(/^https:\/\/[^/]*\//,'')
         self.storage = agent.replace(path,'')
@@ -134,7 +146,7 @@ this.checkPerms = async function(url,agent,session){
     else
         return { Read:true, Write:false, Control:false  }
 }
-*/
+
 this.checkStatus = async function(url){
    var sess = await ss.checkSession()
    var webId    = (sess) ? sess : ""
