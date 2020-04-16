@@ -112,7 +112,6 @@ this.uploadExtractedZipArchive = async (zip, destination, curFolder = '') => {
       	if (itemName.endsWith('.acl') || itemName.endsWith('.meta')) { contentType = 'text/turtle' }
 				// check for acl resource
       	if (!itemName.endsWith('.acl')) {
-      		alert(itemName)
           await self.updateFile(path, itemName, blob, contentType) // path+'/'
       	} else {
       	// read .acl content as text and check acl content for Webid or public (authorization, Control, accessTo)
