@@ -33,7 +33,7 @@ this.deleteResource = async function(url, options = { withLinks: true }){
 // if no extension or unknown will default to .ttl (to be updated) - beware with .acl and .meta
 this.createResource = async function(url,content){
     self.err = ''
-	let contentType = window.Mimer(url) //mime.getType(url) // fc.guessFileType(url)
+	let contentType = window.Mimer(url) // fc.guessFileType(url)
 	if(!content)  content = contentType === 'application/json' ? content = "{}" : "file"
 	// if no extension 'application/octet-stream' is default and not 'text/turtle' anymore
 	if (url.match('profile/card')) {
@@ -55,7 +55,7 @@ this.add = async function(parentFolder,newThing,type,content) {
     if(type==='folder') return fc.createFolder(parentFolder+newThing)
     else return self.createResource(parentFolder+newThing,content)
 }
-this.get = async function(thing, links = "excludeLinks"){
+this.get = async function(thing) {
     self.err = ''
     let options = {}
     self.qname="";
@@ -67,16 +67,20 @@ this.get = async function(thing, links = "excludeLinks"){
     }
     self.log("got a "+thing.type)
     if( thing.type==="folder" ) {
-        options.links = links
+        options.links = app.displayLinks
         let folder = await fc.readFolder(thing.url, options)
 		  .catch(e => { self.err = JSON.stringify(e) })
         if (self.err) { return false}
         var response = await fc.fetch(thing.url, { headers: { "Accept": "text/turtle" }})   // await fc.fetch
 	    if(!response.ok){ self.err=fc.err; return false }
+	    // alain
+//	    console.log('folder '+JSON.stringify(folder))
+//	    alert('folder '+JSON.stringify(folder))
+	    // end alain
 	    // find folder.content
 	    var body = await response.text()
-        folder.content = body
-		self.checkForIndex( folder );
+      folder.content = body
+		  self.checkForIndex( folder );
         let parentOK=folder.parent.replace('https://','').replace(/^[^/]*/,'')
         if( parentOK ){
             folder.folders.unshift({
@@ -84,7 +88,7 @@ this.get = async function(thing, links = "excludeLinks"){
               url : folder.parent,
               name : ".."
             })
-         }
+        }
 		return {"key":"folder", "value":folder }
     }
 
@@ -100,9 +104,31 @@ this.get = async function(thing, links = "excludeLinks"){
         }})
     }
 }
+
 /* SESSION MANAGEMENT
 */
 this.checkPerms = async function(url,agent,session){
+    let perms = { Read: false, Write: false, Append:false, Control:false }
+let strHead = await fc.readHead(url)
+// alert(strHead)
+    let head = await fc.head(url)
+    // this is a hack for NSS issue ???? (podRoot/index.html)
+// head.headers.get('wac-allow')
+// alert(user+public)
+// return perms
+    let acl = head.headers.get('wac-allow')
+    if (typeof acl !== 'string') {
+        head = await fc.head(self.getParentUrl(url))
+        acl = head.headers.get('wac-allow')
+    }
+    let mode = ["Read","Write","Append","Control"]
+    mode.forEach(element => {
+        if (acl.split(',')[0].includes(element.toLowerCase())) perms[element] = true
+    })
+// alert(url+acl+JSON.stringify(perms))
+    if(perms.Control === true) return perms
+
+
     /* I have a version of this that does a recursive ACL check
     ** but it's not ready for prime time yet, so we do this kludge instead
     */
@@ -120,6 +146,7 @@ this.checkPerms = async function(url,agent,session){
     else
         return { Read:true, Write:false, Control:false  }
 }
+
 this.checkStatus = async function(url){
    var sess = await ss.checkSession()
    var webId    = (sess) ? sess : ""
@@ -145,7 +172,20 @@ this.checkForIndex = function( folder ){
 }
 this.urlFromQueryString = function(){
     var thing = self.parseQstring();
-    if(thing.url !== undefined && thing.url !== 'undefined'){  // TBD one or 2 control
+    // admin param
+    const param = 'admin'
+    const res = ['true', 'false'].find(element => element === thing[param])
+    if (res) {
+        let state = app.getStoredPrefs()
+        if (state) {
+            app[param] = state[param] = thing[param] // === 'true' ? true : false
+            if (thing[param] === 'false') { app.displayLinks = state.links = 'exclude' }
+            localStorage.setItem("solState", JSON.stringify(state))
+        }
+    }
+    else if (thing[param] !== undefined) alert('admin param should be = true/false')
+    // url param
+    if(thing.url !== undefined && thing.url !== 'undefined') {
         self.qname = thing
         var name   = thing.url.substring(thing.url.lastIndexOf('/')+1);
         var folder = thing.url.replace(name,'')

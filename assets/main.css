@@ -171,6 +171,9 @@ button:hover {
     background:transparent;
     visibility: hidden;
 }
+.noDisplay {
+    display:none;
+}
 img {
     height:1em !important;
     width:1em !impoortant;
