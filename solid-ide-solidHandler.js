@@ -64,6 +64,7 @@ this.get = async function(thing) {
     if(! thing.type) {
       thing.type = thing.url.endsWith('/') ? "folder" : window.Mimer(thing.url)
       if (thing.url.endsWith('.acl') || thing.url.endsWith('.meta')) { thing.type = 'text/turtle' }
+
     }
     self.log("got a "+thing.type)
     if( thing.type==="folder" ) {

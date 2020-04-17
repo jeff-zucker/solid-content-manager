@@ -126,16 +126,17 @@ this.uploadExtractedZipArchive = async (zip, destination, curFolder = '') => {
       				if(res === 'incorrect rdf') return self.acl = self.acl.concat([relativePath + ': ' + self.err])
       				if (res === 'acl') return await self.updateFile(path, itemName, content, contentType).catch(err => self.err = err)
 							if (res === 'noAgent' || res === 'noControl') {
-								this.aclErr = ': webId is not "allowed" and/or has not "Control"'
+								this.aclErr = 'no "Control" for webId or everybody'
 
 								// or check if everybody has control (use of aclAgent() or aclControl())
 								self.aclControl(destination, relativePath, content, null, { acl: 'accessTo' }, null)
 			     			.then( async res => {
 		      				if (res === 'acl') return await self.updateFile(path, itemName, content, contentType).catch(err => self.err = err)								
-									else { self.acl = self.acl.concat([relativePath + ': ' + this.aclErr]) }
+									else { self.acl = self.acl.concat([relativePath + ' : ' + this.aclErr]) }
 								})
 							}
       			})
+      			.catch(err => self.err = err)
       	  })
     		}
       }
