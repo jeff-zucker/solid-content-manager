@@ -110,7 +110,6 @@ this.uploadExtractedZipArchive = async (zip, destination, curFolder = '') => {
         const blob = await item.async('blob')
         let contentType = blob.type ? blob.type : window.Mimer(itemName) // blob.type ? blob.type : await guessContentType(relativePath, blob) // item.name, blob);  // a revoir
       	if (itemName.endsWith('.acl') || itemName.endsWith('.meta')) { contentType = 'text/turtle' }
-				alert('blob '+contentType)
 				// check for acl resource
       	if (!itemName.endsWith('.acl')) {
           await self.updateFile(path, itemName, blob, contentType) // path+'/'

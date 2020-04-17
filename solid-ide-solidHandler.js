@@ -34,7 +34,6 @@ this.deleteResource = async function(url, options = { withLinks: true }){
 this.createResource = async function(url,content){
     self.err = ''
 	let contentType = window.Mimer(url) // fc.guessFileType(url)
-	alert('createResource '+contentType)
 	if(!content)  content = contentType === 'application/json' ? content = "{}" : "file"
 	// if no extension 'application/octet-stream' is default and not 'text/turtle' anymore
 	if (url.match('profile/card')) {
@@ -65,7 +64,6 @@ this.get = async function(thing) {
     if(! thing.type) {
       thing.type = thing.url.endsWith('/') ? "folder" : window.Mimer(thing.url)
       if (thing.url.endsWith('.acl') || thing.url.endsWith('.meta')) { thing.type = 'text/turtle' }
-      alert('get '+thing.type)
 
     }
     self.log("got a "+thing.type)
