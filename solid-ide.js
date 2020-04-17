@@ -129,7 +129,7 @@ var app = new Vue({
           view.hide('folderManager')
         	var inputFile = document.getElementById("upFile")
 			    for (var i = 0; i < inputFile.files.length; i++) {
-				    var content = inputFile.files[i]
+				    var content = inputFile.files[i] 
         		var url  = this.folder.url+content.name;
         		await sol.createResource(url, content).then(success => {
         		  if(success){
@@ -155,16 +155,16 @@ var app = new Vue({
 	
 	    			zf.createZipArchive(folder, archiveFile, itemList, app.withAcl) // , options)
 						  .then(success => {
-                if(success){
-                alert("Resource created: " + archiveFile)
+	        		  if(success){
+	        			alert("Resource created: " + archiveFile)
 	        			view.refresh(folder.parent)
 	        		  }
 	        		  else alert("Couldn't create "+archiveFile+" "+JSON.parse(sol.err).message)
 	        		})
 	        		.catch(err => {
 	        		  console.log("Couldn't create\n" + archiveFile + "\n" + JSON.stringify(err))
-	              alert("Couldn't create\n" + archiveFile + "\n" + err.message)
-	            })
+	                  alert("Couldn't create\n" + archiveFile + "\n" + err.message)
+	             })
           }
         },
         unzip : function(thing) {
@@ -175,7 +175,7 @@ var app = new Vue({
 
     			zf.extractZipArchive(thing)
         	.then(success => {
-        		let unzipMsg = 'UNZIP to ' + thing.url.split('.zip')[0]
+        		let unzipMsg = 'UNZIP in ' + thing.parent // thing.url.split('.zip')[0]
         		if (zf.acl.length) unzipMsg = '!!!! PARTIAL ' + unzipMsg + '\n\nSome ACL resource have not been loaded, see : \n' + zf.acl.join('\n') 
         		alert(unzipMsg)
         		view.refresh(thing.url)

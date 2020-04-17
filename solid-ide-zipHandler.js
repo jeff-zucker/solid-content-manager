@@ -110,6 +110,7 @@ this.uploadExtractedZipArchive = async (zip, destination, curFolder = '') => {
         const blob = await item.async('blob')
         let contentType = blob.type ? blob.type : window.Mimer(itemName) // blob.type ? blob.type : await guessContentType(relativePath, blob) // item.name, blob);  // a revoir
       	if (itemName.endsWith('.acl') || itemName.endsWith('.meta')) { contentType = 'text/turtle' }
+				alert('blob '+contentType)
 				// check for acl resource
       	if (!itemName.endsWith('.acl')) {
           await self.updateFile(path, itemName, blob, contentType) // path+'/'
@@ -126,16 +127,17 @@ this.uploadExtractedZipArchive = async (zip, destination, curFolder = '') => {
       				if(res === 'incorrect rdf') return self.acl = self.acl.concat([relativePath + ': ' + self.err])
       				if (res === 'acl') return await self.updateFile(path, itemName, content, contentType).catch(err => self.err = err)
 							if (res === 'noAgent' || res === 'noControl') {
-								this.aclErr = ': webId is not "allowed" and/or has not "Control"'
+								this.aclErr = 'no "Control" for webId or everybody'
 
 								// or check if everybody has control (use of aclAgent() or aclControl())
 								self.aclControl(destination, relativePath, content, null, { acl: 'accessTo' }, null)
 			     			.then( async res => {
 		      				if (res === 'acl') return await self.updateFile(path, itemName, content, contentType).catch(err => self.err = err)								
-									else { self.acl = self.acl.concat([relativePath + ': ' + this.aclErr]) }
+									else { self.acl = self.acl.concat([relativePath + ' : ' + this.aclErr]) }
 								})
 							}
       			})
+      			.catch(err => self.err = err)
       	  })
     		}
       }
