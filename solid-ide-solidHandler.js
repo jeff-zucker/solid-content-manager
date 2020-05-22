@@ -13,6 +13,10 @@ this.isSolsideHome = function(url){
      ){ return true }
 }
 this.cp = async function(from, to, mode, acl, agentMode, mergeMode){
+		if (to === (this.getRoot(to)+'profile/card') || to === (this.getRoot(to)+'profile/card$.ttl')) {
+			self.err = '\nedit of profile/card is not allowed in solid-ide'  // TODO 
+			return false
+		}
     let options = acl==="true" ? { withAcl: true, agent: agentMode, merge: mergeMode } : { withAcl: false,  merge: mergeMode }
     if (mode === 'copy') return await fc.copy(from, to, options)
     if (mode === 'move') return await fc.move(from, to, options)
@@ -37,11 +41,11 @@ this.createResource = async function(url,content) {
 	let contentType = window.Mimer(url) // fc.guessFileType(url)
 	if(!content)  content = contentType === 'application/json' ? content = "{}" : ""  // replace "file" not allowed for .meta
 	// if no extension 'application/octet-stream' is default and not anymore 'text/turtle'
-	if (url.match('/profile/card')) {
-		self.err = '\nedit of profile/card is not allowed in solid-ide'  // TODO
+	if (url === (this.getRoot(url)+'profile/card')) {
+		self.err = '\nedit of profile/card is not allowed in solid-ide'  // TODO 
 		return false
 	}
-  if (url.endsWith('.acl') || url.endsWith('.meta') || url.match('/profile/card')) contentType = 'text/turtle'
+  if (url.endsWith('.acl') || url.endsWith('.meta') || url === (this.getRoot(url)+'profile/card')) contentType = 'text/turtle'
   if (contentType === 'text/turtle') content = await self.isValidTtl(url, content)
 
   if (self.err) return false
