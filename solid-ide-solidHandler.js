@@ -37,12 +37,11 @@ this.createResource = async function(url,content) {
 	let contentType = window.Mimer(url) // fc.guessFileType(url)
 	if(!content)  content = contentType === 'application/json' ? content = "{}" : ""  // replace "file" not allowed for .meta
 	// if no extension 'application/octet-stream' is default and not anymore 'text/turtle'
-/*	if (url.match('profile/card')) {
+	if (url.match('/profile/card')) {
 		self.err = '\nedit of profile/card is not allowed in solid-ide'  // TODO
 		return false
 	}
-*/
-  if (url.endsWith('.acl') || url.endsWith('.meta')) contentType = 'text/turtle'
+  if (url.endsWith('.acl') || url.endsWith('.meta') || url.match('/profile/card')) contentType = 'text/turtle'
   if (contentType === 'text/turtle') content = await self.isValidTtl(url, content)
 
   if (self.err) return false
