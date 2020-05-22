@@ -253,7 +253,7 @@ var app = new Vue({
             sol.add(url,name,type ).then( success => {
                 if(success){
                     alert("Resource created: " + name)  // name should be end of success
-										if (name.endsWith('.acl')) {
+										if (name.endsWith('.acl') && this.displayLinks === 'exclude') {
 											this.displayLinks = 'include'
 											app.get(app.getLink(this.folder,'acl'))
                     } else	view.refresh(this.folder.url)
@@ -330,6 +330,7 @@ var app = new Vue({
 				   if( val==="createAcl" ){
 				        if (confirm("Creating acl for "+this.file.url)) {
 				        	app.addThing('fileAcl')
+//				        	view.refresh(this.file.url)
 				        }
 							  return
 				   }

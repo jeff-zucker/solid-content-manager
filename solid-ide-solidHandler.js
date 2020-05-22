@@ -23,7 +23,7 @@ this.cp = async function(from, to, mode, acl, agentMode, mergeMode){
 }
 this.deleteResource = async function(url, options = { withLinks: true }){
     // do not allow deletion of pod profile/card (since you cannot recreate it)
-	if (url.match('profile/card')) {
+	if (url === (this.getRoot(url)+'profile/card')) {
       self.err = '\ndelete of profile/card is not allowed'
       return false
 	}
