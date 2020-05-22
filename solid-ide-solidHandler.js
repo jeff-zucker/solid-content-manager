@@ -23,35 +23,110 @@ this.deleteResource = async function(url, options = { withLinks: true }){
       self.err = '\ndelete of profile/card is not allowed'
       return false
 	}
-    if (url.endsWith('.acl') || url.endsWith('.meta')) {
+/*    if (url.endsWith('.acl') || url.endsWith('.meta')) {
       self.err = "\nacl or meta can't be modified/created by solid-ide, use the databrowser"
       return false
     }
+*/
 	if (options.withLinks) return await fc.deleteFile(url)
 	return await fc.delete(url)
 }
 // if no extension or unknown will default to .ttl (to be updated) - beware with .acl and .meta
-this.createResource = async function(url,content){
-    self.err = ''
+this.createResource = async function(url,content) {
+  self.err = ''
 	let contentType = window.Mimer(url) // fc.guessFileType(url)
-	if(!content)  content = contentType === 'application/json' ? content = "{}" : "file"
-	// if no extension 'application/octet-stream' is default and not 'text/turtle' anymore
-	if (url.match('profile/card')) {
-      self.err = '\nmodify of profile/card is not allowed in solid-ide'
-      return false
+	if(!content)  content = contentType === 'application/json' ? content = "{}" : ""  // replace "file" not allowed for .meta
+	// if no extension 'application/octet-stream' is default and not anymore 'text/turtle'
+/*	if (url.match('profile/card')) {
+		self.err = '\nedit of profile/card is not allowed in solid-ide'  // TODO
+		return false
 	}
-    if (url.endsWith('.acl') || url.endsWith('.meta')) {
-        self.err = "\nacl or meta can't be modified/created by solid-ide, use the databrowser"
-    	return false
-    }
-    return await fc.createFile(url,content,contentType)
+*/
+  if (url.endsWith('.acl') || url.endsWith('.meta')) contentType = 'text/turtle'
+  if (contentType === 'text/turtle') content = await self.isValidTtl(url, content)
+
+  if (self.err) return false
+  return await fc.createFile(url,content,contentType)
 }
+
+this.isValidTtl = async function(url, content) {
+  self.err = ''
+  var isValidTtl = { err: [], info: [] }
+	if (url.endsWith('.acl')) {
+	  if (!content) content = self.defaultAcl(url, app.webId)
+		isValidTtl = await fc.isValidAcl(url, content, app.webId)
+		// check for relative notation
+		if (content.includes(url.split('.acl')[0]) || content.includes(self.getRoot(url)+'profile/card#')) {
+			isValidTtl.info = isValidTtl.info.concat(`you could use relative notation`)
+		}
+	}
+	else isValidTtl = await fc.isValidRDF(url, content)
+
+	if (isValidTtl.err.length) {
+		self.err =`\n\nError :\n  ${isValidTtl.err.join('\n  ')}`
+		if (isValidTtl.info.length) self.err = self.err.concat(`\n\nFor information:\n  ${isValidTtl.info.join('\n  ')}`)
+	}
+	self.info = ''
+	if (isValidTtl.info.length) self.info = `\n\nFor information :\n  ${isValidTtl.info.join('\n  ')}`
+	return content
+}
+
+this.defaultAcl = (url, webId) =>	{
+	var card = `/profile/card#`
+	let agent = webId.includes(card) ? `c:me` : `<${webId}>`
+	const accessTo = `./${self.getItemName(url).split('.acl')[0]}`
+	let resource = `<${accessTo}>;   # accesst to the resource`
+	if (url.endsWith('/.acl')) {
+	resource = '<./>;   # access to the resource\n'
+	+'    acl:default <./>;   # All resources will inherit this authorization, by default'
+	}
+	var contentAcl = `# Example of default ACL resource
+@prefix : <#>.
+@prefix c: <${card}>.
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+# @prefix tes: <../address/Group/test.ttl#>.   # example of vcard group
+
+# Readable by the public
+:public
+    a acl:Authorization;   # acl type authorization
+    acl:agentClass foaf:Agent;   # everybody
+    acl:accessTo ${resource}
+    acl:mode acl:Read.   # only Read authorization
+
+# Owner has full access to every resource in the folder.
+# Other agents have no access rights, unless specifically authorized.
+:owner
+    a acl:Authorization;
+    acl:agent ${agent};   # agent's webId
+    acl:accessTo ${resource}
+    acl:mode acl:Read, acl:Write, acl:Control.   # The owner has all of the access modes allowed
+    
+# help : an acl block is composed of :
+ # - a rdf authorization
+  ## :ReadWrite
+ # - a combination of one or more agent/agentClass/group/origin
+  ##    acl:agent c:me;                           # agent
+  ##    acl:agentClass foaf:Agent;                # everybody
+  ##    acl:agentClass acl:AuthenticatedAgent     # logged in agent
+  ##    acl:agentGroup tes:this                   # group
+  ##    acl:origin <https://pod.solid.community>  # trusted app/agent bot
+ # - the accessTo resource
+  ##    acl:accessTo <${accessTo}>;
+ # - for a folder an acl:default
+  ##    acl:default </>;
+ # - a combination of authorization : Read/Append/Write/Control
+  ##    acl:mode acl:Read, acl:Write.
+`
+	return contentAcl
+}
+
 this.rm = async function(url) {
 	if (url.endsWith('/')) { return await fc.deleteFolder(url) }
 	return self.deleteResource(url)
 }
 this.add = async function(parentFolder,newThing,type,content) {
-    var filetype;
+//    var filetype;
     if(type==='folder') return fc.createFolder(parentFolder+newThing)
     else return self.createResource(parentFolder+newThing,content)
 }
@@ -68,17 +143,12 @@ this.get = async function(thing) {
     }
     self.log("got a "+thing.type)
     if( thing.type==="folder" ) {
-        options.links = app.displayLinks
-        let folder = await fc.readFolder(thing.url, options)
-		  .catch(e => { self.err = JSON.stringify(e) })
-        if (self.err) { return false}
-        var response = await fc.fetch(thing.url, { headers: { "Accept": "text/turtle" }})   // await fc.fetch
+      options.links = app.displayLinks  //=== 'include' ? 'include' :'include_possible'  // app
+      let folder = await fc.readFolder(thing.url, options)
+	    .catch(e => { self.err = JSON.stringify(e) })
+      if (self.err) { return false}
+      var response = await fc.fetch(thing.url, { headers: { "Accept": "text/turtle" }})   // await fc.fetch
 	    if(!response.ok){ self.err=fc.err; return false }
-	    // alain
-//	    console.log('folder '+JSON.stringify(folder))
-//	    alert('folder '+JSON.stringify(folder))
-	    // end alain
-	    // find folder.content
 	    var body = await response.text()
       folder.content = body
 		  self.checkForIndex( folder );
