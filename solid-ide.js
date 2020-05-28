@@ -67,7 +67,7 @@ var app = new Vue({
         rm : function(f){
         		// test for acl
 						if(f.url==='') {
-							app.displayLinks = app.links = 'include'
+							app.displayLinks = 'include'  // app.links
 							app.storePrefs()
 							view.refresh(this.folder.url)
 							return alert('Please redo : "delete acl" needs (in "options") to have "Display Links" sets to "include"')
@@ -130,8 +130,8 @@ var app = new Vue({
                 parentFolder += `${parentFolder.endsWith('/') ? '' : '/'}`
                 to = parentFolder + this.newThing.name
             }
-            let typeAcl = app.withAcl==="true" ? 'with acl' : 'without acl'
-            if ( confirm(mode +' ' + typeAcl  + ' - agent : ' + app.agentMode + ' - merge : ' + app.mergeMode
+//            let typeAcl = app.withAcl==="include" ? 'with acl' : 'without acl'
+            if ( confirm(mode +'\n - withAcl : ' + app.withAcl  + '\n - agent : ' + app.agentMode + '\n - merge : ' + app.mergeMode
                 +'\nfrom "' + from + '"\nto "' + to 
                 + '"\n' +'\n\nand please wait ...')) {
                 view.hide('fileManager')
@@ -175,12 +175,16 @@ var app = new Vue({
           view.refresh(this.folder.url)
         },        	
         zip : async function(folder) {
-					let typeAcl = app.withAcl==="true" ? 'with acl' : 'without acl'
-          if ( confirm('"ZIP' +' ' + typeAcl + '"\n\nand please wait ...')) {
+//					let typeAcl = app.withAcl==="true" ? 'with acl' : 'without acl'
+          if ( confirm('"ZIP' +' ' + app.withAcl + '"\n\nand please wait ...')) {
 	          view.hide('folderManager')
 						const archiveFile = folder.name + '.zip'
-	  				const options = app.withAcl==="true" ? { links: SolidFileClient.LINKS.INCLUDE }
-	  				  : { links: SolidFileClient.LINKS.EXCLUDE }
+//	  				const options = app.withAcl==="true" ? { links: SolidFileClient.LINKS.INCLUDE }
+//	  				  : { links: SolidFileClient.LINKS.EXCLUDE }
+	  				let options = app.withAcl === 'true' ? { withAcl: true } : { withAcl: false }
+//	  				const options = { withAcl: app.withAcl }
+alert('zip '+app.withAcl)
+// if (app.withAcl === 'false') options.links = 'exclude'
 						fc.createZipArchive(folder.url, folder.parent+archiveFile, options)
 						  .then(async res => {
 						  	const success = await res.text()
@@ -195,11 +199,13 @@ var app = new Vue({
         },
         unzip : async function(thing) {
         	if (!thing.url.endsWith('.zip')) { return alert('Cannot UNZIP ' + thing.url) } 
-					let typeAcl = app.withAcl==="true" ? 'with acl' : 'without acl'
-          if ( confirm('"UNZIP in current folder' +' ' + typeAcl  + ' - merge : ' + app.mergeMode + '"\n\nand please wait ...')) {
+//					let typeAcl = app.withAcl==="true" ? 'with acl' : 'without acl'
+          if ( confirm('"UNZIP in current folder' +' ' + app.withAcl  + ' - merge : ' + app.mergeMode + '"\n\nand please wait ...')) {
 	          view.hide('fileManager')
 	    			// dispatch(displayLoading());
-	  				let options = app.withAcl==="true" ? { links: SolidFileClient.LINKS.INCLUDE } : { links: 'exclude' }
+//	  				let options = app.withAcl==="true" ? { links: SolidFileClient.LINKS.INCLUDE } : { links: 'exclude' }
+	  				let options = app.withAcl === 'true' ? { withAcl: true } : { withAcl: false }
+// if (app.withAcl === 'false') options.links = 'exclude'
 	  				options.merge = app.mergeMode
 	    			await fc.extractZipArchive(thing.url, thing.parent, this.webId, options)
 	    			.then(success => {
@@ -433,7 +439,7 @@ var app = new Vue({
             this.links = links ? links : "exclude"
         },
         setWithAcl : function(acl){
-            this.acl = acl ? acl : "true"
+            this.acl = acl ? acl : "true"    // acl.value
         },
         setAgentMode : function(agent){
             this.agent = agent ? agent : "no_modify"

@@ -12,16 +12,17 @@ this.isSolsideHome = function(url){
      || url==="https://solside.solid.community/public"
      ){ return true }
 }
-this.cp = async function(from, to, mode, acl, agentMode, mergeMode){
+this.cp = async function(from, to, mode, aclMode, agentMode, mergeMode){
 		if (to === (this.getRoot(to)+'profile/card') || to === (this.getRoot(to)+'profile/card$.ttl')) {
 			self.err = '\nedit of profile/card is not allowed in solid-ide'  // TODO 
 			return false
 		}
-    let options = acl==="true" ? { withAcl: true, agent: agentMode, merge: mergeMode } : { withAcl: false,  merge: mergeMode }
+    let options = aclMode==="true" ? { withAcl: true, agent: agentMode, merge: mergeMode } : { withAcl: false,  merge: mergeMode }
+//    let options = { withAcl: aclMode, agent: agentMode, merge: mergeMode }
     if (mode === 'copy') return await fc.copy(from, to, options)
     if (mode === 'move') return await fc.move(from, to, options)
 }
-this.deleteResource = async function(url, options = { withLinks: true }){
+this.deleteResource = async function(url, options = { withLinks: 'include' }) {  //true }){
     // do not allow deletion of pod profile/card (since you cannot recreate it)
 	if (url === (this.getRoot(url)+'profile/card')) {
       self.err = '\ndelete of profile/card is not allowed'
@@ -32,7 +33,7 @@ this.deleteResource = async function(url, options = { withLinks: true }){
       return false
     }
 */
-	if (options.withLinks) return await fc.deleteFile(url)
+	if (options.withLinks === 'include') return await fc.deleteFile(url)  // true
 	return await fc.delete(url)
 }
 // if no extension or unknown will default to .ttl (to be updated) - beware with .acl and .meta
@@ -54,7 +55,7 @@ this.createResource = async function(url,content) {
 
 this.isValidTtl = async function(url, content) {
   self.err = ''
-  var isValidTtl = { err: [], info: [] }
+/*  var isValidTtl = { err: [], info: [] }
 	if (url.endsWith('.acl')) {
 	  if (!content) content = self.defaultAcl(url, app.webId)
 		isValidTtl = await fc.isValidAcl(url, content, app.webId)
@@ -64,7 +65,11 @@ this.isValidTtl = async function(url, content) {
 		}
 	}
 	else isValidTtl = await fc.isValidRDF(url, content)
-
+*/
+	if (url.endsWith('.acl') && !content) content = self.defaultAcl(url, app.webId)
+	const options = { aclAuth: 'Control' }
+	const isValidTtl = await fc.isValidTtl(url, content, app.webId, options)
+	//const isValid = { err: [isValidTtl.err], info: [isValidTtl.info] } 
 	if (isValidTtl.err.length) {
 		self.err =`\n\nError :\n  ${isValidTtl.err.join('\n  ')}`
 		if (isValidTtl.info.length) self.err = self.err.concat(`\n\nFor information:\n  ${isValidTtl.info.join('\n  ')}`)
@@ -253,7 +258,7 @@ this.urlFromQueryString = function(){
         let state = app.getStoredPrefs()
         if (state) {
             app[param] = state[param] = thing[param] // === 'true' ? true : false
-            if (thing[param] === 'false') { app.displayLinks = state.links = 'exclude' }
+            if (thing[param] === 'false') { app.displayLinks = 'exclude' } // state.links = 'exclude' }
             localStorage.setItem("solState", JSON.stringify(state))
         }
     }
