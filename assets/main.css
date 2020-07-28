@@ -160,11 +160,22 @@ button:hover {
     background-color:#99dddd !important;
     padding:0 !important;
 }
-.docIcon.link {
+.docIcon.canWrite {
+    cursor:pointer !important;
+    background-color:#ffef96 !important;
+    padding:0 !important;
+}
+.docIcon.canRead {
+    cursor:pointer !important;
+    background-color:#f0efef !important;
+    padding:0 !important;
+}
+/*.docIcon.link {
     cursor:pointer !important;
     background-color:#99dddd !important;
     padding:0 !important;
 }
+*/
 .docIcon.hide {
     width:1em;
     cursor:text !important;

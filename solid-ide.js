@@ -1,9 +1,8 @@
-/* VERSION 1.0.0
-**     2020-04-08
+/* VERSION 1.1.0
+**     2020-07-28
 */
 const sol = new SolidHandler()      // from solid-ide-solidHandler.js
 // const zf = new SolidZip()
-// const cache = new Cache()
 var auth = solid.auth;
 const ss = new SolidSession(auth)
 const fc = new SolidFileClient(auth)         // from solid-file-client.bundle.js
@@ -74,7 +73,7 @@ var app = new Vue({
 						}
 						if (f.url === undefined) return alert('Cannot delete : acl do not exist !!!')
 						// test permissions
-            if(!this.perms.Control) return
+            if(!f.url.endsWith('.acl') && !f.perms.Write) return alert('you need "Write" permission')  // NSS >5.3.0
             // test for excluded folders
             let test = f.url.split(sol.getRoot(f.url))[1].split('/')
             let excluded = ['.well-known','public','profile','settings']
@@ -96,18 +95,8 @@ var app = new Vue({
                     else alert("Couldn't delete "+ f.url + '\n' + sol.err)
                 })
                 .catch(err => {
-/*						if (f.url.endsWith('.acl')) {
-							this.displayLinks = 'include'
-							return app.get(f.url)
-						}
-*/
-            console.log("Couldn't delete\n" + f.url + "\n" + JSON.stringify(err))
-            alert("Couldn't delete\n" + f.url + "\n" + err.message)
-/*if (f.url.endsWith('.acl')) {
-	this.displayLinks = 'include'
-	return app.get(f.url)
-}
-*/
+			            console.log("Couldn't delete\n" + f.url + "\n" + JSON.stringify(err))
+			            alert("Couldn't delete\n" + f.url + "\n" + err.message)
                 })
             }
         },
@@ -119,10 +108,10 @@ var app = new Vue({
                 to = this.newThing.folder.endsWith('/') ? this.newThing.folder : this.newThing.folder + '/'
                 parentFolder = to
                 if ( to.includes(from)) return alert("You cannot copy " + to + "\nto the source tree " + from +" !!!")
-            }else {
+            } else {
                 if (!this.newThing.name) return alert('"New Name" is missing !!!')
                 // check for same extension
-                if (this.newThing.name.split('.')[1] !== f.name.split('.')[1]) {
+                if (this.newThing.name.split('.').pop() !== f.name.split('.').pop()) {
                 	if (!confirm('You changed the file extension. Do you confirm ?')) return
                 }
                 from = f.url
@@ -130,7 +119,6 @@ var app = new Vue({
                 parentFolder += `${parentFolder.endsWith('/') ? '' : '/'}`
                 to = parentFolder + this.newThing.name
             }
-//            let typeAcl = app.withAcl==="include" ? 'with acl' : 'without acl'
             if ( confirm(mode +'\n - withAcl : ' + app.withAcl  + '\n - agent : ' + app.agentMode + '\n - merge : ' + app.mergeMode
                 +'\nfrom "' + from + '"\nto "' + to 
                 + '"\n' +'\n\nand please wait ...')) {
@@ -175,16 +163,11 @@ var app = new Vue({
           view.refresh(this.folder.url)
         },        	
         zip : async function(folder) {
-//					let typeAcl = app.withAcl==="true" ? 'with acl' : 'without acl'
           if ( confirm('"ZIP' +' ' + app.withAcl + '"\n\nand please wait ...')) {
 	          view.hide('folderManager')
 						const archiveFile = folder.name + '.zip'
-//	  				const options = app.withAcl==="true" ? { links: SolidFileClient.LINKS.INCLUDE }
-//	  				  : { links: SolidFileClient.LINKS.EXCLUDE }
 	  				let options = app.withAcl === 'true' ? { withAcl: true } : { withAcl: false }
-//	  				const options = { withAcl: app.withAcl }
-alert('zip '+app.withAcl)
-// if (app.withAcl === 'false') options.links = 'exclude'
+            // options.test = true // fake zip
 						fc.createZipArchive(folder.url, folder.parent+archiveFile, options)
 						  .then(async res => {
 						  	const success = await res.text()
@@ -199,14 +182,11 @@ alert('zip '+app.withAcl)
         },
         unzip : async function(thing) {
         	if (!thing.url.endsWith('.zip')) { return alert('Cannot UNZIP ' + thing.url) } 
-//					let typeAcl = app.withAcl==="true" ? 'with acl' : 'without acl'
           if ( confirm('"UNZIP in current folder' +' ' + app.withAcl  + ' - merge : ' + app.mergeMode + '"\n\nand please wait ...')) {
 	          view.hide('fileManager')
-	    			// dispatch(displayLoading());
-//	  				let options = app.withAcl==="true" ? { links: SolidFileClient.LINKS.INCLUDE } : { links: 'exclude' }
 	  				let options = app.withAcl === 'true' ? { withAcl: true } : { withAcl: false }
-// if (app.withAcl === 'false') options.links = 'exclude'
 	  				options.merge = app.mergeMode
+            // options.test = true // fake zip)
 	    			await fc.extractZipArchive(thing.url, thing.parent, this.webId, options)
 	    			.then(success => {
 							// message
@@ -217,11 +197,10 @@ alert('zip '+app.withAcl)
 		        	view.refresh(thing.url)
 	        	})
 	        	.catch(e => alert('Cannot UNZIP ' + thing.url + ' ' + e))
-	        	// .finally(() => dispatch(stopLoading()));
           }
         },
         addThing : async function(type) {
-					var url, name, res
+					var url, name, res, linkOwner
           // file, folder and .meta link
 					if (type === 'file' || type === 'folder') {
             if(!this.newThing.name){
@@ -235,13 +214,14 @@ alert('zip '+app.withAcl)
             	return alert('To create acl you must use the "create acl" button !!!')
             }
             if (name === '.meta') {
-            	const { meta: metaLink } = await fc.getItemLinks(url)
+            	linkOwner = url
+            	const { meta: metaLink } = await fc.getItemLinks(linkOwner)
             	url = sol.getParentUrl(metaLink)
             }
           // file or folder acl links
 					} else {
-	        	let thingLink = type === 'folderAcl' ? this.folder.url : this.file.url
-	        	let links = await fc.getItemLinks(thingLink)
+	        	linkOwner = type === 'folderAcl' ? this.folder.url : this.file.url
+	        	let links = await fc.getItemLinks(linkOwner)
 	        	url = sol.getParentUrl(links.acl)
 	        	name = sol.getItemName(links.acl)
 					}	
@@ -255,8 +235,7 @@ alert('zip '+app.withAcl)
 						}
           	return alert('Cannot create resource :\n  '+url+name+ '\nalready exists !!!')
           }
-					// if (confirm('Create url '+url+name+ '  ???)) {
-            sol.add(url,name,type ).then( success => {
+            sol.add(url,name,type,linkOwner ).then( success => {
                 if(success){
                     alert("Resource created: " + name)  // name should be end of success
 										if (name.endsWith('.acl') && this.displayLinks === 'exclude') {
@@ -270,10 +249,9 @@ alert('zip '+app.withAcl)
                 console.log("Couldn't create\n" + url + "\n" + JSON.stringify(err))
                 alert("Couldn't create\n" + url + "\n" + err.message)
             })
-					// }
         },
         manageResource : function(thing){
-            if(!this.perms.Control) return  // TBD should be write (control depend on withAcl and tested in rm,cp,add,upload)
+//            if(!this.perms.Control) return  // TBD should be write (control depend on withAcl and tested in rm,cp,add,upload)
             if(thing.type==="folder"){
                 this.folder = thing;
                 view.show('folderManager');
@@ -291,8 +269,6 @@ alert('zip '+app.withAcl)
             var a = document.createElement("a");
             a.href = f.url
             a.download = decodeURIComponent(f.name) // setAttribute("download", decodeURIComponent(f.name));
-//            var b = document.createEvent("MouseEvents");  // MouseEvents
-//            b.initEvent("click", false, true);
             a.dispatchEvent(new MouseEvent("click"));
             return false;
         },
@@ -320,14 +296,12 @@ alert('zip '+app.withAcl)
 				        return
 				   }
 				   if( val==="deleteFile" ){
-//				        alert("Deleting file "+this.file.url)
 				        dropdown.selectedIndex=0
 				        document.getElementById("newFile").style.display="block"
 				        app.rm(this.file)
 				        return
 				   }
 				   if( val==="deleteAcl" ){
-  				      //  alert("Deleting acl of file "+this.file.url)
 				        app.rm(app.getLink(this.file, 'acl'))
 				        dropdown.selectedIndex=0
 				        document.getElementById("newFile").style.display="none"
@@ -336,7 +310,6 @@ alert('zip '+app.withAcl)
 				   if( val==="createAcl" ){
 				        if (confirm("Creating acl for "+this.file.url)) {
 				        	app.addThing('fileAcl')
-//				        	view.refresh(this.file.url)
 				        }
 							  return
 				   }
@@ -398,25 +371,21 @@ alert('zip '+app.withAcl)
 				    let place = document.getElementById( com + "Input")
 				    if(!place.value) { alert("Required field missing!"); return }
 				    if( com==="newFile" ){
-	  			      //  alert("Creating file "+place.value)
 				        this.newThing.name = place.value
 				        app.addThing('file')
 				        place.value = ""
 				    }
 				    else if( com==="newFolder" ){
-  				      //  alert("Creating folder "+place.value)
 				        this.newThing.name = place.value
 				        app.addThing('folder')
 				        place.value = ""
 				    }
 				    else if( com==="copyFolder" ){
-  				      //  alert("Copying folder to "+place.value)
 				        this.newThing.folder = place.value
 				        app.cp('folder', 'copy')
 				        place.value = ""
 				    }
 				    else if( com==="moveFolder" ){
-  				      //  alert("Moving folder to "+place.value)
 				        this.newThing.folder = place.value
 				        app.cp('folder', 'move')
 				        place.value = ""
@@ -450,14 +419,18 @@ alert('zip '+app.withAcl)
 //
 // LOGIN STATES
 //
-        canControl : function(){
-            if( this.perms.Control ) return "canControl"  // TBD control or write or control/write
-            else { this.links = 'exclude'} //; this.displayLinks = 'exclude' }
+        canControl : function(f){
+					if(!f.url || !f.perms) return
+          if(f.perms.Control) return "canControl"  // TBD control or write or control/write
+          else {
+          	this.links = 'exclude'} //; this.displayLinks = 'exclude' }
+            if(f.perms.Write) return "canWrite"
         },
         canControlLink : function(f, linkType) {
-            if (this.displayLinks === 'exclude') return "noDisplay"
-        	if (f.links === undefined || f.links[linkType] === undefined || f.links[linkType] === '') { return "hide" }
-        	if( this.perms.Control ) return 'link'
+          if (this.displayLinks === 'exclude') return 'noDisplay'
+        	if (f.links === undefined || f.links[linkType] === undefined || f.links[linkType] === '') { return 'hide' }
+        	if (f.perms.Control) return 'canControl'
+        	if (f.Write) return 'canWrite'
         },
         displayControls : function(cssClass) {
             return cssClass
@@ -641,6 +614,7 @@ var fileDisplay = new Vue({
             this.file.content = content;
             if(!this.file.type && this.file.url) 
                 this.file.type = window.Mimer(this.file.url)
+                if (this.file.url.endsWith('.acl') || this.file.url.endsWith('.meta')) this.file.type = 'text/turtle'
             this.zed.setModeFromType(this.file.type)
             this.zed.setContents(content)
             this.zed.ed.clearSelection() // remove blue overlay
@@ -648,7 +622,8 @@ var fileDisplay = new Vue({
         saveEdits : function(){
             let fileUrl = this.file.url // new mashlib since NSSv5.1.7
             if (fileUrl.endsWith('/')) fileUrl += 'index.html'
-            sol.createResource(fileUrl,this.zed.getContents()).then( success => {
+            let linkOwner = fileUrl.split('.acl')[0]
+            sol.createResource(fileUrl,this.zed.getContents(), linkOwner).then( success => {  // TODO linkOwner
                 if(success){
                 		if (!sol.info) sol.info = ''
                     alert("Resource saved: " + fileUrl + sol.info)
@@ -719,7 +694,7 @@ var view = {
         optionsButton.style.backgroundColor="#ddd"
         profileButton.style.display="none"
         editDisabled.style.display="table-cell"
-        if(status.loggedIn) {
+//        if(status.loggedIn) {  TODO
             optionsButton.style.backgroundColor = "rgba(145,200,220,2)";
             profileButton.style.display="inline-block"
             if( status.permissions.Write
@@ -729,7 +704,7 @@ var view = {
                 saveButton.style.backgroundColor = "rgba(145,200,220,2)"
                 editDisabled.style.display="none"
             }
-        }
+//        }
     }
 }
 

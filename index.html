@@ -18,8 +18,8 @@
 <script src="./solid-ide-solidHandler.js"></script>
 <script src="./solid-ide-solidSession.js"></script>
 <script src="./solid-ide-editor.js"></script>
-<!--<script src="./solid-ide-zipHandler.js"></script>
-<script src="./solid-ide-apiCache.js"></script> --->
+<!-- <script src="./solid-ide-zipHandler.js"></script>
+<!-- <script src="./solid-ide-apiCache.js"></script> --->
 <link rel="stylesheet" href="./assets/main.css">
 <style>
 #folderManager {
@@ -73,7 +73,7 @@ input.plain {
 </span></div><!-- opt -->
 
 <div id="folderMenu" v-bind:class="fontSize">
-    <button v-on:click="manageResource(folder)" class="docIcon" v-bind:class="canControl()">
+    <button v-on:click="manageResource(folder)" class="docIcon" v-bind:class="canControl(folder)">
     <img src="./assets/folder.png">
     </button>
 <!-- --->
@@ -112,11 +112,11 @@ input.plain {
     <hr>
     <ul>
         <li v-for="f in folder.files">
-            <button v-on:click="manageResource(f)" class="docIcon" v-bind:class="canControl()"><img src="./assets/document.png"></button>
+            <button v-on:click="manageResource(f)" class="docIcon" v-bind:class="canControl(f)"><img src="./assets/document.png"></button>
 <!--            <button v-on:click="rm(f)" class="docIcon" v-bind:class="canControl()"
                 <img src="./assets/document.png">
             </button> --->
-	        <button v-on:click="get(getLink(f, 'acl'))" class="docIcon" v-bind:class="canControlLink(f, 'acl')">	            <img src="./assets/padlock-timbl.svg">
+	        <button v-on:click="get(getLink(f, 'acl'))" class="docIcon" v-bind:class="canControlLink(f, 'acl')"><img src="./assets/padlock-timbl.svg">
 	        </button>
 <!--             <button class="fileName" oncontextmenu="return false;" v-on:click.right.prevent="downloadItem(f)" v-on:click="get(f)" v-bind:title="decodeURIComponent(f.name)+' '+f.type">
                 {{decodeURIComponent(f.name)}}
@@ -316,12 +316,8 @@ value="{{decodeURI(file.name)}}"
   	<summary>merge options</summary>
     <select v-model="mergeMode" v-on:change="setMergeMode()" size="3">
 	  <option value="mergeReplace" selected>source replace target</option>
-	  <option value="mergeSource">
-	    source plus items found only in target
-	  </option>
-	  <option value="mergeTarget">
-	    keep target, add items found only in source
-	  </option>
+	  <option value="mergeSource">source plus items found only in target</option>
+	  <option value="mergeTarget">keep target, add items found only in source</option>
 	  </select>
   </details>
   <details id="aclOptionsFolder" class="inputDisplay">
