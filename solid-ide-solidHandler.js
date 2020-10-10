@@ -7,12 +7,12 @@ var self = this
 self.log = function(msg){console.log(msg) }
 
 this.isSolsideHome = function(url){
-    if( url==="https://solside.solid.community/public/index.html"
-     || url==="https://solside.solid.community/public/"
-     || url==="https://solside.solid.community/public"
+    if( url==="https://solside.solidcommunity.net/public/index.html"
+     || url==="https://solside.solidcommunity.net/public/"
+     || url==="https://solside.soliidcommunity.net/public"
      ){ return true }
 }
-this.cp = async function(from, to, mode, aclMode, agentMode, mergeMode){
+this.cp = async function(from, to, mode, aclMode, agentMode, mergeMode, type){
 		if (to === (this.getRoot(to)+'profile/card') || to === (this.getRoot(to)+'profile/card$.ttl')) {
 			self.err = '\nedit of profile/card is not allowed in solid-ide'  // TODO 
 			return false
@@ -21,6 +21,12 @@ this.cp = async function(from, to, mode, aclMode, agentMode, mergeMode){
 //    let options = { withAcl: aclMode, agent: agentMode, merge: mergeMode }
     if (mode === 'copy') return await fc.copy(from, to, options)
     if (mode === 'move') return await fc.move(from, to, options)
+    if (mode === 'patch') {
+    	const body = await fc.readFile(from)
+    	alert('patch '+to+'\n'+body+'\n'+type)
+    	if (type==='application/octet-stream') type ='application/sparql-update'
+    	return await fc.patchFile(to, body, type)
+		}	
 }
 this.deleteResource = async function(url, options = { withLinks: 'include' }) {  //true }){
     // do not allow deletion of pod profile/card (since you cannot recreate it)
@@ -46,7 +52,7 @@ this.createResource = async function(url,content,linkOwner) {
 		self.err = '\nedit of profile/card is not allowed in solid-ide'  // TODO 
 		return false
 	}
-  if (url.endsWith('.acl') || url.endsWith('.meta') || url === (this.getRoot(url)+'profile/card')) contentType = 'text/turtle'
+  if (url.endsWith('.acl') || url.endsWith('.meta') || url.endsWith('/profile/card')) contentType = 'text/turtle'
   if (contentType === 'text/turtle') content = await self.isValidTtl(url, content, linkOwner)
 
   if (self.err) return false
@@ -76,23 +82,40 @@ alert('inherited agents '+JSON.stringify(agents))
        content = await fc.acl.createContent(linkOwner, agents)*/
 			content = await fc.aclUrlParser(linkOwner)
 				.then(agents => fc.acl.createContent(linkOwner, agents))
-
-//alert('inherited '+content)
+    //alert('inherited '+content)
 		//content = self.defaultAcl(url, app.webId)
 //		content = await self.getAclInherit(url, self.getItemName(url).split('.acl')[0]) // self.defaultAcl(url, app.webId)
+	  } else {
+	  	content = await fc.acl.contentParser(linkOwner, content)
+	  	  .then(agents => fc.acl.createContent(linkOwner, agents))
 	  }
+// create a rule
+let aclUsers = await fc.acl.addUserMode({}, [{ agentClass: 'Agent' }], ['Read'])
+// add an other rule
+aclUsers = await fc.acl.addUserMode(aclUsers, [{ agent: 'https://example.soliidcommunity.net/profile/card#me' }], ['Read', 'Write', 'Control'])
+
+// build the aclContent
+//const aclContent = await fc.acl.createContent('https://example.soliidcommunity.net/public/text.txt', aclUsers)
+//console.log('build an aclContent ' + aclContent)
 // test create acl
 //aclUsers = await fc.aclUrlParser(url)
 /*let aclUsers = await fc.aclContentParser('test', content)
 alert('source aclUsers '+JSON.stringify(aclUsers))
 let aclContent = await fc.aclCreate(linkOwner, aclUsers)
 alert('source aclContent '+aclContent)
+*/
+aclUsers = await fc.acl.addUserMode({}, [{ agentClass: 'AuthenticatedAgent' }], ['Append'])
+aclUsers = await fc.acl.addUserMode(aclUsers, [{ agentClass: 'AuthenticatedAgent' }], ['Append', 'Read'])
+aclUsers = await fc.acl.addUserMode(aclUsers, [{ agent: '/profile/card#me' }], ['Control', 'Read', 'Write'])
+aclUsers = await fc.acl.addUserMode(aclUsers, [{ origin: 'http://127.0.0.1:8080' }], ['Control', 'Read', 'Write'])
+aclUsers = await fc.acl.addUserMode(aclUsers, [{ origin: 'https:scenaristeur.github.io' }], ['Control', 'Read', 'Write'])
 
-aclUsers = await fc.aclAddUserMode({}, [{ agentClass: 'Agent' }, { default: '' }], ['Read'])
 alert('add aclUsers new '+JSON.stringify(aclUsers))
-aclContent = await fc.aclCreate(linkOwner, aclUsers)
-alert('add aclContent new content '+aclContent)
-aclUsers = await fc.aclAddUserMode(aclUsers, [{ agentClass: 'Agent' }, { origin: 'https://solid.community' }, { default: '' }], ['Append', 'Write'])
+aclContent = await fc.acl.createContent(linkOwner, aclUsers)
+console.log(aclContent)
+alert(aclContent)
+/*alert('add aclContent new content '+aclContent)
+aclUsers = await fc.aclAddUserMode(aclUsers, [{ agentClass: 'Agent' }, { origin: 'https://soliidcommunity.net' }, { default: '' }], ['Append', 'Write'])
 alert('add aclUsers add everybody & origin & default '+JSON.stringify(aclUsers))
 aclContent = await fc.aclCreate(linkOwner, aclUsers)
 alert('add aclContent with everybody & origin '+aclContent)
@@ -108,8 +131,8 @@ isValid = await fc.isValidTtl(url, content, app.webI, { aclAuth: 'Control' })
 alert('tests '+ JSON.stringify(isValid))
 //
 */
-    const options = { aclAuth: 'Control' }
-	  isValid = await fc.isValidAcl(linkOwner, content, app.webId, options) // TODO isValidAcl with linkOwner
+    const options = { aclMode: 'Control', aclDefault: 'must' }
+	  isValid = await fc.isValidAcl(linkOwner, content, options) // TODO isValidAcl with linkOwner
   }	//const isValid = { err: [isValidTtl.err], info: [isValidTtl.info] }
   else isValid = await fc.isValidRDF(url, content) // TODO isVAlidRDF
 
@@ -174,7 +197,7 @@ this.defaultAcl = (url, webId) =>	{
   ##    acl:agentClass foaf:Agent;                # everybody
   ##    acl:agentClass acl:AuthenticatedAgent     # logged in agent
   ##    acl:agentGroup tes:this                   # group
-  ##    acl:origin <https://pod.solid.community>  # trusted app/agent bot
+  ##    acl:origin <https://pod.soliidcommunity.net>  # trusted app/agent bot
  # - the accessTo resource
   ##    acl:accessTo <${accessTo}>;
  # - for a folder an acl:default
@@ -566,7 +589,7 @@ this.urlFromQueryString = function(){
     }
     else {
         thing = {
-             url : sol.homeUrl ? sol.homeUrl : "https://solside.solid.community/public/samples/",
+             url : sol.homeUrl ? sol.homeUrl : "https://solside.soliidcommunity.net/public/samples/",
             type : "folder"
         }
     }

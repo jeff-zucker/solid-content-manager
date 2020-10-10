@@ -7,6 +7,7 @@ var auth = solid.auth;
 const ss = new SolidSession(auth)
 const fc = new SolidFileClient(auth)         // from solid-file-client.bundle.js
 const zip = new JSZip()
+const pod = new RenamePodServer()
 
 var init = function(){
     app.getStoredPrefs()
@@ -63,6 +64,30 @@ var app = new Vue({
             let link = thing.links === undefined ? { url: ''} : { url: thing.links[linkType] }
           	return link
         },
+        renamePod : async function(f, test){
+            const path = f.url // sol.getRoot(f.url) + 'bourgeoa.soliidcommunity.net/'
+            const options = {
+                number: 0,
+                source: 'solid.community',
+                target: 'solidcommunity.net'
+            }
+            if (!confirm(`${test} rename links from "${options.source}" to "${options.target}"\nrecursively for folder ${path}`)) return
+            options.testRename = test ? true : false
+            pod.fileTested = 0
+            pod.number = 0
+            pod.listRenameDoc = []
+            pod.renameURI(path, options).then(success => {
+                let listDoc = '- resource list :\n'
+                for (const i in pod.listRenameDoc) {
+                    listDoc = listDoc + pod.listRenameDoc[i].split(path)[1] +'\n'
+                }
+                alert('- ' + pod.fileTested + ' turtle resources tested\n- ' + pod.number + ' links converted from "' + options.source + '" to "' + options.target + '"\n' + listDoc +'\n' + pod.err)
+                view.refresh(path)
+            })
+            .catch(err => {
+                alert(pod.fileTested + ' turtle resources tested\n' + pod.number + ' links converted from "' + options.source + '" to "' + options.target + '"\n' + err.message)
+            })
+        },
         rm : function(f){
         		// test for acl
 						if(f.url==='') {
@@ -110,35 +135,37 @@ var app = new Vue({
                 if ( to.includes(from)) return alert("You cannot copy " + to + "\nto the source tree " + from +" !!!")
             } else {
                 if (!this.newThing.name) return alert('"New Name" is missing !!!')
-                // check for same extension
-                if (this.newThing.name.split('.').pop() !== f.name.split('.').pop()) {
-                	if (!confirm('You changed the file extension. Do you confirm ?')) return
-                }
                 from = f.url
                 parentFolder = typeof this.newThing.parentFolder === "undefined" ? f.url.replace(new RegExp(f.name+'$'),'') : this.newThing.parentFolder
                 parentFolder += `${parentFolder.endsWith('/') ? '' : '/'}`
                 to = parentFolder + this.newThing.name
+                if (mode!=="patch") {
+	                // check for same extension
+	                if (this.newThing.name.split('.').pop() !== f.name.split('.').pop()) {
+	                	if (!confirm('You changed the file extension. Do you confirm ?')) return
+	                }
+                }
             }
-            if ( confirm(mode +'\n - withAcl : ' + app.withAcl  + '\n - agent : ' + app.agentMode + '\n - merge : ' + app.mergeMode
+            if ( mode!=="patch" && !confirm(mode +'\n - withAcl : ' + app.withAcl  + '\n - agent : ' + app.agentMode + '\n - merge : ' + app.mergeMode
                 +'\nfrom "' + from + '"\nto "' + to 
-                + '"\n' +'\n\nand please wait ...')) {
-                view.hide('fileManager')
-                view.hide('folderManager')
-                sol.cp( from, to, mode, app.withAcl, app.agentMode, app.mergeMode ).then( success => {
-                    if(success) {
-                        alert("Resource created " + to)
-                        view.refresh(parentFolder)
-                    }
-                    else {
-                        console.log(mode + " failed :\n"+ to + " partially created\n" +  sol.err)
-                        alert(mode + " failed :\n"+ to + " partially created\n" +  sol.err)
-                    }
-                })
-                .catch(err => {
-                    console.log("Couldn't create\n" + to + "\n" + JSON.stringify(err))
-                    alert("Couldn't create\n" + to + "\n" + err.message)
-                })
-            }
+                + '"\n' +'\n\nand please wait ...')) { return }
+            view.hide('fileManager')
+            view.hide('folderManager')
+            sol.cp( from, to, mode, app.withAcl, app.agentMode, app.mergeMode, f.type ).then( success => { // type for patch
+                if(success) {
+                    alert("Resource created " + to)
+                    view.refresh(parentFolder)
+                }
+                else {
+                    console.log(mode + " failed :\n"+ to + " partially created\n" +  sol.err)
+                    alert(mode + " failed :\n"+ to + " partially created\n" +  sol.err)
+                }
+            })
+            .catch(err => {
+                console.log("Couldn't create\n" + to + "\n" + JSON.stringify(err))
+                alert("Couldn't create\n" + to + "\n" + err.message)
+            })
+            //}
         },
         upload : async function(upfile) { // f){
           view.hide('folderManager')
@@ -187,7 +214,10 @@ var app = new Vue({
 	  				let options = app.withAcl === 'true' ? { withAcl: true } : { withAcl: false }
 	  				options.merge = app.mergeMode
             // options.test = true // fake zip)
-	    			await fc.extractZipArchive(thing.url, thing.parent, this.webId, options)
+            options.webId = this.webId
+            options.importPod = 'https//' + thing.name.split('.zip')[0] + '/'
+            if (!confirm('importPod = ' + options.importPod)) return
+	    			await fc.extractZipArchive(thing.url, thing.parent, options)
 	    			.then(success => {
 							// message
 		        	let unzipMsg = 'UNZIP in ' + thing.parent + '\n'
@@ -295,6 +325,13 @@ var app = new Vue({
 				   if( val==="" ){
 				        return
 				   }
+/*				   if( val==="patchFile" ){
+				        if (confirm("Creating acl for "+this.file.url)) {
+				        	app.addThing('fileAcl')
+				        }
+							  return
+				   }
+*/
 				   if( val==="deleteFile" ){
 				        dropdown.selectedIndex=0
 				        document.getElementById("newFile").style.display="block"
@@ -336,8 +373,17 @@ var app = new Vue({
 				   }
 				   if( val==="" ){
 				        return
-				   }
-				   if( val==="deleteFolder" ){
+                   }
+                   if( val==="renamePod"){
+                       app.renamePod(this.folder, '')
+                       return
+                   }
+                   if( val==="testRenamePod"){
+                    app.renamePod(this.folder, 'test')
+                    return
+                }
+
+                   if( val==="deleteFolder" ){
   				      //  alert("Deleting folder "+this.folder.url)
 				        dropdown.selectedIndex=0
 				        document.getElementById("newFile").style.display="block"
@@ -474,7 +520,7 @@ var app = new Vue({
         storePrefs : function(){
             localStorage.setItem("solState", JSON.stringify({
                   home : this.homeUrl,
-                   idp : sol.idp,      // TBD why always https://solid.community
+                   idp : sol.idp,      // TBD why always https://soliidcommunity.net
                   keys : this.editKeys,
                  theme : this.editTheme,
                  links : this.displayLinks,
@@ -486,8 +532,8 @@ var app = new Vue({
             var state = localStorage.getItem("solState");
             if(!state) {
                 sol.homeUrl = this.homeUrl =
-                    "https://solside.solid.community/public/samples/"
-                sol.idp = this.idp =  "https://solid.community"
+                    "https://solside.soliidcommunity.net/public/samples/"
+                sol.idp = this.idp =  "https://soliidcommunity.net"
                 this.storePrefs()
                 return;
             }

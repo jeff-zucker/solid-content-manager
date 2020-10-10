@@ -7,14 +7,15 @@
   local files 
       solidHandler, solidSession, editor, solid-file-client
 -->
-<script src="https://cdn.jsdelivr.net/npm/solid-auth-client@2.3.0/dist-lib/solid-auth-client.bundle.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/solid-file-client@1.0.4/dist/window/solid-file-client.bundle.js"></script> -->
-<script src="./dist/window/solid-file-client.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/solid-auth-client@2.3.0/dist-lib/solid-auth-client.bundle.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/solid-file-client@1.1.0/dist/window/solid-file-client.bundle.js"></script>
+<!-- <script src="./dist/window/solid-file-client.bundle.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/mimer@1.0.0/dist/mimer.min.js"></script> --->
 <script src="./dist/mimer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.2.2/dist/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
+<script src="./solid-ide-renamePod.js"></script>
 <script src="./solid-ide-solidHandler.js"></script>
 <script src="./solid-ide-solidSession.js"></script>
 <script src="./solid-ide-editor.js"></script>
@@ -136,10 +137,11 @@ input.plain {
         </button>
     </div>
     <div>File : <em>{{decodeURI(file.url)}}</em></div>
-  <select id="fileOptions" v-model="fileOptions" v-on:change="showFileOption()" size=9>
+  <select id="fileOptions" v-model="fileOptions" v-on:change="showFileOption()" size=8>
     <option value="downloadFile" selected>download file</option>
     <option value="copyFile">copy file</option>
     <option value="moveFile">move file</option>
+<!--    <option value="patchFile">patch file</option> --->
     <option value="deleteFile">delete file</option>
     <option value="zipFile">zip file</option>
     <option value="unzipFile">unzip File</option>
@@ -217,6 +219,15 @@ linked file options
 	    value="{{decodeURI(file.name)}}">
     <br><button v-on:click="cp(file, 'move')">move</button>
   </p>
+  <p id="patchFile" class="right-justify inputDisplay">
+    <label>new folder :</label>
+    <input id="patchFileInput" v-model="newThing.parentFolder" placeholder=" full path (leave blank to patch a file within same folder)">
+    <br><label>new name :</label>
+    <input v-model="newThing.name" 
+	    placeholder=" (patch file name with extension, without path)"
+	    value="{{decodeURI(file.name)}}">
+    <br><button v-on:click="cp(file, 'patch')">patch</button>
+  </p>
 <!--
   <p id="uploadToFolder" class="right-justify inputDisplay">
   <input type="file" id="uploadToFolderInput" name="uploadToFolderInput" multiple="multiple" size="100">
@@ -292,7 +303,7 @@ value="{{decodeURI(file.name)}}"
        class="xIcon" title="Cancel"> X </button>
   </div>
   <div>Folder : <em>{{decodeURI(folder.url)}}</em></div>
-  <select id="folderOptions" v-model="folderOptions" v-on:change="showFolderOption()" size=10>
+  <select id="folderOptions" v-model="folderOptions" v-on:change="showFolderOption()" size=13>
     <option value="newFile" selected>create new file</option>
     <option value="newFolder">create new folder</option>
     <option value="uploadToFolder">upload files</option>
@@ -300,9 +311,12 @@ value="{{decodeURI(file.name)}}"
     <option value="copyFolder">copy folder</option>
     <option value="moveFolder">move folder</option>
     <option value="zipFolder">zip folder</option>
-    <option>----------------</option>
+    <option>-------------------</option>
     <option value="createAcl">create folder acl</option>
     <option value="deleteAcl">delete folder acl</option>    
+    <option>-------------------</option>
+    <option value="testRenamePod">test solid.community</option>
+    <option value="renamePod">rename solid.community</option>
   </select>
   <p id="newFile" class="right-justify inputDisplay">  
     <input id="newFileInput" placeholder=" (new file name, without path)">
@@ -493,6 +507,9 @@ linked file options
 		display and manage links</span> : options button</li>
 		<li><span class="label">
 		view, edit, or cut and paste from a link</span> : click on its link icon</li>
+		<hr>
+		<li><span class="label">
+		rename solid.community links</span> : move into the folder, click on its icon</li>
 	</ul>
 </div><!-- end help -->
 </div><!-- app -->
