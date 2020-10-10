@@ -65,7 +65,7 @@ var app = new Vue({
           	return link
         },
         renamePod : async function(f, test){
-            const path = f.url // sol.getRoot(f.url) + 'bourgeoa.soliidcommunity.net/'
+            const path = f.url // sol.getRoot(f.url) + 'bourgeoa.solidcommunity.net/'
             const options = {
                 number: 0,
                 source: 'solid.community',
@@ -520,7 +520,7 @@ var app = new Vue({
         storePrefs : function(){
             localStorage.setItem("solState", JSON.stringify({
                   home : this.homeUrl,
-                   idp : sol.idp,      // TBD why always https://soliidcommunity.net
+                   idp : sol.idp,      // TBD why always https://solidcommunity.net
                   keys : this.editKeys,
                  theme : this.editTheme,
                  links : this.displayLinks,
@@ -532,8 +532,8 @@ var app = new Vue({
             var state = localStorage.getItem("solState");
             if(!state) {
                 sol.homeUrl = this.homeUrl =
-                    "https://solside.soliidcommunity.net/public/samples/"
-                sol.idp = this.idp =  "https://soliidcommunity.net"
+                    "https://solside.solidcommunity.net/public/samples/"
+                sol.idp = this.idp =  "https://solidcommunity.net"
                 this.storePrefs()
                 return;
             }
