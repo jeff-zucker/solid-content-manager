@@ -9,7 +9,7 @@ self.log = function(msg){console.log(msg) }
 this.isSolsideHome = function(url){
     if( url==="https://solside.solidcommunity.net/public/index.html"
      || url==="https://solside.solidcommunity.net/public/"
-     || url==="https://solside.soliidcommunity.net/public"
+     || url==="https://solside.solidcommunity.net/public"
      ){ return true }
 }
 this.cp = async function(from, to, mode, aclMode, agentMode, mergeMode, type){
@@ -92,10 +92,10 @@ alert('inherited agents '+JSON.stringify(agents))
 // create a rule
 let aclUsers = await fc.acl.addUserMode({}, [{ agentClass: 'Agent' }], ['Read'])
 // add an other rule
-aclUsers = await fc.acl.addUserMode(aclUsers, [{ agent: 'https://example.soliidcommunity.net/profile/card#me' }], ['Read', 'Write', 'Control'])
+aclUsers = await fc.acl.addUserMode(aclUsers, [{ agent: 'https://example.solidcommunity.net/profile/card#me' }], ['Read', 'Write', 'Control'])
 
 // build the aclContent
-//const aclContent = await fc.acl.createContent('https://example.soliidcommunity.net/public/text.txt', aclUsers)
+//const aclContent = await fc.acl.createContent('https://example.solidcommunity.net/public/text.txt', aclUsers)
 //console.log('build an aclContent ' + aclContent)
 // test create acl
 //aclUsers = await fc.aclUrlParser(url)
@@ -115,7 +115,7 @@ aclContent = await fc.acl.createContent(linkOwner, aclUsers)
 console.log(aclContent)
 alert(aclContent)
 /*alert('add aclContent new content '+aclContent)
-aclUsers = await fc.aclAddUserMode(aclUsers, [{ agentClass: 'Agent' }, { origin: 'https://soliidcommunity.net' }, { default: '' }], ['Append', 'Write'])
+aclUsers = await fc.aclAddUserMode(aclUsers, [{ agentClass: 'Agent' }, { origin: 'https://solidcommunity.net' }, { default: '' }], ['Append', 'Write'])
 alert('add aclUsers add everybody & origin & default '+JSON.stringify(aclUsers))
 aclContent = await fc.aclCreate(linkOwner, aclUsers)
 alert('add aclContent with everybody & origin '+aclContent)
@@ -197,7 +197,7 @@ this.defaultAcl = (url, webId) =>	{
   ##    acl:agentClass foaf:Agent;                # everybody
   ##    acl:agentClass acl:AuthenticatedAgent     # logged in agent
   ##    acl:agentGroup tes:this                   # group
-  ##    acl:origin <https://pod.soliidcommunity.net>  # trusted app/agent bot
+  ##    acl:origin <https://pod.solidcommunity.net>  # trusted app/agent bot
  # - the accessTo resource
   ##    acl:accessTo <${accessTo}>;
  # - for a folder an acl:default
@@ -589,7 +589,7 @@ this.urlFromQueryString = function(){
     }
     else {
         thing = {
-             url : sol.homeUrl ? sol.homeUrl : "https://solside.soliidcommunity.net/public/samples/",
+             url : sol.homeUrl ? sol.homeUrl : "https://solside.solidcommunity.net/public/samples/",
             type : "folder"
         }
     }
