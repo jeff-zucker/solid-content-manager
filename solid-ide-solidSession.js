@@ -1,5 +1,5 @@
 /* START OF SESSION FUNCTIONS */
-const defaultPopupUri = 'https://solid.community/common/popup.html'
+const defaultPopupUri = 'https://inrupt.net/common/popup.html' //'https://solid.community/common/popup.html'
 
 var SolidSession = function(auth) {
 	
