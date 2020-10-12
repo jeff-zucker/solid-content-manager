@@ -9,7 +9,7 @@ self.log = function(msg){console.log(msg) }
 this.isSolsideHome = function(url){
     if( url==="https://solside.solidcommunity.net/public/index.html"
      || url==="https://solside.solidcommunity.net/public/"
-     || url==="https://solside.soliidcommunity.net/public"
+     || url==="https://solside.solidcommunity.net/public"
      ){ return true }
 }
 this.cp = async function(from, to, mode, aclMode, agentMode, mergeMode, type){
@@ -291,7 +291,7 @@ this.urlFromQueryString = function(){
     }
     else {
         thing = {
-             url : sol.homeUrl ? sol.homeUrl : "https://solside.soliidcommunity.net/public/samples/",
+             url : sol.homeUrl ? sol.homeUrl : "https://solside.solidcommunity.net/public/samples/",
             type : "folder"
         }
     }
