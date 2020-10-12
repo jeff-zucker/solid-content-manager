@@ -7,9 +7,9 @@
   local files 
       solidHandler, solidSession, editor, solid-file-client
 -->
-<script src="https://cdn.jsdelivr.net/npm/solid-auth-client@2.3.0/dist-lib/solid-auth-client.bundle.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/solid-auth-client@2.3.0/dist-lib/solid-auth-client.bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/solid-file-client@1.1.0/dist/window/solid-file-client.bundle.js"></script>
-<!-- <script src="./dist/window/solid-file-client.bundle.js"></script>
+<!-- <script src="./dist/window/solid-file-client.bundle.js"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/mimer@1.0.0/dist/mimer.min.js"></script> --->
 <script src="./dist/mimer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.2.2/dist/jszip.min.js"></script>
@@ -19,8 +19,6 @@
 <script src="./solid-ide-solidHandler.js"></script>
 <script src="./solid-ide-solidSession.js"></script>
 <script src="./solid-ide-editor.js"></script>
-<!-- <script src="./solid-ide-zipHandler.js"></script>
-<!-- <script src="./solid-ide-apiCache.js"></script> --->
 <link rel="stylesheet" href="./assets/main.css">
 <style>
 #folderManager {
@@ -71,7 +69,7 @@ input.plain {
     </button>
     <button id="helpButton" v-on:click="view.show('help')">help</button>
     </span>
-</span></div><!-- opt -->
+</span></div><!-- end opt -->
 
 <div id="folderMenu" v-bind:class="fontSize">
     <button v-on:click="manageResource(folder)" class="docIcon" v-bind:class="canControl(folder)">
@@ -94,17 +92,6 @@ input.plain {
             <button class="docIcon">
                 <img src="./assets/folder.png" />
             </button>
-<!--
-						<button v-on:click="manageResource(subFolder)" class="docIcon" v-bind:class="canControl(subFolder)">
-                <img src="./assets/folder.png" />
-            </button>
-				    <button v-on:click="get(getLink(subFolder, 'acl'))" class="docIcon" v-bind:class="canControlLink(subFolder, 'acl')">
-			        <img src="./assets/padlock-timbl.svg">
-				    </button>
-				    <button v-on:click="get(getLink(subFolder, 'meta'))" class="docIcon" v-bind:class="canControlLink(subFolder, 'meta')">
-			        <img src="./assets/document.png">
-				    </button>
---->
             <button class="fileName" v-on:click="get(subFolder)">
                 {{decodeURIComponent(subFolder.name)}}
             </button>
@@ -114,21 +101,14 @@ input.plain {
     <ul>
         <li v-for="f in folder.files">
             <button v-on:click="manageResource(f)" class="docIcon" v-bind:class="canControl(f)"><img src="./assets/document.png"></button>
-<!--            <button v-on:click="rm(f)" class="docIcon" v-bind:class="canControl()"
-                <img src="./assets/document.png">
-            </button> --->
 	        <button v-on:click="get(getLink(f, 'acl'))" class="docIcon" v-bind:class="canControlLink(f, 'acl')"><img src="./assets/padlock-timbl.svg">
 	        </button>
-<!--             <button class="fileName" oncontextmenu="return false;" v-on:click.right.prevent="downloadItem(f)" v-on:click="get(f)" v-bind:title="decodeURIComponent(f.name)+' '+f.type">
-                {{decodeURIComponent(f.name)}}
-            </button>
--->
             <button class="fileName" v-on:click="get(f)" v-bind:title="decodeURIComponent(f.name)+' '+f.type">
                 {{decodeURIComponent(f.name)}}
             </button>
         </li>
     </ul>
-</div><!-- folderMenu -->
+</div><!-- end folderMenu -->
 
 <div id="fileManager" class="formArea">
     <div class="cancel-icon">
@@ -137,11 +117,11 @@ input.plain {
         </button>
     </div>
     <div>File : <em>{{decodeURI(file.url)}}</em></div>
-  <select id="fileOptions" v-model="fileOptions" v-on:change="showFileOption()" size=8>
+  <select id="fileOptions" v-model="fileOptions" v-on:change="showFileOption()" size=9>
     <option value="downloadFile" selected>download file</option>
     <option value="copyFile">copy file</option>
     <option value="moveFile">move file</option>
-<!--    <option value="patchFile">patch file</option> --->
+    <option value="patchFile">patch file</option>
     <option value="deleteFile">delete file</option>
     <option value="zipFile">zip file</option>
     <option value="unzipFile">unzip File</option>
@@ -149,30 +129,6 @@ input.plain {
     <option value="createAcl">create file acl</option>
     <option value="deleteAcl">delete file acl</option>    
   </select>
-<!--
-  <p id="newName" class="right-justify inputDisplay">  
-    <input id="newFileInput" v-model="newThing.name" 
-	    placeholder=" (new file name with extension, without path)"
-	    value="{{decodeURI(file.name)}}">
-    <button v-on:click="doAction('newFile')">go</button>
-  </p>
---->
-<!--
-  <p id="newUrl" class="right-justify inputDisplay">
-		<div>
-	    <label>new folder :</label>
-	    <input v-model="newThing.parentFolder" placeholder=" full path (leave blank to copy/move within same folder)">
-		</div>
-		<div>
-	    <label>new name :</label>
-	    <input v-model="newThing.name" 
-		    placeholder=" (new file name with extension, without path)"
-		    value="{{decodeURI(file.name)}}">
-	    <button class="copyFile" v-on:click="cp(file, 'copy')">go</button>
-	    <button class="moveFile" v-on:click="cp(file, 'move')">go</button>
-		</div>
-  </p>
---->
 	<div>
 	  <details id="mergeOptionsFile" class="inputDisplay">
 	    <summary>merge options</summary>
@@ -190,13 +146,6 @@ input.plain {
 	  	</select>
 		</span>
 	</div>
-<!--
-linked file options
-  copy/move linked files leaving owner unmodified
-  copy/move linked files setting owner of target as owner of target
-  copy/move linked files setting owner of source as owner of target
-  don't copy/move linked files
--->
   </p>
   <p id="copyFile" class="right-justify inputDisplay">
     <label>new folder :</label>
@@ -228,12 +177,6 @@ linked file options
 	    value="{{decodeURI(file.name)}}">
     <br><button v-on:click="cp(file, 'patch')">patch</button>
   </p>
-<!--
-  <p id="uploadToFolder" class="right-justify inputDisplay">
-  <input type="file" id="uploadToFolderInput" name="uploadToFolderInput" multiple="multiple" size="100">
-  <button v-on:click="doAction('uploadToFolder')">go</button>
-  </p>
---->
   <p id="zipFile" class="right-justify inputDisplay">
   <button v-on:click="zip(file)">zip</button>
   </p>
@@ -243,59 +186,8 @@ linked file options
   <p id="downloadFile" class="right-justify inputDisplay">
 	<button v-bind:href="file.url" v-on:click.prevent="downloadItem(file)">download</button>
 	</p>
-</div><!-- fileManager -->
+</div><!-- end fileManager -->
     
-<!-- old fileManager
-    <button v-on:click="zip(file)">zip file</button>
-    <button v-on:click="unzip(file)">unzip file</button>
-    <button v-on:click="rm(file)">delete file</button>
-	  <button v-bind:href="file.url" v-on:click.prevent="downloadItem(file)">download file</button>
-<hr>
-    <button v-on:click="addThing('fileAcl')" v-bind:class="canControlLink(file, 'acl')">add acl</button>
-    <button v-on:click="rm(getLink(file, 'acl'))" v-bind:class="canControlLink(file, 'acl')">delete acl</button>
-<!--
-<button v-bind:href="file.url" v-on:click.prevent="downloadItem(file)"><em>{{decodeURI(file.name)}}</em></button>
-	<a v-bind:href="file.url" v-text="decodeURIComponent(file.name)" v-on:click.prevent="downloadItem(file)" oncontextmenu="return false;" >{{decodeURI(file.name)}}</a> -->
-<!--<hr>
-    <div>
-        <label>new folder :</label>
-        <input v-model="newThing.parentFolder"
-               placeholder=" full path (leave blank to copy/move within same folder)"
-        />
-    </div>
-    <div>
-        <label>new name :</label>
-        <input v-model="newThing.name"
-               placeholder=" name with extension, without path"
-value="{{decodeURI(file.name)}}"
-        />
-
-    <p class="right-justify">
-        <button v-on:click="cp(file, 'copy')">copy file</button>
-        <button v-on:click="cp(file, 'move')">move file</button>
-
-<div v-bind:class="displayControls('table')"><div class="tr center">
-<span class="td">
-    <div>withAcl</div>
-    <select v-model="withAcl" v-on:change="setWithAcl()" size="2">
-        <option>true</option>
-        <option>false</option>
-    </select>
-</span>
-<span class="td">
-    <div>Merge mode</div>
-    <select v-model="mergeMode" v-on:change="setMergeMode()" size="2">
-        <option>replace</option>
-        <option>keep_source</option>
-        <option>keep_target</option>
-    </select>
-</span>
-</div></div>
-
-    </p>
-    </div>
-</div><!-- fileManager -->
-<!--  end --->
 
 <div id="folderManager" class="formArea">
   <div class="cancel-icon">
@@ -341,13 +233,6 @@ value="{{decodeURI(file.name)}}"
 	  <option value="false">exclude acl</option>
 	  </select>
   </details>
-<!--
-linked file options
-  copy/move linked files leaving owner unmodified
-  copy/move linked files setting owner of target as owner of target
-  copy/move linked files setting owner of source as owner of target
-  don't copy/move linked files
--->
   <p id="copyFolder" class="right-justify inputDisplay">
     <input id="copyFolderInput" placeholder=" (new folder location, full path)">
     <button v-on:click="doAction('copyFolder')">go</button>
@@ -364,64 +249,8 @@ linked file options
   <button v-on:click="zip(folder)">zip</button>
   </p>
 
-</div><!-- #folderManager -->
-<!-- old folderManager
-	<button v-on:click="zip(folder)">zip folder</button>
-	<button v-on:click="rm(folder)">delete folder</button>
-	<button v-on:click="addThing('folderAcl')" v-bind:class="canControlLink(folder, 'acl')">add acl</button>
-	<button v-on:click="rm(getLink(folder, 'acl'))" v-bind:class="canControlLink(folder, 'acl')">delete acl</button>
-  <hr>
-	<div>
-		<label>new name</label>
-		<input v-model="newThing.name" placeholder=" (without path)">
-	</div>
-		<p class="right-justify">
-	    <label>in this folder </label>
-	    <button v-on:click="addThing('file')">create new file</button>
-	    <button v-on:click="addThing('folder')">create new folder</button>
-    </p>
-    <hr>
-		<div>
-			<label>new folder</label>
-	   <input v-model="newThing.folder" placeholder=" (with full path)">
-		</div>
-		<p class="right-justify">
-			<button v-on:click="cp('folder', 'copy')">copy folder</button>
-	    <button v-on:click="cp('folder', 'move')">move folder</button>
-		</p>
-		<div v-bind:class="displayControls('table')"><div class="tr center">
-			<span class="td">
-	    	<div>withAcl</div>
-		    <select v-model="withAcl" v-on:change="setWithAcl()" size="2">
-	        <option>true</option>
-	        <option>false</option>
-		    </select>
-			</span>
-			<span class="td">
-		    <div>Agent mode</div>
-			    <select v-model="agentMode" v-on:change="setAgentMode()" size="2">
-		        <option>no_modify</option>
-		        <option>to_source</option>
-		        <option>to_target</option>
-			    </select>
-			</span>
-			<span class="td">
-		    <div>Merge mode</div>
-		    <select v-model="mergeMode" v-on:change="setMergeMode()" size="2">
-	        <option>replace</option>
-	        <option>keep_source</option>
-	        <option>keep_target</option>
-		    </select>
-			</span>
-		</div>
-	</div>
+</div><!--  end folderManager -->
 
-	<hr>
-	<label>upload file(s) in this folder</label>
-	<input type="file" id="upFile" name="upFile" multiple size="100">
-	<button v-on:click="upload("upFile")">upload</button>
-</div><!-- folderManager -->
---->
 <div id="optionsManager" class="formArea">
     <div class="cancel-icon">
         <button v-on:click="view.hide('optionsManager')"
@@ -444,7 +273,7 @@ linked file options
         <button v-on:click="get(homeUrl)">go home</button>
         </span>
     </div>
-</div><!-- table -->
+</div>
 <div class="table"><div class="tr center">
 <span class="td">
     <div>Key Bindings</div>
@@ -474,7 +303,7 @@ linked file options
      <button v-on:click="storePrefs()">save preferences</button>
      <a type="button" target="_blank" href="mailto:dubzed@gmail.com">send feedback</a>
 
-</div><!-- optionsManager -->
+</div><!-- end optionsManager -->
 
 <div id="help" class="formArea"> <!-- help -->
   <div class="cancel-icon">
@@ -507,12 +336,9 @@ linked file options
 		display and manage links</span> : options button</li>
 		<li><span class="label">
 		view, edit, or cut and paste from a link</span> : click on its link icon</li>
-		<hr>
-		<li><span class="label">
-		rename solid.community links</span> : move into the folder, click on its icon</li>
 	</ul>
 </div><!-- end help -->
-</div><!-- app -->
+</div><!-- end app -->
 
 
 <!--
@@ -523,7 +349,7 @@ linked file options
     </iframe>
     <div id="editor" style="font-family: Monaco, monospace !important">
     </div>
-</div><!-- fileDisplay -->
+</div><!-- end fileDisplay -->
 
 <script src="./solid-ide.js"></script>
 

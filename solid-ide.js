@@ -1,5 +1,5 @@
-/* VERSION 1.1.0
-**     2020-07-28
+/* VERSION 1.2.0
+**     2020-10-12
 */
 const sol = new SolidHandler()      // from solid-ide-solidHandler.js
 // const zf = new SolidZip()
@@ -29,11 +29,6 @@ var app = new Vue({
             this.currentThing = thing
             view.hide();
             let url = thing.url
-/*            if (sol.getRoot(thing.url)+'index.html' === thing.url) {
-                url = sol.getParentUrl(thing.url)
-                alert('thing ' + thing.url+' '+url)
-            }
-*/
             sol.get(url).then( results => {  // , app.displayLinks
                 let fcErr = '' 
                 if (sol.err !== '') {
@@ -58,16 +53,16 @@ var app = new Vue({
                 else this.processResults(results)
             },err => {
                 console.log('getErr ' + JSON.stringify(err))
-                alert('getErr '+err)})
+                alert('getErr '+err)
+            })
         },
         getLink : function(thing, linkType) {
             let link = thing.links === undefined ? { url: ''} : { url: thing.links[linkType] }
           	return link
         },
         renamePod : async function(f, test){
-            const path = f.url // sol.getRoot(f.url) + 'bourgeoa.solidcommunity.net/'
+            const path = f.url
             const options = {
-                number: 0,
                 source: 'solid.community',
                 target: 'solidcommunity.net'
             }
@@ -81,7 +76,12 @@ var app = new Vue({
                 for (const i in pod.listRenameDoc) {
                     listDoc = listDoc + pod.listRenameDoc[i].split(path)[1] +'\n'
                 }
-                alert('- ' + pod.fileTested + ' turtle resources tested\n- ' + pod.number + ' links converted from "' + options.source + '" to "' + options.target + '"\n' + listDoc +'\n' + pod.err)
+                const renamed = (test === 'test') ? 'to rename' : 'renamed'
+                const message = '- ' + pod.fileTested + ' turtle resources tested\n- ' + pod.number + ' resources with links ' 
+                + renamed + ' from "' + options.source + '" to "' + options.target + '"\n'
+                + listDoc +'\n' + pod.err
+                console.log(message)
+                alert(message)
                 view.refresh(path)
             })
             .catch(err => {
@@ -89,15 +89,15 @@ var app = new Vue({
             })
         },
         rm : function(f){
-        		// test for acl
-						if(f.url==='') {
-							app.displayLinks = 'include'  // app.links
-							app.storePrefs()
-							view.refresh(this.folder.url)
-							return alert('Please redo : "delete acl" needs (in "options") to have "Display Links" sets to "include"')
-						}
-						if (f.url === undefined) return alert('Cannot delete : acl do not exist !!!')
-						// test permissions
+        	// test for acl
+            if(f.url==='') {
+                app.displayLinks = 'include'  // app.links
+                app.storePrefs()
+                view.refresh(this.folder.url)
+                return alert('Please redo : "delete acl" needs (in "options") to have "Display Links" sets to "include"')
+            }
+            if (f.url === undefined) return alert('Cannot delete : acl do not exist !!!')
+            // test permissions
             if(!f.url.endsWith('.acl') && !f.perms.Write) return alert('you need "Write" permission')  // NSS >5.3.0
             // test for excluded folders
             let test = f.url.split(sol.getRoot(f.url))[1].split('/')
@@ -108,6 +108,7 @@ var app = new Vue({
                 return
             }
             
+            // main
             if( confirm("DELETE RESOURCE "+f.url+"???") ){
                 view.hide('fileManager')
                 view.hide('folderManager')
@@ -165,121 +166,124 @@ var app = new Vue({
                 console.log("Couldn't create\n" + to + "\n" + JSON.stringify(err))
                 alert("Couldn't create\n" + to + "\n" + err.message)
             })
-            //}
         },
-        upload : async function(upfile) { // f){
-          view.hide('folderManager')
+        upload : async function(upfile) {
+            view.hide('folderManager')
         	var inputFile = document.getElementById(upfile)
-			    for (var i = 0; i < inputFile.files.length; i++) {
-				    var content = inputFile.files[i] 
+            for (var i = 0; i < inputFile.files.length; i++) {
+                var content = inputFile.files[i] 
         		var url  = this.folder.url+content.name;
         		await sol.createResource(url, content).then(success => {
-        		  if(success){
-        			alert("Resource created: " + content.name)
-        		  }
-        		  else {
-        		  	alert("Couldn't create "+url+" "+ sol.err) // JSON.parse(sol.err).message)
-        		  }
+                    if(success){
+                        alert("Resource created: " + content.name)
+                    } else {
+                        alert("Couldn't create "+url+" "+ sol.err) // JSON.parse(sol.err).message)
+                    }
         		})
         		.catch(err => {
-        		  console.log("Couldn't create\n" + url + "\n" + JSON.stringify(err))
-              alert("Couldn't create\n" + url + "\n" + err.message)
-            })
+        		    console.log("Couldn't create\n" + url + "\n" + JSON.stringify(err))
+                    alert("Couldn't create\n" + url + "\n" + err.message)
+                })
 
-			    }
-          view.refresh(this.folder.url)
-        },        	
+			}
+            view.refresh(this.folder.url)
+        },
+
         zip : async function(folder) {
-          if ( confirm('"ZIP' +' ' + app.withAcl + '"\n\nand please wait ...')) {
-	          view.hide('folderManager')
-						const archiveFile = folder.name + '.zip'
-	  				let options = app.withAcl === 'true' ? { withAcl: true } : { withAcl: false }
-            // options.test = true // fake zip
-						fc.createZipArchive(folder.url, folder.parent+archiveFile, options)
-						  .then(async res => {
-						  	const success = await res.text()
+            if ( confirm('"ZIP' +' ' + app.withAcl + '"\n\nand please wait ...')) {
+	            view.hide('folderManager')
+                const archiveFile = folder.name + '.zip'
+	  			let options = app.withAcl === 'true' ? { withAcl: true } : { withAcl: false }
+				fc.createZipArchive(folder.url, folder.parent+archiveFile, options)
+					.then(async res => {
+						const success = await res.text()
 	        			alert(`"Resource ${success} : "${archiveFile}`)
 	        			view.refresh(folder.parent)
 	        		})
 	        		.catch(err => {
-	        		  console.log("Couldn't create\n" + archiveFile + "\n" + JSON.stringify(err))
-	              alert("Couldn't create\n" + archiveFile + "\n" + err)
-	             })
+	        		    console.log("Couldn't create\n" + archiveFile + "\n" + JSON.stringify(err))
+	                    alert("Couldn't create\n" + archiveFile + "\n" + err)
+	                })
         	}
         },
+
         unzip : async function(thing) {
         	if (!thing.url.endsWith('.zip')) { return alert('Cannot UNZIP ' + thing.url) } 
-          if ( confirm('"UNZIP in current folder' +' ' + app.withAcl  + ' - merge : ' + app.mergeMode + '"\n\nand please wait ...')) {
-	          view.hide('fileManager')
-	  				let options = app.withAcl === 'true' ? { withAcl: true } : { withAcl: false }
-	  				options.merge = app.mergeMode
-            // options.test = true // fake zip)
-            options.webId = this.webId
-            options.importPod = 'https//' + thing.name.split('.zip')[0] + '/'
-            if (!confirm('importPod = ' + options.importPod)) return
-	    			await fc.extractZipArchive(thing.url, thing.parent, options)
+            if ( confirm('"UNZIP in current folder' +' ' + app.withAcl  + ' - merge : ' + app.mergeMode + '"\n\nand please wait ...')) {
+	            view.hide('fileManager')
+	  			let options = app.withAcl === 'true' ? { withAcl: true } : { withAcl: false }
+	  			options.merge = app.mergeMode
+                options.webId = this.webId
+                // options.importPod = 'https//' + thing.name.split('.zip')[0] + '/'
+                // if (!confirm('importPod = ' + options.importPod)) return
+	    		await fc.extractZipArchive(thing.url, thing.parent, options)
 	    			.then(success => {
-							// message
-		        	let unzipMsg = 'UNZIP in ' + thing.parent + '\n'
-		        	if (success.err.length) unzipMsg = '!!!! PARTIAL ' + unzipMsg + '\nSome LINK resources have not been loaded, see : \n' + success.err.join('\n') + '\n'
-		        	if (success.info.length) unzipMsg = unzipMsg + '\nFor information\nsome LINK resources have been loaded but are not fully compliant, see : \n' + success.info.join('\n').replace(new RegExp(thing.parent, 'g'), '')
-		        	alert(unzipMsg)
-		        	view.refresh(thing.url)
-	        	})
-	        	.catch(e => alert('Cannot UNZIP ' + thing.url + ' ' + e))
-          }
+						// message
+                        let unzipMsg = 'UNZIP in ' + thing.parent + '\n'
+                        if (success.err.length) unzipMsg = '!!!! PARTIAL ' + unzipMsg + '\nSome LINK resources have not been loaded, see : \n' + success.err.join('\n') + '\n'
+                        if (success.info.length) unzipMsg = unzipMsg + '\nFor information\nsome LINK resources have been loaded but are not fully compliant, see : \n' + success.info.join('\n').replace(new RegExp(thing.parent, 'g'), '')
+                        alert(unzipMsg)
+                        view.refresh(thing.url)
+                    })
+	        	    .catch(e => alert('Cannot UNZIP ' + thing.url + ' ' + e))
+            }
         },
+
         addThing : async function(type) {
-					var url, name, res, linkOwner
-          // file, folder and .meta link
-					if (type === 'file' || type === 'folder') {
-            if(!this.newThing.name){
-               alert("You didn't supply a name!")
-               return;
-            }
-            view.hide('folderManager')
-            name = this.newThing.name
-            url  = this.folder.url
-            if (name.endsWith('.acl')) {
-            	return alert('To create acl you must use the "create acl" button !!!')
-            }
-            if (name === '.meta') {
-            	linkOwner = url
-            	const { meta: metaLink } = await fc.getItemLinks(linkOwner)
-            	url = sol.getParentUrl(metaLink)
-            }
-          // file or folder acl links
-					} else {
+            var url, name, res, linkOwner
+            
+            // file, folder and .meta link
+			if (type === 'file' || type === 'folder') {
+                if(!this.newThing.name){
+                alert("You didn't supply a name!")
+                return;
+                }
+                view.hide('folderManager')
+                name = this.newThing.name
+                url  = this.folder.url
+                if (name.endsWith('.acl')) {
+                    return alert('To create acl you must use the "create acl" button !!!')
+                }
+                if (name === '.meta') {
+                    linkOwner = url
+                    const { meta: metaLink } = await fc.getItemLinks(linkOwner)
+                    url = sol.getParentUrl(metaLink)
+                }
+
+            // file or folder acl links
+			} else {
 	        	linkOwner = type === 'folderAcl' ? this.folder.url : this.file.url
 	        	let links = await fc.getItemLinks(linkOwner)
 	        	url = sol.getParentUrl(links.acl)
 	        	name = sol.getItemName(links.acl)
-					}	
+			}	
 
-          // check if resource exists
-          res = await fc.itemExists(url+name)
-          if (res) {
-						if (name.endsWith('.acl')) {
-							this.displayLinks = 'include'
-							app.get(this.folder)
-						}
-          	return alert('Cannot create resource :\n  '+url+name+ '\nalready exists !!!')
-          }
-            sol.add(url,name,type,linkOwner ).then( success => {
-                if(success){
-                    alert("Resource created: " + name)  // name should be end of success
-										if (name.endsWith('.acl') && this.displayLinks === 'exclude') {
-											this.displayLinks = 'include'
-											app.get(app.getLink(this.folder,'acl'))
-                    } else	view.refresh(this.folder.url)
+            // check if resource exists
+            res = await fc.itemExists(url + name)
+            if (res) {
+                if (name.endsWith('.acl')) {
+                    this.displayLinks = 'include'
+                    app.get(this.folder)
                 }
-                else alert("Couldn't create "+url+" "+sol.err)
-            })
-            .catch(err => {
-                console.log("Couldn't create\n" + url + "\n" + JSON.stringify(err))
-                alert("Couldn't create\n" + url + "\n" + err.message)
-            })
+              	return alert('Cannot create resource :\n  '+url+name+ '\nalready exists !!!')
+            }
+            sol.add(url,name,type,linkOwner )
+                .then( success => {
+                    if(success) {
+                        alert("Resource created: " + name)  // name should be end of success
+                        if (name.endsWith('.acl') && this.displayLinks === 'exclude') {
+                            this.displayLinks = 'include'
+                            app.get(app.getLink(this.folder,'acl'))
+                        } else	view.refresh(this.folder.url)
+                    }
+                    else alert("Couldn't create "+url+" "+sol.err)
+                })
+                .catch(err => {
+                    console.log("Couldn't create\n" + url + "\n" + JSON.stringify(err))
+                    alert("Couldn't create\n" + url + "\n" + err.message)
+                })
         },
+
         manageResource : function(thing){
 //            if(!this.perms.Control) return  // TBD should be write (control depend on withAcl and tested in rm,cp,add,upload)
             if(thing.type==="folder"){
@@ -291,10 +295,12 @@ var app = new Vue({
                 view.show('fileManager');
             }
         },
+
         getProfile : function(){ 
             var url =  this.webId.replace('#me','')
             view.refresh( url )
         },
+
         download : function(f){
             var a = document.createElement("a");
             a.href = f.url
@@ -302,6 +308,7 @@ var app = new Vue({
             a.dispatchEvent(new MouseEvent("click"));
             return false;
         },
+
         async downloadItem (file) {
             const data = await fc.readFile(file.url) // res.blob()
             const blob = new Blob([data]) //, { type: 'text/plain' })
@@ -315,131 +322,131 @@ var app = new Vue({
 //
 // SELECTOR MANAGER
 //
-				showFileOption: function() {
-				   let dropdown = document.getElementById("fileOptions")
-				   let sel = dropdown.selectedIndex
-				   let val = dropdown.options[sel].value
-				   for(f of document.getElementsByClassName("inputDisplay") ) {
-				     f.style.display="none"
-				   }
-				   if( val==="" ){
-				        return
-				   }
+        showFileOption: function() {
+            let dropdown = document.getElementById("fileOptions")
+            let sel = dropdown.selectedIndex
+            let val = dropdown.options[sel].value
+            for(f of document.getElementsByClassName("inputDisplay") ) {
+                f.style.display="none"
+            }
+            if( val==="" ){
+                return
+            }
 /*				   if( val==="patchFile" ){
-				        if (confirm("Creating acl for "+this.file.url)) {
-				        	app.addThing('fileAcl')
-				        }
-							  return
-				   }
-*/
-				   if( val==="deleteFile" ){
-				        dropdown.selectedIndex=0
-				        document.getElementById("newFile").style.display="block"
-				        app.rm(this.file)
-				        return
-				   }
-				   if( val==="deleteAcl" ){
-				        app.rm(app.getLink(this.file, 'acl'))
-				        dropdown.selectedIndex=0
-				        document.getElementById("newFile").style.display="none"
-				        return
-				   }
-				   if( val==="createAcl" ){
-				        if (confirm("Creating acl for "+this.file.url)) {
-				        	app.addThing('fileAcl')
-				        }
-							  return
-				   }
-				   if( val==="copyFile" || val==="moveFile"){
-				        document.getElementById("aclOptionsFile").style.display="block"
-				        document.getElementById("mergeOptionsFile").style.display="block"
-				   }
-				   if( val==="zipFile"){
-				        document.getElementById("aclOptionsFile").style.display="block"
-				   }
-				   if( val==="unzipFile"){
-				        document.getElementById("aclOptionsFile").style.display="block"
-				        document.getElementById("mergeOptionsFile").style.display="block"
-				   }
-				   let documentId = document.getElementById(val)
-				   if (documentId) documentId.style.display="block"
-				},
-				showFolderOption: function() {
-				   let dropdown = document.getElementById("folderOptions")
-				   let sel = dropdown.selectedIndex
-				   let val = dropdown.options[sel].value
-				   for(f of document.getElementsByClassName("inputDisplay") ) {
-				     f.style.display="none"
-				   }
-				   if( val==="" ){
-				        return
-                   }
-                   if( val==="renamePod"){
-                       app.renamePod(this.folder, '')
-                       return
-                   }
-                   if( val==="testRenamePod"){
-                    app.renamePod(this.folder, 'test')
-                    return
+                if (confirm("Creating acl for "+this.file.url)) {
+                    app.addThing('fileAcl')
                 }
+                        return
+            }
+*/
+            if( val==="deleteFile" ){
+                dropdown.selectedIndex=0
+                document.getElementById("newFile").style.display="block"
+                app.rm(this.file)
+                return
+            }
+            if( val==="deleteAcl" ){
+                app.rm(app.getLink(this.file, 'acl'))
+                dropdown.selectedIndex=0
+                document.getElementById("newFile").style.display="none"
+                return
+            }
+            if( val==="createAcl" ){
+                if (confirm("Creating acl for "+this.file.url)) {
+                    app.addThing('fileAcl')
+                }
+                        return
+            }
+            if( val==="copyFile" || val==="moveFile"){
+                document.getElementById("aclOptionsFile").style.display="block"
+                document.getElementById("mergeOptionsFile").style.display="block"
+            }
+            if( val==="zipFile"){
+                document.getElementById("aclOptionsFile").style.display="block"
+            }
+            if( val==="unzipFile"){
+                document.getElementById("aclOptionsFile").style.display="block"
+                document.getElementById("mergeOptionsFile").style.display="block"
+            }
+            let documentId = document.getElementById(val)
+            if (documentId) documentId.style.display="block"
+        },
+        showFolderOption: function() {
+            let dropdown = document.getElementById("folderOptions")
+            let sel = dropdown.selectedIndex
+            let val = dropdown.options[sel].value
+            for(f of document.getElementsByClassName("inputDisplay") ) {
+                f.style.display="none"
+            }
+            if( val==="" ){
+                return
+            }
+            if( val==="renamePod"){
+                app.renamePod(this.folder, '')
+                return
+            }
+            if( val==="testRenamePod"){
+            app.renamePod(this.folder, 'test')
+            return
+            }
 
-                   if( val==="deleteFolder" ){
-  				      //  alert("Deleting folder "+this.folder.url)
-				        dropdown.selectedIndex=0
-				        document.getElementById("newFile").style.display="block"
-				        app.rm(this.folder)
-				        return
-				   }
-				   if( val==="deleteAcl" ){
-  				      //  alert("Deleting acl of folder "+this.folder.url)
-				        app.rm(app.getLink(this.folder, 'acl'))
-				        dropdown.selectedIndex=0
-				        document.getElementById("newFile").style.display="none"
-				        return
-				   }
-				   if( val==="createAcl" ){
-				        if (confirm("Creating acl for "+this.folder.url)) {
-				        app.addThing('folderAcl')
-				        }
-							  return
-				   }
-				   if( val==="copyFolder" || val=="moveFolder"){
-				        document.getElementById("mergeOptionsFolder").style.display="block"
-				        document.getElementById("aclOptionsFolder").style.display="block"
-				   }
-				   if( val==="zipFolder"){
-				        document.getElementById("aclOptionsFolder").style.display="block"
-				   }
-				   let documentId = document.getElementById(val)
-				   if (documentId) documentId.style.display="block"
-				},
-				doAction : function(com) {
-				    let place = document.getElementById( com + "Input")
-				    if(!place.value) { alert("Required field missing!"); return }
-				    if( com==="newFile" ){
-				        this.newThing.name = place.value
-				        app.addThing('file')
-				        place.value = ""
-				    }
-				    else if( com==="newFolder" ){
-				        this.newThing.name = place.value
-				        app.addThing('folder')
-				        place.value = ""
-				    }
-				    else if( com==="copyFolder" ){
-				        this.newThing.folder = place.value
-				        app.cp('folder', 'copy')
-				        place.value = ""
-				    }
-				    else if( com==="moveFolder" ){
-				        this.newThing.folder = place.value
-				        app.cp('folder', 'move')
-				        place.value = ""
-				    }
-				    else if( com==="uploadToFolder" ){
-				        app.upload("uploadToFolderInput")
-				    }
-				},
+            if( val==="deleteFolder" ){
+                //  alert("Deleting folder "+this.folder.url)
+                dropdown.selectedIndex=0
+                document.getElementById("newFile").style.display="block"
+                app.rm(this.folder)
+                return
+            }
+            if( val==="deleteAcl" ){
+                //  alert("Deleting acl of folder "+this.folder.url)
+                app.rm(app.getLink(this.folder, 'acl'))
+                dropdown.selectedIndex=0
+                document.getElementById("newFile").style.display="none"
+                return
+            }
+            if( val==="createAcl" ){
+                if (confirm("Creating acl for "+this.folder.url)) {
+                app.addThing('folderAcl')
+                }
+                        return
+            }
+            if( val==="copyFolder" || val=="moveFolder"){
+                document.getElementById("mergeOptionsFolder").style.display="block"
+                document.getElementById("aclOptionsFolder").style.display="block"
+            }
+            if( val==="zipFolder"){
+                document.getElementById("aclOptionsFolder").style.display="block"
+            }
+            let documentId = document.getElementById(val)
+            if (documentId) documentId.style.display="block"
+        },
+        doAction : function(com) {
+            let place = document.getElementById( com + "Input")
+            if(!place.value) { alert("Required field missing!"); return }
+            if( com==="newFile" ){
+                this.newThing.name = place.value
+                app.addThing('file')
+                place.value = ""
+            }
+            else if( com==="newFolder" ){
+                this.newThing.name = place.value
+                app.addThing('folder')
+                place.value = ""
+            }
+            else if( com==="copyFolder" ){
+                this.newThing.folder = place.value
+                app.cp('folder', 'copy')
+                place.value = ""
+            }
+            else if( com==="moveFolder" ){
+                this.newThing.folder = place.value
+                app.cp('folder', 'move')
+                place.value = ""
+            }
+            else if( com==="uploadToFolder" ){
+                app.upload("uploadToFolderInput")
+            }
+        },
 
 //
 // EDITOR & FILE MANAGER SETTINGS
