@@ -265,7 +265,7 @@ var app = new Vue({
                     this.displayLinks = 'include'
                     app.get(this.folder)
                 }
-              	return alert('Cannot create resource :\n  '+url+name+ '\nalready exists !!!')
+              	return alert('Cannot create resource :\n  '+url+name+ '\nallready exists !!!')
             }
             sol.add(url,name,type,linkOwner )
                 .then( success => {
@@ -280,7 +280,7 @@ var app = new Vue({
                 })
                 .catch(err => {
                     console.log("Couldn't create\n" + url + "\n" + JSON.stringify(err))
-                    alert("Couldn't create\n" + url + "\n" + err.message)
+                    alert("Couldn't create\n" + url + "\n" + JSON.stringify(Object.keys(err)) +'\n'+ JSON.stringify(Object.values(err))+err.message)
                 })
         },
 

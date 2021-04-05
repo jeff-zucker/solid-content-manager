@@ -8,7 +8,7 @@
       solidHandler, solidSession, editor, solid-file-client
 -->
 <script src="https://cdn.jsdelivr.net/npm/solid-auth-client@2.3.0/dist-lib/solid-auth-client.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/solid-file-client@1.2.5/dist/window/solid-file-client.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/solid-file-client@1.1.0/dist/window/solid-file-client.bundle.js"></script>
 <!-- <script src="./dist/window/solid-file-client.bundle.js"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/mimer@1.0.0/dist/mimer.min.js"></script> --->
 <script src="./dist/mimer.min.js"></script>
@@ -121,7 +121,7 @@ input.plain {
     <option value="downloadFile" selected>download file</option>
     <option value="copyFile">copy file</option>
     <option value="moveFile">move file</option>
-    <option value="patchFile">patch_to file</option>
+    <option value="patchFile">patch file</option>
     <option value="deleteFile">delete file</option>
     <option value="zipFile">zip file</option>
     <option value="unzipFile">unzip File</option>
@@ -173,7 +173,7 @@ input.plain {
     <input id="patchFileInput" v-model="newThing.parentFolder" placeholder=" full path (leave blank to patch a file within same folder)">
     <br><label>new name :</label>
     <input v-model="newThing.name" 
-	    placeholder=" (patch_to file name with extension, without path)"
+	    placeholder=" (patch file name with extension, without path)"
 	    value="{{decodeURI(file.name)}}">
     <br><button v-on:click="cp(file, 'patch')">patch</button>
   </p>
@@ -329,8 +329,6 @@ input.plain {
 		create new file or folder</span> : click on the current folder's icon</li>
 		<li><span class="label">
 		copy,move,delete,download file</span> : click on the file's icon</li>
-		<li><span class="label">
-		patch_to a file</span> : click on the patch file's icon (.n3 or .spql extension)</li>
 		<li><span class="label">
 		copy,move,delete,upload into folder</span> : move into the folder, click on its icon</li>
 		<hr>
