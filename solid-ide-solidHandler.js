@@ -40,8 +40,8 @@ this.deleteResource = async function(url, options = { withLinks: 'include' }) { 
 
 this.createResource = async function(url,content,linkOwner) {
   self.err = ''
-	let contentType = window.Mimer(url) // fc.guessFileType(url)
-	if(!content)  content = contentType === 'application/json' ? content = "{}" : ""  // replace "file" not allowed for .meta
+	let contentType = window.mime.getType(url)
+	if(!content)  content = contentType.includes('json') ? "{}" : ""
 	// if no extension 'application/octet-stream' is default and not anymore 'text/turtle'
 	if (url === (this.getRoot(url)+'profile/card')) {
 		self.err = '\nedit of profile/card is not allowed in solid-ide'  // TODO 
@@ -65,7 +65,7 @@ this.isValidTtl = async function(url, content, linkOwner) {
 	  	content = await fc.acl.contentParser(linkOwner, content)
 	  	  .then(agents => fc.acl.createContent(linkOwner, agents))
 	  }
-    const options = { aclMode: 'Control', aclDefault: 'must' }
+    const options = { aclMode: 'Read', aclDefault: 'must' } // aclMode: 'Control'
 	  isValid = await fc.isValidAcl(linkOwner, content, options)
   }
   else isValid = await fc.isValidRDF(url, content)
@@ -92,55 +92,6 @@ this.getAclInherit = async (url, toName) => {
 	}
 }
 
-/* this.defaultAcl = (url, webId) =>	{
-	var card = `/profile/card#`
-	let agent = webId.includes(card) ? `c:me` : `<${webId}>`
-	const accessTo = `./${self.getItemName(url).split('.acl')[0]}`
-	let resource = `<${accessTo}>;   # accesst to the resource`
-	if (url.endsWith('/.acl')) {
-	resource = '<./>;   # access to the resource\n'
-	+'    acl:default <./>;   # All resources will inherit this authorization, by default'
-	}
-	var contentAcl = `# Example of default ACL resource
-@prefix : <#>.
-@prefix c: <${card}>.
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
-# @prefix tes: <../address/Group/test.ttl#>.   # example of vcard group
-
-# Readable by the public
-:public
-    a acl:Authorization;   # acl type authorization
-    acl:agentClass foaf:Agent;   # everybody
-    acl:accessTo ${resource}
-    acl:mode acl:Read.   # only Read authorization
-
-# Owner has full access to every resource in the folder.
-# Other agents have no access rights, unless specifically authorized.
-:owner
-    a acl:Authorization;
-    acl:agent ${agent};   # agent's webId
-    acl:accessTo ${resource}
-    acl:mode acl:Read, acl:Write, acl:Control.   # The owner has all of the access modes allowed
-    
-# help : an acl block is composed of :
- # - a rdf authorization
-  ## :ReadWrite
- # - a combination of one or more agent/agentClass/group/origin
-  ##    acl:agent c:me;                           # agent
-  ##    acl:agentClass foaf:Agent;                # everybody
-  ##    acl:agentClass acl:AuthenticatedAgent     # logged in agent
-  ##    acl:agentGroup tes:this                   # group
-  ##    acl:origin <https://pod.solidcommunity.net>  # trusted app/agent bot
- # - the accessTo resource
-  ##    acl:accessTo <${accessTo}>;
- # - for a folder .acl an acl:default
-  ##    acl:default </>;
- # - a combination of authorization : Read/Append/Write/Control
-  ##    acl:mode acl:Read, acl:Write.
-`
-	return contentAcl
-} */
 
 this.rm = async function(url) {
 	if (url.endsWith('/')) { return await fc.deleteFolder(url) }
@@ -159,7 +110,7 @@ this.get = async function(thing) {
     thing = thing || self.urlFromQueryString()  // TBD self.... may be undefined
     if(typeof(thing)==='string') thing = { url:thing }
     if(! thing.type) {
-      thing.type = thing.url.endsWith('/') ? "folder" : window.Mimer(thing.url)
+      thing.type = thing.url.endsWith('/') ? "folder" : window.mime.getType(thing.url)
       if (thing.url.endsWith('.acl') || thing.url.endsWith('.meta')) { thing.type = 'text/turtle' }
 
     }
@@ -174,7 +125,7 @@ this.get = async function(thing) {
       folder = await this.addPermsAndLinks(folder)
       folder.files.map( async item => [item, ...[await this.addPermsAndLinks(item)]].flat())
       // add folder content
-      var response = await fc.fetch(thing.url, { headers: { "Accept": "text/turtle" }})   // await fc.fetch
+      var response = await fc.fetch(thing.url, { headers: { "Accept": "text/turtle" }})
 	    if(!response.ok){ self.err=fc.err; return false }
 	    var body = await response.text()
       folder.content = body
@@ -235,6 +186,7 @@ this.checkPerms = async function (url) {
     mode.forEach(element => {
         if (acl.split(',')[0].includes(element.toLowerCase())) perms[element] = true
     })
+    // alert('permissions ' + url + '\n' + JSON.stringify(perms))
     return perms
 }
 
