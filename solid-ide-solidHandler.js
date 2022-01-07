@@ -41,6 +41,7 @@ this.deleteResource = async function(url, options = { withLinks: 'include' }) { 
 this.createResource = async function(url,content,linkOwner) {
   self.err = ''
 	let contentType = window.mime.getType(url)
+  alert('contentType ' + contentType + window.mime.getType('text.md'))
 	if(!content)  content = contentType.includes('json') ? "{}" : ""
 	// if no extension 'application/octet-stream' is default and not anymore 'text/turtle'
 	if (url === (this.getRoot(url)+'profile/card')) {
