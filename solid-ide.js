@@ -3,7 +3,8 @@
 */
 const sol = new SolidHandler()      // from solid-ide-solidHandler.js
 // const zf = new SolidZip()
-var auth = solid.auth;
+// var auth = solid.auth; // solid legacy solid-auth-client
+var auth = solidClientAuthentication // inrupt solid-client-authn-browser
 const ss = new SolidSession(auth)
 const fc = new SolidFileClient(auth)         // from solid-file-client.bundle.js
 const zip = new JSZip()
