@@ -87,21 +87,14 @@ this.checkSession = async () => {
   // After a successful login, this will also read the profile from your POD.
   //
   // @see https://docs.inrupt.com/developer-tools/javascript/client-libraries/tutorial/authenticate-browser/
-	alert('auth ' + Object.keys(self._auth))
-	if (self._auth.getDefaultSession?.info?.isLoggedIn) {
-		let webId = self._auth.getDefaultSession.info.webId
-		self.log('webId ' + webId)
-		return webId
-	}
   try {
       await self._auth.handleIncomingRedirect({ restorePreviousSession: true });
 
       const session = self._auth.getDefaultSession();
-      alert('session.info.isLoggedIn ' + session.info.isLoggedIn)
       if (!session.info.isLoggedIn)
           return false;
 
-      user = session.info.webId // await fetchUserProfile(session.info.webId);
+      let user = session.info.webId
 
       return user;
   } catch (error) {
