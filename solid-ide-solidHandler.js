@@ -40,20 +40,25 @@ var SolidHandler = function(){
   
   this.createResource = async function(url,content,linkOwner) {
     self.err = ''
-    let contentType = window.mime.getType(url) // window.Mimer(url) // fc.guessFileType(url)
-    if(!content)  content = contentType.includes('json') ? content = "{}" : ""  // replace "file" not allowed for .meta
+    // find contentType
+    let contentType = window.mime.getType(url) // fc.guessFileType(url)
+    if (url.endsWith('.acl') || url.endsWith('.meta') || url.endsWith('/profile/card')) contentType = 'text/turtle'
     // if no extension 'application/octet-stream' is default and not anymore 'text/turtle'
+    if (!contentType) contentType = 'application/octet-stream'
+    // initialize content
+    if(!content)  content = contentType.includes('json') ? content = "{}" : ""  // replace "file" not allowed for .meta
+    // do not allow profile/card
     if (url === (this.getRoot(url)+'profile/card')) {
       self.err = '\nedit of profile/card is not allowed in solid-ide'  // TODO 
       return false
     }
-    if (url.endsWith('.acl') || url.endsWith('.meta') || url.endsWith('/profile/card')) contentType = 'text/turtle'
+    // check content is valid turtle, valid ACL
     if (contentType === 'text/turtle') content = await self.isValidTtl(url, content, linkOwner)
   
     if (self.err) return false
     return await fc.createFile(url,content,contentType)
   }
-  
+
   this.isValidTtl = async function(url, content, linkOwner) {
     self.err = ''
     let isValid
@@ -65,7 +70,7 @@ var SolidHandler = function(){
         content = await fc.acl.contentParser(linkOwner, content)
           .then(agents => fc.acl.createContent(linkOwner, agents))
       }
-      const options = { aclMode: 'Read', aclDefault: 'must' } // replace Control since owner has 'Control'
+      const options = { aclMode: 'Read', aclDefault: 'must' } // used to be 'Control change with introduction of Owner
       isValid = await fc.isValidAcl(linkOwner, content, options)
     }
     else isValid = await fc.isValidRDF(url, content)
@@ -78,7 +83,7 @@ var SolidHandler = function(){
     if (isValid.info.length) self.info = `\n\nFor information :\n  ${isValid.info.join('\n  ')}`
     return content
   }
-  
+
   this.getAclInherit = async (url, toName) => {
     for (i=1; i<url.split('/').length; i++) {
       const links = await fc.getItemLinks(url, { links: 'include' }) //, withAcl: true, withMeta: false })
@@ -107,12 +112,14 @@ var SolidHandler = function(){
   @prefix acl: <http://www.w3.org/ns/auth/acl#>.
   @prefix foaf: <http://xmlns.com/foaf/0.1/>.
   # @prefix tes: <../address/Group/test.ttl#>.   # example of vcard group
+  
   # Readable by the public
   :public
       a acl:Authorization;   # acl type authorization
       acl:agentClass foaf:Agent;   # everybody
       acl:accessTo ${resource}
       acl:mode acl:Read.   # only Read authorization
+  
   # Owner has full access to every resource in the folder.
   # Other agents have no access rights, unless specifically authorized.
   :owner
@@ -157,7 +164,7 @@ var SolidHandler = function(){
       thing = thing || self.urlFromQueryString()  // TBD self.... may be undefined
       if(typeof(thing)==='string') thing = { url:thing }
       if(! thing.type) {
-        thing.type = thing.url.endsWith('/') ? "folder" : window.mime.getType(thing.url) // window.Mimer(thing.url)
+        thing.type = thing.url.endsWith('/') ? "folder" : window.mime.getType(thing.url)
         if (thing.url.endsWith('.acl') || thing.url.endsWith('.meta')) { thing.type = 'text/turtle' }
   
       }
@@ -335,3 +342,4 @@ var SolidHandler = function(){
   }
   if (typeof(module)!="undefined" )  module.exports = solidAuthSimple()
   /* END */
+  
