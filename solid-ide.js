@@ -3,7 +3,8 @@
 */
 const sol = new SolidHandler()      // from solid-ide-solidHandler.js
 // const zf = new SolidZip()
-var auth = solid.auth;
+// var auth = solid.auth; // solid legacy solid-auth-client
+var auth = solidClientAuthentication // inrupt solid-client-authn-browser
 const ss = new SolidSession(auth)
 const fc = new SolidFileClient(auth)         // from solid-file-client.bundle.js
 const zip = new JSZip()
@@ -666,7 +667,7 @@ var fileDisplay = new Vue({
             this.file = app.currentThing;
             this.file.content = content;
             if(!this.file.type && this.file.url) 
-                this.file.type = window.Mimer(this.file.url)
+                this.file.type = window.mime.getType(this.file.url)
                 if (this.file.url.endsWith('.acl') || this.file.url.endsWith('.meta')) this.file.type = 'text/turtle'
             this.zed.setModeFromType(this.file.type)
             this.zed.setContents(content)
