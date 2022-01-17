@@ -41,7 +41,6 @@ var SolidSession = function(auth) {
 } */
 this.popupLogin = async () => {
   const loginUrl = self.getLoginUrl()
-  alert('loginUrl ' + loginUrl + ' ' + window.location.href.split('?')[0])
   await self._auth.login({
       oidcIssuer: loginUrl,
       redirectUrl: window.location.href.split('?')[0],
