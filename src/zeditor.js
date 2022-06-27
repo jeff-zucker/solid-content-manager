@@ -1,7 +1,7 @@
 import {Modal} from './solid-components/view/modal.js';
 import {CU} from    './solid-components/utils.js';
 import {Form} from  './solid-components/view/form.js';
-import {LoadProfile} from '../../loadProfile/src/loadProfile.js';
+import {LoadProfile} from '../node_modules/solid-load-profile/src/loadProfile.js';
 
 let u = new CU();
 
@@ -12,8 +12,6 @@ var zeditor = {
   currentFile : {},
   lastVisited : "",
 }
-
-// var currentFile;
 
 /* FILE MANAGEMENT
      save loadZeditor
@@ -51,7 +49,7 @@ var zeditor = {
     zeditor.fileType = UItype || i.type ;
     if(UItype==="DataTemplate"){
       const form = await (new Form()).render({
-        form:"http://localhost:3101/solid/zeditor/sparql-form.ttl#this",
+        form:window.origin+"/solid/solid-ide/templates/sparql-form.ttl#this",
         formSubject:u.getMainSubject(uri),
       });
       // document.getElementById('formInEditor').innerHTML = "";
@@ -102,6 +100,7 @@ var zeditor = {
     let uri = zeditor.currentFileUrl;
     let string = zeditor.editor.getContents();
     let i = zeditor.currentFile;
+/*
     if( zeditor.currentProject) {
       await saveOutputPage(uri,string,i);
       loadZeditor(uri); // already saved by form, no need to resave
@@ -110,6 +109,7 @@ var zeditor = {
     else {
       alert("File Save");
     }
+*/
     try {
       let response = await u.PUT(uri,string,i.contentType);
       if(!response.ok) alert(response)
@@ -215,8 +215,14 @@ var zeditor = {
     async function ensureConfiguration(webid){
       let profile = new LoadProfile();
       await profile.loadFullProfile(webid);
+      let structure = profile.structure();
+      let storages = structure.storages;
+      let types = (structure.registrations)["http://www.w3.org/ns/ui#PageDefinition"] || {instances:[]};
+/*
       let storages = profile.storages();
-      let types = (profile.types())[UI.ns.ui('PageDefinition').value] || {instances:[]};
+      let types = (profile.registrations())[UI.ns.ui('PageDefinition').value] || {instances:[]};
+      let types = (profile.registrations())[UI.ns.ui('PageDefinition').value] || {instances:[]};
+*/
       hosts = storages.concat(types.instances);
       return hosts;
     }
@@ -230,13 +236,13 @@ var zeditor = {
       "https://jeff-zucker.solidcommunity.net:8443/",
     ];
 */
-  let wantedURL = "http://localhost:3101/solid/zeditor/examples/test.gv";
+  let wantedURL = window.origin + "/solid/solid-ide/examples/test.gv";
   function getWanted(){ return u.fileInfo(wantedURL)||hosts[0] }
 
   async function makeHostSelector(container){
     zeditor.currentProject="";
     removeClass('#left-column','project');
-    await ensureConfiguration("http://localhost:3101/profile/card#me");
+    await ensureConfiguration(window.origin+"/profile/card#me");
     let wanted=getWanted();
     u.makeSelector(hosts,async(e)=>{await makeContainerSelector(e)},wanted.host,"#hostSelector");
     await makeContainerSelector(wanted.url);
