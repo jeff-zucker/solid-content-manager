@@ -1,0 +1,297 @@
+body, #shadowBody {
+    overflow:hidden;
+    margin:0;
+    padding:0;
+    background:#002240;
+    font-size:16px;
+}
+#shadowBody { display:none; }
+#shadowBody.loading { z-index:200001; display:block;  height:100vh; width:100vw; }
+
+#settings button {
+  display:block;
+  margin:0.5rem !important;
+  margin-left:1rem !important;
+  margin-right:1rem !important;
+  width:85%;
+}
+#project button {
+  display:block;
+  margin:0.5rem !important;
+  margin-left:1rem !important;
+  margin-right:1rem !important;
+  width:85%;
+  background:#557795 !important;
+}
+#project button.selected {
+  color:orange;
+}
+#project {
+  margin-left:0.5rem;
+  color:#c0c0ff !important;
+}
+#project b {
+  margin-top:0.5rem;
+}
+#settings,#editors {
+  margin-left:0.5em;
+}
+#editors {
+  margin-top:0.5em;
+}
+#display {
+   overflow:auto;
+   background:#f8f8ff;
+}
+#hostSelector option, #containerSelector option {
+  background:#88aac8;
+}
+#e1,#display {
+  background:beige;
+  background:#7799b7;
+  background:#88aac8;
+  height:48vh;
+  max-height:48vh !important;
+  position:absolute;
+  top:0;
+  right:0;
+  left:20rem;
+  margin:0 !important;
+}
+
+#left-column #project { display:none; }
+#left-column.project #containerSelector,
+#left-column.project #resourceSelector { display:none; }
+#left-column.project #project { display:block; }
+
+#e1 {
+  background:transparent;
+  top:50vh;
+  bottom:0;
+}
+#formInEditor {
+  z-index:30000;
+  background:#002240;
+  overflow:auto;
+}
+#editor, #formInEditor {
+  height:46vh;
+  position:absolute;
+  top:54vh;
+  right:0;
+  left:20rem;
+  bottom:0;
+  margin:0 !important;
+}
+#editor * {
+  font-family : monospace !important;
+  font-size: 16px !important;
+  direction:ltr !important;
+  text-align:left !important;
+}
+
+.ace_cursor {
+  animation: none!important;
+} /* disable cursor blinking!!! */
+
+#settings, #settings select {
+//  min-width:20rem;
+  width:18rem;
+}
+#left-column {
+  width:20rem;
+  padding-left:0.5rem;
+}
+#settings { 
+   margin-top:0;
+   margin-bottom:0.5rem;
+   color:#ddddff;
+}
+#settings select {
+   width:100%;
+   margin-top:0.5rem;
+   margin-bottom:0.5rem;
+background-color: #C2D2E4;
+background-color: #0A4C95;
+    background:#224462;
+    background:#335573;
+    background:#557795;
+    font-size:100%;
+  }
+  #settings select option {
+    padding-top:0.25rem;
+  }
+
+
+  select,input,button,input[type="button"] {
+//    font-size:16px;
+    border:1px solid transparent !important;
+    padding:0.2rem !important;
+    border-radius:0.2rem !important;
+  }
+  #login input{
+    padding:0 !important;
+  }
+  button {
+    cursor:pointer !important;
+    background:#c0c0ff !important;
+  }
+/*
+#editors {
+  width:100%;
+  flex-grow:1;
+}
+#e2 {
+  margin-top:1em;
+}
+textarea {
+  width:100%;
+  margin-right:0.5em;
+  height:43vh;
+  background:#002240;
+  background:#c0c0ff;
+  background:#ddf;
+  font-size:100%;
+  border:1px solid transparent;
+  border-radius:0.2rem;
+}
+
+  .menu {
+    color:#0074da;
+    font-weight:bold;
+    color:#c0c0ff;
+    text-align:left;
+//    padding-top:0.75rem;
+//    padding-left:0;;
+  }
+  .menu button {
+    margin-left:0.2rem;
+  }
+  .menu button, .menu select, .menu input {
+    font-size:small;
+  }
+*/
+    }
+.menu input {
+    color:#0074da;
+background:transparent;
+font-weight:bold;
+}
+
+* { 
+  box-sizing : border-box;
+  font-family:Verdana,Arial,Helvetica,Sans-Serif; 
+}
+
+.button {
+    cursor:pointer;
+    color:orange;
+    font-size:1.25rem;
+  }
+.previous, .next {
+  display:inline-block;
+  margin-right:0.6rem;
+  margin-top:0.5rem;
+  font-weight:bold;
+}
+.next {
+  margin-right:1.2rem;
+}
+#left-column.project .previous, #left-column.project .next { display:none; }
+
+.screen.button button,
+.menu.button button {
+    display:inline-block;
+    margin-top:0.5rem;
+    margin-left:0.5rem;
+    padding:0 !important;
+    background:transparent !important;
+    cursor:pointer;
+    color:orange;
+    font-size:1.25rem;
+}
+.menu.button button:after {
+  content: "\2630"; /* hamburger menu */
+}
+.screen.button:after {
+  content: "\2180"; /* split circle */
+}
+.screen.button {
+  margin:0.5rem !important;
+}
+.menu .url {
+  color:#0074da;
+  color:#ddf;
+//  font-size:small;
+}
+#load:after {
+  content: "\21c8"; /* two up arrows */
+}
+#save:after, #save2:after {
+  content: "\21ca"; /* two down arrows */
+  content: "\21e9"; /* thick down arrow */
+}
+/*
+270F	PENCIL
+2714	HEAVY CHECK MARK
+✓	2713	CHECK MARK
+*/
+/*
+body.noMenu #e1, body.noMenu #editor {  display:none; }
+body.noMenu #display { bottom:0; height:100vh; max-height:100vh !important; }
+*/
+body.display #e1      {  display:none; }
+body.display #editor  {  display:none; }
+body.display #display { bottom:0; height:100vh; max-height:100vh !important; }
+
+body.editor #e1      {  top:0; }
+body.editor #editor  {  top:5vh; bottom:0; }
+body.editor #display { display:none; }
+
+#currentFileUrl {
+  display:table-cell;
+  font-size:small;
+}
+
+body {
+  color:#ddddff;
+  padding-top:0 !important;
+  margin-top:0 !important;
+}
+
+.formArea {                                                                    
+    text-align:right;                                                          
+    display:none;                                                              
+    line-height:2em;                                                           
+    margin-top:1em;                                                            
+    margin-left:1em;                                                           
+    border-radius:5px;                                                         
+    padding:1em;                                                               
+    background-color:rgba(125,180,200,2);                                      
+    border:1px solid rgba(50,75,90,10);                                        
+    height:auto;                                                               
+}                                                                              
+.formButtons {                                                                 
+    margin-top:1em;                                                            
+    text-align:center;                                                         
+}                                                                              
+.formButtons button {                                                          
+    margin-right:1em;                                                          
+}           
+.SolidSignInOrSignupBox {
+  padding:0 !important;
+  background:transparent;
+}
+#login input{
+  display:inline-block;
+  margin-top:0.6rem;
+  margin-left:0.25rem;
+  border:1px solid orange !important;
+  border-radius:0.2rem !important;
+  padding:0 !important;
+  background:transparent !important;
+  color:orange;
+  padding-left:0.25rem !important;
+  padding-right:0.25rem !important;
+  cursor:pointer;
+}

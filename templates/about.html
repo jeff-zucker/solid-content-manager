@@ -1,0 +1,47 @@
+<div id="prefix-query" style="font-size:large">
+  <div>Enter a prefix (foaf,skos,etc.) to lookup its namespace</div>
+  <input placeholder="" style="padding:1em">
+  <button style="padding:1em">Search prefix.cc</button>
+  <h1></h1>
+</div>
+<script type="module">
+
+    let button = document.querySelector("#prefix-query button");
+    let input  = document.querySelector("#prefix-query input")
+
+    async function findPrefix(){
+      let vocab = input.value;
+      let response = await fetch("http://prefix.cc/"+vocab);
+      let resultsArea = document.querySelector("#prefix-query h1");
+      resultsArea.innerHTML = await response.text();    
+      let prefix = resultsArea.querySelector(".uri").innerText;
+      resultsArea.innerHTML = prefix;
+    }
+
+  button.addEventListener('click',()=>{
+    findPrefix();
+  });
+  input.addEventListener("keypress",(e)=>{
+     if(e.key==="Enter") findPrefix();
+  });
+
+</script>
+
+<hr>
+<h1>Solid IDE</h1>
+
+<p>An IDE and Pod-Manager for Solid</p>
+
+<p><b>version</b> 2.0-alpha</p>
+
+<p><b>date</b> 2022-06-21</p>
+
+<p><b>author</b> Jeff Zucker</p>
+
+<p><b>repo</b> <a href="https://github.com/jeff-zucker/solid-ide">https://github.com/jeff-zucker/solid-ide</a>
+
+<p><b>Coming Soon</b> : pod management (copy,delete,move files & folders).</p>
+
+
+
+

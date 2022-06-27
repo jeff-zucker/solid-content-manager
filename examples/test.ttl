@@ -1,0 +1,3 @@
+@prefix scs: <https://linkedsoftwaredependencies.org/bundles/npm/@solid/community-server/dist/http/Operation#> .
+
+<#Foo> a scs:Operation .  

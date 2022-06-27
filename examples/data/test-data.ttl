@@ -1,0 +1,8 @@
+<#this> a <http://xmlns.com/foaf/0.1/Group>;
+    <http://xmlns.com/foaf/0.1/member> <#keisha>, <#juan>.
+<#keisha> a <http://xmlns.com/foaf/0.1/Person>;
+    <http://xmlns.com/foaf/0.1/name> "Keisha";
+    <http://xmlns.com/foaf/0.1/age> 40.
+<#juan> a <http://xmlns.com/foaf/0.1/Person>;
+    <http://xmlns.com/foaf/0.1/name> "Juan";
+    <http://xmlns.com/foaf/0.1/age> 36.

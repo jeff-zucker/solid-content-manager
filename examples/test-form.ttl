@@ -1,0 +1,28 @@
+@prefix : <#> .
+@prefix ui: <http://www.w3.org/ns/ui#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .  
+
+:this
+  a ui:Form ;
+  ui:formSubject <data/test-data.ttl#this> ;
+  ui:parts ( :People ) .
+
+:People
+  a ui:Multiple;
+  ui:part :Person;
+  ui:property foaf:member.
+
+:Person
+  a ui:Group;
+  ui:parts ( :Name :Age ).         
+
+:Name
+  a ui:SingleLineTextField ;
+  ui:size 60 ;
+  ui:label "Name" ;
+  ui:property foaf:name .
+
+:Age
+  a ui:IntegerField ;
+  ui:label "Age" ;
+  ui:property foaf:age .

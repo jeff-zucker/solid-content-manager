@@ -1,0 +1,24 @@
+{
+  "name": "Solid-IDE",
+  "version": "2.0.0-alpha",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jeff Zucker",
+  "contributor": "bourgeoa@github.com",
+  "license": "MIT",
+  "dependencies": {
+    "@comunica/query-sparql": "^2.2.1",
+    "ace-builds": "^1.5.3",
+    "d3": "^7.4.4",
+    "d3-graphviz": "^4.1.1",
+    "marked": "^4.0.16",
+    "solid-ui": "^2.4.22"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "description": ""
+}

@@ -1,0 +1,26 @@
+@prefix : <#> .
+@prefix ui: <http://www.w3.org/ns/ui#> .
+@prefix tmp: <tmp.ttl> .
+
+:this
+  a ui:Form ;
+    ui:formSubject <tmp.ttl> ;
+    ui:parts (:endpoint :query :template) .
+
+:endpoint
+  a ui:SingleLineTextField ;
+  ui:size 80;
+  ui:style "color:green";
+  ui:label "SPARQL Endpoint"@en ;
+  ui:property ui:endpoint .
+
+:query
+  a ui:MultiLineTextField ;
+  ui:label "SPARQL Query"@en ;
+  ui:property ui:query .
+
+:template
+  a ui:MultiLineTextField ;
+  ui:label "Query Results Template"@en ;
+  ui:property ui:template .
+  
