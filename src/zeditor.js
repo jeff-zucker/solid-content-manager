@@ -1,6 +1,6 @@
-import {Modal} from './solid-components/view/modal.js';
-import {CU} from    './solid-components/utils.js';
-import {Form} from  './solid-components/view/form.js';
+import {Modal} from '../../solid-ui-components/src/view/modal.js';
+import {Form} from  '../../solid-ui-components/src/view/form.js';
+import {CU} from    '../../solid-ui-components/src/utils.js';
 import {LoadProfile} from '../node_modules/solid-load-profile/src/loadProfile.js';
 
 let u = new CU();
@@ -41,12 +41,25 @@ var zeditor = {
 //    currentFile = i;
     zeditor.currentFile = i;
     if(!screen || screen!="editor") {
-      await u.show(i.contentType,uri,string,"#display",true)
+      let displayString = string;
+      let displayUri = uri;
+      let displayCtype = i.contentType;
+      /**
+       *  show project.outputPage on top, edit project.template on bottom
+       */
+      if(zeditor.currentProject &&zeditor.currentProject.pageTemplate===i.url){
+        let outputPage = zeditor.currentProject.outputPage;
+        let r = await u.loadFile(zeditor.currentProject.outputPage);
+        displayString = r.body;
+        displayUri = outputPage
+        displayCtype = r.contentType;
+      }
+      await u.show(displayCtype,displayUri,displayString,"#display",true)
     }
-//    document.querySelector(".menu .url").innerHTML = i.url;
+    document.querySelector(".menu .url").innerHTML = i.url;
     zeditor.currentFileURL = i.url;
 //    document.querySelector(".menu .type").innerHTML = UItype || i.type;
-    zeditor.fileType = UItype || i.type ;
+    zeditor.UItype = UItype;
     if(UItype==="DataTemplate"){
       const form = await (new Form()).render({
         form:window.origin+"/solid/solid-ide/templates/sparql-form.ttl#this",
@@ -62,12 +75,13 @@ var zeditor = {
     }
     else hideFormEditor();
     if(screen) toggleScreens(screen);
+    
 //    if(!screen || screen != "display") hideFormEditor();
     if(i.editable) {
 //      document.querySelector(".menu .url").innerHTML = i.url;
 //      document.querySelector(".menu .type").innerHTML = UItype || i.type;
       zeditor.currentFileUrl = i.url;
-      zeditor.fileType = UItype || i.type;
+      zeditor.UItype = UItype;
       if(format && format==="rdfa"){
         showRDFa(uri);
       }
@@ -96,38 +110,62 @@ var zeditor = {
       toggleScreens('display');
     }
   }
-  async function save(editorSelector){
+
+
+  /* SAVE
+  */
+  async function save(){
     let uri = zeditor.currentFileUrl;
     let string = zeditor.editor.getContents();
     let i = zeditor.currentFile;
-/*
-    if( zeditor.currentProject) {
-      await saveOutputPage(uri,string,i);
-      loadZeditor(uri); // already saved by form, no need to resave
-      return;
+
+    /* IF NOT IN FORM-EDITOR, SAVE THE CURRENT EDITOR CONTENT
+    */
+    if(!zeditor.formEditor) { // don't save forms, they save themselves
+      try {
+        let response = await u.PUT(i.url,string,i.contentType);
+        if(!response.ok) alert(response)
+//        else u.show(i.contentType,i.url,string,"#display",true);
+      }catch(e){console.log(e); }
     }
-    else {
-      alert("File Save");
+
+    /* IF PROJECT, ALSO SAVE PROJECT OUTPUT PAGE
+    */
+    let outputString = zeditor.currentProject ?await saveOutputPage(zeditor.currentProject,string) :"";
+
+console.log(zeditor);
+
+    /* RE-DISPLAY CURRENT EDITOR CONTENT IN DISPLAY AREA
+    */
+    if(zeditor.currentProject){
+      if(zeditor.currentProject.pageTemplate===i.url){
+        await showOutputPage(zeditor.currentProject)
+      }
+      else 
+        if(zeditor.UItype==="DataTemplate")
+          await u.show(i.contentType,i.url,null,"#display",true);
+        else
+          await u.show(i.contentType,i.url,string,"#display",true);
     }
-*/
-    try {
-      let response = await u.PUT(uri,string,i.contentType);
-      if(!response.ok) alert(response)
-    }catch(e){console.log(e); return; }
-    let uiType = u.getUItype(uri);
-    if(uiType==="PageTemplate") await saveOutputPage(uri,string,i);
-    await u.show(i.contentType,uri,string,"#display",true);
+    else 
+      await u.show(i.contentType,i.url,string,"#display",true);
   }
 
-  async function saveOutputPage(uri,string,i){
-    
-    let output = u.getUIterm(uri,'output');
-    let generated = await u.show("text/html",uri,string,null,true);
+  async function showOutputPage(project){ 
+    await u.crossLoad(project.url);
+    await u.show("text/html",project.outputPage,null,"#display",true); 
+  }
+
+  async function saveOutputPage(project,string){ 
+    let generated = (await u.show("rdf",project.url,null,null,true));
+    if(typeof generated !="string") generated = generated.outerHTML;
     try {
-      let r = await u.PUT(output,generated,'text/html');
+      let r = await u.PUT(project.outputPage,generated,'text/html');
       if(!r.ok) alert(r);
+      else { return generated; }
     }catch(e){console.log(e); return; }
   }
+
   async function showRDFa(uri){
     // uri ||= document.querySelector(`#e1 .url`).innerHTML;
     uri ||= zeditor.currentFileURL;
@@ -239,7 +277,7 @@ var zeditor = {
   let wantedURL = window.origin + "/solid/solid-ide/examples/test.gv";
   function getWanted(){ return u.fileInfo(wantedURL)||hosts[0] }
 
-  async function makeHostSelector(container){
+  async function makeStorageMenu(container){
     zeditor.currentProject="";
     removeClass('#left-column','project');
     await ensureConfiguration(window.origin+"/profile/card#me");
@@ -254,7 +292,7 @@ var zeditor = {
     if(!container) container = selectedHost;
     let i = u.fileInfo(container);
     let wanted=getWanted();
-    if(!i.isContainer && i.url !=wanted.url) return makeMenu(container);
+    if(!i.isContainer && i.url !=wanted.url) return makeProjectMenu(container);
     showFilePicker(zeditor.lastVisited);
     container = container.replace(/\/[^\/]*$/,'/');
     const ldp = UI.rdf.Namespace("http://www.w3.org/ns/ldp#");
@@ -359,29 +397,37 @@ var zeditor = {
     zeditor.currentProject="";
   }
   function showFormEditor(){
+    zeditor.formEditor = true;
     document.querySelector('#formInEditor').style.display="block";
   }
   function hideFormEditor(){
+    zeditor.formEditor = false;
     document.querySelector('#formInEditor').style.display="none";
   }
-  async function makeMenu(url2open){
+  function toggleMenu(){
+    let el = document.querySelector('#main-menu');
+    let current = el.style.display || "none" ;
+    if(current==="none") el.style.display="block";
+    else el.style.display="none";
+  }
+
+  async function makeProjectMenu(url2open){
     url2open = decodeURI(url2open);
     showProjectMenu(url2open);
-//    document.getElementById('left-column').classList.add('project');
-//    document.querySelector('#e1 .pageDefinition').innerHTML=url2open;
     await u.crossLoad(url2open);
     let project = u.getMainSubject(url2open);
     let type = u.getUItype(project);
     if(!type==="PageDefinition") return;
     let templateUrl = u.getObject(project,u.UIO('pageTemplate'));
     let template = await u.loadFile(templateUrl);
-    let p = {
+    let p = zeditor.currentProject = {
       url          : url2open,
       endpoint     : u.getObject(project,u.UIO('inputData')),
-      form         : u.getObject(project,u.UIO('inputForm')),
+      inputForm    : u.getObject(project,u.UIO('inputForm')),
       outputPage   : u.getObject(project,u.UIO('outputPage')),
-      parts        : u.getObjects(project,u.UIO('component')),
-      template     : template || ""
+      components   : u.getObjects(project,u.UIO('component')),
+      template : template || "",
+      pageTemplate : templateUrl,
     }
     let components = "";
     for(let c of UI.store.match(project,u.UIO('component'))){
@@ -398,10 +444,10 @@ var zeditor = {
   <button class="selected" onclick="loadZeditor('${p.outputPage}','display')">
     View page as HTML
   </button>
-  <button onclick="loadZeditor('${p.form}','display')">
+  <button onclick="loadZeditor('${p.inputForm}','display')">
     Edit data (via form)
   </button>
-  <button onclick="loadZeditor('${templateUrl}','editor')">
+  <button onclick="loadZeditor('${templateUrl}','both')">
     Edit page template
   </button>
   ${components}
@@ -412,7 +458,7 @@ var zeditor = {
   <button onclick="loadZeditor('${p.endpoint}','both')">
     Edit data (raw)
   </button>
-  <button onclick="loadZeditor('${p.form}','both')">
+  <button onclick="loadZeditor('${p.inputForm}','both')">
     Edit form
   </button>
   <button onclick="loadZeditor('${p.url}','both')">
@@ -424,16 +470,31 @@ var zeditor = {
   loadZeditor(p.outputPage,'display')
   }
 
+
+
   async function init(){
+    document.querySelector('#myContent').addEventListener("click",async()=>{
+      document.getElementById('main-menu').style.display="none";
+      await makeStorageMenu();
+    });
+    document.querySelector('#sharedContent').addEventListener("click",async()=>{ 
+      document.getElementById('main-menu').style.display="none";
+      await makeProjectMenu();
+    });
     document.querySelector('.screen').addEventListener("click",async()=>{
       toggleScreens();
     });
+/*
     (new Modal()).render({
       targetSelector : ".menu.button",
-      label   : "",
+      label   : "\u2630",
       iframe : "templates/about.html",
       width   :  "90%",
       height  :  "85%",
+    });
+*/
+    document.querySelector('.menu.button').addEventListener("click",async(e)=>{
+      toggleMenu();
     });
     document.querySelector('.next').addEventListener("click",async(e)=>{
       navigate('next');
@@ -455,10 +516,10 @@ var zeditor = {
 */
     const params = new URLSearchParams(location.search)
     let url2open = params.get('url');
-    if(url2open) await makeMenu( url2open);
+    u.menuize('#top-menu');
+    if(url2open) await makeProjectMenu( url2open);
     else {
-//      document.querySelector('#e1 .pageDefinition').innerHTML="";
-      await makeHostSelector();
+      await makeStorageMenu();
     }
     removeClass('#shadowBody',"loading");
   }

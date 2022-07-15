@@ -1,4 +1,13 @@
 digraph D {
+  rankdir=TB
+  node [color="blue"]
+  edge [color="blue"]
   bgcolor=transparent
-  a -> {b,c,d} -> e [color=blue]
+  PageTemplate -> OutPutPage
+  DataForm -> RDFdata [label="edit data content"]
+  TemplateForm -> DataTemplate [label="edit data selection/display"]
+  RDFdata -> DataTemplate -> PageTemplate  [color="red"]
+  HTMLcontent -> PageTemplate  [color="red"]
+  TextEditor -> HTMLcontent  [label="edit additional elements"]
+  TextEditor -> PageTemplate [label="edit page layout"]
 }

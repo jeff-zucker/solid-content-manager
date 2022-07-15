@@ -4,32 +4,11 @@
 
   <h1 id="shadowBody" class="loading"></h1>
 
-
-  <div id="far-left-column" >
-      <span class="menu button" title="toggle menu"></span>
-      <span class="screen button" title="toggle screens"></span>
-      <span class="wrench button" title="manage content"></span>
-      <span class="gear button" title="manage content"></span>
-      <span class="help button" title="manage content"></span>
-  </div>
-
   <div id="left-column">
-    <div id="main-menu" style="display:none">
-      <div id="top-menu">
-        <span id="login"></span>
-        <button id="myContent">My Content</button>
-        <button id="sharedContent">Shared Content</button>
-        <button>Public Content</button>
-        <button>Shared Content</button>
-        <button>Browse Other Pods</button>
-      </div>
-    </div>
     <div id="pods-menu" style="display:flex;width:100%;">
-<!--
       <span class="menu button" title="toggle menu"></span>
       <span class="screen button" title="toggle screens"></span>
-
--->
+      <span id="login"></span>
 <!--
       <span style="display:inline-block;text-align:left">
         <span class="toggle button" title="toggle screens"></span>
@@ -42,8 +21,14 @@
     </div>
         <span id="currentFileUrl" style="display:table-cell;vertical-align:top;"></span>
 
-<!--
--->
+    <div id="topMenu">
+      Content :
+      <button class="selected">Mine</button>
+      <button>Shared</button>
+      <button>Public</button>
+      <button>Apps</button>
+    </div>
+
     <div id="project-menu" style="display:flex;width:100%;">
     </div>
     <div id="settings">

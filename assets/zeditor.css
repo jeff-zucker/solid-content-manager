@@ -94,14 +94,6 @@ body, #shadowBody {
   animation: none!important;
 } /* disable cursor blinking!!! */
 
-#settings, #settings select {
-//  min-width:20rem;
-  width:18rem;
-}
-#left-column {
-  width:20rem;
-  padding-left:0.5rem;
-}
 #settings { 
    margin-top:0;
    margin-bottom:0.5rem;
@@ -185,7 +177,7 @@ font-weight:bold;
 
 .button {
     cursor:pointer;
-    color:orange;
+    color:gray;
     font-size:1.25rem;
   }
 .previous, .next {
@@ -195,12 +187,55 @@ font-weight:bold;
   font-weight:bold;
 }
 .next {
-  margin-right:1.2rem;
+//  margin-right:1.2rem;
 }
 #left-column.project .previous, #left-column.project .next { display:none; }
 
 .screen.button button,
+.menu.button ,
 .menu.button button {
+    display:inline-block;
+    margin-top:0.5rem;
+    margin-left:0.5rem;
+    padding:0 !important;
+    background:transparent !important;
+    cursor:pointer;
+    color:gray;
+  display:block;
+    margin-bottom:0.4rem;
+    font-size:1.25rem;
+}
+.screen.button button {
+    font-size:0.75rem;
+}
+//.menu.button button:after {
+//  content: ""; /* gear */
+//}
+.gear.button:after {
+  content: "\2699"; /* gear */
+  font-size:1.75rem;
+//  margin-left:0.5rem !important;
+  display:block;
+  color:gray;
+  margin-bottom:0.5rem;
+}
+.wrench.button:after {
+  content: "\1F527"; /* wrench */
+  font-size:1.25rem;
+  display:block;
+  margin-left:0.3rem !important;
+  margin-bottom:1rem;
+}
+.help.button:after {
+  content: "?";
+  font-size:1.5rem;
+  display:block;
+  color:gray;
+  margin-left:0.3rem !important;
+  margin-bottom:1rem;
+}
+/*
+.menu.button {
     display:inline-block;
     margin-top:0.5rem;
     margin-left:0.5rem;
@@ -210,19 +245,22 @@ font-weight:bold;
     color:orange;
     font-size:1.25rem;
 }
-.menu.button button:after {
+*/
+.menu.button:after {
   content: "\2630"; /* hamburger menu */
 }
 .screen.button:after {
   content: "\2180"; /* split circle */
+  display:block;
+  margin-bottom:0.4rem;
+  color:gray;
 }
 .screen.button {
   margin:0.5rem !important;
+  margin-bottom:1rem !important;
 }
 .menu .url {
-  color:#0074da;
-  color:#ddf;
-//  font-size:small;
+    color:orange;
 }
 #load:after {
   content: "\21c8"; /* two up arrows */
@@ -243,6 +281,7 @@ body.noMenu #display { bottom:0; height:100vh; max-height:100vh !important; }
 body.display #e1      {  display:none; }
 body.display #editor  {  display:none; }
 body.display #display { bottom:0; height:100vh; max-height:100vh !important; }
+body.both #display { bottom:48; height:48vh; max-height:48vh !important; }
 
 body.editor #e1      {  top:0; }
 body.editor #editor  {  top:5vh; bottom:0; }
@@ -286,12 +325,55 @@ body {
   display:inline-block;
   margin-top:0.6rem;
   margin-left:0.25rem;
-  border:1px solid orange !important;
+  border:1px solid gray !important;
   border-radius:0.2rem !important;
   padding:0 !important;
   background:transparent !important;
-  color:orange;
+  color:gray;
+  color:black !important;
   padding-left:0.25rem !important;
   padding-right:0.25rem !important;
   cursor:pointer;
+}
+
+#top-menu {
+  margin:0.5em;
+  background:white;
+  background:#88aac8;
+  background:#557795;
+  color:black !important;
+  border:1px solid transparent;
+  border-radius:0.2rem;
+}
+#top-menu button {
+  background:transparent !important;
+  color:gray;
+  color:black !important;
+  font-size:100% !important;
+  padding:1rem;
+  display:block;
+  width:100%;
+  border-bottom:1px solid black !important;
+}
+#top-menu button.selected {
+  text-decoration:underline;
+}
+
+#settings, #settings select {
+//  width:18rem;
+  width:16rem;
+}
+#left-column {
+//  width:20rem;
+//  padding-left:0.5rem;
+  width:17rem;
+  margin-left:0.5rem;
+  float:left;
+}
+#far-left-column {
+  width:2rem;
+  max-width:2rem !important;
+  text-align:center;
+  float:left;
+  clear:right;
 }
