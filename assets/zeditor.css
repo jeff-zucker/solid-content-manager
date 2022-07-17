@@ -1,3 +1,41 @@
+#far-left-column {
+  width:2rem;
+  max-width:2rem !important;
+  text-align:center;
+  float:left;
+//  clear:right;
+}
+#left-column {
+  width:17rem;
+  width:22rem;
+  width:19rem;
+  margin-left:0.5rem;
+  float:left;
+}
+#right-column {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:25rem;
+  left:22rem;
+  background-color:orange;
+}
+
+#e1, #display, #editor, #formInEditor {
+//  left:20rem;
+  left:0;
+  right:0;
+}
+#settings, #settings select {
+  width:16rem;
+  width:21rem;
+  width:18rem;
+}
+#sidebar {
+  margin-left:1rem;
+}
+
 body, #shadowBody {
     overflow:hidden;
     margin:0;
@@ -46,6 +84,7 @@ body, #shadowBody {
 #hostSelector option, #containerSelector option {
   background:#88aac8;
 }
+
 #e1,#display {
   background:beige;
   background:#7799b7;
@@ -54,12 +93,11 @@ body, #shadowBody {
   max-height:48vh !important;
   position:absolute;
   top:0;
-  right:0;
-  left:20rem;
   margin:0 !important;
 }
 
 #left-column #project { display:none; }
+#left-column.project #hostSelector,
 #left-column.project #containerSelector,
 #left-column.project #resourceSelector { display:none; }
 #left-column.project #project { display:block; }
@@ -74,12 +112,11 @@ body, #shadowBody {
   background:#002240;
   overflow:auto;
 }
+
 #editor, #formInEditor {
   height:46vh;
   position:absolute;
   top:54vh;
-  right:0;
-  left:20rem;
   bottom:0;
   margin:0 !important;
 }
@@ -174,7 +211,7 @@ font-weight:bold;
   box-sizing : border-box;
   font-family:Verdana,Arial,Helvetica,Sans-Serif; 
 }
-
+iframe { margin-left:0; left:0;}
 .button {
     cursor:pointer;
     color:gray;
@@ -196,7 +233,6 @@ font-weight:bold;
 .menu.button button {
     display:inline-block;
     margin-top:0.5rem;
-    margin-left:0.5rem;
     padding:0 !important;
     background:transparent !important;
     cursor:pointer;
@@ -359,21 +395,4 @@ body {
   text-decoration:underline;
 }
 
-#settings, #settings select {
-//  width:18rem;
-  width:16rem;
-}
-#left-column {
-//  width:20rem;
-//  padding-left:0.5rem;
-  width:17rem;
-  margin-left:0.5rem;
-  float:left;
-}
-#far-left-column {
-  width:2rem;
-  max-width:2rem !important;
-  text-align:center;
-  float:left;
-  clear:right;
-}
+

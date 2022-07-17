@@ -4,7 +4,6 @@
 
   <h1 id="shadowBody" class="loading"></h1>
 
-
   <div id="far-left-column" >
       <span class="menu button" title="toggle menu"></span>
       <span class="screen button" title="toggle screens"></span>
@@ -14,45 +13,58 @@
   </div>
 
   <div id="left-column">
-    <div id="main-menu" style="display:none">
+
+    <div id="main-menu">
       <div id="top-menu">
         <span id="login"></span>
         <button id="myContent">My Content</button>
         <button id="sharedContent">Shared Content</button>
-        <button>Public Content</button>
-        <button>Shared Content</button>
+        <button id="publicContent">Public Content</button>
         <button>Browse Other Pods</button>
       </div>
     </div>
-    <div id="pods-menu" style="display:flex;width:100%;">
-<!--
-      <span class="menu button" title="toggle menu"></span>
-      <span class="screen button" title="toggle screens"></span>
 
--->
-<!--
-      <span style="display:inline-block;text-align:left">
-        <span class="toggle button" title="toggle screens"></span>
-      </span>
--->
+    <div id="pods-menu" style="display:flex;width:100%;">
       <span style="inline-block; text-align:right;flex:1">
         <span class="previous button navbutton" title="previous">&lt;</span>
         <span class="next button" title="next">&gt;</span>
       </span>
     </div>
-        <span id="currentFileUrl" style="display:table-cell;vertical-align:top;"></span>
 
-<!--
--->
-    <div id="project-menu" style="display:flex;width:100%;">
-    </div>
     <div id="settings">
       <div id="hostSelector"></div>
       <div id="containerSelector"></div>
       <div id="resourceSelector"></div>
     </div>
+
     <div id="project"></div>
-  </div>
+
+<!--
+    <div id="bmarkMenu" class="ocb tree" 
+      data-component = "../solid-ui-components/data/ocb.ttl#OpenCultureBrowser"
+      data-display   = "display"
+    ></div>
+    <script type="module" src="/s/solid-ui-components/src/view/linked-bookmarks.js"></script>
+-->
+
+    <!-- OPEN CULTURE BROWSER
+    -->
+    <div id = "CultureBrowser"
+      data-suic = "../solid-ui-components/data/ocb.ttl#OpenCultureBrowser"
+      data-display = "#display"
+    ></div>
+    <link rel="stylesheet" href="/s/solid-ui-components/assets/linked-bookmarks.css" />
+
+    <!-- NEWS FEEDS
+    -->
+    <div id = "NewsMenu"
+      data-suic = "http://localhost:3101/s/solid-ui-components/data/news.ttl#News"
+      data-display = "#display"
+    ></div>
+
+  </div> <!-- left-column -->
+
+<div id="right-column">
 
   <div id="display"></div>
 
@@ -68,6 +80,8 @@
 
     <div id="editor"></div>
     <div id="formInEditor"></div>
+
+</div> <!-- right-column -->
 
 </body>
 

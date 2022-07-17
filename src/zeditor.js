@@ -1,17 +1,28 @@
 import {Modal} from '../../solid-ui-components/src/view/modal.js';
 import {Form} from  '../../solid-ui-components/src/view/form.js';
 import {CU} from    '../../solid-ui-components/src/utils.js';
-import {LoadProfile} from '../node_modules/solid-load-profile/src/loadProfile.js';
+import {makeProjectMenu} from    './project.js';
+import {makeStorageMenu} from    './storageMenu.js';
 
 let u = new CU();
 
-var zeditor = {
+window.zeditor = {
   editor : makeEditor("#editor","turtle"),
   currentProject : "",
   currentScreen : "both",
   currentFile : {},
   lastVisited : "",
 }
+
+function setMenu(wantedMenu){
+  wantedMenu ||= "CultureBrowser";
+  let menus = document.querySelectorAll('#left-column > div');
+  for(let menu of menus){
+    if(menu.id===wantedMenu) menu.style.display = "block" ;
+    else menu.style.display = "none" ;
+  }
+}
+
 
 /* FILE MANAGEMENT
      save loadZeditor
@@ -178,7 +189,6 @@ console.log(zeditor);
     }catch(e){console.log(e); return; }
   }
 
-
 /* 
   EDITOR
 */
@@ -245,26 +255,7 @@ console.log(zeditor);
     document.querySelector(elementSelector).classList.remove(className);
   }
 
-    /* 
-    *  ENSURE CONFIGURATION
-    *  get the public configuration
-    *  if logged-in, get the private configuratin also
-    */
-    async function ensureConfiguration(webid){
-      let profile = new LoadProfile();
-      await profile.loadFullProfile(webid);
-      let structure = profile.structure();
-      let storages = structure.storages;
-      let types = (structure.registrations)["http://www.w3.org/ns/ui#PageDefinition"] || {instances:[]};
-/*
-      let storages = profile.storages();
-      let types = (profile.registrations())[UI.ns.ui('PageDefinition').value] || {instances:[]};
-      let types = (profile.registrations())[UI.ns.ui('PageDefinition').value] || {instances:[]};
-*/
-      hosts = storages.concat(types.instances);
-      return hosts;
-    }
-    var hosts=[];
+//    var hosts=[];
 /* SELECTORS
 */
 /*
@@ -274,80 +265,7 @@ console.log(zeditor);
       "https://jeff-zucker.solidcommunity.net:8443/",
     ];
 */
-  let wantedURL = window.origin + "/solid/solid-ide/examples/test.gv";
-  function getWanted(){ return u.fileInfo(wantedURL)||hosts[0] }
 
-  async function makeStorageMenu(container){
-    zeditor.currentProject="";
-    removeClass('#left-column','project');
-    await ensureConfiguration(window.origin+"/profile/card#me");
-    let wanted=getWanted();
-    u.makeSelector(hosts,async(e)=>{await makeContainerSelector(e)},wanted.host,"#hostSelector");
-    await makeContainerSelector(wanted.url);
-    await loadZeditor(wanted);
-  }
-  async function makeContainerSelector(container){
-    let hsel = document.getElementById("hostSelector")
-    let selectedHost = hsel.childNodes[0].value;
-    if(!container) container = selectedHost;
-    let i = u.fileInfo(container);
-    let wanted=getWanted();
-    if(!i.isContainer && i.url !=wanted.url) return makeProjectMenu(container);
-    showFilePicker(zeditor.lastVisited);
-    container = container.replace(/\/[^\/]*$/,'/');
-    const ldp = UI.rdf.Namespace("http://www.w3.org/ns/ldp#");
-    const base = UI.rdf.sym(container);
-    await u.crossLoad(base,null,false);  // WHY DOES IT NEED false RELOAD?
-    let files = UI.store.each(base,ldp("contains"));
-    let resources = [];
-    let containers=[];
-    i = u.fileInfo(container);
-    containers.push([i.url,i.label]);
-    for(let file of files.sort()){
-      let name = file.value
-      let i = u.fileInfo(name);
-      if(!name || i.isHidden) continue; 
-      if(i.isContainer) containers.push([i.url,i.label]);
-      else resources.push([i.url,i.label]);
-    }
-    let parent = u.getParent(base.uri);
-    if(parent) {
-      if(!parent.endsWith("//")) {
-        let p = u.fileInfo(parent);
-        containers.splice(1,0,[p.url,"../"]);
-      }
-    }
-    let w = getWanted()||{};
-    let c = w.host ?w.host.replace(/\/$/,'') + w.path :container;
-    let r = w.url;
-    await u.makeSelector(containers,async(e)=>{
-      await makeContainerSelector(e);
-      await makeResourceSelector(e)
-    },c,"#containerSelector");
-    await u.makeSelector(resources,async(e)=>{
-      await loadZeditor(e)
-    },r,"#resourceSelector",10);
-  }
-  async function makeResourceSelector(base){
-    const ldp = UI.rdf.Namespace("http://www.w3.org/ns/ldp#");
-    base ||= document.getElementById("containerSelector").childNodes[0].value;
-    let storage = document.getElementById("hostSelector").childNodes[0].value;
-    await u.crossLoad(base,null,false);
-    let baseNode = UI.rdf.sym(base);
-    let files = UI.store.each(baseNode,ldp("contains"));
-    let select = document.createElement("SELECT");
-    let resources = [];
-    for(let file of files.sort()){
-      let name = decodeURI(file.value)
-      let i = u.fileInfo(name);
-      if(!name || i.label.match(/(%23|~)$/)) continue;
-      if(!i.isContainer)      
-        resources.push([i.url,i.label]);
-    }
-    let w = getWanted()||{};
-    await u.makeSelector(resources,async(e)=>{await loadZeditor(e)},w.url,"#resourceSelector",10);
-    wantedURL="";
-  }
   function navigate(direction) {
       let el = document.querySelector('#resourceSelector select');
       let max = el.childNodes.length;
@@ -387,15 +305,6 @@ console.log(zeditor);
       }
     }
 
-  function showProjectMenu(uri){
-    addClass('#left-column','project');
-    zeditor.lastVisited = zeditor.currentFile.url
-    zeditor.currentProject=uri;
-  }
-  function showFilePicker(){
-    removeClass('#left-column','project');
-    zeditor.currentProject="";
-  }
   function showFormEditor(){
     zeditor.formEditor = true;
     document.querySelector('#formInEditor').style.display="block";
@@ -411,75 +320,30 @@ console.log(zeditor);
     else el.style.display="none";
   }
 
-  async function makeProjectMenu(url2open){
-    url2open = decodeURI(url2open);
-    showProjectMenu(url2open);
-    await u.crossLoad(url2open);
-    let project = u.getMainSubject(url2open);
-    let type = u.getUItype(project);
-    if(!type==="PageDefinition") return;
-    let templateUrl = u.getObject(project,u.UIO('pageTemplate'));
-    let template = await u.loadFile(templateUrl);
-    let p = zeditor.currentProject = {
-      url          : url2open,
-      endpoint     : u.getObject(project,u.UIO('inputData')),
-      inputForm    : u.getObject(project,u.UIO('inputForm')),
-      outputPage   : u.getObject(project,u.UIO('outputPage')),
-      components   : u.getObjects(project,u.UIO('component')),
-      template : template || "",
-      pageTemplate : templateUrl,
-    }
-    let components = "";
-    for(let c of UI.store.match(project,u.UIO('component'))){
-      let label = u.getObject(c.object,u.UIO('label'));
-      let href = u.getObject(c.object,u.UIO('href'));
-      components += `
-  <button onclick="loadZeditor('${href}','both')">
-    Edit ${label} template
-  </button>
-      `;
-    };
-    let menuStr = `
-<div><b>Editor Tasks</b></div>
-  <button class="selected" onclick="loadZeditor('${p.outputPage}','display')">
-    View page as HTML
-  </button>
-  <button onclick="loadZeditor('${p.inputForm}','display')">
-    Edit data (via form)
-  </button>
-  <button onclick="loadZeditor('${templateUrl}','both')">
-    Edit page template
-  </button>
-  ${components}
-<div><b>Admin Tasks</b></div>
-  <button onclick="loadZeditor('${p.outputPage}','both','rdfa')">
-    View page as RDF
-  </button>
-  <button onclick="loadZeditor('${p.endpoint}','both')">
-    Edit data (raw)
-  </button>
-  <button onclick="loadZeditor('${p.inputForm}','both')">
-    Edit form
-  </button>
-  <button onclick="loadZeditor('${p.url}','both')">
-    Edit page definition
-  </button>
-  `;
-  document.getElementById('project').innerHTML=menuStr;
-  u.menuize('#project');
-  loadZeditor(p.outputPage,'display')
-  }
-
-
-
   async function init(){
     document.querySelector('#myContent').addEventListener("click",async()=>{
       document.getElementById('main-menu').style.display="none";
-      await makeStorageMenu();
+      zeditor = await makeStorageMenu(zeditor);
+    });
+    document.querySelector('#publicContent').addEventListener("click",async()=>{
+      toggleScreens("display");
+      
+//      document.getElementById('right-column').style.display="none";
+/*
+     document.getElementById('display').style.display="none";
+      document.getElementById('e1').style.display="none";
+      document.getElementById('editor').style.display="none";
+*/
+      document.getElementById('main-menu').style.display="none";
+      document.getElementById('pods-menu').style.display="none";
+      document.getElementById('settings').style.display="none";
+      document.getElementById('project').style.display="none";
+      document.getElementById('sidebar').style.display="block";
+//      zeditor = await makeFeedsMenu(zeditor);
     });
     document.querySelector('#sharedContent').addEventListener("click",async()=>{ 
       document.getElementById('main-menu').style.display="none";
-      await makeProjectMenu();
+      zeditor = await makeProjectMenu(null,zeditor);
     });
     document.querySelector('.screen').addEventListener("click",async()=>{
       toggleScreens();
@@ -514,13 +378,35 @@ console.log(zeditor);
       height  :  "40%",
     });
 */
+
+    setMenu();
     const params = new URLSearchParams(location.search)
     let url2open = params.get('url');
     u.menuize('#top-menu');
-    if(url2open) await makeProjectMenu( url2open);
+    if(url2open) zeditor = await makeProjectMenu( url2open, zeditor);
     else {
-      await makeStorageMenu();
+      zeditor = await makeStorageMenu(zeditor);
     }
     removeClass('#shadowBody',"loading");
   }
 
+  
+
+/*
+loadZeditor
+save
+showRDFa
+showOutputPage
+saveOutputPage
+showInEditor
+makeEditor
+
+init
+mungeLoginArea
+add/remove Class
+navigate
+toggleScreens
+showFormEditor
+hideFormEditor
+toggleMenu
+*/
