@@ -1,6 +1,6 @@
 <meta http-equiv="Cache-control" content="no-cache">
 
-<body class="both">
+<body class="display">
 
   <h1 id="shadowBody" class="loading"></h1>
 
@@ -14,15 +14,20 @@
 
   <div id="left-column">
 
-    <div id="main-menu">
       <div id="top-menu">
         <span id="login"></span>
-        <button id="myContent">My Content</button>
-        <button id="sharedContent">Shared Content</button>
-        <button id="publicContent">Public Content</button>
-        <button>Browse Other Pods</button>
+        <div><b>My Content</b></div>
+        <button value="settings" about="http://localhost:3101/s/solid-ide/examples/">Desktop (CSS)</button>
+        <button value="settings" about="https://jeff-zucker.solidcommunity.net/">Solid Community (NSS)</button>
+        <button value="settings" about="https://pod.inrupt.com/jeff-zucker/">Inrupt (ESS)</button>
+        <div><b>Public Content</b></div>
+        <button value="NewsMenu">News Feeds</button>
+        <button value="CultureBrowser">Culture Browser</button>
+        <!-- <button>Other Pods</button> -->
+        <div><b>Shared Content</b></div>
+        <button value="project">Solid Glossary Project</button>
       </div>
-    </div>
+
 
     <div id="pods-menu" style="display:flex;width:100%;">
       <span style="inline-block; text-align:right;flex:1">
@@ -37,26 +42,16 @@
       <div id="resourceSelector"></div>
     </div>
 
-    <div id="project"></div>
-
-<!--
-    <div id="bmarkMenu" class="ocb tree" 
-      data-component = "../solid-ui-components/data/ocb.ttl#OpenCultureBrowser"
-      data-display   = "display"
+    <div id = "project"
+      data-suic = "./examples/glossary/glossary-definition.ttl#this"
+      data-display = "#display"
     ></div>
-    <script type="module" src="/s/solid-ui-components/src/view/linked-bookmarks.js"></script>
--->
 
-    <!-- OPEN CULTURE BROWSER
-    -->
     <div id = "CultureBrowser"
       data-suic = "../solid-ui-components/data/ocb.ttl#OpenCultureBrowser"
       data-display = "#display"
     ></div>
-    <link rel="stylesheet" href="/s/solid-ui-components/assets/linked-bookmarks.css" />
 
-    <!-- NEWS FEEDS
-    -->
     <div id = "NewsMenu"
       data-suic = "http://localhost:3101/s/solid-ui-components/data/news.ttl#News"
       data-display = "#display"
@@ -103,7 +98,7 @@
 <script src="https://cdn.jsdelivr.net/npm/d3@7.4.4/dist/d3.min.js"></script>
 <script src="./wasm.min.js"></script>
 -->
-<script src="./node_modules/@inrupt/solid-client-authn-browser/dist/solid-client-authn.bundle.js"></script>
+
 <script src="./node_modules/solid-ui/dist/main.js"></script>
 <script src="./node_modules/ace-builds/src-min-noconflict/ace.js"></script>
 <script src="./node_modules/marked/marked.min.js"></script>
@@ -119,4 +114,6 @@ window.mime=mime;
 </script>
 <script src="./src/ace-shim.js"></script>
 <script src="./src/zeditor.js" type="module"></script>
+
+<link rel="stylesheet" href="/s/solid-ui-components/assets/linked-bookmarks.css" />
 <link rel="stylesheet" href="./assets/zeditor.css" />

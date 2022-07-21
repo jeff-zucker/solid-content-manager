@@ -3,14 +3,21 @@
   max-width:2rem !important;
   text-align:center;
   float:left;
-//  clear:right;
 }
 #left-column {
+/*
   width:17rem;
   width:22rem;
   width:19rem;
   margin-left:0.5rem;
-  float:left;
+*/
+  position:absolute;
+  top:0;
+  right:22rem;
+  bottom:0;
+  left:2.5rem;
+  overflow-y:scroll;
+  overflow-x:hidden;
 }
 #right-column {
   position:absolute;
@@ -19,7 +26,6 @@
   bottom:0;
   left:25rem;
   left:22rem;
-  background-color:orange;
 }
 
 #e1, #display, #editor, #formInEditor {
@@ -27,10 +33,11 @@
   left:0;
   right:0;
 }
-#settings, #settings select {
+#settings, #settings select, #left-column select, #left-column div {
   width:16rem;
   width:21rem;
   width:18rem;
+  
 }
 #sidebar {
   margin-left:1rem;
@@ -95,6 +102,9 @@ body, #shadowBody {
   top:0;
   margin:0 !important;
 }
+#display {
+//  height:100vh;
+}
 
 #left-column #project { display:none; }
 #left-column.project #hostSelector,
@@ -136,7 +146,7 @@ body, #shadowBody {
    margin-bottom:0.5rem;
    color:#ddddff;
 }
-#settings select {
+#settings select, #left-column select {
    width:100%;
    margin-top:0.5rem;
    margin-bottom:0.5rem;
@@ -150,6 +160,26 @@ background-color: #0A4C95;
   #settings select option {
     padding-top:0.25rem;
   }
+#itemSelector {
+  margin-top:0.5rem;
+//  border-radius:0.2rem;
+    width:95%;
+  border-left:none !important;
+}
+#itemSelector * {
+  border-left:none !important;
+}
+#itemSelector li {
+  border:none !important;
+  border-bottom:1px solid black !important;
+}
+#itemSelector * {
+    background:#88aac8;
+    background:white;
+    background:#557795;
+    color:black !important;
+    font-size:100%;
+  }
 
 
   select,input,button,input[type="button"] {
@@ -157,9 +187,6 @@ background-color: #0A4C95;
     border:1px solid transparent !important;
     padding:0.2rem !important;
     border-radius:0.2rem !important;
-  }
-  #login input{
-    padding:0 !important;
   }
   button {
     cursor:pointer !important;
@@ -361,9 +388,10 @@ body {
   display:inline-block;
   margin-top:0.6rem;
   margin-left:0.25rem;
-  border:1px solid gray !important;
+  margin-bottom:0.6rem;
+  border:1px solid orange !important;
   border-radius:0.2rem !important;
-  padding:0 !important;
+  padding:0.25rem !important;
   background:transparent !important;
   color:gray;
   color:black !important;
@@ -374,22 +402,25 @@ body {
 
 #top-menu {
   margin:0.5em;
-  background:white;
-  background:#88aac8;
   background:#557795;
   color:black !important;
   border:1px solid transparent;
   border-radius:0.2rem;
+  text-align:left !important;
+}
+#top-menu div {
+  padding-left:0.5rem;
+  margin-top:0.5rem;
 }
 #top-menu button {
+  text-align:left !important;
   background:transparent !important;
-  color:gray;
   color:black !important;
   font-size:100% !important;
   padding:1rem;
   display:block;
   width:100%;
-  border-bottom:1px solid black !important;
+  margin-left:1rem;
 }
 #top-menu button.selected {
   text-decoration:underline;
