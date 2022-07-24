@@ -1,0 +1,853 @@
+@prefix : <#>.
+@prefix bookm: <http://www.w3.org/2002/01/bookmark#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+:Music        
+  a bookm:Topic; 
+  rdfs:label "Music".
+
+:Ambient
+  a bookm:Topic; 
+  rdfs:label "Ambient";
+  bookm:subTopicOf :Music.
+
+:Dub
+  a bookm:Topic; 
+  rdfs:label "Dub & Reggae";
+  bookm:subTopicOf :Music.
+
+:Funk
+  a bookm:Topic; 
+  rdfs:label "Funk";
+  bookm:subTopicOf :Music.
+
+:Indie
+  a bookm:Topic; 
+  rdfs:label "Indie";
+  bookm:subTopicOf :Music.
+
+:Jazz
+  a bookm:Topic; 
+  rdfs:label "Jazz";
+  bookm:subTopicOf :Music.
+
+:Sixties
+  a bookm:Topic; 
+  rdfs:label "Sixties & Jam Rock";
+  bookm:subTopicOf :Music.
+
+:Unsorted
+  a bookm:Topic; 
+  rdfs:label "Unsorted";
+  bookm:subTopicOf :Music.
+
+:World
+  a bookm:Topic; 
+  rdfs:label "World";
+  bookm:subTopicOf :Music.
+
+
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Ambient;
+          rdfs:label "Autechre";
+          bookm:recalls <https://archive.org/details/Autechre>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Ambient;
+          rdfs:label "Naryan Padmanabha";
+          bookm:recalls <https://archive.org/details/NaryanPadmanabha>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Ambient;
+          rdfs:label "Lost Children Netlabel";
+          bookm:recalls <https://archive.org/details/lost_children>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Ambient;
+          rdfs:label "The Chillout Zone";
+          bookm:recalls <https://archive.org/details/chilloutzonefm>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Ambient;
+          rdfs:label "Drone Lab";
+          bookm:recalls <https://archive.org/details/podcast_dronelab>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Gamelan Mitra Kusuma";
+          bookm:recalls <https://archive.org/details/GamelanMitraKusuma>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Alan Lomax Kentucky Recordings";
+          bookm:recalls <https://archive.org/details/lomaxky>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Arab and Andalusian Music";
+          bookm:recalls <https://archive.org/details/arabandalusian>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Bela Fleck and the Flecktones";
+          bookm:recalls <https://archive.org/details/BelaFleckandtheFlecktones>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Morroccan Folk Songs";
+          bookm:recalls <https://archive.org/details/settatbladi>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Red Baraat";
+          bookm:recalls <https://archive.org/details/RedBaraat>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Sierra Leone's Refugee All Stars";
+          bookm:recalls <https://archive.org/details/SierraLeonesRefugeeAllStars>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Toubab Krewe";
+          bookm:recalls <https://archive.org/details/ToubabKrewe>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Worlda;
+          rdfs:label "Toussaint Liberator and Buru Style";
+          bookm:recalls <https://archive.org/details/ToussaintLiberatorandBuruStyle>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Jazz;
+          rdfs:label "Fareed Haque Group";
+          bookm:recalls <https://archive.org/details/FareedHaqueGroup>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Jazz;
+          rdfs:label "Goran Ivanovic [Group]";
+          bookm:recalls <https://archive.org/details/GoranIvanovicGroup>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Jazz;
+          rdfs:label "Goran Ivanovic and Fareed Haque";
+          bookm:recalls <https://archive.org/details/GoranIvanovicandFareedHaque>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Jazz;
+          rdfs:label "Dirty Dozen Brass Band";
+          bookm:recalls <https://archive.org/details/DirtyDozenBrassBand>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Jazz;
+          rdfs:label "MarchFourth";
+          bookm:recalls <https://archive.org/details/MarchFourth>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Jazz;
+          rdfs:label "The Andreas Kapsalis And Goran Ivanovic Guitar Duo";
+          bookm:recalls <https://archive.org/details/TheAndreasKapsalisAndGoranIvanovicGuitarDuo>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Jazz;
+          rdfs:label "The Andreas Kapsalis Trio";
+          bookm:recalls <https://archive.org/details/TheAndreasKapsalisTrio>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Jazz;
+          rdfs:label "Wayne Horvitz";
+          bookm:recalls <https://archive.org/details/WayneHorvitz>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Classical;
+          rdfs:label "Classical Music from the Gardner Museum";
+          bookm:recalls <https://archive.org/details/ISGM_Podcast>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Classical;
+          rdfs:label "Philharmoniabaroque";
+          bookm:recalls <https://archive.org/details/philharmoniabaroque>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Pato Banton";
+          bookm:recalls <https://archive.org/details/PatoBanton>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Jahman Brahman";
+          bookm:recalls <https://archive.org/details/JahmanBrahman>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Culver City Dub Collective";
+          bookm:recalls <https://archive.org/details/CulverCityDubCollective>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Dale and the ZDubs";
+          bookm:recalls <https://archive.org/details/DaleAndTheZDubs>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Dub Apocalypse";
+          bookm:recalls <https://archive.org/details/DubApocalypse>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Dub is a Weapon";
+          bookm:recalls <https://archive.org/details/DubisaWeapon>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Dubconscious";
+          bookm:recalls <https://archive.org/details/Dubconscious>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Groundation";
+          bookm:recalls <https://archive.org/details/Groundation>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Guvna Dub Sessions";
+          bookm:recalls <https://archive.org/details/GuvnaDubSessions>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Roots In Volution";
+          bookm:recalls <https://archive.org/details/RootsInVolution>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Yellow Dubmarine";
+          bookm:recalls <https://archive.org/details/YellowDubmarine>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Jah Works";
+          bookm:recalls <https://archive.org/details/JahWorks>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Dub;
+          rdfs:label "Matisyahu";
+          bookm:recalls <https://archive.org/details/Matisyahu>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Alejandro Escovedo";
+          bookm:recalls <https://archive.org/details/AlejandroEscovedo>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Animal Collective";
+          bookm:recalls <https://archive.org/details/AnimalCollective>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Banyan";
+          bookm:recalls <https://archive.org/details/BanyanMusic>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Big Head Todd and the Monsters";
+          bookm:recalls <https://archive.org/details/BigHeadToddandtheMonsters>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Billy Bragg";
+          bookm:recalls <https://archive.org/details/BillyBragg>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Black Heart Procession";
+          bookm:recalls <https://archive.org/details/BlackHeartProcession>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Blitzen Trapper";
+          bookm:recalls <https://archive.org/details/BlitzenTrapper>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Blues Traveler";
+          bookm:recalls <https://archive.org/details/BluesTraveler>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Buckethead";
+          bookm:recalls <https://archive.org/details/Buckethead>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Butthole Surfers";
+          bookm:recalls <https://archive.org/details/ButtholeSurfers>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Calexico";
+          bookm:recalls <https://archive.org/details/Calexico>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Camper Van Beethoven";
+          bookm:recalls <https://archive.org/details/CamperVanBeethoven>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Cowboy Junkies";
+          bookm:recalls <https://archive.org/details/CowboyJunkies>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Death Cab for Cutie";
+          bookm:recalls <https://archive.org/details/DeathCabforCutie>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Edie Brickell and the New Bohemians";
+          bookm:recalls <https://archive.org/details/EdieBrickellandNewBohemians>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Godspeed You Black Emperor!";
+          bookm:recalls <https://archive.org/details/GodspeedYouBlackEmperor>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Low";
+          bookm:recalls <https://archive.org/details/LowMusic>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Lydia Lunch";
+          bookm:recalls <https://archive.org/details/LydiaLunch>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Michael Franti and Spearhead";
+          bookm:recalls <https://archive.org/details/MichaelFrantiandSpearhead>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Papadosio";
+          bookm:recalls <https://archive.org/details/Papadosio>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Poi Dog Pondering";
+          bookm:recalls <https://archive.org/details/PoiDogPondering>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Robyn Hitchcock";
+          bookm:recalls <https://archive.org/details/RobynHitchcock>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Smashing Pumpkins";
+          bookm:recalls <https://archive.org/details/SmashingPumpkins>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "The Decemberists";
+          bookm:recalls <https://archive.org/details/TheDecemberists>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "The Motet";
+          bookm:recalls <https://archive.org/details/TheMotet>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Toad The Wet Sprocket";
+          bookm:recalls <https://archive.org/details/ToadTheWetSprocket>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Tortoise";
+          bookm:recalls <https://archive.org/details/Tortoise>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Indie;
+          rdfs:label "Turkuaz";
+          bookm:recalls <https://archive.org/details/Turkuaz>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "Bernie Worrell";
+          bookm:recalls <https://archive.org/details/BernieWorrell>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "Bernie Worrell and the WOO Warriors";
+          bookm:recalls <https://archive.org/details/BernieWorrellandtheWOOWarriors>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "Bernie Worrell Orchestra";
+          bookm:recalls <https://archive.org/details/BernieWorrellOrchestra>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "Chicago Afrobeat Project";
+          bookm:recalls <https://archive.org/details/ChicagoAfrobeatProject>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "Denver Funk Mob";
+          bookm:recalls <https://archive.org/details/DenverFunkMob>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "Global Funk";
+          bookm:recalls <https://archive.org/details/GlobalFunk>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "Robert Randolph & the Family Band";
+          bookm:recalls <https://archive.org/details/RobertRandolphandtheFamilyBand>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "The Mothership Connection";
+          bookm:recalls <https://archive.org/details/TheMothershipConnection>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "Tom Tom Club";
+          bookm:recalls <https://archive.org/details/TomTomClub>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "Was (Not Was)";
+          bookm:recalls <https://archive.org/details/WasNotWas>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "James Brown Dance Party";
+          bookm:recalls <https://archive.org/details/JamesBrownDanceParty>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Funk;
+          rdfs:label "New York Funk Exchange";
+          bookm:recalls <https://archive.org/details/NewYorkFunkExchange>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Sixties;
+          rdfs:label "Country Joe McDonald";
+          bookm:recalls <https://archive.org/details/CountryJoeMcDonald>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Sixties;
+          rdfs:label "Garcia Birthday Band";
+          bookm:recalls <https://archive.org/details/GarciaBirthdayBand>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Sixties;
+          rdfs:label "Grateful Dead";
+          bookm:recalls <https://archive.org/details/GratefulDead>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Sixties;
+          rdfs:label "Jefferson Starship";
+          bookm:recalls <https://archive.org/details/JeffersonStarship>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Sixties;
+          rdfs:label "Mickey Hart Band";
+          bookm:recalls <https://archive.org/details/MickeyHartBand>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Sixties;
+          rdfs:label "New Riders of the Purple Sage";
+          bookm:recalls <https://archive.org/details/NewRidersofthePurpleSage>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Sixties;
+          rdfs:label "String Cheese Incident";
+          bookm:recalls <https://archive.org/details/StringCheeseIncident>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "The DNA Lounge";
+          bookm:recalls <https://archive.org/details/dnalounge>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "The Rave Tapes";
+          bookm:recalls <https://archive.org/details/ravetapes>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "HipHop Mixtapes";
+          bookm:recalls <https://archive.org/details/hiphopmixtapes>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Bass Time Continuum";
+          bookm:recalls <https://archive.org/details/BassTimeContinuum>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Afrissippi";
+          bookm:recalls <https://archive.org/details/Afrissippi>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "AfroMassive";
+          bookm:recalls <https://archive.org/details/AfroMassive>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Akashic Record";
+          bookm:recalls <https://archive.org/details/AkashicRecord>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Ali Baba's Tahini";
+          bookm:recalls <https://archive.org/details/AliBabasTahini>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Ancient Harmony";
+          bookm:recalls <https://archive.org/details/AncientHarmony>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Balkun Brothers";
+          bookm:recalls <https://archive.org/details/BalkunBrothers>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Barika";
+          bookm:recalls <https://archive.org/details/Barika>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Beirut";
+          bookm:recalls <https://archive.org/details/Beirut>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Bemsha";
+          bookm:recalls <https://archive.org/details/Bemsha>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Betsy Franck";
+          bookm:recalls <https://archive.org/details/BetsyFranck>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Big Leg Emma";
+          bookm:recalls <https://archive.org/details/BigLegEmma>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Bimbotown Orchestra";
+          bookm:recalls <https://archive.org/details/BimbotownOrchestra>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Blue Funk";
+          bookm:recalls <https://archive.org/details/BlueFunk>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Bodega";
+          bookm:recalls <https://archive.org/details/Bodega>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Bonerama";
+          bookm:recalls <https://archive.org/details/Bonerama>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Borboletta";
+          bookm:recalls <https://archive.org/details/Borboletta>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Brave Combo";
+          bookm:recalls <https://archive.org/details/BraveCombo>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Carrie Rodriguez";
+          bookm:recalls <https://archive.org/details/CarrieRodriguez>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Chachuba";
+          bookm:recalls <https://archive.org/details/Chachuba>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Cindy Woolf";
+          bookm:recalls <https://archive.org/details/CindyWoolf>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Desolation Angels";
+          bookm:recalls <https://archive.org/details/DesolationAngels>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Dream Syndicate";
+          bookm:recalls <https://archive.org/details/DreamSyndicate>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Family Funktion and The Sitar Jams";
+          bookm:recalls <https://archive.org/details/FamilyFunktionAndTheSitarJams>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Fanfarlo";
+          bookm:recalls <https://archive.org/details/Fanfarlo>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "French Quarter Band";
+          bookm:recalls <https://archive.org/details/FrenchQuarterBand>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Garaj Mahal";
+          bookm:recalls <https://archive.org/details/GarajMahal>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Hamsa Lila";
+          bookm:recalls <https://archive.org/details/HamsaLila>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Hanuman Collective";
+          bookm:recalls <https://archive.org/details/HanumanCollective>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "HeartByrne";
+          bookm:recalls <https://archive.org/details/HeartByrne>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Hunab Ku";
+          bookm:recalls <https://archive.org/details/Hunab>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Jake Shimabukuro";
+          bookm:recalls <https://archive.org/details/JakeShimabukuro>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Jazz;
+          rdfs:label "Jazz Mandolin Project";
+          bookm:recalls <https://archive.org/details/JazzMandolinProject>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Jeff Stange's Organ Odyssey";
+          bookm:recalls <https://archive.org/details/JeffStangesOrganOdyssey>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Jen Say Kwahs";
+          bookm:recalls <https://archive.org/details/JenSayKwahs>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Kanekoa";
+          bookm:recalls <https://archive.org/details/Kanekoa>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "La Tampiquena";
+          bookm:recalls <https://archive.org/details/LaTampiquena>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Leche De Tigre";
+          bookm:recalls <https://archive.org/details/LecheDeTigre>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Makayan";
+          bookm:recalls <https://archive.org/details/Makayan>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Mekons";
+          bookm:recalls <https://archive.org/details/Mekons>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Moonshine Cadillac";
+          bookm:recalls <https://archive.org/details/MoonshineCadillac>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Mumbouli";
+          bookm:recalls <https://archive.org/details/Mumbouli>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Nativos Jammin Orquestra";
+          bookm:recalls <https://archive.org/details/NativosJamminOrquestra>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Ostad Manoochehr Sadeghi";
+          bookm:recalls <https://archive.org/details/OstadManoochehrSadeghi>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "Pangea Acoustic";
+          bookm:recalls <https://archive.org/details/PangeaAcoustic>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :World;
+          rdfs:label "Rumba de Fuego Kaua'i";
+          bookm:recalls <https://archive.org/details/RumbaDeFuegoKauai>
+        ].
+        [
+          a bookm:BookMark;
+          bookm:hasTopic :Unsorted;
+          rdfs:label "West Indian Girl";
+          bookm:recalls <https://archive.org/details/WestIndianGirl>
+        ].

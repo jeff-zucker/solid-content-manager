@@ -9,7 +9,7 @@ export  async function makeStorageMenu(container,wanted,skip){
     
     document.getElementById('left-column').classList.remove('project');
     // let hosts = await ensureConfiguration(window.origin+"/profile/card#me");
-    let hosts = ["http://localhost:3101","https://jeff-zucker.solidcommunity.net/","https://pod.inrupt.com/jeff-zucker/public/"];
+    let hosts = ["http://localhost:3101","https://jeff-zucker.solidcommunity.net/","https://pod.inrupt.com/jeff-zucker/public/","http://jeff-zucker.solidcommunity.net:8443/"];
     u.makeSelector(hosts,async(e)=>{await makeContainerSelector(e)},wanted.host,"#hostSelector");
     await makeContainerSelector(wanted);
     await loadZeditor(wanted);
@@ -46,6 +46,7 @@ export  async function makeStorageMenu(container,wanted,skip){
         containers.splice(1,0,[p.url,"../"]);
       }
     }
+    window.zeditor ||= localStorage.getItem("zeditor") || {};
     let w = window.zeditor.wantedURL||{};
     let c = w.host ?w.host.replace(/\/$/,'') + w.path :container;
     let r = w.url;
@@ -99,5 +100,21 @@ export  async function makeStorageMenu(container,wanted,skip){
 
   function showFilePicker(){
     document.getElementById('left-column').classList.remove('project');
-    zeditor.currentProject="";
+    window.zeditor ||= localStorage.getItem("zeditor") || {};
+    window.zeditor.currentProject="";
+  }
+
+  function getZeditor(){
+    if(!window.zeditor){
+      window.zeditor = localStorage.getItem(zeditor);
+      if(typeof window.zeditor != "object") window.zeditor = {
+        editor : makeEditor("#editor","turtle"),
+        currentProject : "",
+        currentScreen : "display",
+        currentFile : {},
+        lastVisited : "",
+        wantedURL : "",
+      }
+    }
+    return window.zeditor;
   }

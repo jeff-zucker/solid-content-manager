@@ -1,0 +1,4688 @@
+@prefix : <#>.
+@prefix bk: <http://www.w3.org/2002/01/bookmark#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+# :Images a bk:Topic; rdfs:label "Images".
+# :Art a bk:Topic; bk:subTopicOf :Images; rdfs:label "Art".
+# :More a bk:Topic; bk:subTopicOf :Images; rdfs:label "Life, the Universe, & Everything".
+
+:Art a bk:Topic; rdfs:label "Images - Art".
+:More a bk:Topic; rdfs:label "Images - Life".
+
+:Graffiti_Sticker_Art a bk:Topic; bk:subTopicOf :Art; rdfs:label "Graffiti & Sticker Art".
+:African_American_Artists a bk:Topic; bk:subTopicOf :Art; rdfs:label "African American Artists".
+:Frida_Kahlo_Diego_Rivera a bk:Topic; bk:subTopicOf :Art; rdfs:label "Frida Kahlo & Diego Rivera".
+:Tattoos a bk:Topic; bk:subTopicOf :Art; rdfs:label "Tattoos".
+:Puppets a bk:Topic; bk:subTopicOf :Art; rdfs:label "Puppets".
+:Illuminated_Manuscripts a bk:Topic; bk:subTopicOf :Art; rdfs:label "Illuminated Manuscripts".
+:Photographic_Collections a bk:Topic; bk:subTopicOf :Art; rdfs:label "Photographic Collections".
+:European_Art_Museums a bk:Topic; bk:subTopicOf :Art; rdfs:label "European Art Museums".
+:Japanese_Prints a bk:Topic; bk:subTopicOf :Art; rdfs:label "Japanese Prints".
+:Masks_-_Africa a bk:Topic; bk:subTopicOf :Art; rdfs:label "Masks-Africa".
+:Masks_-_Americas_Europe a bk:Topic; bk:subTopicOf :Art; rdfs:label "Masks-Americas/Europe".
+:Dada_Surrealism a bk:Topic; bk:subTopicOf :Art; rdfs:label "Dada/Surrealism".
+:Weaving_Textiles a bk:Topic; bk:subTopicOf :Art; rdfs:label "Weaving Textiles".
+:Chinese_Paintings a bk:Topic; bk:subTopicOf :Art; rdfs:label "Chinese Paintings".
+:Illustrations_Woodcuts a bk:Topic; bk:subTopicOf :Art; rdfs:label "Illustrations & Woodcuts".
+:Mesoamerican_Codices a bk:Topic; bk:subTopicOf :Art; rdfs:label "Mesoamerican Codices".
+:Mughal_Rajput_Painting a bk:Topic; bk:subTopicOf :Art; rdfs:label "Mughal & Rajput Painting".
+
+:Activism a bk:Topic; bk:subTopicOf :More; rdfs:label "Activism".
+:Activists a bk:Topic; bk:subTopicOf :More; rdfs:label "Activists".
+:Unions a bk:Topic; bk:subTopicOf :More; rdfs:label "Unions".
+:Hobos_Houseless_Street_Kids a bk:Topic; bk:subTopicOf :More; rdfs:label "Hobos, Houseless & Street Kids".
+:Refugees a bk:Topic; bk:subTopicOf :More; rdfs:label "Refugees".
+:Tarot_Decks a bk:Topic; bk:subTopicOf :More; rdfs:label "Tarot Decks".
+:Tarot_Major_Arcana a bk:Topic; bk:subTopicOf :More; rdfs:label "Tarot Major Arcana".
+:Bureau_of_American_Ethnology a bk:Topic; bk:subTopicOf :More; rdfs:label "Bureau of American Ethnology".
+:Circus a bk:Topic; bk:subTopicOf :More; rdfs:label "Circus".
+:Legendary_Women_Warriors a bk:Topic; bk:subTopicOf :More; rdfs:label "Legendary Women Warriors".
+:Hats a bk:Topic; bk:subTopicOf :More; rdfs:label "Hats".
+:Knots a bk:Topic; bk:subTopicOf :More; rdfs:label "Knots".
+:Pawn_Shops_Bookstores a bk:Topic; bk:subTopicOf :More; rdfs:label "Pawn Shops & Bookstores".
+:Underwater_Photographs a bk:Topic; bk:subTopicOf :More; rdfs:label "Underwater Photographs".
+:Aloes a bk:Topic; bk:subTopicOf :More; rdfs:label "Aloes".
+:Waterfalls a bk:Topic; bk:subTopicOf :More; rdfs:label "Waterfalls".
+:Water_Sculpture_Gardens a bk:Topic; bk:subTopicOf :More; rdfs:label "Water Sculpture Gardens".
+
+
+
+
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the Art Institute of Chicago";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_Art_Institute_of_Chicago>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the Bibliothèque nationale de France";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_Bibliothèque_nationale_de_France>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in Arquivo Nacional (Brazil)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_Arquivo_Nacional_(Brazil)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the Cuypershuis";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_Cuypershuis>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the George Eastman House Collection";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_George_Eastman_House_Collection>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by Gallen-Kallelan Museo";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Gallen-Kallelan_Museo>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the Getty Center";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_Getty_Center>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by Het Nieuwe Instituut";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Het_Nieuwe_Instituut>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the Hungarian Theatre Museum and Institute";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_Hungarian_Theatre_Museum_and_Institute>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs from the Instituto Moreira Salles";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_from_the_Instituto_Moreira_Salles>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the Israel Museum, Jerusalem";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_Israel_Museum,_Jerusalem>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the Metropolitan Museum of Art";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_Metropolitan_Museum_of_Art>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the National Portrait Gallery (United States)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_National_Portrait_Gallery_(United_States)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the National Portrait Gallery, London";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_National_Portrait_Gallery,_London>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photos from Norwegian Museum of Cultural History";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photos_from_Norwegian_Museum_of_Cultural_History>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by Dundas Museum and Archives";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Dundas_Museum_and_Archives>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by Galt Museum %26 Archives on The Commons";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Galt_Museum_%26_Archives_on_The_Commons>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by Jewish Historical Society of the Upper Midwest";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Jewish_Historical_Society_of_the_Upper_Midwest>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by Museum of Photographic Arts";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Museum_of_Photographic_Arts>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the Rijksmuseum Amsterdam";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_Rijksmuseum_Amsterdam>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the Stadsarchief Amsterdam";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_Stadsarchief_Amsterdam>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs in the Victoria and Albert Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_in_the_Victoria_and_Albert_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by Cornell University Library";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Cornell_University_Library>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by New York Public Library";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_New_York_Public_Library>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by Schlesinger Library for the Black Women Oral History Project";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Schlesinger_Library_for_the_Black_Women_Oral_History_Project>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by Schlesinger Library on the History of Women in America";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Schlesinger_Library_on_the_History_of_Women_in_America>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by The Field Museum Library";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_The_Field_Museum_Library>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Photographic_Collections;
+          rdfs:label "Photographs by University of Washington Libraries Digital Collections";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_University_of_Washington_Libraries_Digital_Collections>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Austrian Museum of Applied Arts";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:38661163>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Burg Vischering";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:55659624>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Heeresgeschichtliches Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:45415350>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Kunsthistorisches Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:40073373>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Landschaftspark Duisburg-Nord";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:55659265>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Musée d'Orsay";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:18091436>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Musée du Louvre";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:52519986>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Musée du quai Branly";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:18091657>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Musée national du Moyen Âge";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:20125619>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Muséum de Toulouse";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:17317095>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Muséum national d'histoire naturelle";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:20125383>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Museumsquartier (Vienna)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:37875407>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Naturhistorisches Museum, Wien";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:40072939>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Phaidon";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:36225651>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :European_Art_Museums;
+          rdfs:label "Pushkin Apartment Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:44512331>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Chinese_Paintings;
+          rdfs:label "Paintings from China in the Freer Gallery";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paintings_from_China_in_the_Freer_Gallery>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Chinese_Paintings;
+          rdfs:label "Chinese paintings in the Honolulu Museum of Art";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Chinese_paintings_in_the_Honolulu_Museum_of_Art>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Chinese_Paintings;
+          rdfs:label "Paintings from China in the Los Angeles County Museum of Art";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paintings_from_China_in_the_Los_Angeles_County_Museum_of_Art>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Chinese_Paintings;
+          rdfs:label "Paintings in the Palace Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paintings_in_the_Palace_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Chinese_Paintings;
+          rdfs:label "Paintings in the Shanghai Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paintings_in_the_Shanghai_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Chinese_Paintings;
+          rdfs:label "Chinese paintings in the Walters Art Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Chinese_paintings_in_the_Walters_Art_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Albrecht Dürer woodcut series - Narrenschiff";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Albrecht_Dürer_woodcut_series_-_Narrenschiff>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "William Blake";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:William_Blake>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Illustration of fables by Gustave Doré";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Illustration_of_fables_by_Gustave_Doré>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Harper's Weekly illustrations by Winslow Homer";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Harper%27s_Weekly_illustrations_by_Winslow_Homer>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Harper's Magazine illustrations by Howard Pyle";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Harper%27s_Magazine_illustrations_by_Howard_Pyle>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Howard Pyle's Book of Pirates";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Howard_Pyle%27s_Book_of_Pirates>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Arthur Rackham's illustrations of Grimm's Fairy Tales";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Arthur_Rackham%27s_illustrations_of_Grimm%27s_Fairy_Tales>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Arthur Rackham's illustrations of A Midsummer Night's Dream";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Arthur_Rackham%27s_illustrations_of_A_Midsummer_Night%27s_Dream>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Arthur Rackham's Illustrations of Rip Van Winkle (1905)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Arthur_Rackham%27s_Illustrations_of_Rip_Van_Winkle_(1905)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Arthur Rackham's Illustrations of The Romance of King Arthur (1917)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Arthur_Rackham%27s_Illustrations_of_The_Romance_of_King_Arthur_(1917)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Le Cabinet des fées - Les Mille et Une Nuits. Contes arabes traduits en français par Antoine Galland";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Le_Cabinet_des_f%C3%A9es_-_Les_Mille_et_Une_Nuits._Contes_arabes_traduits_en_fran%C3%A7ais_par_Antoine_Galland>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Vikram and the Vampire";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Vikram_and_the_Vampire>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Twenty-two Goblins";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Twenty-two_Goblins>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Illustrations from Celtic Fairy Tales";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Illustrations_from_%22Celtic_Fairy_Tales%22>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "The fairy tales of Hans Christian Andersen (Stratton)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_fairy_tales_of_Hans_Christian_Andersen_(Stratton)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "Indian Fairy Tales (Jacobs)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Indian_Fairy_Tales_(Jacobs)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illustrations_Woodcuts;
+          rdfs:label "The Olive Fairy Book (Andrew Lang)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_Olive_Fairy_Book_(Andrew_Lang)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Codex Borbonicus";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Codex_Borbonicus>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Codex Boturini";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Codex_Boturini>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Codex Magliabechiano";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Codex_Magliabechiano>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Codex Mendoza";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Codex_Mendoza>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Codex Ríos";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Codex_R%C3%ADos>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Codex Telleriano-Remensis";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Codex_Telleriano-Remensis>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Florentine Codex";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Florentine_Codex>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Lienzo de Tlaxcala";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Lienzo_de_Tlaxcala>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Matrícula de Tributos";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Matr%C3%ADcula_de_Tributos>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Dresden Codex";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dresden_Codex>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Madrid Codex";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Madrid_Codex>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Paris Codex";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paris_Codex>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Codex Selden";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Codex_Selden>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Codex Sierra";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Codex_Sierra>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mesoamerican_Codices;
+          rdfs:label "Codex Zouche-Nuttall";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Codex_Zouche-Nuttall>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "16th-century Mughal miniatures";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:16th-century_Mughal_miniatures>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "17th-century Mughal miniatures";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:17th-century_Mughal_miniatures>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "18th-century Mughal miniatures";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:18th-century_Mughal_miniatures>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "19th-century Mughal miniatures";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:19th-century_Mughal_miniatures>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "Mughal painters";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Mughal_painters>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "Mughal miniatures in the Walters Art Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Mughal_miniatures_in_the_Walters_Art_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "Bundi painting";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bundi_painting>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "Jaipur painting";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Jaipur_painting>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "Kishangarh painting";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kishangarh_painting>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "Kotah painting";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kotah_painting>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Mughal_Rajput_Painting;
+          rdfs:label "Marwar painting";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Marwar_painting>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Tarot 1JJ";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tarot_1JJ>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Le tarot dit de Charles VI";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Le_tarot_dit_de_Charles_VI>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Court de Gébelin tarot";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Court_de_G%C3%A9belin_tarot>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Egyptian Tarot (Falconnier)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Egyptian_Tarot_(Falconnier)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Tarot de Marseille - Jean Dodal";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tarot_de_Marseille_-_Jean_Dodal>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Tarot de Marseille - Noblet";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tarot_de_Marseille_-_Noblet>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Minchiate card deck - Florence - 1860-1890";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Minchiate_card_deck_-_Florence_-_1860-1890>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Tarot de Besançon - Renault";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tarot_de_Besan%C3%A7on_-_Renault>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Hamburger és Birkholz R.T.";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hamburger_%C3%A9s_Birkholz_R.T.>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Piatnik Nándor és fiai R.T.";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Piatnik_N%C3%A1ndor_%C3%A9s_fiai_R.T.>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Mantegna Tarocchi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Mantegna_Tarocchi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Tarot nouveau - Grimaud - 1898";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tarot_nouveau_-_Grimaud_-_1898>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Oswald Wirth Tarot - The Tarot of the Magicians version";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Oswald_Wirth_Tarot_-_The_Tarot_of_the_Magicians_version>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Papus Tarot 1909";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Papus_Tarot_1909>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Piedmontese tarot deck - Solesio - 1865";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Piedmontese_tarot_deck_-_Solesio_-_1865>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Brera-Brambilla Visconti Tarot";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Brera-Brambilla_Visconti_Tarot>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Cary-Yale Visconti Tarot";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Cary-Yale_Visconti_Tarot>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Dames (Visconti Tarot)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dames_(Visconti_Tarot)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Damsels (Visconti Tarot)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Damsels_(Visconti_Tarot)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Decks;
+          rdfs:label "Pierpont Morgan-Bergamo Visconti-Sforza Tarot";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Pierpont_Morgan-Bergamo_Visconti-Sforza_Tarot>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Underwater_Photographs;
+          rdfs:label "Freshwater underwater photographs of nature";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Freshwater_underwater_photographs_of_nature>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Underwater_Photographs;
+          rdfs:label "Underwater photographs of the nature of Indonesia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Underwater_photographs_of_the_nature_of_Indonesia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Underwater_Photographs;
+          rdfs:label "Kelp forests";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kelp_forests>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Underwater_Photographs;
+          rdfs:label "Marine animals of East Timor";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Marine_animals_of_East_Timor>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Underwater_Photographs;
+          rdfs:label "Underwater diving in Thailand";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Underwater_diving_in_Thailand>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Underwater_Photographs;
+          rdfs:label "Underwater photographs of corals";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Underwater_photographs_of_corals>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Underwater_Photographs;
+          rdfs:label "Underwater photographs of mammals";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Underwater_photographs_of_mammals>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Chariot (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Chariot_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Death (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Death_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Devil (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Devil_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Emperor (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Emperor_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Empress (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Empress_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Fool (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fool_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Hanged Man (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hanged_Man_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Hermit (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hermit_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Judgement (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Judgement_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Justice (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Justice_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Lovers (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Lovers_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Magician (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Magician_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Moon (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Moon_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Pope (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Pope_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Popess (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Popess_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Star (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Star_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Strength (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Strength_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Sun (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sun_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Temperance (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Temperance_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Theological virtues (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Theological_virtues_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Tower (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tower_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "Wheel of Fortune (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Wheel_of_Fortune_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tarot_Major_Arcana;
+          rdfs:label "The World (Major Arcana)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_World_(Major_Arcana)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Graffiti of spray cans";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Graffiti_of_spray_cans>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Street painting";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Street_painting>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Banksy unconfirmed";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Banksy_unconfirmed>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Dismaland";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dismaland>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Banksy in London";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Banksy_in_London>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Banksy in New Orleans";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Banksy_in_New_Orleans>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Banksy in Palestine";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Banksy_in_Palestine>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Sticker art in São Paulo city";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sticker_art_in_S%C3%A3o_Paulo_city>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Sticker art of Poland";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sticker_art_of_Poland>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Sticker art in Lisbon";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sticker_art_in_Lisbon>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Sticker art in Porto";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sticker_art_in_Porto>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Sticker art in Ljubljana";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sticker_art_in_Ljubljana>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Sticker art in the Land of Valencia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sticker_art_in_the_Land_of_Valencia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Sticker art in New York City";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sticker_art_in_New_York_City>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Meeting of Styles Lodz";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Meeting_of_Styles_Lodz>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Meeting of Styles Mexico City 2015";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Meeting_of_Styles_Mexico_City_2015>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Graffiti_Sticker_Art;
+          rdfs:label "Meeting of Styles Mexico City 2016";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Meeting_of_Styles_Mexico_City_2016>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Bureau_of_American_Ethnology;
+          rdfs:label "Annual report of the Bureau of American Ethnology to the Secretary of the Smithsonian Institution 1888-1889 (1893)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Annual_report_of_the_Bureau_of_Ethnology_to_the_Secretary_of_the_Smithsonian_Institution_1888-1889_(1893)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Bureau_of_American_Ethnology;
+          rdfs:label "Annual report of the Bureau of American Ethnology to the Secretary of the Smithsonian Institution (1895)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Annual_report_of_the_Bureau_of_American_Ethnology_to_the_Secretary_of_the_Smithsonian_Institution_1895-1896_(1898)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Bureau_of_American_Ethnology;
+          rdfs:label "Annual report of the Bureau of American Ethnology to the Secretary of the Smithsonian Institution (1897)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Annual_report_of_the_Bureau_of_American_Ethnology_to_the_Secretary_of_the_Smithsonian_Institution_1897-1898_(1900)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Bureau_of_American_Ethnology;
+          rdfs:label "Annual report of the Bureau of American Ethnology to the Secretary of the Smithsonian Institution (1898)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Annual_report_of_the_Bureau_of_American_Ethnology_to_the_Secretary_of_the_Smithsonian_Institution_1898-1899_(1903)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Bureau_of_American_Ethnology;
+          rdfs:label "Annual report of the Bureau of American Ethnology to the Secretary of the Smithsonian Institution (1900)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Annual_report_of_the_Bureau_of_American_Ethnology_to_the_Secretary_of_the_Smithsonian_Institution_1900-1901_(1904)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Bureau_of_American_Ethnology;
+          rdfs:label "Annual report of the Bureau of American Ethnology to the Secretary of the Smithsonian Institution (1901)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Annual_report_of_the_Bureau_of_American_Ethnology_to_the_Secretary_of_the_Smithsonian_Institution_1901-1902_(1904)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Bureau_of_American_Ethnology;
+          rdfs:label "Annual report of the Bureau of American Ethnology to the Secretary of the Smithsonian Institution (1908)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Annual_report_of_the_Bureau_of_American_Ethnology_to_the_Secretary_of_the_Smithsonian_Institution_1908-1909_(1915)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Bureau_of_American_Ethnology;
+          rdfs:label "Annual report of the Bureau of American Ethnology to the Secretary of the Smithsonian Institution (1925)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Annual_report_of_the_Bureau_of_American_Ethnology_to_the_Secretary_of_the_Smithsonian_Institution_1908-1909_(1915)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Bureau_of_American_Ethnology;
+          rdfs:label "Annual report of the Bureau of Ethnology to the Secretary of the Smithsonian Institution (1882)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Annual_report_of_the_Bureau_of_Ethnology_to_the_Secretary_of_the_Smithsonian_Institution_1882-1883_(1886)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Jules Allen";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Jules_Allen>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Wil Blanche";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Wil_Blanche>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Photographs by Sharon Farmer";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Sharon_Farmer>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Edward Mitchell Bannister";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Edward_Mitchell_Bannister>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Still Fly at 55";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Still_Fly_at_55>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Selma Burke";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Selma_Burke>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Owusu Dartey";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Owusu_Dartey>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Robert Scott Duncanson";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Robert_Scott_Duncanson>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Alexander Boghossian";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Alexander_Boghossian>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Owusu Dartey";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Owusu_Dartey>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "William H. Johnson";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:William_H._Johnson>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Betsy Graves Reyneau";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Betsy_Graves_Reyneau>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Clementine Hunter";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Clementine_Hunter>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Joshua Johnson";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Joshua_Johnson>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "William H. Johnson";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:William_H._Johnson>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Jacob Lawrence";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Jacob_Lawrence>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Edmonia Lewis";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Edmonia_Lewis>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Paintings by Henry Ossawa Tanner";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paintings_by_Henry_Ossawa_Tanner>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Melvin Van Peebles";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Melvin_Van_Peebles>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "John H. White";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:John_H._White>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :African_American_Artists;
+          rdfs:label "Morris Landau House";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Morris_Landau_House>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "The Seated Clowness, Mademoiselle Cha-u-Kao (Toulouse-Lautrec)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_Seated_Clowness,_Mademoiselle_Cha-u-Kao_(Toulouse-Lautrec)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "The Circus (Seurat painting)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_Circus_(Seurat_painting)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Adolph Friedländer";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Adolph_Friedl%C3%A4nder>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Circus posters of Slovenia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Circus_posters_of_Slovenia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Barnum & Bailey posters";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Barnum_%26_Bailey_posters>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Jokers (playing card)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Jokers_(playing_card)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "The Seated Clowness, Mademoiselle Cha-u-Kao (Toulouse-Lautrec)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_Seated_Clowness,_Mademoiselle_Cha-u-Kao_(Toulouse-Lautrec)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Yorick";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Yorick>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Minoan Bull-leaper (bronze group)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Minoan_Bull-leaper_(bronze_group)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Tightrope walking in art";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tightrope_walking_in_art>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Duo Miraka, Montreal 2015-06-26";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Duo_Miraka,_Montreal_2015-06-26>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Kadja Karjalainen (aerialist)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kadja_Karjalainen_(aerialist)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Wau Wau Sisters";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Wau_Wau_Sisters>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Circus high wire acts";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Circus_high_wire_acts>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Juggling";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Juggling>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Avner the Eccentric";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Avner_the_Eccentric>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Duo Forzarello - MPS 2014 Wassenberg";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Duo_Forzarello_-_MPS_2014_Wassenberg>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "The Flying Karamazov Brothers";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_Flying_Karamazov_Brothers>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Maori poi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Maori_poi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Beijing Chinese-Yo-Yo Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Beijing_Chinese-Yo-Yo_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Indian clubs, dumb-bells, and sword exercises (1800)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Indian_clubs,_dumb-bells,_and_sword_exercises_(1800)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Torch juggling";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Torch_juggling>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Two jugglers";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Two_jugglers>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Coney Island Mermaid Parade 2012";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Coney_Island_Mermaid_Parade_2012>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Jacques de Falaise";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Jacques_de_Falaise>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Majorettes from Croatia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Majorettes_from_Croatia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Rony Addadi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Rony_Addadi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Cyr wheel at Cirque du Soleil Istanbul 2012 Alegría";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Cyr_wheel_at_Cirque_du_Soleil_Istanbul_2012_Alegr%C3%ADa>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Circus;
+          rdfs:label "Wheel of Death";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Wheel_of_Death>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Frida_Kahlo_Diego_Rivera;
+          rdfs:label "Collections of the Anahucalli Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Collections_of_the_Anahucalli_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Frida_Kahlo_Diego_Rivera;
+          rdfs:label "Diego Rivera Mural Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Diego_Rivera_Mural_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Frida_Kahlo_Diego_Rivera;
+          rdfs:label "El hombre controlador del universo";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:El_hombre_controlador_del_universo>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Frida_Kahlo_Diego_Rivera;
+          rdfs:label "Murals by Diego Rivera in the Palacio de Bellas Artes";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Murals_by_Diego_Rivera_in_the_Palacio_de_Bellas_Artes>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Frida_Kahlo_Diego_Rivera;
+          rdfs:label "Murals by Diego Rivera in the Palacio Nacional";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Murals_by_Diego_Rivera_in_the_Palacio_Nacional>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Frida_Kahlo_Diego_Rivera;
+          rdfs:label "Murals by Diego Rivera in the Secretaria de Educacion Publico";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Murals_by_Diego_Rivera_in_the_Secretaria_de_Educacion_Publico>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Frida_Kahlo_Diego_Rivera;
+          rdfs:label "Diego Rivera & Frida Kahlo Studio";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Diego_Rivera_%26_Frida_Kahlo_Studio>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Frida_Kahlo_Diego_Rivera;
+          rdfs:label "Museo Frida Kahlo";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Museo_Frida_Kahlo>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Frida_Kahlo_Diego_Rivera;
+          rdfs:label "Google Art Project works in Museo Frida Kahlo";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Google_Art_Project_works_in_Museo_Frida_Kahlo>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of owls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_owls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of tigers";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_tigers>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of butterflies";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_butterflies>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of dragons";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_dragons>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of fictional characters";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_fictional_characters>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of flames";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_flames>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of food";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_food>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Hajichi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hajichi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of hearts";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_hearts>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of Tupac Shakur";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_Tupac_Shakur>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of Virgin Mary";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_Virgin_Mary>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of skulls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_skulls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Kanji tattoos";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kanji_tattoos>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos in Latin";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_in_Latin>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Tattoos;
+          rdfs:label "Tattoos of wings";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tattoos_of_wings>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Shadow puppets in the Sichuan Provincial Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Shadow_puppets_in_the_Sichuan_Provincial_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Marionettes from Germany";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Marionettes_from_Germany>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Royal de Luxe elephant in London";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Royal_de_Luxe_elephant_in_London>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Hermanos Rosete Aranda";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hermanos_Rosete_Aranda>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Museo Iberoamericano del Títere";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Museo_Iberoamericano_del_T%C3%ADtere>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Witch puppets";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Witch_puppets>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Théatre lyonnais de Guignol";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Th%C3%A9atre_lyonnais_de_Guignol>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Lin Liu-hsin Puppet Theatre Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Lin_Liu-hsin_Puppet_Theatre_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Shadow puppets from Cambodia in the Museu do Oriente";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Shadow_puppets_from_Cambodia_in_the_Museu_do_Oriente>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Shadow puppets from India in the Museu do Oriente";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Shadow_puppets_from_India_in_the_Museu_do_Oriente>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Shadow puppets from Malaysia in the Museu do Oriente";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Shadow_puppets_from_Malaysia_in_the_Museu_do_Oriente>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Wayang beber";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Wayang_beber>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Gunungan (wayang)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Gunungan_(wayang)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Wayang kulit performance";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Wayang_kulit_performance>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Wayang topeng";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Wayang_topeng>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "M. Taggesell";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:M._Taggesell>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Pentas Ramajana";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Pentas_Ramajana>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Marottes";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Marottes>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Museo Nacional del Títere (National Puppet Museum), Huamantla";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Museo_Nacional_del_T%C3%ADtere_(National_Puppet_Museum),_Huamantla>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Puppets;
+          rdfs:label "Lin Liu-hsin Puppet Theatre Museum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Lin_Liu-hsin_Puppet_Theatre_Museum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Idle No More SF Bay";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Idle_No_More_SF_Bay>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "No Tar Sands in SF Bay";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:No_Tar_Sands_in_SF_Bay>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Dakota Access Pipeline protests in San Francisco";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dakota_Access_Pipeline_protests_in_San_Francisco>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Dakota Access Pipeline and Keystone XL Pipeline protest photos by Pax Ahimsa Gethen";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dakota_Access_Pipeline_and_Keystone_XL_Pipeline_protest_photos_by_Pax_Ahimsa_Gethen>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Stand with Standing Rock Washington DC";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Stand_with_Standing_Rock_Washington_DC>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Birmingham Civil Rights Institute";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Birmingham_Civil_Rights_Institute>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Black Lives Matter in California";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Black_Lives_Matter_in_California>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Black Lives Matter in Massachusetts";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Black_Lives_Matter_in_Massachusetts>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "2014 Ferguson Protests";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:2014_Ferguson_Protests>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Millions March NYC";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Millions_March_NYC>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "No More Sidelines protest in Portland (23 September 2016)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:No_More_Sidelines_protest_in_Portland_(23_September_2016)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Occupy City Hall in Portland";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Occupy_City_Hall_in_Portland>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Rally to Remember Trayvon Martin in Portland (14 July 2013)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Rally_to_Remember_Trayvon_Martin_in_Portland_(14_July_2013)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "DC Ferguson demonstration";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:DC_Ferguson_demonstration>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Black Power Salute at 1968 Olympics";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Black_Power_Salute_at_1968_Olympics>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Brown v. Board of Education National Historic Site";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Brown_v._Board_of_Education_National_Historic_Site>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Selma to Montgomery marches";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Selma_to_Montgomery_marches>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Riots after the assassination of Martin Luther King, Jr. (1968)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Riots_after_the_assassination_of_Martin_Luther_King,_Jr._(1968)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "LGBT Solidarity Rally in front of the Stonewall Inn";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:LGBT_Solidarity_Rally_in_front_of_the_Stonewall_Inn>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Stand Up for Trans Youth rally in New York City";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Stand_Up_for_Trans_Youth_rally_in_New_York_City>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Girls just wanna have fun-damental rights";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Girls_just_wanna_have_fun-damental_rights>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Bangalore rape protests";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bangalore_rape_protests>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "2013 One Billion Rising in Washington, D.C.";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:2013_One_Billion_Rising_in_Washington,_D.C.>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "V-Day in New Orleans (12 April 2008)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:V-Day_in_New_Orleans_(12_April_2008)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Demonstrations and protests in support of abortion rights in Argentina";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Demonstrations_and_protests_in_support_of_abortion_rights_in_Argentina>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Demonstrations and protests in support of abortion rights in Chile";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Demonstrations_and_protests_in_support_of_abortion_rights_in_Chile>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Rally in memory of Savita Halappanavar in Dublin (17 November 2012)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Rally_in_memory_of_Savita_Halappanavar_in_Dublin_(17_November_2012)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Derivative works on We Can Do It";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Derivative_works_on_We_Can_Do_It>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activism;
+          rdfs:label "Rosie the Riveter/World War II Home Front National Historical Park";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Rosie_the_Riveter/World_War_II_Home_Front_National_Historical_Park>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Michelle Alexander";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Michelle_Alexander>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Dennis Banks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dennis_Banks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Ravinder Bhalla";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ravinder_Bhalla>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Ruby Bridges at the Mayo Speaker Series (February 4, 2015)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ruby_Bridges_at_the_Mayo_Speaker_Series_(February_4,_2015)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Jim Brown";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Jim_Brown>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "W.E.B. Du Bois";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:W.E.B._Du_Bois>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "James L. Farmer, Jr.";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:James_L._Farmer,_Jr.>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Fred Hampton Jr.";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fred_Hampton_Jr.>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Cornel West";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Cornel_West>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "César Chávez";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:C%C3%A9sar_Ch%C3%A1vez>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Dolores Huerta";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dolores_Huerta>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Gordon K. Hirabayashi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Courage_in_Action>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Ericka Huggins";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ericka_Huggins>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Fred Korematsu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fred_Korematsu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Vilma Socorro Martínez";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Vilma_Socorro_Mart%C3%ADnez>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Rosa Parks bus";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Rosa_Parks_bus>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Photographs of Sojourner Truth";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_of_Sojourner_Truth>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Fannie Lou Hamer";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fannie_Lou_Hamer>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Sabotage by Elizabeth Gurley Flynn";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sabotage_by_Elizabeth_Gurley_Flynn>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Mother Earth";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Mother_Earth>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Margaret Sanger";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Margaret_Sanger>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Little Rock Nine";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Little_Rock_Nine>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Ho Jong-suk";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ho_Jong-suk>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Naomi Klein";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Naomi_Klein>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Germaine Greer";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Germaine_Greer>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Malcolm X";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Malcolm_X>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Activists;
+          rdfs:label "Harvey Milk";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Harvey_Milk>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Caedmon manuscript";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Caedmon_manuscript>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Charter of New Minster, Winchester (966) - BL Cotton MS Vespasian A VIII";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Charter_of_New_Minster,_Winchester_(966)_-_BL_Cotton_MS_Vespasian_A_VIII>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Anglo-Saxon Chronicle";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Anglo-Saxon_Chronicle>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Harley Psalter (11th c.) - BL Harley 603";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Harley_Psalter_(11th_c.)_-_BL_Harley_603>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Lindisfarne Gospels (710-721) - BL Cotton MS Nero D IV";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Lindisfarne_Gospels_(710-721)_-_BL_Cotton_MS_Nero_D_IV>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Menologion of Basil II";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Menologion_of_Basil_II>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Psalter Ludwigs des Deutschen - SB Berlin Theol. lat. fol. 58";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Psalter_Ludwigs_des_Deutschen_-_SB_Berlin_Theol._lat._fol._58>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Walters MS W4 - Freising Gospels";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Walters_MS_W4_-_Freising_Gospels>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Beato de Gerona";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Beato_de_Gerona>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Beatus Escorial";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Beatus_Escorial>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Valcavado Beatus";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Valcavado_Beatus>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Apocalypse (late 13th C) - BL Add MS 35166";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Apocalypse_(late_13th_C)_-_BL_Add_MS_35166>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Miniatures in Chronicon Pictum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Miniatures_in_Chronicon_Pictum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Labors of the months in Tres Riches Heures du Duc de Berry";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Labors_of_the_months_in_Tres_Riches_Heures_du_Duc_de_Berry>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Folios from 'Book of the Knowledge of Ingenious Mechanical Devices' by al-Jazari in the MET";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Folios_from_%22Book_of_the_Knowledge_of_Ingenious_Mechanical_Devices%22_by_al-Jazari_in_the_MET>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Explanation of Alfiya Ibn Malik";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Explanation_of_Alfiya_Ibn_Malik>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Kitab-i viladat-i Iskandar. WMS Persian 474.";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kitab-i_viladat-i_Iskandar._WMS_Persian_474.>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "The book of birth of Iskandar";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_book_of_birth_of_Iskandar>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Barcelona Haggadah (14th C) - BL Add MS 14761";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Barcelona_Haggadah_(14th_C)_-_BL_Add_MS_14761>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Golden Haggadah (c.1320) - BL Add MS 27210";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Golden_Haggadah_(c.1320)_-_BL_Add_MS_27210>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Rotschild Haggadah";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Rotschild_Haggadah>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Lex Salica (manuscript 731)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Lex_Salica_(manuscript_731)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Flateyjarbók";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Flateyjarb%C3%B3k>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Apocalypse of St. Sever";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Apocalypse_of_St._Sever>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Walters MS W200 - French 16th century alphabet book";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Walters_MS_W200_-_French_16th_century_alphabet_book>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Aberdeen Bestiary";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aberdeen_Bestiary>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Bestiary - Harley MS 3244";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bestiary_-_Harley_MS_3244>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Bestiary by Muhammad ibn Mahmud Tusi (Walters MS 593)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bestiary_by_Muhammad_ibn_Mahmud_Tusi_(Walters_MS_593)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Bestiary by Zakariya al-Qazwini (Walters MS 659)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bestiary_by_Zakariya_al-Qazwini_(Walters_MS_659)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "MS. LUDWIG XV 4 (Getty museum) - Bird Book of Hugo Fouilloy";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:MS._LUDWIG_XV_4_(Getty_museum)_-_Bird_Book_of_Hugo_Fouilloy>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Rochester Bestiary (1225-1250) - BL Royal MS 12 F XIII";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Rochester_Bestiary_(1225-1250)_-_BL_Royal_MS_12_F_XIII>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Carrara Herbal (c.1400) - BL Egerton MS 2020";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Carrara_Herbal_(c.1400)_-_BL_Egerton_MS_2020>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "Vienna Dioscurides";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Vienna_Dioscurides>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Illuminated_Manuscripts;
+          rdfs:label "MS. Ashmole 1504";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:MS._Ashmole_1504>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Amazonomachy mosaic from Antiochia at the Louvre (Paris)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Amazonomachy_mosaic_from_Antiochia_at_the_Louvre_(Paris)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Florence 114106";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Florence_114106>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Wounded Amazon tipo Mattei (Musei Capitolini)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Wounded_Amazon_tipo_Mattei_(Musei_Capitolini)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Amazone zu Pferde (Berlin-Tiergarten)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Amazone_zu_Pferde_(Berlin-Tiergarten)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Kämpfende Amazone (Franz von Stuck)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:K%C3%A4mpfende_Amazone_(Franz_von_Stuck)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Owl of Athena";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Owl_of_Athena>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Engravings of Jeanne d'Arc";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Engravings_of_Jeanne_d%27Arc>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Paintings of Jeanne d'Arc";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paintings_of_Jeanne_d%27Arc>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "La Pucelle d'Orléans";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:La_Pucelle_d%27Orl%C3%A9ans>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Jeanne d'Arc in posters and photos";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Jeanne_d%27Arc_in_posters_and_photos>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Brünnhilde";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Br%C3%BCnnhilde>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "The Rhinegold and the Valkyries";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_Rhinegold_and_the_Valkyries>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Legendary_Women_Warriors;
+          rdfs:label "Calydonian Hunt on sarcophagi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Calydonian_Hunt_on_sarcophagi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe aculeata";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_aculeata>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe massawana";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_massawana>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe mawii";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_mawii>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe arborescens";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_arborescens>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe bellatula";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_bellatula>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe brevifolia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_brevifolia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe cameronii";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_cameronii>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe chabaudii";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_chabaudii>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe cryptopoda";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_cryptopoda>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe ferox";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_ferox>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe humilis";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_humilis>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe maculata";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_maculata>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe marlothii";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_marlothii>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe massawana";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_massawana>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe perfoliata";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_perfoliata>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe polyphylla";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_polyphylla>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe striata";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_striata>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Aloe succotrina";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aloe_succotrina>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Echeveria";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Echeveria>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Kalanchoe";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kalanchoe>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Aloes;
+          rdfs:label "Sempervivum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sempervivum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Japanese prints in the Honolulu Museum of Art";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Japanese_prints_in_the_Honolulu_Museum_of_Art>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Prints by Katsukawa Shunshō in the Rijksmuseum Amsterdam";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Prints_by_Katsukawa_Shunsh%C5%8D_in_the_Rijksmuseum_Amsterdam>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Prints by Kubo Shunman in the Rijksmuseum Amsterdam";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Prints_by_Kubo_Shunman_in_the_Rijksmuseum_Amsterdam>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Prints by Utagawa Kunisada (I) in the Rijksmuseum Amsterdam";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Prints_by_Utagawa_Kunisada_(I)_in_the_Rijksmuseum_Amsterdam>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Prints by Utagawa Toyokuni (II) in the Rijksmuseum Amsterdam";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Prints_by_Utagawa_Toyokuni_(II)_in_the_Rijksmuseum_Amsterdam>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Prints by Kubo Shunman in the Rijksmuseum Amsterdam";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Prints_by_Kubo_Shunman_in_the_Rijksmuseum_Amsterdam>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Prints by Utagawa Hiroshige (I) in the Rijksmuseum Amsterdam";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Prints_by_Utagawa_Hiroshige_(I)_in_the_Rijksmuseum_Amsterdam>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Prints by Utagawa Kunisada (I) in the Rijksmuseum Amsterdam";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Prints_by_Utagawa_Kunisada_(I)_in_the_Rijksmuseum_Amsterdam>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Prints by Utagawa Toyokuni (II) in the Rijksmuseum Amsterdam";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Prints_by_Utagawa_Toyokuni_(II)_in_the_Rijksmuseum_Amsterdam>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Suzuki Harunobu (Tokyo National Museum)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Suzuki_Harunobu_(Tokyo_National_Museum)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Prints of 36 Views of Mount Fuji";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Prints_of_36_Views_of_Mount_Fuji>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Toyohara Chikanobu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Toyohara_Chikanobu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Eishōsai Chōki";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Eish%C5%8Dsai_Ch%C5%8Dki>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Hishikawa Moronobu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hishikawa_Moronobu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Utagawa Yoshikazu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Utagawa_Yoshikazu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Toyohara Chikanobu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Toyohara_Chikanobu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Ogata Gekko";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ogata_Gekko>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Kobayashi Kiyochika";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kobayashi_Kiyochika>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Tsukioka Yoshitoshi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tsukioka_Yoshitoshi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Utagawa Yoshikazu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Utagawa_Yoshikazu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Toyohara Chikanobu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Toyohara_Chikanobu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Ogata Gekko";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ogata_Gekko>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Keisai Eisen";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Keisai_Eisen>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Chōbunsai Eishi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ch%C5%8Dbunsai_Eishi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Kikukawa Eizan";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kikukawa_Eizan>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Yashima Gakutei";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Yashima_Gakutei>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Hanabusa Itcho";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hanabusa_Itcho>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Utagawa Hiroshige";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Utagawa_Hiroshige>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "One Hundred Famous Views of Edo";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:One_Hundred_Famous_Views_of_Edo>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "36 Views of Mount Fuji (Hiroshige)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:36_Views_of_Mount_Fuji_(Hiroshige)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "The Sixty-nine Stations of the Kiso-kaidō";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_Sixty-nine_Stations_of_the_Kiso-kaid%C5%8D>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "The Famous Scenes of the Sixty States";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:The_Famous_Scenes_of_the_Sixty_States>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Famous Places of the Fifty-three Stations of the Tokaido";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Famous_Places_of_the_Fifty-three_Stations_of_the_Tokaido>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Totoya Hokkei";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Totoya_Hokkei>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Ishikawa Toyonobu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ishikawa_Toyonobu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Katsukawa Shunchō";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Katsukawa_Shunch%C5%8D>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Katsushika Hokusai";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Katsushika_Hokusai>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Kawamura Bunpō";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kawamura_Bunp%C5%8D>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Isoda Koryusai";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Isoda_Koryusai>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Ohara Koson";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ohara_Koson>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Kubo Shunman";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kubo_Shunman>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Utagawa Kunisada";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Utagawa_Kunisada>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Utagawa Kuniyoshi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Utagawa_Kuniyoshi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Okumura Masanobu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Okumura_Masanobu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Kitao Masayoshi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kitao_Masayoshi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Nishikawa Sukenobu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Nishikawa_Sukenobu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Ryūryūkyo Shinsai";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ry%C5%ABry%C5%ABkyo_Shinsai>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Utagawa Sadahide";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Utagawa_Sadahide>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Katsukawa Shunshō";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Katsukawa_Shunsh%C5%8D>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Japanese_Prints;
+          rdfs:label "Kitagawa Utamaro";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kitagawa_Utamaro>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Cascata do Véu da Noiva";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Cascata_do_V%C3%A9u_da_Noiva>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "McWay Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:McWay_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Aysgarth Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aysgarth_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Manavgat Waterfall";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Manavgat_Waterfall>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Rhine Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Rhine_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Niagara Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Niagara_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Dettifoss, seen from the east";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dettifoss,_seen_from_the_east>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Goðafoss";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Go%C3%B0afoss>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Gullfoss";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Gullfoss>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Hafragilsfoss";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hafragilsfoss>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Shiraito Falls, Karuizawa";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Shiraito_Falls,_Karuizawa>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Šum Falls (Vintgar Gorge)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:%C5%A0um_Falls_(Vintgar_Gorge)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Stora Sjöfallet";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Stora_Sj%C3%B6fallet>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Snoqualmie Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Snoqualmie_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Garganta do Diabo from the footbridge";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Garganta_do_Diabo_from_the_footbridge>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Views of Iguazu Falls from Mirante do Salto Floriano towards Passarela da Garganta do Diabo";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Views_of_Iguazu_Falls_from_Mirante_do_Salto_Floriano_towards_Passarela_da_Garganta_do_Diabo>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Llovizna Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Llovizna_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "First Cataract of the Nile";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:First_Cataract_of_the_Nile>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Blue Nile Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Blue_Nile_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Salto Floriano from Espaço Naipi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Salto_Floriano_from_Espa%C3%A7o_Naipi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Views of Iguazu Falls from Trilha das Cataratas (above the footbridge)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Views_of_Iguazu_Falls_from_Trilha_das_Cataratas_(above_the_footbridge)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Victoria Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Victoria_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Schleierfälle (Starzlachklamm)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Schleierf%C3%A4lle_(Starzlachklamm)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Horseshoe Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Horseshoe_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Casca d'Anta waterfall";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Casca_d%27Anta_waterfall>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Angel Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Angel_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Erawan waterfall";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Erawan_waterfall>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Ontaki Falls (Nunobiki Falls)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ontaki_Falls_(Nunobiki_Falls)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Düden Waterfalls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:D%C3%BCden_Waterfalls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Keila juga";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Keila_juga>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Oshinkoshin Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Oshinkoshin_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Gaping Gill";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Gaping_Gill>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Ruby Falls";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ruby_Falls>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Smoo Cave";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Smoo_Cave>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Sajikot Waterfall";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sajikot_Waterfall>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Waterfalls;
+          rdfs:label "Trümmelbachfälle";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tr%C3%BCmmelbachf%C3%A4lle>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Yoruba Gelede masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Yoruba_Gelede_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Bobo masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bobo_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Mossi masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Mossi_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Bamileke masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bamileke_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Bete masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bete_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Dan masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dan_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Guro masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Guro_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Senufo masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Senufo_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Bapende masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bapende_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Ancient Egyptian funerary masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ancient_Egyptian_funerary_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Masks of Gabon";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Masks_of_Gabon>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Baoule masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Baoule_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Bambara masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bambara_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Dogon masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dogon_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Ekoi masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ekoi_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Ibibio masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ibibio_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Africa;
+          rdfs:label "Igbo masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Igbo_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Carnival masks of Portugal";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Carnival_masks_of_Portugal>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Carnival masks of Venice";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Carnival_masks_of_Venice>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Courir de Mardi Gras";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Courir_de_Mardi_Gras>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "1961 Ptuj Carnival";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:1961_Ptuj_Carnival>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Kukeri masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kukeri_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Masks of Anubis";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Masks_of_Anubis>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Masks of Guy Fawkes";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Masks_of_Guy_Fawkes>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "People wearing masks of Guy Fawkes";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:People_wearing_masks_of_Guy_Fawkes>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Bergteufel Oberprechtal";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bergteufel_Oberprechtal>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Straw bear (German traditional character)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Straw_bear_(German_traditional_character)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Veilchendienstagszug 2014 (Mönchengladbach)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Veilchendienstagszug_2014_(M%C3%B6nchengladbach)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Zvončari";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Zvon%C4%8Dari>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Encuentro Nacional de Mascareros 2017";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Encuentro_Nacional_de_Mascareros_2017>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Lucha libre masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Lucha_libre_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Masks of devils/demons from Mexico";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Masks_of_devils/demons_from_Mexico>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Chicahuales";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Chicahuales>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Museo Nacional de la Máscara";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Museo_Nacional_de_la_M%C3%A1scara>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Olmec masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Olmec_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Teotihuacan masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Teotihuacan_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Yupik masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Yupik_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Zuni masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Zuni_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Masks_-_Americas_Europe;
+          rdfs:label "Kwakwaka'wakw masks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kwakwaka%27wakw_masks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Trade unionism in Argentina";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Trade_unionism_in_Argentina>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Manifestação Fora Temer na Avenida Paulista - 29.08.2016";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Manifesta%C3%A7%C3%A3o_Fora_Temer_na_Avenida_Paulista_-_29.08.2016>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Olívio Dutra";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ol%C3%ADvio_Dutra>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Fernando Haddad";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fernando_Haddad>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Paulo Paim";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paulo_Paim>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Luiz Inácio Lula da Silva";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Luiz_In%C3%A1cio_Lula_da_Silva>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Marina Silva";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Marina_Silva>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Trade unionists from Kerala";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Trade_unionists_from_Kerala>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Trade unions in India";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Trade_unions_in_India>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Trades Hall, Johannesburg";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Trades_Hall,_Johannesburg>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "AfriForum";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:AfriForum>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Protest in St. Paul, Minnesota in support of Wisconsin trade unions (26 February 2011)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Protest_in_St._Paul,_Minnesota_in_support_of_Wisconsin_trade_unions_(26_February_2011)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Haymarket Riot";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Haymarket_Riot>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Union labels";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Union_labels>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Loyal Legion of Loggers and Lumbermen";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Loyal_Legion_of_Loggers_and_Lumbermen>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "1934 West Coast waterfront strike";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:1934_West_Coast_waterfront_strike>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "2007 Writers Guild of America strike";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:2007_Writers_Guild_of_America_strike>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Writer's Guild of America East Solidarity Rally in Washington Square";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Writer%27s_Guild_of_America_East_Solidarity_Rally_in_Washington_Square>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "2011 Oakland general strike";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:2011_Oakland_general_strike>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Italian Hall, Calumet";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Italian_Hall,_Calumet>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Baltimore railroad strike of 1877";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Baltimore_railroad_strike_of_1877>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Women's Trade Union League";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Women%27s_Trade_Union_League>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Members of the Industrial Workers of the World";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Members_of_the_Industrial_Workers_of_the_World>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Centralia Massacre";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Centralia_Massacre>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "1921 General Strike (Norway) e (Washington)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:1921_General_Strike_(Norway)_e_(Washington)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Red Emma's Bookstore Coffeehouse";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Red_Emma%27s_Bookstore_Coffeehouse>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Members of the Socialist Party of America";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Members_of_the_Socialist_Party_of_America>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Bill Haywood";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bill_Haywood>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Mother Jones";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Mother_Jones>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Picketing in Kiev: March 27, 2014";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Picketing_in_Kiev:_March_27,_2014>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "1921 General Strike (Norway)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:1921_General_Strike_(Norway)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "1934 West Coast waterfront strike";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:1934_West_Coast_waterfront_strike>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "2011 Oakland general strike";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:2011_Oakland_general_strike>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "Belgian general strike of 1960-61";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Belgian_general_strike_of_1960-61>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Unions;
+          rdfs:label "General strike in Brazil (2017-04-28)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:General_strike_in_Brazil_(2017-04-28)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Songkok";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Songkok>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Basketry hats of Indigenous peoples of North America";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Basketry_hats_of_Indigenous_peoples_of_North_America>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Jaapi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Jaapi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Bicorne hats";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bicorne_hats>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Birettas";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Birettas>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Bonnets";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bonnets>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Bowler hats";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bowler_hats>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Busby";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Busby>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Capotain";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Capotain>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Caps";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Caps>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Chullo";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Chullo>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Chupallas";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Chupallas>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Cowboy hats";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Cowboy_hats>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Fascinators";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fascinators>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Fedoras";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fedoras>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Fez";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fez>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Hard hats";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hard_hats>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Hennins";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hennins>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Kolpiks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kolpiks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Kufi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kufi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Mitres";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Mitres>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Panama hats";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Panama_hats>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Papakhi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Papakhi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Petasos";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Petasos>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Pork pie hats";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Pork_pie_hats>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Sami headwear";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sami_headwear>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Shako";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Shako>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Shtreimels";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Shtreimels>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Sombreros";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sombreros>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Sou'wester";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sou%27wester>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Spodiks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Spodiks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Straw boaters";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Straw_boaters>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Taqiyah";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Taqiyah>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Toques (headgear)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Toques_(headgear)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Tricorne hats";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tricorne_hats>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Trilby";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Trilby>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Ushankas";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ushankas>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Witches hats";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Witches_hats>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Red zucchettos";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Red_zucchettos>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hats;
+          rdfs:label "Šajkača";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:%C5%A0ajka%C4%8Da>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Hobos";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hobos>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Street children in art";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Street_children_in_art>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless people in art";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_people_in_art>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless people of Brazil";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_people_of_Brazil>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless people of Toronto";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_people_of_Toronto>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless dens in Holešovice";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_dens_in_Hole%C5%A1ovice>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless people of Estonia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_people_of_Estonia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Les Frigos";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Les_Frigos>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Le Loop";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Le_Loop>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless people of Israel";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_people_of_Israel>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless in Tokyo";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_in_Tokyo>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless people of Mexico";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_people_of_Mexico>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless people of Portugal";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_people_of_Portugal>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless people in London";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_people_in_London>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless people of the United States in the Great Depression";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_people_of_the_United_States_in_the_Great_Depression>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Hobos_Houseless_Street_Kids;
+          rdfs:label "Homeless people of the United States";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Homeless_people_of_the_United_States>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Turk's head knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Turk%27s_head_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Triple overhand knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Triple_overhand_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Interlaced triquetra";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Interlaced_triquetra>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Trefoil knot diagrams with 3-fold rotational symmetry";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Trefoil_knot_diagrams_with_3-fold_rotational_symmetry>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Torus knots and links";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Torus_knots_and_links>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Surgeon's knot";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Surgeon%27s_knot>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Stafford knot";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Stafford_knot>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Square knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Square_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Splices";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Splices>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Solomon's knot";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Solomon%27s_knot>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Quipu";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Quipu>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Overhand knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Overhand_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Necktie knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Necktie_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Monkey's fists";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Monkey%27s_fists>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Looped squares";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Looped_squares>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Loop knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Loop_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Linked circles";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Linked_circles>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Lashing knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Lashing_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Lanyards";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Lanyards>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Hitch knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hitch_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Hangman's nooses";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hangman%27s_nooses>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Handcuff knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Handcuff_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Gordian knot";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Gordian_knot>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Fisherman's knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fisherman%27s_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Figure-eight knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Figure-eight_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Decorative knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Decorative_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Constrictor knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Constrictor_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Coilings and coils";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Coilings_and_coils>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Celtic knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Celtic_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Braids";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Braids>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Bow ties";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bow_ties>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Borromean rings";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Borromean_rings>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Alpine butterfly knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Alpine_butterfly_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Knot of Isis amulet";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Knot_of_Isis_amulet>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Circular Borromean rings";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Circular_Borromean_rings>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Chinese knots";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Chinese_knots>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Knots in heraldry";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Knots_in_heraldry>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Knot on Jewish gravestones";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Knot_on_Jewish_gravestones>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Taiko musubi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Taiko_musubi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Obi musubi";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Obi_musubi>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Knots;
+          rdfs:label "Shibari bondage";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Shibari_bondage>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Pawn shops in Hong Kong";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Pawn_shops_in_Hong_Kong>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Gaoyou Pawnshop";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Gaoyou_Pawnshop>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Shangde Pawnshop";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Shangde_Pawnshop>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Pawn shops in Japan";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Pawn_shops_in_Japan>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Pawn shops in Taiwan";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Pawn_shops_in_Taiwan>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Pawn shop signs in Hong Kong";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Pawn_shop_signs_in_Hong_Kong>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Crédit municipal de Paris";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Cr%C3%A9dit_municipal_de_Paris>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Pawnbrokers in Germany";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Pawnbrokers_in_Germany>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Pawn shops in the United States";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Pawn_shops_in_the_United_States>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Interior of Redbone Guitar Boutique";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Interior_of_Redbone_Guitar_Boutique>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Echigoya Music, Shibuya";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Echigoya_Music,_Shibuya>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Feria de Libros Cuesta de Moyano";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Feria_de_Libros_Cuesta_de_Moyano>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Second-hand bookshops in the Czech Republic";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Second-hand_bookshops_in_the_Czech_Republic>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Bouquinistes in Paris";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Bouquinistes_in_Paris>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Feria de Libros Cuesta de Moyano";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Feria_de_Libros_Cuesta_de_Moyano>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Akiba Junk street";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Akiba_Junk_street>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Car boot sales";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Car_boot_sales>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Pawn_Shops_Bookstores;
+          rdfs:label "Flea markets";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Flea_markets>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Palestinian refugees of the 1948 War";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Palestinian_refugees_of_the_1948_Arab-Israeli_War>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Palestinian refugee camps in the West Bank";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Palestinian_refugee_camps_in_the_West_Bank>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Palestinian refugee camps in the Gaza Strip";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Palestinian_refugee_camps_in_the_Gaza_Strip>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "U.S. internment camps : Japanese relocation archives";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:US_National_Archives_series:_Central_Photographic_File_of_the_War_Relocation_Authority,_compiled_1942_-_1945>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Refugees of the Balkan Wars";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Refugees_of_the_Balkan_Wars>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Monument of the Refugee Children (Skopje)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Monument_of_the_Refugee_Children_(Skopje)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Refugees of the Korean War";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Refugees_of_the_Korean_War>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Refugees of the Kosovo War";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Refugees_of_the_Kosovo_War>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Refugees of the Civil war of Russia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Refugees_of_the_Civil_war_of_Russia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Refugees of the Syrian Civil War (2011–present)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Refugees_of_the_Syrian_Civil_War>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Belgian refugees of World War I";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Belgian_refugees_of_World_War_I>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Refugees of World War I in France";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Refugees_of_World_War_I_in_France>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Armenian refugees in Aleppo";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Armenian_refugees_in_Aleppo>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Belgian refugees in World War II";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Belgian_refugees_in_World_War_II>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Dutch refugees in World War II";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dutch_refugees_in_World_War_II>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Finnish war children";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Finnish_war_children>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Jewish refugees of World War II";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Jewish_refugees_of_World_War_II>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Gangasagar Fair Transit Camp";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Gangasagar_Fair_Transit_Camp>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Partition of India refugees";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Partition_of_India_refugees>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Internally displaced persons in Iraq";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Internally_displaced_persons_in_Iraq>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Refugee camps in Iraq";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Refugee_camps_in_Iraq>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Displaced persons in Kenya";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Displaced_persons_in_Kenya>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Refugees from Africa in Malta";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Refugees_from_Africa_in_Malta>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Lusenda Camp";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Lusenda_Camp>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Refugee camps in the Democratic Republic of the Congo";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Refugee_camps_in_the_Democratic_Republic_of_the_Congo>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Refugees from Sudan";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Refugees_from_Sudan>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Migrant Mother by Dorothea Lange";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Migrant_Mother_by_Dorothea_Lange>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Exodus from Europe 1947 (ship, 1928)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Exodus_from_Europe_1947_(ship,_1928)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Operation Magic Carpet (Yemen)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Operation_Magic_Carpet_(Yemen)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Shanghai Ghetto";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Shanghai_Ghetto>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Kurdish refugees";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Kurdish_refugees>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Refugees;
+          rdfs:label "Tahle Země patří všem REFUGEES WELCOME";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tahle_Zem%C4%9B_pat%C5%99%C3%AD_v%C5%A1em_REFUGEES_WELCOME>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Dada";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Dada>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Guillaume Apollinaire";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Guillaume_Apollinaire>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Hans Arp";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hans_Arp>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "André Breton";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Andr%C3%A9_Breton>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Nelly van Doesburg";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Nelly_van_Doesburg>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Paul Éluard";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paul_%C3%89luard>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Marcel Duchamp";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Marcel_Duchamp>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Marcel Duchamp's fontaine";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Marcel_Duchamp%27s_fontaine>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Elsa von Freytag-Loringhoven";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Elsa_von_Freytag-Loringhoven>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Marsden Hartley";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Marsden_Hartley>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Hannah Höch";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hannah_H%C3%B6ch>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Photographs by Man Ray";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Photographs_by_Man_Ray>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Man Ray";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Man_Ray>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Sophie Taeuber-Arp";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sophie_Taeuber-Arp>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Tristan Tzara";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Tristan_Tzara>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Cabaret Voltaire";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Cabaret_Voltaire>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Mécano";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:M%C3%A9cano>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "La Révolution surréaliste";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:La_R%C3%A9volution_surr%C3%A9aliste>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Chico Xavier";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Chico_Xavier>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Cadavre exquis";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Cadavre_exquis>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Paintings by Marguerite Louis Blasingame";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paintings_by_Marguerite_Louis_Blasingame>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Paintings by Endre Rozsda";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paintings_by_Endre_Rozsda>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Paintings by William Girometti";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Paintings_by_William_Girometti>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Symbolist paintings";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Symbolist_paintings>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Las Pozas de Xilitla";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Las_Pozas_de_Xilitla>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Sculpture by Leandre Cristòfol (Plaça de George Orwell)";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sculpture_by_Leandre_Crist%C3%B2fol_(Pla%C3%A7a_de_George_Orwell)>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Maison Jean Cocteau";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Maison_Jean_Cocteau>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Max Ernst";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Max_Ernst>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Alberto Giacometti";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Alberto_Giacometti>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Alejandro Jodorowsky";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Alejandro_Jodorowsky>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Joan Miró";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Joan_Mir%C3%B3>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Sculptures by Joan Miró";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sculptures_by_Joan_Mir%C3%B3>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Louise Nevelson";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Louise_Nevelson>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Dada_Surrealism;
+          rdfs:label "Las Pozas de Xilitla";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Las_Pozas_de_Xilitla>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Aqueducts";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Aqueducts>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Canals";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Canals>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Cisterns";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Cisterns>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Croton Distributing Reservoir";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Croton_Distributing_Reservoir>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Hammams";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Hammams>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Impluvia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Impluvia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Norias";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Norias>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Parc Güell";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Parc_G%C3%BCell>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Ponds";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Ponds>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Qanat";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Qanat>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Thermal baths";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Thermal_baths>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Water clocks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Water_clocks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Water parks";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Water_parks>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Scierie et ancien moulin de Saint-George";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Scierie_et_ancien_moulin_de_Saint-George>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Water towers";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Water_towers>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Water wells";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Water_wells>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Watermills";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Watermills>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Quality images of fountains";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Quality_images_of_fountains>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Rainbows in fountains";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Rainbows_in_fountains>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Fountains in Generalife";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fountains_in_Generalife>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Fountains in Patio de los Arrayanes";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fountains_in_Patio_de_los_Arrayanes>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Fountain of Patio de la Lindaraja";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Fountain_of_Patio_de_la_Lindaraja>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Sala de los Mocárabes";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Sala_de_los_Moc%C3%A1rabes>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Parque Zoológico y Jardín Botánico Alberto Durán";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Parque_Zool%C3%B3gico_y_Jard%C3%ADn_Bot%C3%A1nico_Alberto_Dur%C3%A1n>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Jardines del Alcázar de Sevilla";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Jardines_del_Alc%C3%A1zar_de_Sevilla>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Water_Sculpture_Gardens;
+          rdfs:label "Arboretum La Alfaguara";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Arboretum_La_Alfaguara>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Maori weaving";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Maori_weaving>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weaving in Côte d'Ivoire";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weaving_in_C%C3%B4te_d%27Ivoire>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weavers in East Timor";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weavers_in_East_Timor>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weaving in Egypt";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weaving_in_Egypt>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Silk weaving in India";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Silk_weaving_in_India>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weavers of Indonesia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weavers_of_Indonesia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weaving in Bali";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weaving_in_Bali>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Images from KIT, Voorstelling Activiteit / Functie - textiel";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Images_from_KIT,_Voorstelling_Activiteit_/_Functie_-_textiel>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Silk weaving in Japan";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Silk_weaving_in_Japan>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weaving in Mali";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weaving_in_Mali>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weavers from Oaxaca";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weavers_from_Oaxaca>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weaving in Namibia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weaving_in_Namibia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weaving in Nigeria";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weaving_in_Nigeria>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weaving in Slovenia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weaving_in_Slovenia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Weavers from Tunisia";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Weavers_from_Tunisia>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Chilkat weaving";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Chilkat_weaving>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Woven Haida hats";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Woven_Haida_hats>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Looms in the United States";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Looms_in_the_United_States>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Navajo blankets";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Navajo_blankets>
+        ].
+        [
+          a bk:BookMark;
+          bk:hasTopic :Weaving_Textiles;
+          rdfs:label "Navajo rug";
+          bk:recalls <https://commons.wikimedia.org/wiki/Category:Navajo_rug>
+        ].

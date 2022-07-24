@@ -5,19 +5,20 @@
   float:left;
 }
 #left-column {
-/*
-  width:17rem;
-  width:22rem;
-  width:19rem;
-  margin-left:0.5rem;
-*/
   position:absolute;
   top:0;
   right:22rem;
   bottom:0;
   left:2.5rem;
-  overflow-y:scroll;
+  background:transparent;
+  overflow-y:auto;
   overflow-x:hidden;
+}
+#menuArea button {
+  display:block;
+  background:transparent;
+  margin:1rem;
+  width:17rem;
 }
 #right-column {
   position:absolute;
@@ -235,7 +236,7 @@ font-weight:bold;
 }
 
 * { 
-  box-sizing : border-box;
+  box-sizing : border-box !important;
   font-family:Verdana,Arial,Helvetica,Sans-Serif; 
 }
 iframe { margin-left:0; left:0;}

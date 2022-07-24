@@ -1,0 +1,89 @@
+@prefix : <#> .
+@prefix bk: <http://www.w3.org/2002/01/bookmark#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+:fiction a bk:Topic; rdfs:label "Myths, Texts, & Fiction" .
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Ancient Texts";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Ancient%20Texts%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Classics";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Classics%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Fable";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Fable%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Fairy";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Fairy%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Fantasy";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Fantasy%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Horror";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Horror%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Humor";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Humor%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Literature";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Literature%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Mystery";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Mystery%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Myth";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Myth%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Romance";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Romance%22%29>
+].
+
+[
+ bk:hasTopic :fiction;
+ a bk:BookMark;
+ rdfs:label "Science Fiction";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Science%20Fiction%22%29>
+].

@@ -4,11 +4,11 @@
 ```
    [] a ui:Component; ui:dataSource [a ui:DataSource].
 ```
-The ui:Component is a possibly interactive UI feature that includes subclasses such as ui:Menu, ui:Table, etc.  Each component can be linked to a DataSource. 
+The Component is a possibly interactive UI feature that includes subclasses such as `ui:Menu`, `ui:Table`, etc.  Each component can be linked to a DataSource.   
 
 ## ui:DataSource
 
-A ui:DataSource is anything that can be used to retrieve data including :
+A `ui:DataSource` is anything that can be used to retrieve data including :
 
 **DataSource is an rdf:Collection**
 ```

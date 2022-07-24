@@ -7,6 +7,7 @@ import {makeStorageMenu} from    './storageMenu.js';
 let u = new CU();
 
 async function setMenu(wantedMenu,event){
+
   wantedMenu ||= "top-menu";
   let menus = document.querySelectorAll('#left-column > div');
   toggleScreens('display');
@@ -16,12 +17,13 @@ async function setMenu(wantedMenu,event){
       if(menu.id.match(/project/)) window.zeditor = await makeProjectMenu(null,window.zeditor);
       else if(menu.id.match(/settings/)){
           let wantedContainer = event.target.getAttribute('about');
-          zeditor = await makeStorageMenu(zeditor,wantedContainer);
+          window.zeditor = await makeStorageMenu(wantedContainer);
       }
       else await solidUI.activateComponent('#'+menu.id);
     }
     else menu.style.display = "none" ;
   }
+  localStorage.setItem("zeditor",window.zeditor);
 }
 
 
@@ -145,8 +147,6 @@ async function setMenu(wantedMenu,event){
     */
     let outputString = zeditor.currentProject ?await saveOutputPage(zeditor.currentProject,string) :"";
 
-console.log(zeditor);
-
     /* RE-DISPLAY CURRENT EDITOR CONTENT IN DISPLAY AREA
     */
     if(zeditor.currentProject){
@@ -222,6 +222,16 @@ console.log(zeditor);
     async function mungeLoginArea(){
       document.getElementById('shadowBody').classList.add("loading");
       const params = new URLSearchParams(location.search)
+      if(typeof window.zeditor==="undefined"){
+        window.zeditor = localStorage.getItem("zeditor") || {
+          editor : makeEditor("#editor","turtle"),
+          currentProject : "",
+          currentScreen : "display",
+          currentFile : {},
+          lastVisited : "",
+          wantedURL : "",
+        }
+      }
 /*
       params.set('uri', uri);
       window.history.replaceState({}, '', `${location.origin}${location.pathname}?${params}`);
@@ -254,6 +264,7 @@ console.log(zeditor);
     }    
     mungeLoginArea();
 
+
   function addClass(elementSelector,className){
     document.querySelector(elementSelector).classList.add(className);
   }
@@ -261,16 +272,7 @@ console.log(zeditor);
     document.querySelector(elementSelector).classList.remove(className);
   }
 
-//    var hosts=[];
-/* SELECTORS
-*/
-/*
-    const hosts = [
-      "https://jeff-zucker.solidcommunity.net/",
-      "http://localhost:3101/",
-      "https://jeff-zucker.solidcommunity.net:8443/",
-    ];
-*/
+
 
   function navigate(direction) {
       let el = document.querySelector('#resourceSelector select');
@@ -321,14 +323,19 @@ console.log(zeditor);
     zeditor.formEditor = false;
     document.querySelector('#right-column #formInEditor').style.display="none";
   }
-  function toggleMenu(){
-    let el = document.querySelector('#topa-menu');
-    let current = el.style.display || "none" ;
-    if(current==="none") el.style.display="block";
-    else el.style.display="none";
+  async function toggleMenu(wantedMenu){
+    wantedMenu ||= 'MainMenu';
+    let kids = document.querySelector('#menuArea').childNodes;
+    for(let kid of kids){
+console.log(kid.id,wantedMenu)
+      if(kid.id===wantedMenu) kid.style.display="block";
+      else kid.style.display="none";
+    }
   }
 
   async function init(){
+   await solidUI.activateComponent('#menuArea');
+   await solidUI.activateComponent('#mainMenu');
 // instead in mungeLogin, set and get window.zeditor in localStorage
     window.zeditor = {
       editor : makeEditor("#editor","turtle"),
@@ -338,6 +345,7 @@ console.log(zeditor);
       lastVisited : "",
       wantedURL : "",
     }
+/*
     let topButtons = document.querySelectorAll('#top-menu button');
     for(let button of topButtons){
       button.addEventListener('click',(e)=>{
@@ -345,6 +353,7 @@ console.log(zeditor);
         setMenu(com,e);
       });
     }
+*/
 /*
     document.querySelector('#myContent').addEventListener("click",async()=>{
       document.getElementById('main-menu').style.display="none";
@@ -366,6 +375,9 @@ console.log(zeditor);
     document.querySelector('.screen').addEventListener("click",async()=>{
       toggleScreens();
     });
+    document.querySelector('.menu.button').addEventListener("click",async(e)=>{
+      toggleMenu();
+    });
 /*
     (new Modal()).render({
       targetSelector : ".menu.button",
@@ -374,7 +386,7 @@ console.log(zeditor);
       width   :  "90%",
       height  :  "85%",
     });
-*/
+
     document.querySelector('.menu.button').addEventListener("click",async(e)=>{
       setMenu('top-menu');
     });
@@ -384,6 +396,7 @@ console.log(zeditor);
     document.querySelector('.previous').addEventListener("click",async(e)=>{
       navigate('previous');
     });
+*/
     document.getElementById('save').addEventListener("click",(e)=>{
       save("#e1");  
     });
@@ -397,7 +410,7 @@ console.log(zeditor);
     });
 */
     removeClass('#shadowBody',"loading");
-    setMenu();
+//    setMenu();
 /*
     const params = new URLSearchParams(location.search)
     let url2open = params.get('url');

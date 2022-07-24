@@ -1,0 +1,61 @@
+@prefix : <#> .
+@prefix bk: <http://www.w3.org/2002/01/bookmark#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+:society a bk:Topic; rdfs:label "Society" .
+
+[
+ bk:hasTopic :society;
+ a bk:BookMark;
+ rdfs:label "Economics";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Economics%22%29>
+].
+
+[
+ bk:hasTopic :society;
+ a bk:BookMark;
+ rdfs:label "Feminism";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Feminism%22%29>
+].
+
+[
+ bk:hasTopic :society;
+ a bk:BookMark;
+ rdfs:label "History";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22History%22%29>
+].
+
+[
+ bk:hasTopic :society;
+ a bk:BookMark;
+ rdfs:label "Language";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Language%22%29>
+].
+
+[
+ bk:hasTopic :society;
+ a bk:BookMark;
+ rdfs:label "Politics";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Politics%22%29>
+].
+
+[
+ bk:hasTopic :society;
+ a bk:BookMark;
+ rdfs:label "Psychology";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Psychology%22%29>
+].
+
+[
+ bk:hasTopic :society;
+ a bk:BookMark;
+ rdfs:label "Slavery";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Slavery%22%29>
+].
+
+[
+ bk:hasTopic :society;
+ a bk:BookMark;
+ rdfs:label "Socialism";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28librivoxaudio%29%20and%20subject%3A%28%22Socialism%22%29>
+].

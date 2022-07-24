@@ -1,0 +1,27 @@
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix bk: <http://www.w3.org/2002/01/bookmark#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+:OpenCultureBrowser
+  a bk:Topic, ui:BookmarkTree;
+  ui:labelTerm rdfs:label;
+  ui:topicTerm bk:subTopicOf;
+  ui:itemTerm bk:hasTopic;
+  rdfs:label "Open Culture Browser".
+
+<./ocb/images.ttl#Art> bk:subTopicOf :OpenCultureBrowser.
+<./ocb/images.ttl#More> bk:subTopicOf :OpenCultureBrowser.
+<./ocb/music.ttl#Music> bk:subTopicOf :OpenCultureBrowser.
+<./ocb/movies.ttl#Movies> bk:subTopicOf :OpenCultureBrowser.
+
+:audiobooks bk:subTopicOf :OpenCultureBrowser.
+:audiobooks a bk:Topic; rdfs:label "Spoken Word".
+
+<./ocb/poetry.ttl#poetry> bk:subTopicOf :audiobooks.
+<./ocb/fiction.ttl#fiction> bk:subTopicOf :audiobooks.
+<./ocb/society.ttl#society> bk:subTopicOf :audiobooks.
+
+
+
+

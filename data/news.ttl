@@ -1,0 +1,242 @@
+@prefix : <#>.
+@prefix bookm: <http://www.w3.org/2002/01/bookmark#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ui: <http://www.w3.org/ns/ui#> .
+@prefix schema: <http://www.schema.org/> .
+
+:News
+  a bookm:Topic, ui:FeedList ; 
+  rdfs:label "News".
+
+:TechNews
+  a bookm:Topic; 
+  rdfs:label "Tech News";
+  bookm:subTopicOf :News.
+
+:ArchaeologyNews
+  a bookm:Topic; 
+  rdfs:label "Archaeology News";
+  bookm:subTopicOf :News.
+
+:ProgressiveNews
+  a bookm:Topic; 
+  rdfs:label "Progressive News";
+  bookm:subTopicOf :News.
+
+
+##############
+# TECH NEWS #
+##############
+
+[]
+  rdfs:label   "Software Freedom Conservancy";
+  bookm:recalls  <https://sfconservancy.org/feeds/blog/> ;
+  a ui:Feed, bookm:Bookmark ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :TechNews 
+.
+[]
+  rdfs:label   "The Next Web";
+  bookm:recalls  <https://feeds2.feedburner.com/thenextweb> ;
+  a ui:Feed, bookm:Bookmark ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :TechNews 
+.
+[]
+  rdfs:label  "Wired" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://www.wired.com/feed/rss> ;
+  bookm:hasTopic :TechNews 
+.
+[]
+  rdfs:label   "Engadget";
+  bookm:recalls  <https://www.engadget.com/rss.xml> ;
+  a ui:Feed, bookm:Bookmark ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :TechNews 
+.
+[]
+  rdfs:label   "Hacker News";
+  bookm:recalls  <https://news.ycombinator.com/rss> ;
+  a ui:Feed, bookm:Bookmark ;
+  schema:potentialAction "iframe" ;  
+  bookm:hasTopic :TechNews 
+.
+[]
+  rdfs:label   "The Verge";
+  bookm:recalls  <https://www.theverge.com/rss/index.xml> ;
+  a ui:Feed, bookm:Bookmark ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :TechNews 
+.
+[]
+  rdfs:label   "Ars Technica";
+  bookm:recalls  <https://feeds.arstechnica.com/arstechnica/index> ;
+  a ui:Feed, bookm:Bookmark ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :TechNews 
+.
+[]
+  rdfs:label  "Tech Radar" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://www.techradar.com/rss/news/computing> ;
+  bookm:hasTopic :TechNews 
+.
+[]
+  rdfs:label  "Techmeme" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://www.techmeme.com/feed.xml> ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :TechNews 
+.
+
+################
+# GENERAL NEWS #
+################
+
+[]
+  rdfs:label  "Oregon Public Broadcasting" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://api.opb.arcpublishing.com/feeds/rss/?website=opb> ;
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "Truthout" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://www.truth-out.org/feed?format=feed> ;
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "The Intercept" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://theintercept.com/feed/?lang=en> ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "Counterspin" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://fair.org/feed/> ;
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "Democracy Now" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://www.democracynow.org/democracynow.rss> ;
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "Informed Comment" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://www.juancole.com/feed/atom> ;
+  bookm:hasTopic " News" 
+.
+[]
+  rdfs:label  "Black America Web" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://blackamericaweb.com/category/news/feed/> ;
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "In These Times" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://inthesetimes.com/rss> ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "Vox" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://www.vox.com/rss/index.xml> ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "ProPublica" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <http://feeds.propublica.org/propublica/main> ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "CNN" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <http://rss.cnn.com/rss/edition.rss> ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "UN News" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://news.un.org/feed/subscribe/en/news/all/rss.xml> ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "NY Times" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://rss.nytimes.com/services/xml/rss/nyt/World.xml> ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :ProgressiveNews 
+.
+[]
+  rdfs:label  "Global Voices" ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:recalls <https://globalvoices.org/feed/> ;
+  ui:needsProxy 1 ;
+  schema:potentialAction "proxy-iframe" ;  
+  bookm:hasTopic :ProgressiveNews 
+.
+
+##############################3
+# ARCHAEOLOGY NEWS
+##############################3
+
+[] a ui:Feed, bookm:Bookmark ;
+  rdfs:label  "Archaeology" ;
+  bookm:recalls <https://www.sciencedaily.com/rss/fossils_ruins/archaeology.xml> ;
+  bookm:hasTopic :ArchaeologyNews 
+.
+[] a ui:Feed, bookm:Bookmark ;
+  rdfs:label  "Anthropology" ;
+  bookm:recalls <https://www.sciencedaily.com/rss/fossils_ruins/anthropology.xml> ;
+  bookm:hasTopic :ArchaeologyNews 
+.
+[] a ui:Feed, bookm:Bookmark ;
+  rdfs:label  "Early Humans" ;
+  bookm:recalls <https://www.sciencedaily.com/rss/fossils_ruins/early_humans.xml> ;
+  bookm:hasTopic :ArchaeologyNews 
+.
+[] a ui:Feed, bookm:Bookmark ;
+  rdfs:label  "Cultures" ;
+  bookm:recalls <https://www.sciencedaily.com/rss/fossils_ruins/cultures.xml> ;
+  bookm:hasTopic :ArchaeologyNews 
+.
+[] a ui:Feed, bookm:Bookmark ;
+  rdfs:label  "Social Sciences" ;
+  bookm:recalls <https://phys.org/rss-feed/science-news/social-sciences/> ;
+  bookm:hasTopic :ArchaeologyNews 
+.
+[] a ui:Feed, bookm:Bookmark ;
+  rdfs:label  "Fossils" ;
+  bookm:recalls <https://phys.org/rss-feed/science-news/archaeology-fossils/> ;
+  bookm:hasTopic :ArchaeologyNews 
+.
+
+
+
+
+

@@ -1,0 +1,131 @@
+@prefix : <#> .
+@prefix bk: <http://www.w3.org/2002/01/bookmark#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+:poetry a bk:Topic; rdfs:label "Poetry" .
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Amiri Baraka";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Baraka%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Gregory Bateson";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Bateson%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "William Burroughs";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Burroughs%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Gregory Corso";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Corso%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Diane diPrima";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22DiPrima%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Nikki Giovanni";
+ bk:recalls <https://archive.org/search.php?query=creator%3A%22Nikki%20Giovanni%22>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Allen Ginsberg";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Ginsberg%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Joy Harjo";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Harjo%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Bobbie Louise Hawkins";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Hawkins%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Gil Scott-Heron";
+ bk:recalls <https://archive.org/search.php?query=creator%3A%22Gil%20Scott-Heron%22>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Joanne Kyger";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Kyger%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Langston Hughes";
+ bk:recalls <https://archive.org/search.php?query=creator%3A%22Langston%20Hughes%22>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Michael McClure";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22McClure%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Ishmael Reed";
+ bk:recalls <https://archive.org/search.php?query=creator%3A%22Ishmael%20Reed%22>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Jerome Rothenberg";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Rothenberg%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Gary Snyder";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Snyder%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Anne Waldman";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Waldman%22%29>
+].
+
+[
+ bk:hasTopic :poetry;
+ a bk:BookMark;
+ rdfs:label "Philip Whalen";
+ bk:recalls <https://archive.org/search.php?query=collection%3A%28naropa%29%20and%20creator%3A%28%22Whalen%22%29>
+].

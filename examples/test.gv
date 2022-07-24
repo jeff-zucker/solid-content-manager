@@ -6,7 +6,7 @@ digraph D {
   PageTemplate -> OutPutPage
   DataForm -> RDFdata [label="edit data content"]
   TemplateForm -> DataTemplate [label="edit data selection/display"]
-  RDFdata -> DataTemplate -> PageTemplate  [color="red"]
+  RDFdata -> DataTemplate -> PageTemplate  [color="orange"]
   HTMLcontent -> PageTemplate  [color="red"]
   TextEditor -> HTMLcontent  [label="edit additional elements"]
   TextEditor -> PageTemplate [label="edit page layout"]

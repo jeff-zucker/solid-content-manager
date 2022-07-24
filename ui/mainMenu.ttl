@@ -1,0 +1,34 @@
+@prefix : <#> .
+@prefix ui: <http://www.w3.org/ns/ui#> .
+@prefix News: <../data/news.ttl#News> .
+@prefix Culture: <../data/ocb.ttl#OpenCultureBrowser> .
+
+:MainMenu a ui:MenuOfMenus; ui:dataSource (
+  :Desktop :SolCom :SolComTest :InruptPod News: Culture:
+) .
+
+News: ui:label "News Feeds".
+Culture: ui:label "Culture Browser".
+
+:Desktop a ui:ContainerSelector;
+   ui:label "Desktop Pod";
+   ui:dataSource <http://localhost:3101/>;
+   ui:collectionSize 6;
+   ui:resourceSize 12.
+
+:SolCom a ui:ContainerSelector;    ui:label "Solid Community Pod";
+   ui:dataSource <https://jeff-zucker.solidcommunity.net/>;
+   ui:collectionSize 6;
+   ui:resourceSize 12.
+
+:SolComTest a ui:ContainerSelector;  ui:label "Solid Community Test";
+   ui:dataSource <https://jeff-zucker.solidcommunity.net:8443/>;
+   ui:collectionSize 6;
+   ui:resourceSize 12.
+
+:InruptPod a ui:ContainerSelector;  ui:label "Inrupt Pod Space";
+   ui:dataSource <https://storage.inrupt.com/jeff-zucker/>;
+   ui:collectionSize 6;
+   ui:resourceSize 12.
+
+
