@@ -1,6 +1,5 @@
 import './login.js';
 import zeditor from './zeditor.js';
-let u = solidUI.util
 
   async function toggleMenu(wantedMenu){
     wantedMenu ||= 'MainMenu';
@@ -32,7 +31,7 @@ let u = solidUI.util
    document.getElementById('save').addEventListener("click",(e)=>{
      zeditor.save("#e1");  
    });
-   u.removeClass('#shadowBody',"loading");
+   document.getElementById('shadowBody').classList.remove("loading");
   }
   solidUI.showFunction = zeditor.load.bind(zeditor);
   solidUI.initApp = init;

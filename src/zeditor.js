@@ -31,7 +31,8 @@ class Zeditor {
     this.editor.ed.size = size;
   }
 
-  async load(contentType,uri,targetSelectro){
+  async load(contentType,uri,targetSelector){
+alert(4)
     if(typeof uri !="string") uri = uri.url || uri.uri;
     let i = await solidUI.util.loadFile(uri); 
     if(!i || !i.ok) return;
@@ -74,22 +75,21 @@ class Zeditor {
       return
     }
     else this.hideFormEditor();
-//    if(screen) this.toggleScreens(screen);
-    if(i.editable) {
+//    if(i.editable) {
       this.currentFileUrl = i.url;
       this.UItype = UItype;
 /*      if(format && format==="rdfa"){
         showRDFa(uri);
       }
 */
-      if(!screen || screen!="display") {
+//      if(!screen || screen!="display") {
+alert(string)
         await this.showInEditor(uri,string,i);
-        return
-      }
-    }
-    else{
-      this.toggleScreens('display');
-    }
+//      }
+//    }
+//    else{
+//      this.toggleScreens('display');
+//    }
   }
 
 
