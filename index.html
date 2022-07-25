@@ -20,74 +20,19 @@
       data-display = "#display"
     ></div>
   </div>
-<!--
-  <div id="left-column">
-      <div id="top-menu">
-        <span id="login"></span>
-        <div><b>My Content</b></div>
-        <button value="settings" about="http://localhost:3101/s/solid-ide/examples/">Desktop (CSS)</button>
-        <button value="settings" about="https://jeff-zucker.solidcommunity.net/">Solid Community (NSS)</button>
-        <button value="settings" about="https://jeff-zucker.solidcommunity.net:8443/">Solid Community (test)</button>
-        <button value="settings" about="https://pod.inrupt.com/jeff-zucker/">Inrupt (ESS)</button>
-        <div><b>Public Content</b></div>
-        <button value="NewsMenu">News Feeds</button>
-        <button value="CultureBrowser">Culture Browser</button>
-
-        <div><b>Shared Content</b></div>
-        <button value="project">Solid Glossary Project</button>
-      </div>
-
-
-    <div id="pods-menu" style="display:flex;width:100%;">
-      <span style="inline-block; text-align:right;flex:1">
-        <span class="previous button navbutton" title="previous">&lt;</span>
-        <span class="next button" title="next">&gt;</span>
-      </span>
-    </div>
-
-    <div id="settings">
-      <div id="hostSelector"></div>
-      <div id="containerSelector"></div>
-      <div id="resourceSelector"></div>
-    </div>
-
-    <div id = "project"
-      data-suic = "./examples/glossary/glossary-definition.ttl#this"
-      data-display = "#display"
-    ></div>
-
-    <div id = "CultureBrowser"
-      data-suic = "./data/ocb.ttl#OpenCultureBrowser"
-      data-display = "#display"
-    ></div>
-
-    <div id = "NewsMenu"
-      data-suic = "./data/news.ttl#News"
-      data-display = "#display"
-    ></div>
-  </div> 
---><!-- left-column -->
-
-
-
-<div id="right-column">
-
-  <div id="display"></div>
-
+  <div id="right-column">
+    <div id="display"></div>
     <div id="e1">
       <span class="menu" style="display:table-row;">
-        
         <span id="save" title="save resource" class="button" style="display:table-cell;width:2rem;"></span>
         <span class="url" style="display:table-cell;vertical-align:top;"></span>
         <span class="type" style="display:none"></span>
         <span class="pageDefinition" style="display:none"></span>
       </span>
     </div><!-- e1 -->
-
     <div id="editor"></div>
     <div id="formInEditor"></div>
-
-</div> <!-- right-column -->
+  </div> <!-- right-column -->
 
 </body>
 
@@ -124,7 +69,7 @@ import mime from "https://cdn.skypack.dev/mime";
 window.mime=mime;
 </script>
 <script src="./src/ace-shim.js"></script>
-<script src="./src/zeditor.js" type="module"></script>
+<script src="./src/index.js" type="module"></script>
 
 <link rel="stylesheet" href="/s/solid-ui-components/assets/linked-bookmarks.css" />
 <link rel="stylesheet" href="./assets/zeditor.css" />

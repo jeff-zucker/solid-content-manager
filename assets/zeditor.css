@@ -16,9 +16,11 @@
 }
 #menuArea button {
   display:block;
-  background:transparent;
   margin:1rem;
+  padding:0.5rem !important;
   width:17rem;
+  color:#d0d0ff !important;
+  background:#557795 !important;
 }
 #right-column {
   position:absolute;
@@ -119,6 +121,7 @@ body, #shadowBody {
   bottom:0;
 }
 #formInEditor {
+  display:none;
   z-index:30000;
   background:#002240;
   overflow:auto;
@@ -329,6 +332,10 @@ iframe { margin-left:0; left:0;}
 #load:after {
   content: "\21c8"; /* two up arrows */
 }
+#save.button {
+  color:orange !important;
+  font-weight:bold;
+}
 #save:after, #save2:after {
   content: "\21ca"; /* two down arrows */
   content: "\21e9"; /* thick down arrow */
@@ -390,12 +397,11 @@ body {
   margin-top:0.6rem;
   margin-left:0.25rem;
   margin-bottom:0.6rem;
-  border:1px solid orange !important;
+  border:1px solid #c0c0ff !important;
   border-radius:0.2rem !important;
   padding:0.25rem !important;
   background:transparent !important;
-  color:gray;
-  color:black !important;
+  color:#c0c0ff !important;
   padding-left:0.25rem !important;
   padding-right:0.25rem !important;
   cursor:pointer;
@@ -404,7 +410,7 @@ body {
 #top-menu {
   margin:0.5em;
   background:#557795;
-  color:black !important;
+  color  !important;
   border:1px solid transparent;
   border-radius:0.2rem;
   text-align:left !important;
