@@ -32,7 +32,6 @@ class Zeditor {
   }
 
   async load(contentType,uri,targetSelector){
-alert(4)
     if(typeof uri !="string") uri = uri.url || uri.uri;
     let i = await solidUI.util.loadFile(uri); 
     if(!i || !i.ok) return;
@@ -83,7 +82,6 @@ alert(4)
       }
 */
 //      if(!screen || screen!="display") {
-alert(string)
         await this.showInEditor(uri,string,i);
 //      }
 //    }
