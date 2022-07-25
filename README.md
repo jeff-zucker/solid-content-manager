@@ -1,4 +1,5 @@
-# solid-ide
+# Solid Content Manager (formerly Solid IDE)
+
 A syntax-highlighting editor and content manager for Solid pods and projects.
 
 ## Work in Progress
