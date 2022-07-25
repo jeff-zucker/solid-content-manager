@@ -6,6 +6,7 @@
     async function mungeLoginArea(){
       document.getElementById('shadowBody').classList.add("loading");
       const params = new URLSearchParams(location.search)
+/*
       if(typeof window.zeditor==="undefined"){
         window.zeditor = localStorage.getItem("zeditor") || {
           editor : makeEditor("#editor","turtle"),
@@ -16,6 +17,7 @@
           wantedURL : "",
         }
       }
+*/
 /*
       params.set('uri', uri);
       window.history.replaceState({}, '', `${location.origin}${location.pathname}?${params}`);

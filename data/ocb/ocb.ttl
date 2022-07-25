@@ -10,17 +10,17 @@
   ui:itemTerm bk:hasTopic;
   rdfs:label "Open Culture Browser".
 
-<./ocb/images.ttl#Art> bk:subTopicOf :OpenCultureBrowser.
-<./ocb/images.ttl#More> bk:subTopicOf :OpenCultureBrowser.
-<./ocb/music.ttl#Music> bk:subTopicOf :OpenCultureBrowser.
-<./ocb/movies.ttl#Movies> bk:subTopicOf :OpenCultureBrowser.
+<images.ttl#Art> bk:subTopicOf :OpenCultureBrowser.
+<images.ttl#More> bk:subTopicOf :OpenCultureBrowser.
+<music.ttl#Music> bk:subTopicOf :OpenCultureBrowser.
+<movies.ttl#Movies> bk:subTopicOf :OpenCultureBrowser.
 
 :audiobooks bk:subTopicOf :OpenCultureBrowser.
 :audiobooks a bk:Topic; rdfs:label "Spoken Word".
 
-<./ocb/poetry.ttl#poetry> bk:subTopicOf :audiobooks.
-<./ocb/fiction.ttl#fiction> bk:subTopicOf :audiobooks.
-<./ocb/society.ttl#society> bk:subTopicOf :audiobooks.
+<poetry.ttl#poetry> bk:subTopicOf :audiobooks.
+<fiction.ttl#fiction> bk:subTopicOf :audiobooks.
+<society.ttl#society> bk:subTopicOf :audiobooks.
 
 
 

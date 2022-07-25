@@ -1,7 +1,7 @@
 @prefix : <#> .
 @prefix ui: <http://www.w3.org/ns/ui#> .
 @prefix News: <../data/news.ttl#News> .
-@prefix Culture: <../data/ocb.ttl#OpenCultureBrowser> .
+@prefix Culture: <../data/ocb/ocb.ttl#OpenCultureBrowser> .
 
 :MainMenu a ui:MenuOfMenus; ui:dataSource (
   :Desktop :SolCom :SolComTest :InruptPod News: Culture:
