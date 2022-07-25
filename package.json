@@ -1,6 +1,6 @@
 {
-  "name": "Solid-IDE",
-  "version": "2.0.0-alpha",
+  "name": "Solid-Contact-Manager",
+  "version": "2.0.0",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
