@@ -3,7 +3,7 @@
 
 :this
   a ui:SparqlQuery ;
-  ui:endpoint <data/test-data.ttl#this> ;
+  ui:endpoint <test-data.ttl#this> ;
   ui:query """
     PREFIX : <http://xmlns.com/foaf/0.1/> 
     SELECT ?name ?age WHERE {

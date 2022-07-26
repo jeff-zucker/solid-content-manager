@@ -1,11 +1,12 @@
 @prefix : <#> .
 @prefix ui: <http://www.w3.org/ns/ui#> .
-@prefix News: <../data/news.ttl#News> .
-@prefix Culture: <../data/ocb/ocb.ttl#OpenCultureBrowser> .
+@prefix News: </cm/data/news.ttl#News> .
+@prefix Culture: </cm/data/ocb/ocb.ttl#OpenCultureBrowser> .
 
 :MainMenu a ui:MenuOfMenus; ui:dataSource (
-  :Desktop :SolCom :SolComTest :InruptPod News: Culture:
+  :Desktop :Examples :SolCom :SolComTest :InruptPod News: Culture:
 ) .
+#  :Desktop :Examples News: Culture:
 
 News: ui:label "News Feeds".
 Culture: ui:label "Culture Browser".
@@ -13,6 +14,12 @@ Culture: ui:label "Culture Browser".
 :Desktop a ui:ContainerSelector;
    ui:label "Desktop Pod";
    ui:dataSource <http://localhost:3101/>;
+   ui:collectionSize 6;
+   ui:resourceSize 12.
+
+:Examples a ui:ContainerSelector;
+   ui:label "Example Media Resources";
+   ui:dataSource </cm/data/examples/test.gv>;
    ui:collectionSize 6;
    ui:resourceSize 12.
 

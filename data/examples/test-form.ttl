@@ -4,7 +4,7 @@
 
 :this
   a ui:Form ;
-  ui:formSubject <data/test-data.ttl#this> ;
+  ui:formSubject <test-data.ttl#this> ;
   ui:parts ( :People ) .
 
 :People

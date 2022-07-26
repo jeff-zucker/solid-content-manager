@@ -31,7 +31,18 @@ class Zeditor {
     this.editor.ed.size = size;
   }
 
+  editable(type){
+   if(type.match(/(image|audio|video|pdf|unknown)/)) return false;
+   return true;
+  }
+
   async load(contentType,uri,targetSelector){
+    if(!contentType || contentType==="unknown" && window.mime) contentType = window.mime.getType(uri);
+    if( !this.editable(contentType) ) {
+      return await solidUI.util.show(contentType,uri,"",targetSelector);
+    }
+    UI.store.removeDocument(UI.rdf.sym(uri)); // guarantee fresh data
+    contentType = contentType.replace(/.*\//,'');
     if(typeof uri !="string") uri = uri.url || uri.uri;
     let i = await solidUI.util.loadFile(uri); 
     if(!i || !i.ok) return;
@@ -46,7 +57,8 @@ class Zeditor {
 //    if(!screen || screen!="editor") {
       let displayString = string;
       let displayUri = uri;
-      let displayCtype = i.contentType;
+//      let displayCtype = i.contentType;
+      let displayCtype = contentType
        //  show project.outputPage on top, edit project.template on bottom
        //
       if(this.currentProject &&this.currentProject.pageTemplate===i.url){
@@ -124,8 +136,10 @@ class Zeditor {
         else
           await solidUI.util.show(i.contentType,i.url,string,"#display",true);
     }
-    else 
-      await solidUI.util.show(i.contentType,i.url,string,"#display",true);
+    else {
+      await this.load(i.contentType,i.url);
+//      await solidUI.util.show(i.contentType,i.url,string,"#display",true);
+    }
   }
 
   async showOutputPage(project){ 
