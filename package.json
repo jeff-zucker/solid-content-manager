@@ -1,6 +1,6 @@
 {
   "name": "solid-content-manager",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,9 +14,10 @@
     "d3": "^7.4.4",
     "d3-graphviz": "^4.1.1",
     "marked": "^4.0.16",
+    "mashlib": "^1.8.3",
     "solid-load-profile": "^1.0.0",
     "solid-ui": "^2.4.22",
-    "solid-ui-components": "^1.0.8"
+    "solid-ui-components": "^1.0.9"
   },
   "directories": {
     "example": "examples"

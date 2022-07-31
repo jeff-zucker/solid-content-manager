@@ -35,3 +35,4 @@ import zeditor from './zeditor.js';
   }
   solidUI.showFunction = zeditor.load.bind(zeditor);
   solidUI.initApp = init;
+ 

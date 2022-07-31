@@ -1,15 +1,17 @@
 @prefix : <#> .
 @prefix ui: <http://www.w3.org/ns/ui#> .
-@prefix News: </cm/data/news.ttl#News> .
+@prefix News: </cm/data/news/news.ttl#News> .
 @prefix Culture: </cm/data/ocb/ocb.ttl#OpenCultureBrowser> .
+@prefix Specs: </cm/data/solid-specifications/specs.ttl#SolidSpecs> .
 
 :MainMenu a ui:MenuOfMenus; ui:dataSource (
-  :Desktop :Examples :SolCom :SolComTest :InruptPod News: Culture:
+  :Desktop :Examples :SolCom :SolComTest :InruptPod News: Culture: Specs:
 ) .
 #  :Desktop :Examples News: Culture:
 
 News: ui:label "News Feeds".
 Culture: ui:label "Culture Browser".
+Specs: ui:label "Solid Specifications".
 
 :Desktop a ui:ContainerSelector;
    ui:label "Desktop Pod";

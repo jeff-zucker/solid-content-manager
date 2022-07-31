@@ -1,4 +1,4 @@
-#display * { color:black; }
+#right-column-tabulator *, #display * { color:black; }
 #far-left-column {
   width:2rem;
   max-width:2rem !important;
@@ -23,7 +23,7 @@
   color:#d0d0ff !important;
   background:#557795 !important;
 }
-#right-column {
+#right-column-tabulator, #right-column {
   position:absolute;
   top:0;
   right:0;

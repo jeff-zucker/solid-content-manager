@@ -37,6 +37,9 @@ class Zeditor {
   }
 
   async load(contentType,uri,targetSelector){
+//    document.getElementById('right-column').style.display="none";
+//    document.getElementById('right-column-tabulator').style.display="block";
+//    return solidUI.util.showSolidOS({link:uri});
     if(!contentType || contentType==="unknown" && window.mime) contentType = window.mime.getType(uri);
     if( !this.editable(contentType) ) {
       return await solidUI.util.show(contentType,uri,"",targetSelector);

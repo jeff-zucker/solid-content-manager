@@ -1,6 +1,7 @@
 /*
   LOGIN
 */
+document.addEventListener('DOMContentLoaded', function() {
     const authSession = UI.authn.authSession
     const loginButtonArea = document.getElementById("login");
     async function mungeLoginArea(){
@@ -49,4 +50,4 @@
       authSession.onSessionRestore(mungeLoginArea);
     }    
     mungeLoginArea();
- 
+}); 

@@ -13,11 +13,62 @@
   rdfs:label "Tech News";
   bookm:subTopicOf :News.
 
+:ScienceNews
+  a bookm:Topic; 
+  rdfs:label "Science News";
+  bookm:subTopicOf :News.
+
 :GeneralNews
   a bookm:Topic; 
   rdfs:label "General News";
   bookm:subTopicOf :News.
 
+################
+# SCIENCE NEWS #
+################
+
+[]
+  rdfs:label   "Nature";
+  bookm:recalls  <http://feeds.nature.com/nature/rss/current> ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:hasTopic :ScienceNewsBROKEN
+.
+[]
+  rdfs:label   "Smithsonian";
+  bookm:recalls  <https://www.smithsonianmag.com/rss/latest_articles/> ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:hasTopic :ScienceNews 
+.
+[]
+  rdfs:label   "Science";
+  bookm:recalls  <https://www.science.org/rss/news_current.xml> ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:hasTopic :ScienceNewsBROKEN
+.
+[]
+  rdfs:label   "New Scientist";
+  bookm:recalls  <https://www.newscientist.com/section/news/feed/> ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:hasTopic :ScienceNewsBROKEN
+.
+[]
+  rdfs:label   "Scientific American";
+  bookm:recalls  <http://rss.sciam.com/ScientificAmerican-Global> ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:hasTopic :ScienceNews 
+.
+[]
+  rdfs:label   "The State of the Planet Blog";
+  bookm:recalls  <https://news.climate.columbia.edu/feed/> ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:hasTopic :ScienceNews 
+.
+[]
+  rdfs:label   "SciTech Daily";
+  bookm:recalls  <https://feeds.feedburner.com/scitechdaily> ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:hasTopic :ScienceNews 
+.
 
 ##############
 # TECH NEWS #
@@ -195,43 +246,4 @@
   schema:potentialAction "proxy-iframe" ;  
   bookm:hasTopic :GeneralNews 
 .
-
-##############################3
-# ARCHAEOLOGY NEWS
-##############################3
-
-[] a ui:Feed, bookm:Bookmark ;
-  rdfs:label  "Archaeology" ;
-  bookm:recalls <https://www.sciencedaily.com/rss/fossils_ruins/archaeology.xml> ;
-  bookm:hasTopic :ArchaeologyNews 
-.
-[] a ui:Feed, bookm:Bookmark ;
-  rdfs:label  "Anthropology" ;
-  bookm:recalls <https://www.sciencedaily.com/rss/fossils_ruins/anthropology.xml> ;
-  bookm:hasTopic :ArchaeologyNews 
-.
-[] a ui:Feed, bookm:Bookmark ;
-  rdfs:label  "Early Humans" ;
-  bookm:recalls <https://www.sciencedaily.com/rss/fossils_ruins/early_humans.xml> ;
-  bookm:hasTopic :ArchaeologyNews 
-.
-[] a ui:Feed, bookm:Bookmark ;
-  rdfs:label  "Cultures" ;
-  bookm:recalls <https://www.sciencedaily.com/rss/fossils_ruins/cultures.xml> ;
-  bookm:hasTopic :ArchaeologyNews 
-.
-[] a ui:Feed, bookm:Bookmark ;
-  rdfs:label  "Social Sciences" ;
-  bookm:recalls <https://phys.org/rss-feed/science-news/social-sciences/> ;
-  bookm:hasTopic :ArchaeologyNews 
-.
-[] a ui:Feed, bookm:Bookmark ;
-  rdfs:label  "Fossils" ;
-  bookm:recalls <https://phys.org/rss-feed/science-news/archaeology-fossils/> ;
-  bookm:hasTopic :ArchaeologyNews 
-.
-
-
-
-
 
