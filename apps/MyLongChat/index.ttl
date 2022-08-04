@@ -1,0 +1,20 @@
+@prefix : <#>.
+@prefix cal: <http://www.w3.org/2002/12/cal/ical#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix meeting: <http://www.w3.org/ns/pim/meeting#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix wf: <http://www.w3.org/2005/01/wf/flow#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix c: </profile/card#>.
+
+:id1644096373140
+    cal:dtstart "2022-02-05T21:26:13Z"^^xsd:dateTime;
+    wf:participant c:me;
+    ui:backgroundColor "#fecfde".
+:this
+    a meeting:LongChat;
+    dc:author c:me;
+    dc:created "2022-02-05T00:22:24Z"^^xsd:dateTime;
+    dc:title "Chat channel";
+    wf:participation :id1644096373140;
+    ui:sharedPreferences :SharedPreferences.

@@ -1,4 +1,7 @@
 #right-column-tabulator *, #display * { color:black; }
+#manageMenuArea {
+  display:none;
+}
 #far-left-column {
   width:2rem;
   max-width:2rem !important;
@@ -15,7 +18,7 @@
   overflow-y:auto;
   overflow-x:hidden;
 }
-#menuArea button {
+#menuArea button, #manageMenu button, #toolsMenu button {
   display:block;
   margin:1rem;
   padding:0.5rem !important;
@@ -88,10 +91,7 @@ body, #shadowBody {
 #editors {
   margin-top:0.5em;
 }
-#display {
-   overflow:auto;
-   background:#f8f8ff;
-}
+
 #hostSelector option, #containerSelector option {
   background:#88aac8;
 }
@@ -434,4 +434,16 @@ body {
   text-decoration:underline;
 }
 
+.uic-form H3 {
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+}
+.uic-form div.hovercontrol {
+  margin-top:1rem;
+}
 
+#display { 
+  color:black;
+  background-color:white;
+  overflow:auto; 
+}

@@ -1,0 +1,49 @@
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+
+:this
+  a ui:Form;
+  ui:formSubject <../ui/toolsMenu.ttl#ToolsMenu>;
+  ui:parts( :H1 :MenuItems ).
+
+:H1
+  a ui:Heading;
+  ui:contents "Tools Menu Form"
+.
+:H2
+  a ui:Heading;
+  ui:contents " -- change the order of menu items - arrows on the right"
+.
+:H3
+  a ui:Heading;
+  ui:contents " -- delete menu item - red `-` under item"
+.
+:H4
+  a ui:Heading;
+  ui:contents " -- add new menu item - green `+` at page bottom"
+.
+
+:MenuItems
+  a ui:Multiple;
+  ui:ordered true;
+  ui:part :MenuItem;
+  ui:property ui:dataSource.
+
+:MenuItem
+  a ui:Group;
+  ui:parts ( :LabelField :LinkField ).
+
+:LabelField
+  a ui:SingleLineTextField;
+  ui:label "Menu Item Label";
+  ui:size "60rem";
+  ui:property ui:label.
+
+:LinkField
+  a ui:SingleLineTextField;
+  ui:label "Menu Item Link";
+  ui:size "60rem";
+  ui:property ui:dataSource.
+
+
+

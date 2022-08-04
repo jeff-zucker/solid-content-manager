@@ -1,0 +1,15 @@
+@prefix : <#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix wf: <http://www.w3.org/2005/01/wf/flow#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix c: </profile/card#>.
+
+:this
+    a wf:Tracker;
+    dc:author c:me;
+    dc:created "2022-02-05T00:21:08Z"^^xsd:dateTime;
+    wf:assigneeClass foaf:Person;
+    wf:initialState wf:Open;
+    wf:issueClass wf:Task;
+    wf:stateStore <state.ttl>.

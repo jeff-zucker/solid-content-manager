@@ -1,0 +1,38 @@
+@prefix : <#> .
+@prefix ui: <http://www.w3.org/ns/ui#> .
+
+:ToolsMenu a ui:ButtonListMenu; ui:dataSource (
+  :Notepad :AddressBook :Tracker :Chat :EditProfile :EditPreferences
+) .
+
+:EditPreferences
+   a ui:SolidOSLink;
+   ui:pane  "basicPreferences";
+   ui:label  "Edit Preferences";
+   ui:dataSource  </profile/settings/prefs.ttl>.
+
+:EditProfile
+   a ui:SolidOSLink;
+   ui:label "Edit Profile";
+   ui:pane  "editProfile";
+   ui:dataSource  </profile/card#me>.
+
+:Notepad
+  a ui:SolidOSLink;
+  ui:label "Notepad";
+  ui:dataSource </cm/apps/MyNotepad.ttl#this> .
+
+:AddressBook
+  a ui:SolidOSLink;
+  ui:label "Address Book";
+  ui:dataSource </cm/apps/MyAddressBook.ttl#this> .
+
+:Tracker
+  a ui:SolidOSLink;
+  ui:label "Task Tracker";
+  ui:dataSource </cm/apps/MyTracker.ttl#this> .
+
+:Chat
+  a ui:SolidOSLink;
+  ui:label "Chat";
+  ui:dataSource </cm/apps/MyLongChat.ttl#this> .

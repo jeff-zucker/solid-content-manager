@@ -7,8 +7,8 @@
   <div id="far-left-column" >
       <span class="menu button" title="toggle menu"></span>
       <span class="screen button" title="toggle screens"></span>
-      <span class="wrench button" title="manage content"></span>
-      <span class="gear button" title="manage content"></span>
+      <span class="wrench button" title="toolsMenu content"></span>
+      <span class="gear button" title="manageMenu content"></span>
       <span class="help button" title="manage content"></span>
   </div>
 
@@ -17,6 +17,16 @@
     <div
       id = "menuArea" 
       data-suic = "/cm/ui/mainMenu.ttl#MainMenu"
+      data-display = "#display"
+    ></div>
+    <div
+      id = "manageMenuArea" 
+      data-suic = "/cm/ui/manageMenu.ttl#ManageMenu"
+      data-display = "#display"
+    ></div>
+    <div
+      id = "toolsMenuArea" 
+      data-suic = "/cm/ui/toolsMenu.ttl#ToolsMenu"
       data-display = "#display"
     ></div>
   </div>

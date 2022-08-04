@@ -1,0 +1,25 @@
+@prefix : <#> .
+@prefix ui: <http://www.w3.org/ns/ui#> .
+
+:ManageMenu a ui:ButtonListMenu; 
+  ui:dataSource (
+    :ManageMainMenu :ManageToolsMenu :ManageApp
+  ) .
+
+:ManageMainMenu
+  a ui:Component;
+  ui:directDisplay true;
+  ui:label "Manage the Main Menu";
+  ui:dataSource <../templates/mainMenu-form.ttl#this> .
+
+:ManageToolsMenu
+  a ui:Component;
+  ui:directDisplay true;
+  ui:label "Manage the Tools Menu";
+  ui:dataSource <../templates/toolsMenu-form.ttl#this> .
+
+:ManageApp
+  a ui:Component;
+  ui:directDisplay true;
+  ui:label "Manage the Editor";
+  ui:dataSource <../templates/editorSettngs-form.ttl#this> .

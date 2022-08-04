@@ -1,0 +1,48 @@
+@prefix : <#> .
+@prefix ui: <http://www.w3.org/ns/ui#> .
+@prefix News: </cm/data/news/news.ttl#News> .
+@prefix Culture: </cm/data/ocb/ocb.ttl#OpenCultureBrowser> .
+@prefix Specs: </cm/data/solid-specifications/specs.ttl#SolidSpecs> .
+
+:MainMenu a ui:MenuOfMenus;
+  ui:default [
+    ui:collectionSize 6;
+    ui:resourceSize 12
+  ].
+  ui:dataSource (
+    :Desktop :Examples :SolCom :SolComTest :InruptPod News: Culture: Specs:
+  ) .
+  #  :Desktop :Examples News: Culture:
+
+News: ui:label "News Feeds".
+Culture: ui:label "Culture Browser".
+Specs: ui:label "Solid Specifications".
+
+:Desktop a ui:ContainerSelector;
+   ui:label "Desktop Pod";
+   ui:dataSource <http://localhost:3101/>;
+   ui:collectionSize 6;
+   ui:resourceSize 12.
+
+:Examples a ui:ContainerSelector;
+   ui:label "Example Media Resources";
+   ui:dataSource </cm/data/examples/test.gv>;
+   ui:collectionSize 6;
+   ui:resourceSize 12.
+
+:SolCom a ui:ContainerSelector;    ui:label "Solid Community Pod";
+   ui:dataSource <https://jeff-zucker.solidcommunity.net/>;
+   ui:collectionSize 6;
+   ui:resourceSize 12.
+
+:SolComTest a ui:ContainerSelector;  ui:label "Solid Community Test";
+   ui:dataSource <https://jeff-zucker.solidcommunity.net:8443/>;
+   ui:collectionSize 6;
+   ui:resourceSize 12.
+
+:InruptPod a ui:ContainerSelector;  ui:label "Inrupt Pod Space";
+   ui:dataSource <https://storage.inrupt.com/jeff-zucker/>;
+   ui:collectionSize 6;
+   ui:resourceSize 12.
+
+

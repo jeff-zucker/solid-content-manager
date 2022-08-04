@@ -3,11 +3,29 @@ import zeditor from './zeditor.js';
 
   async function toggleMenu(wantedMenu){
     wantedMenu ||= 'MainMenu';
+    document.getElementById('right-column').style.display="block";
+    document.getElementById('right-column-tabulator').style.display="none";
+    document.querySelector('#menuArea').style.display="block";
+    document.querySelector('#manageMenuArea').style.display="none";
+    document.querySelector('#toolsMenuArea').style.display="none";
     let kids = document.querySelector('#menuArea').childNodes;
     for(let kid of kids){
+      if(kid.id==="login") continue;
       if(kid.id===wantedMenu) kid.style.display="block";
       else kid.style.display="none";
     }
+  }
+  async function toggleManageMenu(){
+    document.querySelector('#menuArea').style.display="none";
+    document.querySelector('#toolsMenuArea').style.display="none";
+    document.querySelector('#manageMenuArea').style.display="block";
+    await solidUI.activateComponent('#manageMenuArea');
+  }
+  async function toggleToolsMenu(){
+    document.querySelector('#menuArea').style.display="none";
+    document.querySelector('#manageMenuArea').style.display="none";
+    document.querySelector('#toolsMenuArea').style.display="block";
+    await solidUI.activateComponent('#toolsMenuArea');
   }
   function navigate(direction) {
       let el = document.querySelector('#resourceSelector select');
@@ -19,8 +37,6 @@ import zeditor from './zeditor.js';
       zeditor.load(el[el.selectedIndex].value);
   }
   async function init(){
-   await solidUI.activateComponent('#menuArea');
-   await solidUI.activateComponent('#mainMenu');
    zeditor.create("#editor","turtle");
    document.querySelector('.screen').addEventListener("click",async()=>{
      zeditor.toggleScreens();
@@ -28,11 +44,18 @@ import zeditor from './zeditor.js';
    document.querySelector('.menu.button').addEventListener("click",async(e)=>{
      toggleMenu();
    });
+   document.querySelector('.gear.button').addEventListener("click",async(e)=>{
+     toggleManageMenu();
+   });
+   document.querySelector('.wrench.button').addEventListener("click",async(e)=>{
+     toggleToolsMenu();
+   });
    document.getElementById('save').addEventListener("click",(e)=>{
      zeditor.save("#e1");  
    });
    document.getElementById('shadowBody').classList.remove("loading");
+   await solidUI.activateComponent('#menuArea');
+   await solidUI.activateComponent('#mainMenu');
   }
   solidUI.showFunction = zeditor.load.bind(zeditor);
   solidUI.initApp = init;
- 

@@ -32,7 +32,7 @@ class Zeditor {
   }
 
   editable(type){
-   if(type.match(/(image|audio|video|pdf|unknown)/)) return false;
+   if(!type || type.match(/(image|audio|video|pdf|unknown)/)) return false;
    return true;
   }
 

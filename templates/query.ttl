@@ -1,0 +1,8 @@
+:PersonForm
+  a ui:FormComponent ;
+  ui:form <person-form.ttl#Person> ;
+  ui:formSubject <../examples/test-data.ttl#this> ;
+  ui:formCondition """
+    ?x :name "Juan".
+  """.
+

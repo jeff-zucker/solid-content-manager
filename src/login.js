@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
       window.history.replaceState({}, '', `${location.origin}${location.pathname}?${params}`);
 */
       document.getElementById('e1').display="none";
-      if(!loginButtonArea) return solidUI.initApp();
+      if(!loginButtonArea) return await solidUI.initApp();
       loginButtonArea.innerHTML="";
       loginButtonArea.appendChild(UI.login.loginStatusBox(document, null, {}))
       const signupButton = loginButtonArea.querySelectorAll('input')[1];
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
       loginButtonArea.style.display="none";
       authSession.onLogin(()=>{mungeLoginArea()});
       authSession.onLogout(()=>{console.log("");mungeLoginArea()});
-      authSession.onSessionRestore(mungeLoginArea);
+      authSession.onSessionRestore(mungeLoginArea());
     }    
     mungeLoginArea();
 }); 

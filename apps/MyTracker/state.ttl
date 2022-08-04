@@ -1,0 +1,6 @@
+@prefix : <#>.
+@prefix wf: <http://www.w3.org/2005/01/wf/flow#>.
+@prefix ind: <index.ttl#>.
+
+ind:this wf:stateStore <>.
+
