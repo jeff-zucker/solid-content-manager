@@ -1,15 +1,23 @@
-<#id1645120949786> <http://www.w3.org/2002/12/cal/ical#dtstart> "2022-02-17T18:02:29Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
-    <http://www.w3.org/2005/01/wf/flow#participant> <http://localhost:3101/profile/card#me>;
-    <http://www.w3.org/ns/ui#backgroundColor> "#fecfde".
-<#this> a <http://www.w3.org/ns/pim/pad#Notepad>;
-    <http://purl.org/dc/elements/1.1/author> <http://localhost:3101/profile/card#me>;
-    <http://purl.org/dc/elements/1.1/created> "2022-02-17T18:01:14Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
-    <http://purl.org/dc/elements/1.1/title> "Shared Notes";
-    <http://www.w3.org/2005/01/wf/flow#participation> <#id1645120949786>, <#id1659388091701>;
-    <http://www.w3.org/ns/pim/pad#next> <#this_line0>.
-<#this_line0> <http://purl.org/dc/elements/1.1/author> <http://localhost:3101/profile/card#me>;
-    <http://www.w3.org/ns/pim/pad#next> <#this>;
-    <http://rdfs.org/sioc/ns#content> "fg f g fgs sdfg sfdg".
-<#id1659388091701> <http://www.w3.org/2002/12/cal/ical#dtstart> "2022-08-01T21:08:11Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>;
-    <http://www.w3.org/2005/01/wf/flow#participant> <https://jeff-zucker.solidcommunity.net/profile/card#me>;
-    <http://www.w3.org/ns/ui#backgroundColor> "#fecfde".
+@prefix : <#>.
+@prefix cal: <http://www.w3.org/2002/12/cal/ical#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix pad: <http://www.w3.org/ns/pim/pad#>.
+@prefix sioc: <http://rdfs.org/sioc/ns#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix wf: <http://www.w3.org/2005/01/wf/flow#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix c8: </profile/card#>.
+
+:id1659993620932
+    cal:dtstart "2022-08-08T21:20:20Z"^^xsd:dateTime;
+    wf:participant c8:me;
+    ui:backgroundColor "#fecfde".
+:this
+    a pad:Notepad;
+    dc:author c8:me;
+    dc:created "2022-08-08T21:20:11Z"^^xsd:dateTime;
+    dc:title "Shared Notes";
+    wf:participation :id1659993620932;
+    pad:next :this_line0 .
+
+:this_line0 dc:author c8:me; sioc:content ""; pad:next :this.

@@ -1,38 +1,28 @@
-@prefix : <#> .
-@prefix ui: <http://www.w3.org/ns/ui#> .
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix ind: <../apps/MyAddressBook/index.ttl#>.
+@prefix in: <../apps/MyLongChat/index.ttl#>.
+@prefix inde: <../apps/MyNotepad/index.ttl#>.
+@prefix i: <../apps/MyTracker/index.ttl#>.
 
-:ToolsMenu a ui:ButtonListMenu; ui:dataSource (
-  :Notepad :AddressBook :Tracker :Chat :EditProfile :EditPreferences
-) .
+:AddressBook a ui:SolidOSLink; ui:dataSource ind:this; ui:label "Address Book".
+
+:Chat a ui:SolidOSLink; ui:dataSource in:this; ui:label "Chat".
 
 :EditPreferences
-   a ui:SolidOSLink;
-   ui:pane  "basicPreferences";
-   ui:label  "Edit Preferences";
-   ui:dataSource  </profile/settings/prefs.ttl>.
-
+    a ui:SolidOSLink;
+    ui:dataSource </profile/settings/prefs.ttl>;
+    ui:label "Edit Preferences";
+    ui:pane "basicPreferences".
 :EditProfile
-   a ui:SolidOSLink;
-   ui:label "Edit Profile";
-   ui:pane  "editProfile";
-   ui:dataSource  </profile/card#me>.
+    a ui:SolidOSLink;
+    ui:dataSource "http://localhost:3101/profile/card";
+    ui:label "Edit Profile";
+    ui:pane "editProfile".
+:Notepad a ui:SolidOSLink; ui:dataSource inde:this; ui:label "Notepad".
 
-:Notepad
-  a ui:SolidOSLink;
-  ui:label "Notepad";
-  ui:dataSource </cm/apps/MyNotepad/index.ttl#this> .
+:ToolsMenu
+    a ui:ButtonListMenu;
+    ui:dataSource ( :AddressBook :Tracker :Chat :EditProfile :EditPreferences ).
+:Tracker a ui:SolidOSLink; ui:dataSource i:this; ui:label "Task Tracker".
 
-:AddressBook
-  a ui:SolidOSLink;
-  ui:label "Address Book";
-  ui:dataSource </cm/apps/MyAddressBook/index.ttl#this> .
-
-:Tracker
-  a ui:SolidOSLink;
-  ui:label "Task Tracker";
-  ui:dataSource </cm/apps/MyTracker/index.ttl#this> .
-
-:Chat
-  a ui:SolidOSLink;
-  ui:label "Chat";
-  ui:dataSource </cm/apps/MyLongChat/index.ttl#this> .

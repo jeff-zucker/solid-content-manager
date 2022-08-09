@@ -31,7 +31,7 @@
 
 :MenuItem
   a ui:Group;
-  ui:parts ( :LabelField :LinkField ).
+  ui:parts ( :LabelField :LinkField :PanesField ).
 
 :LabelField
   a ui:SingleLineTextField;
@@ -44,6 +44,12 @@
   ui:label "Menu Item Link";
   ui:size "60rem";
   ui:property ui:dataSource.
+
+:PanesField
+  a ui:SingleLineTextField;
+  ui:label "Pane (may be blank)";
+  ui:size "60rem";
+  ui:property ui:pane.
 
 
 

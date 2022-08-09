@@ -1,9 +1,0 @@
-@prefix : <#>.
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
-@prefix c: </profile/card#>.
-
-:a1
-    a acl:Authorization;
-    acl:accessTo <groups.ttl>;
-    acl:agent c:me;
-    acl:mode acl:Control, acl:Read, acl:Write.

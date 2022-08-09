@@ -36,13 +36,14 @@ class Zeditor {
    return true;
   }
 
-  async load(contentType,uri,targetSelector){
+  async load(contentType,uri,targetSelector,obj){
 //    document.getElementById('right-column').style.display="none";
 //    document.getElementById('right-column-tabulator').style.display="block";
 //    return solidUI.util.showSolidOS({link:uri});
     if(!contentType || contentType==="unknown" && window.mime) contentType = window.mime.getType(uri);
+    if(!contentType && uri.endsWith('card'))contentType = "rdf";
     if( !this.editable(contentType) ) {
-      return await solidUI.util.show(contentType,uri,"",targetSelector);
+      return await solidUI.util.show(contentType,uri,"",targetSelector,true,obj);
     }
     UI.store.removeDocument(UI.rdf.sym(uri)); // guarantee fresh data
     contentType = contentType.replace(/.*\//,'');
@@ -71,7 +72,7 @@ class Zeditor {
         displayUri = outputPage
         displayCtype = r.contentType;
       }
-      await solidUI.util.show(displayCtype,displayUri,displayString,"#display",true)
+      await solidUI.util.show(displayCtype,displayUri,displayString,"#display",true,obj)
 //    }
 // SHOW IN EDITOR
     document.querySelector(".menu .url").innerHTML = i.url;
