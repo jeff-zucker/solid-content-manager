@@ -34,6 +34,12 @@
   bookm:hasTopic :ScienceNewsBROKEN
 .
 []
+  rdfs:label   "Nature Communications";
+  bookm:recalls  <http://feeds.nature.com/ncomms/rss/current> ;
+  a ui:Feed, bookm:Bookmark ;
+  bookm:hasTopic :ScienceNews
+.
+[]
   rdfs:label   "Smithsonian";
   bookm:recalls  <https://www.smithsonianmag.com/rss/latest_articles/> ;
   a ui:Feed, bookm:Bookmark ;

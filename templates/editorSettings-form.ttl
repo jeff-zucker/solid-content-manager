@@ -3,47 +3,25 @@
 
 :this
   a ui:Form;
-  ui:formSubject <../ui/mainMenu.ttl#MainMenu>;
+  ui:formSubject <../ui/settings.ttl#Settings>;
   ui:parts( :H1 :H2 :H3 :H4 :MenuItems ).
 
-:H1
-  a ui:Heading;
-  ui:contents "Main Menu Form"
-.
-:H2
-  a ui:Heading;
-  ui:contents " -- change the order of menu items - arrows on the right"
-.
-:H3
-  a ui:Heading;
-  ui:contents " -- delete menu item - red `-` under item"
-.
-:H4
-  a ui:Heading;
-  ui:contents " -- add new menu item - green `+` at page bottom"
-.
+:ScreenWidth
+  a ui:IntegerField;
+  ui:property 
 
-:MenuItems
-  a ui:Multiple;
-  ui:ordered ui:true;
-  ui:part :MenuItem;
-  ui:property ui:dataSource.
 
-:MenuItem
-  a ui:Group;
-  ui:parts ( :LabelField :LinkField ).
+:Settings
+  a ui:Configuration;
+  ui:screenWidth 640;
+  ui:screenHeight 480;
+  ui:documentRoot "/home/jeff/";
+  ui:editorKeyMode "emacs";
+  ui:editorSize 21;
+  ui:darkMode true;
+  ui:port 3101.
 
-:LabelField
-  a ui:SingleLineTextField;
-  ui:label "Menu Item Label";
-  ui:size "60rem";
-  ui:property ui:label.
-
-:LinkField
-  a ui:SingleLineTextField;
-  ui:label "Menu Item Link";
-  ui:size "60rem";
-  ui:property ui:dataSource.
+  
 
 
 

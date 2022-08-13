@@ -10,7 +10,6 @@ window.SolidAppContext = {
   app : host,
   webid : host + "/profile/card#me",
 }
-
 document.addEventListener('DOMContentLoaded', function() {
     const authSession = UI.authn.authSession
     const loginButtonArea = document.getElementById("login");

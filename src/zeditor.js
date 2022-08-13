@@ -188,34 +188,14 @@ class Zeditor {
     if(elm) elm.style.display="none";
   }
   toggleScreens(newScreen){
-    let current = document.body.classList;
-    if(current.length===0){
-      solidUI.util.addClass('body',"both");
-      current = document.body.classList;
+    let currentIsDisplay = document.body.classList.contains('display');
+    if(!currentIsDisplay || newScreen==="display") {
+      document.body.classList.remove("split");
+      document.body.classList.add("display");
     }
-    if(newScreen){
-      if(typeof newScreen==="object") newScreen = newScreen.screen;
-      for(let s of ["both","display","editor"]) solidUI.util.removeClass("body",s);
-      solidUI.util.addClass("body",newScreen);
-      if(newScreen==="display"){
-        hideFormEditor();
-      }
-      else zeditor.setSize(newScreen==="editor" ?42 :20);
-      return;
-    }
-    if(current.contains('editor')) {
-      solidUI.util.removeClass("body","editor");
-      solidUI.util.addClass("body","display");
-    }
-    else if(current.contains('display')) {
-      solidUI.util.removeClass("body","display");
-      solidUI.util.addClass("body","both");
-      zeditor.setSize(20);
-    }
-    else if(current.contains('both')) {
-      solidUI.util.removeClass("body","both");
-      solidUI.util.addClass("body","editor");
-      zeditor.setSize(42);
+    else {
+      document.body.classList.remove("display");
+      document.body.classList.add("split");
     }
   }
 

@@ -1,39 +1,34 @@
-@prefix : <#> .
-@prefix ui: <http://www.w3.org/ns/ui#> .
-
-:MainMenu a ui:MenuOfMenus; ui:dataSource (
-  :Desktop :Examples :SolCom :News :Culture
-) .
-
-:News 
-  a ui:Component;
-  ui:label "News Feeds";
-  ui:dataSource </cm/data/news/news.ttl#News> .
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix ocb: <../data/ocb/ocb.ttl#>.
+@prefix loc: </>.
+@prefix ex: <../data/examples/>.
+@prefix jef: <https://storage.inrupt.com/jeff-zucker/>.
+@prefix new: <../data/news/news.ttl#>.
+@prefix je: <https://jeff-zucker.solidcommunity.net/>.
+@prefix jeff: <https://jeff-zucker.solidcommunity.net:8443/>.
 
 :Culture
-  a ui:Component;
-  ui:label "Culture Browser";
-  ui:dataSource </cm/data/ocb/ocb.ttl#OpenCultureBrowser> .
+    a ui:Component;
+    ui:dataSource ocb:OpenCultureBrowser;
+    ui:label "Culture Browser".
+:Desktop a ui:Component; ui:dataSource loc:; ui:label "Desktop Pod".
 
-:Desktop a ui:Component;
-   ui:label "Desktop Pod";
-   ui:dataSource <http://localhost:3101/>.
+:Examples a ui:Component; ui:dataSource ex:; ui:label "Example Media Resources".
 
-:Examples a ui:Component;
-   ui:label "Example Media Resources";
-   ui:dataSource </cm/data/examples/>.
+:id1660164661711
+    ui:dataSource
+    "http://localhost:3101/cm/data/solid-specs/solid-specs.ttl#SolidSpecs";
+    ui:label "Solid Specifications".
+:InruptPod a ui:Component; ui:dataSource jef:; ui:label "Inrupt Pod Space".
 
-:SolCom a ui:Component;
-   ui:label "Solid Community Pod";
-   ui:dataSource <https://jeff-zucker.solidcommunity.net/>.
+:MainMenu
+    a ui:MenuOfMenus;
+    ui:dataSource
+    ( :Desktop :Examples :SolCom :News :Culture :id1660164661711 ).
+:News a ui:Component; ui:dataSource new:News; ui:label "News Feeds".
 
-:SolComTest a ui:Component;
-   ui:label "Solid Community Test";
-   ui:dataSource <https://jeff-zucker.solidcommunity.net:8443/>.
+:SolCom a ui:Component; ui:dataSource je:; ui:label "Solid Community Pod".
 
-:InruptPod a ui:Component;
-   ui:label "Inrupt Pod Space";
-   ui:dataSource <https://storage.inrupt.com/jeff-zucker/>.
-
-
+:SolComTest a ui:Component; ui:dataSource jeff:; ui:label "Solid Community Test".
 

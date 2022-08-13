@@ -1,6 +1,6 @@
 <meta http-equiv="Cache-control" content="no-cache">
 
-<body class="display">
+<body id="PageBody" class="display">
 
   <h1 id="shadowBody" class="loading"></h1>
 
@@ -29,15 +29,24 @@
       data-suic = "/cm/ui/toolsMenu.ttl#ToolsMenu"
       data-display = "#display"
     ></div>
-  </div>
+  </div><!-- #left-column -->
+
+
+  <!-- TABULATOR
+  -->
+  <header id="PageHeader"></header>
   <div id="right-column-tabulator">
         <div class="TabulatorOutline" role="main" id="suicTabulator">
           <table id="outline"></table>
           <div id="GlobalDashboard"></div>
         </div>
   </div>
+  <footer id="PageFooter"></footer>
+
+  <div id="display"></div>
+
   <div id="right-column">
-    <div id="display"></div>
+
     <div id="e1">
       <span class="menu" style="display:table-row;">
         <span id="save" title="save resource" class="button" style="display:table-cell;width:2rem;"></span>
@@ -45,9 +54,9 @@
         <span class="type" style="display:none"></span>
         <span class="pageDefinition" style="display:none"></span>
       </span>
-    </div><!-- e1 -->
     <div id="editor"></div>
     <div id="formInEditor"></div>
+    </div><!-- e1 -->
   </div> <!-- right-column -->
 
 </body>
@@ -93,6 +102,7 @@ window.mime=mime;
 <script src="./src/ace-shim.js"></script>
 <script src="./src/index.js" type="module"></script>
 
+<link rel="stylesheet" href="./node_modules/mashlib/dist/mash.css" />
 <link rel="stylesheet" href="/s/solid-ui-components/assets/linked-bookmarks.css" />
 <link rel="stylesheet" href="./assets/zeditor.css" />
 

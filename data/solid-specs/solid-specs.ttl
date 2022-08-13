@@ -1,0 +1,22 @@
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+
+:SolidSpecs
+  a ui:ButtonListMenu;
+  ui:dataSource :SpecsScript.
+
+:SpecsScript
+  a ui:Script;
+  ui:comment "Munges solidproject.org/TR, builds a list of links to the specs";
+  ui:content """
+    (async()=>{
+      var url = 'https://solidproject.org/TR/';
+      var ctype = "text/html";
+      var response = await window.fetch( url,{accept:ctype} );
+      var dom =(new DOMParser()).parseFromString( await response.text(),ctype);
+      let reports = dom.querySelector('#work-item-technical-reports');
+      return reports.querySelectorAll('[rel="cito:citesForInformation"]');
+    })()
+  """.
+
+# END

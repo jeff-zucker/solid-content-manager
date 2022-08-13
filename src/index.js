@@ -3,8 +3,13 @@ import zeditor from './zeditor.js';
 
   async function toggleMenu(wantedMenu){
     wantedMenu ||= 'MainMenu';
-    document.getElementById('right-column').style.display="block";
+    
+    // Hide Tabulator (redisplay later if a SolidOSLink
+    //
     document.getElementById('right-column-tabulator').style.display="none";
+    document.getElementById('display').style.display="block";
+    // document.getElementById('right-column').style.display="block";
+
     document.querySelector('#menuArea').style.display="block";
     document.querySelector('#manageMenuArea').style.display="none";
     document.querySelector('#toolsMenuArea').style.display="none";
@@ -59,3 +64,11 @@ import zeditor from './zeditor.js';
   }
   solidUI.showFunction = zeditor.load.bind(zeditor);
   solidUI.initApp = init;
+  solidUI.showTabulator = ()=>{
+    document.getElementById('right-column-tabulator').style.display="block";
+    document.getElementById('display').style.display="none";
+  }
+  solidUI.hideTabulator = ()=>{
+    document.getElementById('right-column-tabulator').style.display="none";
+    document.getElementById('display').style.display="block";
+  }

@@ -1,0 +1,40 @@
+<#OntologyApp>
+  a ui:CustomTemplate
+  ui:label "Ontologies" ;
+  ui:dataSource <#OntologyQuery> ;
+  ui:before """
+    <div xmlns="http://www.w3.org/1999/xhtml" prefix="
+      owl: http://www.w3.org/2002/07/owl#
+      vann: http://purl.org/vocab/vann/
+      rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+      rdfs: http://www.w3.org/2000/01/rdf-schema#
+    ">
+  """ ;
+  ui:recurring """
+    <a typeof="owl:Ontlogy" about="${uri}" href="${uri}" style="padding:0.75em;border-bottom:1px solid grey;cursor:pointer">
+      <div property="rdfs:label" content="${label}" style="font-weight:550;">${label}</div>
+      <div>
+        <span property="vann:preferredNamespacePrefix" content="${prefix}">
+          ${prefix}&nbsp;</span><span property="vann:preferredNamespaceURI" content="${namespace}" style="font-style:italic">${namespace}&nbsp;
+        </span>
+      </div>
+    </a>
+  """ ;
+  ui:after "</div>" .
+
+<#OntologyQuery>
+  a ui:SparqlQuery ;
+  ui:endpoint <http://localhost/solid/news/ontologies-data.ttl> ;
+  ui:query """
+    PREFIX vann: <http://purl.org/vocab/vann/> 
+    PREFIX owl: <http://www.w3.org/2002/07/owl#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    SELECT ?uri ?label ?prefix ?namespace WHERE {
+      ?uri a owl:Ontology ;
+           vann:preferredNamespacePrefix ?prefix ;
+           vann:preferredNamespaceURI ?namespace .
+      OPTIONAL { ?uri rdfs:label ?label . }
+    }
+  """ .
+
+
