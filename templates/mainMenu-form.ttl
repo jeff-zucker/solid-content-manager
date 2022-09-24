@@ -4,24 +4,22 @@
 :this
   a ui:Form;
   ui:formSubject <../ui/mainMenu.ttl#MainMenu>;
-  ui:parts( :H1 :H2 :H3 :H4 :MenuItems ).
+  ui:parts( :H1 :MenuItems ).
 
 :H1
   a ui:Heading;
-  ui:contents "Main Menu Form"
-.
+  ui:contents "Main Menu Options".
+
 :H2
   a ui:Heading;
-  ui:contents " -- change the order of menu items - arrows on the right"
-.
-:H3
-  a ui:Heading;
-  ui:contents " -- delete menu item - red `-` under item"
-.
-:H4
-  a ui:Heading;
-  ui:contents " -- add new menu item - green `+` at page bottom"
-.
+  ui:contents """
+Supported Plugins
+        Pod Browser - opens a pod browser to the item link
+    Resource Viewer - opens the databrowser page for item link
+     Profile Editor - shows the databrowser editProfile pane for the item link
+ Preferences Editor - shows the databrowser editPrefs pane for the item link
+         Custom App - runs the app at the item link<br>
+  """.
 
 :MenuItems
   a ui:Multiple;
@@ -31,19 +29,26 @@
 
 :MenuItem
   a ui:Group;
-  ui:parts ( :LabelField :LinkField ).
+  ui:parts ( :LabelField :LinkField :HandlerField ).
 
 :LabelField
   a ui:SingleLineTextField;
-  ui:label "Menu Item Label";
+  ui:label "Label";
   ui:size "60rem";
   ui:property ui:label.
 
 :LinkField
   a ui:SingleLineTextField;
-  ui:label "Menu Item Link";
+  ui:label "Link";
   ui:size "60rem";
   ui:property ui:dataSource.
+
+:HandlerField
+  a ui:Choice;
+  ui:label "Handler"@en ;
+  ui:from ui:Plugin ;
+  ui:property ui:plugin .
+
 
 
 

@@ -1,0 +1,7 @@
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix schema: <http://schema.org/>.
+
+<./>  a ui:ContainerFor schema:Recipe.
+
+

@@ -1,0 +1,15 @@
+@prefix   : <#>.
+@prefix news: <news.ttl#> .
+@prefix ui: <http://www.w3.org/ns/ui#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+
+:TopicCreationForm
+  a ui:Form;
+  ui:parts (:TopicLabelField).
+
+:TopicLabelField
+  a ui:SingleLineTextField;
+  ui:size "60rem";
+  ui:label "Topic Labelz";
+  ui:property ui:label.
+

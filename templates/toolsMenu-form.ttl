@@ -8,48 +8,53 @@
 
 :H1
   a ui:Heading;
-  ui:contents "Tools Menu Form"
-.
+  ui:contents "Tools Menu Options".
+
 :H2
   a ui:Heading;
-  ui:contents " -- change the order of menu items - arrows on the right"
-.
-:H3
-  a ui:Heading;
-  ui:contents " -- delete menu item - red `-` under item"
-.
-:H4
-  a ui:Heading;
-  ui:contents " -- add new menu item - green `+` at page bottom"
-.
+  ui:contents """
+Supported Plugins
+        Pod Browser - opens a pod browser to the item link
+    Resource Viewer - opens the databrowser page for item link
+     Profile Editor - shows the databrowser editProfile pane for the item link
+ Preferences Editor - shows the databrowser editPrefs pane for the item link
+         Custom App - runs the app at the item link<br>
+  """.
 
 :MenuItems
   a ui:Multiple;
-  ui:ordered true;
+  ui:ordered ui:true;
   ui:part :MenuItem;
   ui:property ui:dataSource.
 
 :MenuItem
   a ui:Group;
-  ui:parts ( :LabelField :LinkField :PanesField ).
+  ui:parts ( :LabelField :LinkField :HandlerField :DisplayField ).
 
 :LabelField
   a ui:SingleLineTextField;
-  ui:label "Menu Item Label";
+  ui:label "Label";
   ui:size "60rem";
   ui:property ui:label.
 
 :LinkField
   a ui:SingleLineTextField;
-  ui:label "Menu Item Link";
+  ui:label "Link";
   ui:size "60rem";
   ui:property ui:dataSource.
 
-:PanesField
-  a ui:SingleLineTextField;
-  ui:label "Pane (may be blank)";
-  ui:size "60rem";
-  ui:property ui:pane.
+:HandlerField
+  a ui:Choice;
+  ui:label "Handler"@en ;
+  ui:from ui:Plugin ;
+  ui:property ui:plugin .
+
+:DisplayField
+  a ui:Choice;
+  ui:label "Display Target"@en ;
+  ui:from ui:DisplayTarget ;
+  ui:property ui:displayTarget .
+
 
 
 

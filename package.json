@@ -1,6 +1,6 @@
 {
   "name": "solid-content-manager",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,14 +10,8 @@
   "contributor": "bourgeoa@github.com",
   "license": "MIT",
   "dependencies": {
-    "ace-builds": "^1.5.3",
-    "d3": "^7.4.4",
-    "d3-graphviz": "^4.1.1",
-    "marked": "^4.0.16",
-    "mashlib": "^1.8.3",
-    "solid-load-profile": "^1.0.0",
-    "solid-ui": "^2.4.22",
-    "solid-ui-components": "^1.0.11"
+    "mashlib": "^1.8.4",
+    "solid-ui-components": "^1.0.12"
   },
   "directories": {
     "example": "examples"

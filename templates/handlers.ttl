@@ -1,0 +1,9 @@
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+
+:PodBrowser a ui:Plugin; ui:label "Pod Browser"@en.
+:ResourceViewer a ui:Plugin; ui:label "Resource Viewer"@en.
+:ProfileEditor a ui:Plugin; ui:label "Profile Editor"@en.
+:PreferencesEditor a ui:Plugin; ui:label "Preferences Editor"@en.
+:CustomApp a ui:Plugin; ui:label "Custom App"@en.
+

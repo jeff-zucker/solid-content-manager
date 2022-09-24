@@ -9,17 +9,17 @@
 :ManageMainMenu
   a ui:Component;
   ui:directDisplay true;
-  ui:label "Manage the Main Menu";
+  ui:label "Manage your Main Menu";
   ui:dataSource <../templates/mainMenu-form.ttl#this> .
 
 :ManageToolsMenu
   a ui:Component;
   ui:directDisplay true;
-  ui:label "Manage the Tools Menu";
+  ui:label "Manage your Tools Menu";
   ui:dataSource <../templates/toolsMenu-form.ttl#this> .
 
 :ManageApp
   a ui:Component;
   ui:directDisplay true;
-  ui:label "Manage the Editor";
-  ui:dataSource <../templates/editorSettngs-form.ttl#this> .
+  ui:label "Manage your News Feeds";
+  ui:dataSource <../data/news/feeds-form.ttl#this> .

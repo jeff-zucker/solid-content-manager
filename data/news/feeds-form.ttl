@@ -1,0 +1,50 @@
+@prefix   : <#>.
+@prefix news: <news.ttl#> .
+@prefix ui: <http://www.w3.org/ns/ui#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+
+:this
+  a ui:Form;
+  ui:formSubject news:News;
+  ui:parts ( :Feeds  ).
+
+:Feeds
+  a ui:Multiple;
+  ui:ordered ui:true;
+  ui:part :OneFeed;
+  ui:property skos:memberList.
+
+:OneFeed
+  a ui:Group;
+  ui:parts ( :LabelField :LinkField :TopicField ).
+
+:LabelField
+  a ui:SingleLineTextField;
+  ui:label "Feed Source Name";
+  ui:size "60rem";
+  ui:property ui:label.
+
+:LinkField
+  a ui:SingleLineTextField;
+  ui:label "Feed Source Link";
+  ui:size "60rem";
+  ui:property ui:href.
+
+:TopicField
+  ui:label "Feed Topic"@en ;
+  a ui:Choice ;
+#  ui:canMintNew true;
+#  ui:use :TopicCreationForm;
+  ui:from ui:FeedTopic ;
+  ui:property skos:broader .
+
+# :TopicCreationForm
+#  a ui:Form;
+#  ui:parts (:TopicLabelField).
+
+:TopicLabelField
+  a ui:SingleLineTextField;
+  ui:size "60rem";
+  ui:label "Topic Labelz";
+  ui:property ui:label.
+

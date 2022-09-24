@@ -4,31 +4,65 @@
 @prefix loc: </>.
 @prefix ex: <../data/examples/>.
 @prefix jef: <https://storage.inrupt.com/jeff-zucker/>.
-@prefix new: <../data/news/news.ttl#>.
 @prefix je: <https://jeff-zucker.solidcommunity.net/>.
 @prefix jeff: <https://jeff-zucker.solidcommunity.net:8443/>.
+@prefix news: <../data/news/news.ttl#>.
 
 :Culture
     a ui:Component;
     ui:dataSource ocb:OpenCultureBrowser;
-    ui:label "Culture Browser".
-:Desktop a ui:Component; ui:dataSource loc:; ui:label "Desktop Pod".
+    ui:label "Culture Browser";
+    ui:plugin :CustomApp.
+:CustomApp a ui:Plugin; ui:label "Custom App"@en.
 
-:Examples a ui:Component; ui:dataSource ex:; ui:label "Example Media Resources".
-
-:id1660164661711
+:Desktop
+    a ui:Component;
+    ui:dataSource loc:;
+    ui:label "Desktop Pod";
+    ui:plugin :PodBrowser.
+:Examples
+    a ui:Component;
+    ui:dataSource ex:;
+    ui:label "Example Media Resources";
+    ui:plugin :PodBrowser.
+:id1661718677379
     ui:dataSource
-    "http://localhost:3101/cm/data/solid-specs/solid-specs.ttl#SolidSpecs";
-    ui:label "Solid Specifications".
-:InruptPod a ui:Component; ui:dataSource jef:; ui:label "Inrupt Pod Space".
-
+        "http://localhost:3101/solid/test/draggable/draggable.ttl#MyDraggableContainer";
+    ui:label "Test Draggable Container";
+    ui:plugin :CustomApp.
+:InruptPod
+    a ui:Component;
+    ui:dataSource jef:;
+    ui:label "Inrupt Pod Space";
+    ui:plugin :PodBrowser.
 :MainMenu
     a ui:MenuOfMenus;
     ui:dataSource
-    ( :Desktop :Examples :SolCom :News :Culture :id1660164661711 ).
-:News a ui:Component; ui:dataSource new:News; ui:label "News Feeds".
+    ( :Desktop :Examples :SolCom :News :Culture :SolidSpecs :id1661718677379 ).
+:News
+    a ui:Component;
+    ui:dataSource news:News;
+    ui:label "News Feeds";
+    ui:plugin :CustomApp.
+:PodBrowser a ui:Plugin; ui:label "Pod Browser"@en.
 
-:SolCom a ui:Component; ui:dataSource je:; ui:label "Solid Community Pod".
-
-:SolComTest a ui:Component; ui:dataSource jeff:; ui:label "Solid Community Test".
-
+:Recipes
+    a ui:Component;
+    ui:dataSource "https://jeff-zucker.solidcommunity.net:8443/cookbook/";
+    ui:label "Recipes";
+    ui:plugin :CustomApp.
+:SolCom
+    a ui:Component;
+    ui:dataSource je:;
+    ui:label "Solid Community Pod";
+    ui:plugin :PodBrowser.
+:SolComTest
+    a ui:Component;
+    ui:dataSource jeff:;
+    ui:label "Solid Community Test";
+    ui:plugin :PodBrowser.
+:SolidSpecs
+    ui:dataSource
+    "http://localhost:3101/cm/data/solid-specs/solid-specs.ttl#SolidSpecs";
+    ui:label "Solid Specifications";
+    ui:plugin :CustomApp.

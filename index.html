@@ -31,7 +31,6 @@
     ></div>
   </div><!-- #left-column -->
 
-
   <!-- TABULATOR
   -->
   <header id="PageHeader"></header>
@@ -45,25 +44,7 @@
 
   <div id="display"></div>
 
-  <div id="right-column">
-
-    <div id="e1">
-      <span class="menu" style="display:table-row;">
-        <span id="save" title="save resource" class="button" style="display:table-cell;width:2rem;"></span>
-        <span class="url" style="display:table-cell;vertical-align:top;"></span>
-        <span class="type" style="display:none"></span>
-        <span class="pageDefinition" style="display:none"></span>
-      </span>
-    <div id="editor"></div>
-    <div id="formInEditor"></div>
-    </div><!-- e1 -->
-  </div> <!-- right-column -->
-
 </body>
-
-<!-- REMOTE (wasm, comunica) -->
-
-<script src="https://unpkg.com/@hpcc-js/wasm/dist/index.min.js" type="application/javascript/"></script>
 
 <script src="https://rdf.js.org/comunica-browser/versions/1/packages/actor-init-sparql/comunica-browser.js">
 </script>
@@ -71,37 +52,13 @@
 <script src="http://rdf.js.org/comunica-browser/versions/2/engines/query-sparql/comunica-browser.js">
 </script>
 -->
-
-<!-- LOCAL (inrupt-scab,solid-ui,ace,marked,d3,d3-graphviz) -->
-
-<!--
-<script src="https://rdf.js.org/comunica-browser/versions/latest/engines/query-sparql/comunica-browser.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js" integrity="sha512-NofUHaTd/uaO1GXfw0JvXptI9XdO5LLrfjl7jVqnFlbxdgqVlE3SmuXAUoqRTB5GQKd82yzhchaDlc6C6+SylA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="https://solidos.github.io/solid-ui/dist/main.js"></script> 
-<script src="../solidos/workspaces/solid-ui/dist/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@inrupt/solid-client-authn-browser@latest/dist/solid-client-authn.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3-graphviz@4.1.1/build/d3-graphviz.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3@7.4.4/dist/d3.min.js"></script>
-<script src="./wasm.min.js"></script>
--->
-
 <script src="./node_modules/mashlib/dist/mashlib.js" type="module"></script>
-<script src="./node_modules/ace-builds/src-min-noconflict/ace.js"></script>
-<script src="./node_modules/marked/marked.min.js"></script>
-<script src="./node_modules/d3/dist/d3.min.js"></script>
-<script src="./node_modules/d3-graphviz/build/d3-graphviz.min.js"></script>
 <script type="module">
 import mime from "https://cdn.skypack.dev/mime";
 window.mime=mime;
 </script>
-<!-- 
-  ZEDITOR (this thing)
--->
 <script src="./node_modules/solid-ui-components/dist/solid-ui-components.bundle.js" type="module"></script>
-<script src="./src/ace-shim.js"></script>
 <script src="./src/index.js" type="module"></script>
-
 <link rel="stylesheet" href="./node_modules/mashlib/dist/mash.css" />
 <link rel="stylesheet" href="/s/solid-ui-components/assets/linked-bookmarks.css" />
 <link rel="stylesheet" href="./assets/zeditor.css" />

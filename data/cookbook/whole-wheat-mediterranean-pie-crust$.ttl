@@ -1,0 +1,61 @@
+@prefix : <#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix schem: <https://schema.org/>.
+@prefix crdt: <https://vocab.noeldemartin.com/crdt/>.
+
+:134571db-53dc-4366-a15b-130b3b4befb8
+    a schem:HowToStep;
+    schem:position 1;
+    schem:text
+        "In a large bowl or in the bowl of a standing mixer fitted with the paddle or a food processor fitted with the steel blade, combine the flours and salt and mix together. If using a bowl, make a well in the center, add the olive oil and mix in with a fork. If using a mixer or food processor, turn on and add the olive oil. When it is evenly distributed through the flour combine the water and vinegar or lemon juice and add it to the flour mixture with the machine running. The dough should come together in a ball.".
+:134571db-53dc-4366-a15b-130b3b4befb8-metadata
+    a crdt:Metadata;
+    crdt:createdAt "2022-08-03T20:24:53.280Z"^^xsd:dateTime;
+    crdt:resource :134571db-53dc-4366-a15b-130b3b4befb8;
+    crdt:updatedAt "2022-08-03T20:24:53.280Z"^^xsd:dateTime.
+:4ce51bf9-3600-4343-9cd2-8b29be4bf356
+    a schem:HowToStep;
+    schem:position 2;
+    schem:text
+        "Turn out the dough onto a lightly floured work surface, flour your hands and work the dough just until smooth and easy to shape into a ball. Do not overwork it or you will develop the gluten in the flour and the dough will be tough.  Divide the dough in half, shape each half into a ball and press into a 1/2-inch thick circle. Wrap in plastic and let rest for 1 hour.".
+:4ce51bf9-3600-4343-9cd2-8b29be4bf356-metadata
+    a crdt:Metadata;
+    crdt:createdAt "2022-08-03T20:24:53.281Z"^^xsd:dateTime;
+    crdt:resource :4ce51bf9-3600-4343-9cd2-8b29be4bf356;
+    crdt:updatedAt "2022-08-03T20:24:53.281Z"^^xsd:dateTime.
+:6f91448b-fe56-44c7-891a-0094dbb38946
+    a schem:HowToStep;
+    schem:position 3;
+    schem:text
+        "Roll out the dough as needed for savory tarts, dusting your work surface and the top of the dough with flour to prevent it from sticking. Pre-bake and bake as directed in recipes calling for the crust.".
+:6f91448b-fe56-44c7-891a-0094dbb38946-metadata
+    a crdt:Metadata;
+    crdt:createdAt "2022-08-03T20:24:53.281Z"^^xsd:dateTime;
+    crdt:resource :6f91448b-fe56-44c7-891a-0094dbb38946;
+    crdt:updatedAt "2022-08-03T20:24:53.281Z"^^xsd:dateTime.
+:it
+    a schem:Recipe;
+    schem:description
+        "This is a whole wheat version of the crust I learned to make from Diane Kochilas at her cooking school in Ikaria.";
+    schem:image
+        "https://static01.nyt.com/images/2013/02/19/science/18recipehealth/18recipehealth-articleLarge-v2.jpg";
+    schem:name "Whole Wheat Mediterranean Pie Crust";
+    schem:recipeIngredient
+        "10 grams (2 teaspoons) red wine vinegar or strained lemon juice",
+        "115 grams (approximately 1 cup) unbleached all purpose flour",
+        "165 grams (3/4 cup) water",
+        "200 grams (approximately 1 3/4 cups) whole wheat flour or whole wheat pastry flour",
+        "5 grams (approximately 3/4 teaspoon) salt",
+        "50 grams (1/4 cup) extra virgin olive oil";
+    schem:recipeInstructions
+        :134571db-53dc-4366-a15b-130b3b4befb8,
+        :4ce51bf9-3600-4343-9cd2-8b29be4bf356,
+        :6f91448b-fe56-44c7-891a-0094dbb38946;
+    schem:recipeYield "Enough for two 9- or 10-inch tarts";
+    schem:sameAs
+        "https://cooking.nytimes.com/recipes/1014551-whole-wheat-mediterranean-pie-crust?smid=ck-recipe-iOS-share".
+:it-metadata
+    a crdt:Metadata;
+    crdt:createdAt "2022-08-03T20:24:53.268Z"^^xsd:dateTime;
+    crdt:resource :it;
+    crdt:updatedAt "2022-08-03T20:24:53.268Z"^^xsd:dateTime.

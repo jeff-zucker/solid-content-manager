@@ -1,15 +1,10 @@
 import './login.js';
-import zeditor from './zeditor.js';
 
   async function toggleMenu(wantedMenu){
     wantedMenu ||= 'MainMenu';
-    
     // Hide Tabulator (redisplay later if a SolidOSLink
-    //
     document.getElementById('right-column-tabulator').style.display="none";
     document.getElementById('display').style.display="block";
-    // document.getElementById('right-column').style.display="block";
-
     document.querySelector('#menuArea').style.display="block";
     document.querySelector('#manageMenuArea').style.display="none";
     document.querySelector('#toolsMenuArea').style.display="none";
@@ -32,6 +27,17 @@ import zeditor from './zeditor.js';
     document.querySelector('#toolsMenuArea').style.display="block";
     await solidUI.activateComponent('#toolsMenuArea');
   }
+  function toggleScreens(newScreen){
+    let currentIsDisplay = document.body.classList.contains('display');
+    if(!currentIsDisplay || newScreen==="display") {
+      document.body.classList.remove("split");
+      document.body.classList.add("display");
+    }
+    else {
+      document.body.classList.remove("display");
+      document.body.classList.add("split");
+    }
+  }
   function navigate(direction) {
       let el = document.querySelector('#resourceSelector select');
       let max = el.childNodes.length;
@@ -42,9 +48,8 @@ import zeditor from './zeditor.js';
       zeditor.load(el[el.selectedIndex].value);
   }
   async function init(){
-   zeditor.create("#editor","turtle");
    document.querySelector('.screen').addEventListener("click",async()=>{
-     zeditor.toggleScreens();
+     toggleScreens();
    });
    document.querySelector('.menu.button').addEventListener("click",async(e)=>{
      toggleMenu();
@@ -55,14 +60,10 @@ import zeditor from './zeditor.js';
    document.querySelector('.wrench.button').addEventListener("click",async(e)=>{
      toggleToolsMenu();
    });
-   document.getElementById('save').addEventListener("click",(e)=>{
-     zeditor.save("#e1");  
-   });
    document.getElementById('shadowBody').classList.remove("loading");
    await solidUI.activateComponent('#menuArea');
    await solidUI.activateComponent('#mainMenu');
   }
-  solidUI.showFunction = zeditor.load.bind(zeditor);
   solidUI.initApp = init;
   solidUI.showTabulator = ()=>{
     document.getElementById('right-column-tabulator').style.display="block";

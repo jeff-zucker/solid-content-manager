@@ -1,0 +1,6 @@
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+
+:this
+  a ui:LinkHandler;
+  ui:linkConvert  "https://umai.noeldemartin.com/viewer?url=${href}".
