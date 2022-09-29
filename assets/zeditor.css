@@ -1,4 +1,7 @@
-#right-column-tabulator *, #display * { color:black; }
+#right-column-tabulator *, #display * {
+  background:#bbddff;
+  color:black; 
+}
 #manageMenuArea {
   display:none;
 }
@@ -17,7 +20,40 @@
   background:transparent;
   overflow-y:auto;
   overflow-x:hidden;
+  display:block;
 }
+.hiddenMenu #left-column {
+  display:none;
+}
+#display {
+  background:beige;
+  background:#7799b7;
+  background:#88aac8;
+  height:48vh;
+  max-height:48vh !important;
+  position:absolute;
+  top:0;
+  margin:0 !important;
+}
+#right-column-tabulator, #display, #right-column {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:22rem;
+}
+.hiddenMenu #right-column-tabulator, .hiddenMenu #display, .hiddenMenu #right-column {
+  left:2.5rem;
+}
+
+
+#right-column-tabulator {
+  background:white !important;
+  overflow:auto;
+}
+
+
+
 #menuArea button, #manageMenu button, #toolsMenu button {
   display:block;
   margin:1rem;
@@ -51,16 +87,6 @@ body, #shadowBody {
 }
 #settings,#editors {
   margin-left:0.5em;
-}
-#display {
-  background:beige;
-  background:#7799b7;
-  background:#88aac8;
-  height:48vh;
-  max-height:48vh !important;
-  position:absolute;
-  top:0;
-  margin:0 !important;
 }
 #settings { 
    margin-top:0;
@@ -143,7 +169,9 @@ body.help .screen.button:after {
   content: "\2630"; /* hamburger menu */
 }
 .screen.button:after {
-  content: "\2180"; /* split circle */
+//  content: "\2180"; /* split circle */
+  content: "\2318"; /* place of interest */
+  font-size:1.5rem;
   display:block;
   margin-bottom:0.4rem;
   color:gray;
@@ -260,18 +288,6 @@ body {
   color:black;
   background-color:white;
   overflow:auto; 
-}
-
-#right-column-tabulator, #display, #right-column {
-  position:absolute;
-  top:0;
-  right:0;
-  bottom:0;
-  left:22rem;
-}
-#right-column-tabulator {
-  background:white !important;
-  overflow:auto;
 }
 
 /* SELECT/OPTION DROPDOWNS

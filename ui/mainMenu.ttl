@@ -1,11 +1,11 @@
 @prefix : <#>.
 @prefix ui: <http://www.w3.org/ns/ui#>.
 @prefix ocb: <../data/ocb/ocb.ttl#>.
-@prefix loc: </>.
 @prefix ex: <../data/examples/>.
 @prefix jef: <https://storage.inrupt.com/jeff-zucker/>.
 @prefix je: <https://jeff-zucker.solidcommunity.net/>.
 @prefix jeff: <https://jeff-zucker.solidcommunity.net:8443/>.
+@prefix lo: </>.
 @prefix news: <../data/news/news.ttl#>.
 
 :Culture
@@ -17,7 +17,7 @@
 
 :Desktop
     a ui:Component;
-    ui:dataSource loc:;
+    ui:dataSource lo:;
     ui:label "Desktop Pod";
     ui:plugin :PodBrowser.
 :Examples
@@ -37,8 +37,8 @@
     ui:plugin :PodBrowser.
 :MainMenu
     a ui:MenuOfMenus;
-    ui:dataSource
-    ( :Desktop :Examples :SolCom :News :Culture :SolidSpecs :id1661718677379 ).
+    ui:startingContent <../data/home.md>;
+    ui:dataSource ( :Desktop :Examples :SolCom :News :Culture :SolidSpecs ).
 :News
     a ui:Component;
     ui:dataSource news:News;

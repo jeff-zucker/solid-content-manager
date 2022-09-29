@@ -1,0 +1,72 @@
+@prefix : <#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix index: <../apps/MyAddressBook/index.ttl#>.
+@prefix ind: <../apps/MyTracker/index.ttl#>.
+@prefix lo: </>.
+@prefix in: <../apps/MyLongChat/index.ttl#>.
+@prefix inde: <../apps/MyNotepad/index.ttl#>.
+
+:AddressBook
+    a ui:Component;
+    ui:dataSource index:this;
+    ui:displayTarget :Draggable;
+    ui:label "Address Book";
+    ui:plugin :SolidOSLink.
+:Chat
+    a ui:Component;
+    ui:dataSource in:this;
+    ui:displayTarget :Draggable;
+    ui:label "Chat";
+    ui:plugin :SolidOSLink.
+:DefaultDisplay a ui:DisplayTarget; ui:label "Default Display"@en.
+
+:Desktop
+    a ui:Component;
+    ui:dataSource lo:;
+    ui:displayTarget :Default;
+    ui:label "Desktop Pod";
+    ui:plugin :PodBrowser.
+:Draggable a ui:DisplayTarget; ui:label "Draggable Overlay"@en.
+
+:EditPreferences
+    a ui:Component;
+    ui:dataSource </profile/settings/prefs.ttl>;
+    ui:displayTarget :Default, :DefaultDisplay;
+    ui:label "Edit Preferences";
+    ui:plugin :PreferencesEditor.
+:EditProfile
+    ui:dataSource "http://localhost:3101/profile/card";
+    ui:displayTarget :Default, :DefaultDisplay;
+    ui:label "Edit Profile";
+    ui:plugin :ProfileEditor.
+:id1661718913610
+    ui:dataSource "https://jeff-zucker.solidcommunity.net/MyNotepad/";
+    ui:displayTarget :Draggable;
+    ui:label "Notepad";
+    ui:plugin :SolidOSLink.
+:Modal a ui:DisplayTarget; ui:label "Modal Overlay"@en.
+
+:Notepad
+    a ui:Component;
+    ui:dataSource inde:this;
+    ui:displayTarget :Draggable;
+    ui:label "Note Pad";
+    ui:plugin :SolidOSLink.
+:PreferencesEditor a ui:Plugin; ui:label "Preferences Editor"@en.
+
+:ProfileEditor a ui:Plugin; ui:label "Profile Editor"@en.
+
+:SolidOSLink a ui:Plugin; ui:label "SolidOS Databrowser"@en.
+
+:ToolsMenu
+    a ui:ButtonListMenu;
+    ui:startingContent <../data/tools.md>;
+    ui:dataSource
+            ( :id1661718913610 :AddressBook :Tracker :Chat :EditProfile
+            :EditPreferences ).
+:Tracker
+    a ui:Component;
+    ui:dataSource ind:this;
+    ui:displayTarget :Draggable;
+    ui:label "Task Tracker";
+    ui:plugin :SolidOSLink.

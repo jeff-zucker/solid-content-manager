@@ -1,5 +1,11 @@
 import './login.js';
 
+  async function toggleMenuPanelDisplay(wantedMenu){
+    let current = document.body.classList.contains('hiddenMenu')
+    if(current || wantedMenu)  document.body.classList.remove('hiddenMenu')
+    else document.body.classList.add('hiddenMenu')
+  }
+
   async function toggleMenu(wantedMenu){
     wantedMenu ||= 'MainMenu';
     // Hide Tabulator (redisplay later if a SolidOSLink
@@ -14,17 +20,20 @@ import './login.js';
       if(kid.id===wantedMenu) kid.style.display="block";
       else kid.style.display="none";
     }
+    toggleMenuPanelDisplay(true);
   }
   async function toggleManageMenu(){
     document.querySelector('#menuArea').style.display="none";
     document.querySelector('#toolsMenuArea').style.display="none";
     document.querySelector('#manageMenuArea').style.display="block";
+    toggleMenuPanelDisplay(true);
     await solidUI.activateComponent('#manageMenuArea');
   }
   async function toggleToolsMenu(){
     document.querySelector('#menuArea').style.display="none";
     document.querySelector('#manageMenuArea').style.display="none";
     document.querySelector('#toolsMenuArea').style.display="block";
+    toggleMenuPanelDisplay(true);
     await solidUI.activateComponent('#toolsMenuArea');
   }
   function toggleScreens(newScreen){
@@ -49,10 +58,12 @@ import './login.js';
   }
   async function init(){
    document.querySelector('.screen').addEventListener("click",async()=>{
-     toggleScreens();
+     toggleMenu();
+     // toggleScreens();
    });
    document.querySelector('.menu.button').addEventListener("click",async(e)=>{
-     toggleMenu();
+     toggleMenuPanelDisplay();
+     // toggleMenu();
    });
    document.querySelector('.gear.button').addEventListener("click",async(e)=>{
      toggleManageMenu();
@@ -63,6 +74,7 @@ import './login.js';
    document.getElementById('shadowBody').classList.remove("loading");
    await solidUI.activateComponent('#menuArea');
    await solidUI.activateComponent('#mainMenu');
+//   await solidUI.util.show('markdown',window.origin+'/cm/data/home.md','','#display')
   }
   solidUI.initApp = init;
   solidUI.showTabulator = ()=>{

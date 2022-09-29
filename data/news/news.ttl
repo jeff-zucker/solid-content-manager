@@ -20,7 +20,26 @@
 @prefix fee3: <https://globalvoices.org/feed/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 
-:GeneralNews a skos:Concept, ui:FeedTopic; ui:label "General News".
+:GeneralNews
+  a skos:Concept, ui:FeedTopic; 
+  ui:label "General News".
+
+:NewsIntro
+  a ui:Markdown;
+  ui:content """
+## News Feeds
+
+This reader for RSS/Atom feeds comes with a pre-selected list of sources which you may love or hate.  You can change them in the 
+
+  """.
+
+:NewsReaderApp
+    a ui:App;
+    ui:label "News Reader";
+    ui:comment "A customizable RSS/Atom Feed Reader for Solid";
+    ui:editingForm <news-form.ttl>;
+    ui:startingContent :NewsIntro;
+    ui:startingMenu :News.
 
 :News
     a skos:OrderedCollection, ui:FeedList;

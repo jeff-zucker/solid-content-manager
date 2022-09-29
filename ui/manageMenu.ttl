@@ -2,6 +2,7 @@
 @prefix ui: <http://www.w3.org/ns/ui#> .
 
 :ManageMenu a ui:ButtonListMenu; 
+  ui:startingContent <../data/menuManager.md>;
   ui:dataSource (
     :ManageMainMenu :ManageToolsMenu :ManageApp
   ) .
