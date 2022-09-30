@@ -1,6 +1,6 @@
 {
   "name": "solid-content-manager",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
