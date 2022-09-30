@@ -1,12 +1,14 @@
 import './login.js';
 
-  async function toggleMenuPanelDisplay(wantedMenu){
+  function toggleMenuPanelDisplay(wantedMenu){
     let current = document.body.classList.contains('hiddenMenu')
+// alert(current)
     if(current || wantedMenu)  document.body.classList.remove('hiddenMenu')
     else document.body.classList.add('hiddenMenu')
   }
 
   async function toggleMenu(wantedMenu){
+//alert(78)
     wantedMenu ||= 'MainMenu';
     // Hide Tabulator (redisplay later if a SolidOSLink
     document.getElementById('right-column-tabulator').style.display="none";
@@ -56,14 +58,11 @@ import './login.js';
       el.selectedIndex=next;
       zeditor.load(el[el.selectedIndex].value);
   }
-  async function init(){
-   document.querySelector('.screen').addEventListener("click",async()=>{
-     toggleMenu();
-     // toggleScreens();
-   });
    document.querySelector('.menu.button').addEventListener("click",async(e)=>{
      toggleMenuPanelDisplay();
-     // toggleMenu();
+   });
+   document.querySelector('.screen').addEventListener("click",async()=>{
+     toggleMenu();
    });
    document.querySelector('.gear.button').addEventListener("click",async(e)=>{
      toggleManageMenu();
@@ -71,6 +70,7 @@ import './login.js';
    document.querySelector('.wrench.button').addEventListener("click",async(e)=>{
      toggleToolsMenu();
    });
+ async function init(){
    document.getElementById('shadowBody').classList.remove("loading");
    await solidUI.activateComponent('#menuArea');
    await solidUI.activateComponent('#mainMenu');
