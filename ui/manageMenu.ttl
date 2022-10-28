@@ -3,24 +3,24 @@
 
 :ManageMenu a ui:ButtonListMenu; 
   ui:startingContent <../data/menuManager.md>;
-  ui:dataSource (
-    :ManageMainMenu :ManageToolsMenu :ManageApp
-  ) .
+  ui:dataSource ( :ManageMainMenu :ManageToolsMenu :ManageApp ) .
 
-:ManageMainMenu
-  a ui:Component;
+:ManageMainMenu a ui:Component;
   ui:directDisplay true;
-  ui:label "Manage your Main Menu";
+  ui:label  "Manage your Main Menu"@en
+            "Maneja tu Menú Principal"@es;
   ui:dataSource <../templates/mainMenu-form.ttl#this> .
 
 :ManageToolsMenu
   a ui:Component;
   ui:directDisplay true;
-  ui:label "Manage your Tools Menu";
+  ui:label  "Manage your Tools Menu"@en,
+            "Maneja tu Menú de Herramientas"@es;
   ui:dataSource <../templates/toolsMenu-form.ttl#this> .
 
 :ManageApp
   a ui:Component;
   ui:directDisplay true;
-  ui:label "Manage your News Feeds";
+  ui:label  "Manage your News Feeds"@en,
+            "Maneja tus Noticias"@es;
   ui:dataSource <../data/news/feeds-form.ttl#this> .
