@@ -5,42 +5,55 @@
 @prefix Specs: </cm/data/solid-specifications/specs.ttl#SolidSpecs> .
 
 :MainMenu a ui:MenuOfMenus;
-  ui:default [
-    ui:collectionSize 6;
-    ui:resourceSize 12
-  ].
-  ui:dataSource (
-    :Desktop :Examples :SolCom :SolComTest :InruptPod News: Culture: Specs:
-  ) .
-  #  :Desktop :Examples News: Culture:
+   ui:default [
+      ui:collectionSize 6;
+      ui:resourceSize 12
+   ] .
+   ui:dataSource (
+      :Desktop :Examples :SolCom :SolComTest :InruptPod News: Culture: Specs:
+   ) .
+   # :Desktop :Examples News: Culture:
 
-News: ui:label "News Feeds".
-Culture: ui:label "Culture Browser".
-Specs: ui:label "Solid Specifications".
+News: ui:label    "News Feeds"@en,
+                  "Noticias"@es.
+
+Culture: ui:label "Culture Browser"@en,
+                  "Navegador Cultural"@es.
+
+Specs: ui:label   "Solid Specifications"@en,
+                  "Especificaciones Solid"@es.
 
 :Desktop a ui:ContainerSelector;
-   ui:label "Desktop Pod";
+   ui:label       "Desktop Pod"@en,
+                  "Pod de Escritorio"@es;
    ui:dataSource <http://localhost:3101/>;
    ui:collectionSize 6;
    ui:resourceSize 12.
 
 :Examples a ui:ContainerSelector;
-   ui:label "Example Media Resources";
+   ui:label       "Example Media Resources"@en,
+                  "Recursos Multimedia de Ejemplo"@en;
    ui:dataSource </cm/data/examples/test.gv>;
    ui:collectionSize 6;
    ui:resourceSize 12.
 
-:SolCom a ui:ContainerSelector;    ui:label "Solid Community Pod";
+:SolCom a ui:ContainerSelector;    
+   ui:label       "Solid Community Pod"@en,
+                  "Pod de la Comunidad Solid"@es;
    ui:dataSource <https://jeff-zucker.solidcommunity.net/>;
    ui:collectionSize 6;
    ui:resourceSize 12.
 
-:SolComTest a ui:ContainerSelector;  ui:label "Solid Community Test";
+:SolComTest a ui:ContainerSelector;  
+   ui:label       "Solid Community Test"@es,
+                  "Prueba de la Comunidad Solid"@es;
    ui:dataSource <https://jeff-zucker.solidcommunity.net:8443/>;
    ui:collectionSize 6;
    ui:resourceSize 12.
 
-:InruptPod a ui:ContainerSelector;  ui:label "Inrupt Pod Space";
+:InruptPod a ui:ContainerSelector;  
+   ui:label       "Inrupt Pod Space"@en,
+                  "Espacio de Pod de Inrupt"@es;
    ui:dataSource <https://storage.inrupt.com/jeff-zucker/>;
    ui:collectionSize 6;
    ui:resourceSize 12.

@@ -65,13 +65,13 @@
 :SolCom                 a ui:Component;
     ui:dataSource       je:;
     ui:label            "Solid Community Pod"@en,
-                        "Pod de la Comunidad de Solid"@es;
+                        "Pod de la Comunidad Solid"@es;
     ui:plugin           :PodBrowser.
 
 :SolComTest             a ui:Component;
     ui:dataSource       jeff:;
     ui:label            "Solid Community Test"@en,
-                        "Prueba de la Comunidad de Solid"@es;
+                        "Prueba de la Comunidad Solid"@es;
     ui:plugin           :PodBrowser.
 
 :SolidSpecs
