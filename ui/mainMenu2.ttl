@@ -37,21 +37,21 @@ Specs: ui:label   "Solid Specifications"@en,
    ui:collectionSize 6;
    ui:resourceSize 12.
 
-:SolCom a ui:ContainerSelector;    
+:SolCom a ui:ContainerSelector;
    ui:label       "Solid Community Pod"@en,
                   "Pod de la Comunidad Solid"@es;
    ui:dataSource <https://jeff-zucker.solidcommunity.net/>;
    ui:collectionSize 6;
    ui:resourceSize 12.
 
-:SolComTest a ui:ContainerSelector;  
+:SolComTest a ui:ContainerSelector;
    ui:label       "Solid Community Test"@es,
                   "Prueba de la Comunidad Solid"@es;
    ui:dataSource <https://jeff-zucker.solidcommunity.net:8443/>;
    ui:collectionSize 6;
    ui:resourceSize 12.
 
-:InruptPod a ui:ContainerSelector;  
+:InruptPod a ui:ContainerSelector;
    ui:label       "Inrupt Pod Space"@en,
                   "Espacio de Pod de Inrupt"@es;
    ui:dataSource <https://storage.inrupt.com/jeff-zucker/>;

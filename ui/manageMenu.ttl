@@ -1,26 +1,26 @@
-@prefix : <#> .
+@prefix :   <#> .
 @prefix ui: <http://www.w3.org/ns/ui#> .
 
-:ManageMenu a ui:ButtonListMenu; 
-  ui:startingContent <../data/menuManager.md>;
-  ui:dataSource ( :ManageMainMenu :ManageToolsMenu :ManageApp ) .
+:ManageMenu
+    a                  ui:ButtonListMenu ;
+    ui:startingContent <../data/menuManager.md> ;
+    ui:dataSource      ( :ManageMainMenu :ManageToolsMenu :ManageApp ) .
 
-:ManageMainMenu a ui:Component;
-  ui:directDisplay true;
-  ui:label  "Manage your Main Menu"@en
-            "Maneja tu Menú Principal"@es;
-  ui:dataSource <../templates/mainMenu-form.ttl#this> .
+:ManageMainMenu
+    a                ui:Component ;
+    ui:directDisplay true ;
+    ui:label         "Manage your Main Menu"@en, "Maneja tu Menú Principal"@es ;
+    ui:dataSource    <../templates/mainMenu-form.ttl#this> .
 
 :ManageToolsMenu
-  a ui:Component;
-  ui:directDisplay true;
-  ui:label  "Manage your Tools Menu"@en,
-            "Maneja tu Menú de Herramientas"@es;
-  ui:dataSource <../templates/toolsMenu-form.ttl#this> .
+    a                ui:Component ;
+    ui:directDisplay true ;
+    ui:label         "Manage your Tools Menu"@en,
+                     "Maneja tu Menú de Herramientas"@es ;
+    ui:dataSource    <../templates/toolsMenu-form.ttl#this> .
 
 :ManageApp
-  a ui:Component;
-  ui:directDisplay true;
-  ui:label  "Manage your News Feeds"@en,
-            "Maneja tus Noticias"@es;
-  ui:dataSource <../data/news/feeds-form.ttl#this> .
+    a                ui:Component ;
+    ui:directDisplay true ;
+    ui:label         "Manage your News Feeds"@en, "Maneja tus Noticias"@es ;
+    ui:dataSource    <../data/news/feeds-form.ttl#this> .
