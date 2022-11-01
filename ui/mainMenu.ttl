@@ -8,61 +8,74 @@
 @prefix lo: </>.
 @prefix news: <../data/news/news.ttl#>.
 
-:Culture
-    a ui:Component;
-    ui:dataSource ocb:OpenCultureBrowser;
-    ui:label "Culture Browser";
-    ui:plugin :CustomApp.
-:CustomApp a ui:Plugin; ui:label "Custom App"@en.
+:Culture a ui:Component;
+    ui:dataSource       ocb:OpenCultureBrowser;
+    ui:label            "Culture Browser"@en, 
+                        "Navegador Cultural"@es;
+    ui:plugin           :CustomApp.
 
-:Desktop
-    a ui:Component;
-    ui:dataSource lo:;
-    ui:label "Desktop Pod";
-    ui:plugin :PodBrowser.
-:Examples
-    a ui:Component;
-    ui:dataSource ex:;
-    ui:label "Example Media Resources";
-    ui:plugin :PodBrowser.
+:CustomApp a ui:Plugin; 
+    ui:label            "Custom App"@en,
+                        "App Personalizada"@es.
+
+:Desktop a ui:Component;
+    ui:dataSource       lo:;
+    ui:label            "Desktop Pod"@en,
+                        "Pod de Escritorio"@es;
+    ui:plugin           :PodBrowser.
+
+:Examples a ui:Component;
+    ui:dataSource       ex:;
+    ui:label            "Example Media Resources"@en,
+                        "Recursos Multimedia de Ejemplo"@es;
+    ui:plugin           :PodBrowser.
+
 :id1661718677379
-    ui:dataSource
-        "http://localhost:3101/solid/test/draggable/draggable.ttl#MyDraggableContainer";
-    ui:label "Test Draggable Container";
-    ui:plugin :CustomApp.
-:InruptPod
-    a ui:Component;
-    ui:dataSource jef:;
-    ui:label "Inrupt Pod Space";
-    ui:plugin :PodBrowser.
-:MainMenu
-    a ui:MenuOfMenus;
-    ui:startingContent <../data/home.md>;
-    ui:dataSource ( :Desktop :Examples :SolCom :News :Culture :SolidSpecs ).
-:News
-    a ui:Component;
-    ui:dataSource news:News;
-    ui:label "News Feeds";
-    ui:plugin :CustomApp.
-:PodBrowser a ui:Plugin; ui:label "Pod Browser"@en.
+    ui:dataSource       "http://localhost:3101/solid/test/draggable/draggable.ttl#MyDraggableContainer";
+    ui:label            "Test Draggable Container"@en,
+                        "Contenedor Arrastrable de Prueba"@en;
+    ui:plugin           :CustomApp.
 
-:Recipes
-    a ui:Component;
-    ui:dataSource "https://jeff-zucker.solidcommunity.net:8443/cookbook/";
-    ui:label "Recipes";
+:InruptPod              a ui:Component;
+    ui:dataSource       jef:;
+    ui:label            "Inrupt Pod Space"@en,
+                        "Espacio de Pod de Inrupt";
+    ui:plugin           :PodBrowser.
+
+:MainMenu               a ui:MenuOfMenus;
+    ui:startingContent  <../data/home.md>;
+    ui:dataSource       ( :Desktop :Examples :SolCom :News :Culture :SolidSpecs ).
+
+:News                   a ui:Component;
+    ui:dataSource       news:News;
+    ui:label            "News Feeds"@en,
+                        "Noticias"@es;
+    ui:plugin           :CustomApp.
+
+:PodBrowser             a ui:Plugin; 
+    ui:label            "Pod Browser"@en,
+                        "Navegador de Pods"@es.
+
+:Recipes                a ui:Component;
+    ui:dataSource       "https://jeff-zucker.solidcommunity.net:8443/cookbook/";
+    ui:label            "Recipes"@en,
+                        "Recetas"@es;
     ui:plugin :CustomApp.
-:SolCom
-    a ui:Component;
-    ui:dataSource je:;
-    ui:label "Solid Community Pod";
-    ui:plugin :PodBrowser.
-:SolComTest
-    a ui:Component;
-    ui:dataSource jeff:;
-    ui:label "Solid Community Test";
-    ui:plugin :PodBrowser.
+
+:SolCom                 a ui:Component;
+    ui:dataSource       je:;
+    ui:label            "Solid Community Pod"@en,
+                        "Pod de la Comunidad Solid"@es;
+    ui:plugin           :PodBrowser.
+
+:SolComTest             a ui:Component;
+    ui:dataSource       jeff:;
+    ui:label            "Solid Community Test"@en,
+                        "Prueba de la Comunidad Solid"@es;
+    ui:plugin           :PodBrowser.
+
 :SolidSpecs
-    ui:dataSource
-    "http://localhost:3101/cm/data/solid-specs/solid-specs.ttl#SolidSpecs";
-    ui:label "Solid Specifications";
+    ui:dataSource       "http://localhost:3101/cm/data/solid-specs/solid-specs.ttl#SolidSpecs";
+    ui:label            "Solid Specifications"@en,
+                        "Especificaciones Solid"@es;
     ui:plugin :CustomApp.
